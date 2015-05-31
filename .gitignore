@@ -229,8 +229,7 @@ gradle/
 
 # And then some more stuff from FML/Forge that shouldn't be sent along
 CREDITS-fml.txt
-forge-1.7.10-10.13.0.1180-changelog.txt
-forge-1.8-11.14.1.1419-changelog.txt
+*changelog.txt
 gradlew*
 MinecraftForge*
 README.txt
