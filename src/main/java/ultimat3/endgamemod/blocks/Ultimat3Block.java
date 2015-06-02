@@ -25,6 +25,7 @@ public abstract class Ultimat3Block extends Block {
 	 *            rather the name in the code.
 	 * @param blockMaterial
 	 *            The {@link Material} of the block.
+	 * @author Ebilkill
 	 */
 	public Ultimat3Block(String name, Material blockMaterial) {
 		this(name, ItemBlock.class, blockMaterial);
@@ -43,6 +44,7 @@ public abstract class Ultimat3Block extends Block {
 	 * 
 	 * @param blockMaterial
 	 *            The {@link Material} of the block.
+	 * @author Ebilkill
 	 */
 	public Ultimat3Block(String name, Class<? extends ItemBlock> clazz,
 			Material blockMaterial) {
@@ -58,7 +60,8 @@ public abstract class Ultimat3Block extends Block {
 	 * The value returned by this is the name of the .json files that define
 	 * this block.
 	 * 
-	 * @return
+	 * @return The internal name of the block.
+	 * @author Ebilkill
 	 */
 	public String getName() {
 		return this.name;
