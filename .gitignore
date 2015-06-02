@@ -237,3 +237,9 @@ LICENSE-fml.txt
 
 #blegh a load of saves etc in the eclipse folder :P
 eclipse/
+
+# This is Ebilkill's personal lang-file creator. If you want it, ask me. The created files 
+# are included anyway, so it doesn't matter all that much.
+createlang.bat
+LangfileCreator.java
+LangfileCreator.class

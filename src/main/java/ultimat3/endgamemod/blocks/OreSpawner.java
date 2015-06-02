@@ -32,7 +32,6 @@ public class OreSpawner implements IWorldGenerator {
 	}
 
 	private void generateNether(World world, Random random, int x, int y) {
-
 	}
 
 	// Might change this to be metadata bound
@@ -48,7 +47,6 @@ public class OreSpawner implements IWorldGenerator {
 	}
 
 	private void generateEnd(World world, Random random, int x, int y) {
-
 	}
 
 	/**

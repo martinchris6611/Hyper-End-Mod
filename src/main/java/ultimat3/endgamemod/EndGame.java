@@ -23,9 +23,10 @@ public class EndGame {
 	@Instance(EndGame.MODID)
 	public static EndGame instance; // automatically populated by FML
 
-	public static final String MODID = "U3-EGM";
+	public static final String MODID = "u3_egm";
 	public static final String VERSION = "1.0A";
 
+	// Ores. Might make these metadata based later
 	public static Block blockScandiumOre;
 	public static Block blockLithiumOre;
 	public static Block blockTitaniumOre;
