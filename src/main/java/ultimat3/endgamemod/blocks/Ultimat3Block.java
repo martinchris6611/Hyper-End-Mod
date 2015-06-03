@@ -3,8 +3,8 @@ package ultimat3.endgamemod.blocks;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
-import net.minecraftforge.fml.common.registry.GameRegistry;
 import ultimat3.endgamemod.EndGame;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Use this class to create new blocks (for the Ultimat3 modding team).

@@ -1,9 +1,9 @@
 package ultimat3.endgamemod.items;
 
+import net.minecraft.item.Item;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.blocks.Ultimat3Block;
-import net.minecraft.item.Item;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
  * Superclass this for new item classes (for the Ultimat3 modding team).
