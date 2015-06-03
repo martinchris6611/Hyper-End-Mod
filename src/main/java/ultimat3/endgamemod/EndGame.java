@@ -2,8 +2,8 @@ package ultimat3.endgamemod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.item.ItemBlock;
+import ultimat3.endgamemod.blocks.OreSpawner;
+import ultimat3.endgamemod.blocks.Ultimat3BlockOre;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -11,8 +11,6 @@ import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
 import cpw.mods.fml.common.registry.GameRegistry;
-import ultimat3.endgamemod.blocks.OreSpawner;
-import ultimat3.endgamemod.blocks.Ultimat3BlockOre;
 
 /**
  * Main mod file. Initializes the mod, in short. Also adds event handlers and
