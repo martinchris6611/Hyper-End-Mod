@@ -9,7 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
-import net.minecraftforge.fml.common.IWorldGenerator;
+import cpw.mods.fml.common.IWorldGenerator;
 
 /**
  * Not gonna lie, basically copied this off the internet.

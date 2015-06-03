@@ -2,13 +2,15 @@ package ultimat3.endgamemod;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.fml.common.Mod.EventHandler;
-import net.minecraftforge.fml.common.Mod.Instance;
-import net.minecraftforge.fml.common.event.FMLInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPostInitializationEvent;
-import net.minecraftforge.fml.common.event.FMLPreInitializationEvent;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import net.minecraft.creativetab.CreativeTabs;
+import net.minecraft.item.ItemBlock;
+import cpw.mods.fml.common.Mod;
+import cpw.mods.fml.common.Mod.EventHandler;
+import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.event.FMLInitializationEvent;
+import cpw.mods.fml.common.event.FMLPostInitializationEvent;
+import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.registry.GameRegistry;
 import ultimat3.endgamemod.blocks.OreSpawner;
 import ultimat3.endgamemod.blocks.Ultimat3BlockOre;
 
@@ -18,13 +20,25 @@ import ultimat3.endgamemod.blocks.Ultimat3BlockOre;
  * 
  * @author Ebilkill
  */
-@Mod(modid = EndGame.MODID, version = EndGame.VERSION)
+@Mod(modid = EndGame.MODID, version = EndGame.VERSION, name = "End game mod")
 public class EndGame {
 	@Instance(EndGame.MODID)
 	public static EndGame instance; // automatically populated by FML
 
+	/**
+	 * The FML identifier for our mod.
+	 */
 	public static final String MODID = "u3_egm";
+
+	/**
+	 * The version of our mod.
+	 */
 	public static final String VERSION = "1.0A";
+
+	/**
+	 * The creative tab for our mod.
+	 */
+	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(MODID);
 
 	// Ores. Might make these metadata based later
 	public static Block blockScandiumOre;
@@ -32,6 +46,9 @@ public class EndGame {
 	public static Block blockTitaniumOre;
 	public static Block blockCobaltOre;
 
+	/**
+	 * Spawns the ores into the world.
+	 */
 	private static OreSpawner spawner = new OreSpawner();
 
 	@EventHandler
@@ -45,6 +62,12 @@ public class EndGame {
 				.setHardness(7F);
 		blockCobaltOre = new Ultimat3BlockOre("oreCobalt", Material.rock)
 				.setHardness(7F);
+
+		// and register them
+		GameRegistry.registerBlock(blockCobaltOre, "oreCobalt");
+		GameRegistry.registerBlock(blockLithiumOre, "oreLithium");
+		GameRegistry.registerBlock(blockScandiumOre, "oreScandium");
+		GameRegistry.registerBlock(blockTitaniumOre, "oreTitanium");
 	}
 
 	@EventHandler
@@ -54,7 +77,7 @@ public class EndGame {
 		blockLithiumOre.setHarvestLevel("pickaxe", 2);
 		blockTitaniumOre.setHarvestLevel("pickaxe", 3);
 		blockCobaltOre.setHarvestLevel("pickaxe", 2);
-		
+
 		// add the world gen
 		GameRegistry.registerWorldGenerator(spawner, 1);
 	}

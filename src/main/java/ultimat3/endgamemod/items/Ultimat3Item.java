@@ -27,6 +27,7 @@ public abstract class Ultimat3Item extends Item {
 		GameRegistry.registerItem(this, name, EndGame.MODID);
 		this.setUnlocalizedName(EndGame.MODID + "_" + name);
 		this.setTextureName(name);
+		this.setCreativeTab(EndGame.creaTab);
 	}
 
 	/**

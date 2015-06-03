@@ -50,9 +50,10 @@ public abstract class Ultimat3Block extends Block {
 			Material blockMaterial) {
 		super(blockMaterial);
 		this.name = name;
-		GameRegistry.registerBlock(this, clazz, name, EndGame.MODID);
+//		GameRegistry.registerBlock(this, clazz, name, EndGame.MODID); // will be used in 1.8, do NOT remove
 		this.setBlockName(EndGame.MODID + "_" + name);
-		this.setBlockTextureName(EndGame.MODID + ":" + name);
+		this.setBlockTextureName(EndGame.MODID + ":" + name); // will be removed in 1.8
+		this.setCreativeTab(EndGame.creaTab);
 	}
 
 	/**

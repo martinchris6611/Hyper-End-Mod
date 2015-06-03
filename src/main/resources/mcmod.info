@@ -1,14 +1,14 @@
 [
 {
-  "modid": "examplemod",
-  "name": "Example Mod",
-  "description": "Example placeholder mod.",
+  "modid": "u3_egm",
+  "name": "End game mod",
+  "description": "A mod that requires many many resources to use. Meant as an item and energy sink for late-game.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["ExampleDude"],
-  "credits": "The Forge and FML guys, for making this example",
+  "authorList": ["SnyperAnihilatr", "Ebilkill"],
+  "credits": "Only the authors at the moment.",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
