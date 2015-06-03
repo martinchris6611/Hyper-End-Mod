@@ -1,9 +1,8 @@
 package ultimat3.endgamemod;
 
-import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import ultimat3.endgamemod.blocks.OreSpawner;
-import ultimat3.endgamemod.blocks.Ultimat3BlockOre;
+import ultimat3.endgamemod.init.ModBlocks;
+import ultimat3.endgamemod.init.ModItems;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -18,65 +17,27 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  * @author Ebilkill
  */
-@Mod(modid = EndGame.MODID, version = EndGame.VERSION, name = EndGame.NAME)
+@Mod(modid = Reference.MODID, version = Reference.VERSION, name = Reference.NAME)
 public class EndGame {
-	@Instance(EndGame.MODID)
+	
+	@Instance(Reference.MODID)
 	public static EndGame instance; // automatically populated by FML
-
-	/**
-	 * The FML identifier for our mod.
-	 */
-	public static final String MODID = "u3_egm";
-
-	/**
-	 * The version of our mod.
-	 */
-	public static final String VERSION = "1.0A";
-	public static final String NAME = "End game mod";
-
-	/**
-	 * The creative tab for our mod.
-	 */
-	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(MODID);
-
-	// Ores. Might make these metadata based later
-	public static Block blockScandiumOre;
-	public static Block blockLithiumOre;
-	public static Block blockTitaniumOre;
-	public static Block blockCobaltOre;
-
-	/**
-	 * Spawns the ores into the world.
-	 */
+	/** The creative tab for the mod */
+	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(Reference.MODID);
+	/** Spawns the ores into the world */
 	private static OreSpawner spawner = new OreSpawner();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
-		// Create all blocks
-		blockScandiumOre = new Ultimat3BlockOre("oreScandium", Material.rock)
-				.setHardness(7F);
-		blockLithiumOre = new Ultimat3BlockOre("oreLithium", Material.rock)
-				.setHardness(7F);
-		blockTitaniumOre = new Ultimat3BlockOre("oreTitanium", Material.rock)
-				.setHardness(7F);
-		blockCobaltOre = new Ultimat3BlockOre("oreCobalt", Material.rock)
-				.setHardness(7F);
-
-		// and register them
-		GameRegistry.registerBlock(blockCobaltOre, "oreCobalt");
-		GameRegistry.registerBlock(blockLithiumOre, "oreLithium");
-		GameRegistry.registerBlock(blockScandiumOre, "oreScandium");
-		GameRegistry.registerBlock(blockTitaniumOre, "oreTitanium");
+		
+		// registers content with Forge
+		ModBlocks.registerBlocks();
+		ModItems.registerItems();
 	}
 
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		// Set block harvest levels
-		blockScandiumOre.setHarvestLevel("pickaxe", 3);
-		blockLithiumOre.setHarvestLevel("pickaxe", 2);
-		blockTitaniumOre.setHarvestLevel("pickaxe", 3);
-		blockCobaltOre.setHarvestLevel("pickaxe", 2);
-
+		
 		// add the world gen
 		GameRegistry.registerWorldGenerator(spawner, 1);
 	}

@@ -2,13 +2,12 @@ package ultimat3.endgamemod.blocks;
 
 import java.util.Random;
 
-import ultimat3.endgamemod.EndGame;
-
 import net.minecraft.block.Block;
 import net.minecraft.init.Blocks;
 import net.minecraft.world.World;
 import net.minecraft.world.chunk.IChunkProvider;
 import net.minecraft.world.gen.feature.WorldGenMinable;
+import ultimat3.endgamemod.init.ModBlocks;
 import cpw.mods.fml.common.IWorldGenerator;
 
 /**
@@ -36,13 +35,13 @@ public class OreSpawner implements IWorldGenerator {
 
 	// Might change this to be metadata bound
 	private void generateSurface(World world, Random random, int x, int y) {
-		this.addOreSpawn(EndGame.blockScandiumOre, 0, world, random, x, y, 16,
+		this.addOreSpawn(ModBlocks.blockScandiumOre, 0, world, random, x, y, 16,
 				16, 1, random.nextInt(1), 2, 50);
-		this.addOreSpawn(EndGame.blockTitaniumOre, 0, world, random, x, y, 16,
+		this.addOreSpawn(ModBlocks.blockTitaniumOre, 0, world, random, x, y, 16,
 				16, 5, 1, 6, 20);
-		this.addOreSpawn(EndGame.blockLithiumOre, 0, world, random, x, y, 16,
+		this.addOreSpawn(ModBlocks.blockLithiumOre, 0, world, random, x, y, 16,
 				16, 5, 2, 6, 30);
-		this.addOreSpawn(EndGame.blockCobaltOre, 0, world, random, x, y, 16,
+		this.addOreSpawn(ModBlocks.blockCobaltOre, 0, world, random, x, y, 16,
 				16, 5, 2, 6, 30);
 	}
 

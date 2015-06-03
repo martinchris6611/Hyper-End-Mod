@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.ItemBlock;
 import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.Reference;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -51,8 +52,8 @@ public abstract class Ultimat3Block extends Block {
 		super(blockMaterial);
 		this.name = name;
 //		GameRegistry.registerBlock(this, clazz, name, EndGame.MODID); // will be used in 1.8, do NOT remove
-		this.setBlockName(EndGame.MODID + "_" + name);
-		this.setBlockTextureName(EndGame.MODID + ":" + name); // will be removed in 1.8
+		this.setBlockName(Reference.MODID + "_" + name);
+		this.setBlockTextureName(Reference.MODID + ":" + name); // will be removed in 1.8
 		this.setCreativeTab(EndGame.creaTab);
 	}
 

@@ -2,6 +2,7 @@ package ultimat3.endgamemod.items;
 
 import net.minecraft.item.Item;
 import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.blocks.Ultimat3Block;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -24,8 +25,8 @@ public abstract class Ultimat3Item extends Item {
 	 */
 	public Ultimat3Item(String name) {
 		this.name = name;
-		GameRegistry.registerItem(this, name, EndGame.MODID);
-		this.setUnlocalizedName(EndGame.MODID + "_" + name);
+		GameRegistry.registerItem(this, name, Reference.MODID);
+		this.setUnlocalizedName(Reference.MODID + "_" + name);
 		this.setTextureName(name);
 		this.setCreativeTab(EndGame.creaTab);
 	}

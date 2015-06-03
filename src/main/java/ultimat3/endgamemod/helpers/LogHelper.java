@@ -2,12 +2,12 @@ package ultimat3.endgamemod.helpers;
 
 import org.apache.logging.log4j.Level;
 
-import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.Reference;
 import cpw.mods.fml.common.FMLLog;
 
 public class LogHelper 
 {
-public static void log(Level logLevel, Object object){FMLLog.log(EndGame.NAME, logLevel, String.valueOf(object));} 
+public static void log(Level logLevel, Object object){FMLLog.log(Reference.NAME, logLevel, String.valueOf(object));} 
     
     public static void all(Object object) {log(Level.ALL, object);} 
     public static void debug(Object object){log(Level.DEBUG, object);} 
