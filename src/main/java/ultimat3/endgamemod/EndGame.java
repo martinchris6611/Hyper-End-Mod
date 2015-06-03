@@ -18,7 +18,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  * @author Ebilkill
  */
-@Mod(modid = EndGame.MODID, version = EndGame.VERSION, name = "End game mod")
+@Mod(modid = EndGame.MODID, version = EndGame.VERSION, name = EndGame.NAME)
 public class EndGame {
 	@Instance(EndGame.MODID)
 	public static EndGame instance; // automatically populated by FML
@@ -32,6 +32,7 @@ public class EndGame {
 	 * The version of our mod.
 	 */
 	public static final String VERSION = "1.0A";
+	public static final String NAME = "End game mod";
 
 	/**
 	 * The creative tab for our mod.
