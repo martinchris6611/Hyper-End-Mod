@@ -12,6 +12,7 @@ public class ModBlocks
 	public static Block blockLithiumOre = new Ultimat3BlockOre("oreLithium", Material.rock, 5.0F, 7.0F, 2);
 	public static Block blockTitaniumOre = new Ultimat3BlockOre("oreTitanium", Material.rock, 5.0F, 7.0F, 3);
 	public static Block blockCobaltOre = new Ultimat3BlockOre("oreCobalt", Material.rock, 5.0F, 7.0F, 2);
+	public static Block blockAluminumOre = new Ultimat3BlockOre("oreAluminum", Material.rock, 5.0F, 7.0F, 2);
 	
 	public static void registerBlocks()
 	{
@@ -20,5 +21,6 @@ public class ModBlocks
 		RegisterHelper.registerBlock(blockLithiumOre);
 		RegisterHelper.registerBlock(blockTitaniumOre);
 		RegisterHelper.registerBlock(blockCobaltOre);
+		RegisterHelper.registerBlock(blockAluminumOre);
 	}
 }

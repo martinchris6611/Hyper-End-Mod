@@ -1,8 +1,10 @@
 package ultimat3.endgamemod;
 
 import ultimat3.endgamemod.blocks.OreSpawner;
+import ultimat3.endgamemod.helpers.OreDictionaryHelper;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
+import ultimat3.endgamemod.init.ModRecipes;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
@@ -25,7 +27,7 @@ public class EndGame {
 	/** The creative tab for the mod */
 	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(Reference.MODID);
 	/** Spawns the ores into the world */
-	private static OreSpawner spawner = new OreSpawner();
+	private static OreSpawner oreSpawner = new OreSpawner();
 
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -33,17 +35,25 @@ public class EndGame {
 		// registers content with Forge
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
+		
+		// add the Ore Dictionary entries
+		OreDictionaryHelper.init();
 	}
 
+	/**
+	 * Called upon the initialization phase of FML. 
+	 * @param event
+	 */
 	@EventHandler
 	public void init(FMLInitializationEvent event) {
-		
 		// add the world gen
-		GameRegistry.registerWorldGenerator(spawner, 1);
+		GameRegistry.registerWorldGenerator(oreSpawner, 0);
+		
+		ModRecipes.initRecipes();
 	}
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-
+		
 	}
 }
