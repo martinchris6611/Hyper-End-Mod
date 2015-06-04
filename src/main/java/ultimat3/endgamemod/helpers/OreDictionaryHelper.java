@@ -1,7 +1,7 @@
 package ultimat3.endgamemod.helpers;
 
 import ultimat3.endgamemod.init.ModBlocks;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
@@ -25,5 +25,6 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("oreLithium", ModBlocks.blockLithiumOre);
 		OreDictionary.registerOre("oreScandium", ModBlocks.blockScandiumOre);
 		OreDictionary.registerOre("oreTitanium", ModBlocks.blockTitaniumOre);
+		OreDictionary.registerOre("oreMagnesium", ModBlocks.blockMagnesiumOre);
 	}
 }

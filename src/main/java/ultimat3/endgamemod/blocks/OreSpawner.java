@@ -39,6 +39,7 @@ public class OreSpawner implements IWorldGenerator {
 		this.addOreSpawn(ModBlocks.blockLithiumOre, 0, world, random, x, y, 16, 16, 5, 2, 6, 30);
 		this.addOreSpawn(ModBlocks.blockCobaltOre, 0, world, random, x, y, 16, 16, 5, 2, 6, 30);
 		this.addOreSpawn(ModBlocks.blockAluminumOre, 0, world, random, x, y, 16, 16, 8, 10, 6, 60); // Iron rarity :P
+		this.addOreSpawn(ModBlocks.blockMagnesiumOre, 0, world, random, x, y, 16, 16, 8, 10, 6, 60);
 	}
 	
 	private void generateEnd(World world, Random random, int x, int y) {}

@@ -2,7 +2,7 @@ package ultimat3.endgamemod.init;
 
 import net.minecraft.item.crafting.RecipesCrafting;
 import net.minecraft.item.crafting.ShapedRecipes;
-import net.minecraftforge.fml.common.registry.GameRegistry;
+import cpw.mods.fml.common.registry.GameRegistry;
 import ultimat3.endgamemod.EndGame;
 
 /**
