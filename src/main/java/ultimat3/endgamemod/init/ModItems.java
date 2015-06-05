@@ -1,30 +1,39 @@
 package ultimat3.endgamemod.init;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.material.Material;
 import net.minecraft.item.Item;
+import net.minecraft.item.ItemStack;
+import ultimat3.endgamemod.items.MetaItem;
 import ultimat3.endgamemod.items.Ultimat3Item;
-import cpw.mods.fml.common.registry.GameRegistry;
-import ultimat3.endgamemod.blocks.Ultimat3BlockOre;
-import ultimat3.endgamemod.helpers.RegisterHelper;
 
 public class ModItems {
 	
-	//All Ingot Items
-	public static Item	itemScandiumIngot	= new Ultimat3Item("ingotScandium");
-	public static Item	itemLithiumIngot	= new Ultimat3Item("ingotLithium");
-	public static Item	itemTitaniumIngot	= new Ultimat3Item("ingotTitanium");
-	public static Item	itemCobaltIngot		= new Ultimat3Item("ingotCobalt");
-	public static Item	itemAluminumIngot	= new Ultimat3Item("ingotAluminum");
-	public static Item	itemMagnesiumIngot	= new Ultimat3Item("ingotMagnesium");
+	// Names for the ingots
+	public static final String[]	ingotNames		= { "ingotAluminum", "ingotCobalt", "ingotLithium",
+			"ingotMagnesium", "ingotScandium", "ingotTitanium" };
 	
-	//All Nugget Items
-	public static Item itemAluminumNugget = new Ultimat3Item("nuggetAluminum");
-	public static Item itemCobaltNugget = new Ultimat3Item("nuggetCobalt");
-	public static Item itemLithiumNugget = new Ultimat3Item("nuggetLithium");
-	public static Item itemMagnesiumNugget = new Ultimat3Item("nuggetMagnesium");
-	public static Item itemScandiumNugget = new Ultimat3Item("nuggetScandium");
-	public static Item itemTitaniumNugget = new Ultimat3Item("nuggetTitanium");
+	// names for the nuggets
+	public static final String[]	nuggetNames		= { "nuggetAluminum", "nuggetCobalt", "nuggetLithium",
+			"nuggetMagnesium", "nuggetScandium", "nuggetTitanium" };
+	
+	// Meta Items for the win
+	public static Item				itemIngots		= new MetaItem(ingotNames);
+	public static Item				itemNuggets		= new MetaItem(nuggetNames);
+	
+	// Itemstacks so the metadata doesn't have to be remembered.
+	public static ItemStack			aluminumIngot	= new ItemStack(itemIngots, 1, 0);
+	public static ItemStack			cobaltIngot		= new ItemStack(itemIngots, 1, 1);
+	public static ItemStack			lithiumIngot	= new ItemStack(itemIngots, 1, 2);
+	public static ItemStack			magnesiumIngot	= new ItemStack(itemIngots, 1, 3);
+	public static ItemStack			scandiumIngot	= new ItemStack(itemIngots, 1, 4);
+	public static ItemStack			titaniumIngot	= new ItemStack(itemIngots, 1, 5);
+	
+	public static ItemStack			aluminumNugget	= new ItemStack(itemNuggets, 1, 0);
+	public static ItemStack			cobaltNugget	= new ItemStack(itemNuggets, 1, 1);
+	public static ItemStack			lithiumNugget	= new ItemStack(itemNuggets, 1, 2);
+	public static ItemStack			magnesiumNugget	= new ItemStack(itemNuggets, 1, 3);
+	public static ItemStack			scandiumNugget	= new ItemStack(itemNuggets, 1, 4);
+	public static ItemStack			titaniumNugget	= new ItemStack(itemNuggets, 1, 5);
 	
 	public static void registerItems() {
 		// RegisterHelper.registerItem(itemScandiumIngot); // Automatically done by Ultimat3Item
