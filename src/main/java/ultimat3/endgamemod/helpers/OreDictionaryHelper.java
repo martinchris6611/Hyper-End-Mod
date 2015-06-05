@@ -36,5 +36,21 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("ingotMagnesium", ModItems.itemMagnesiumIngot);
 		OreDictionary.registerOre("ingotScandium", ModItems.itemScandiumIngot);
 		OreDictionary.registerOre("ingotTitanium", ModItems.itemTitaniumIngot);
+		
+		// Registers Nuggets
+		OreDictionary.registerOre("nuggetAluminum", ModItems.itemAluminumNugget);
+		OreDictionary.registerOre("nuggetCobalt", ModItems.itemCobaltNugget);
+		OreDictionary.registerOre("nuggetLithium", ModItems.itemLithiumNugget);
+		OreDictionary.registerOre("nuggetMagnesium",  ModItems.itemMagnesiumNugget);
+		OreDictionary.registerOre("nuggetScandium", ModItems.itemScandiumNugget);
+		OreDictionary.registerOre("nuggetTitanium", ModItems.itemTitaniumNugget);
+		
+		// Registers Ore Blocks
+		OreDictionary.registerOre("blockAluminum",  ModBlocks.blockAluminumBlock);
+		OreDictionary.registerOre("blockCobalt",  ModBlocks.blockCobaltBlock);
+		OreDictionary.registerOre("blockLithium",  ModBlocks.blockLithiumBlock);
+		OreDictionary.registerOre("blockMagnesium",  ModBlocks.blockMagnesiumBlock);
+		OreDictionary.registerOre("blockScandium",  ModBlocks.blockScandiumBlock);
+		OreDictionary.registerOre("blockTitanium",  ModBlocks.blockTitaniumBlock);
 	}
 }
