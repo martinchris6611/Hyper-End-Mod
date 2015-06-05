@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import ultimat3.endgamemod.blocks.BlockOre;
 import ultimat3.endgamemod.blocks.MetaBlock;
+import ultimat3.endgamemod.blocks.Ultimat3Block;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.Ultimat3ItemBlock;
 
@@ -24,6 +25,9 @@ public class ModBlocks {
 	 * And the ingot-blocks
 	 */
 	public static Block				blockMetals		= new BlockOre(metalBlockNames, Material.iron, 5.0F, 7.0F, 2);
+	public static Block blockReinforcedIron = new Ultimat3Block("reinforcedIron", Material.rock);
+
+	
 	
 	public static void registerBlocks() {
 		// // Blocks of Ores
@@ -42,5 +46,7 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockMetals, Ultimat3ItemBlock.class);
 		blockMetals.setHarvestLevel("pickaxe", 3, 4);
 		blockMetals.setHarvestLevel("pickaxe", 3, 5);
+		
+		RegisterHelper.registerBlock(blockReinforcedIron);
 	}
 }

@@ -12,7 +12,7 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  * @author Ebilkill
  */
-public abstract class Ultimat3Block extends Block {
+public class Ultimat3Block extends Block {
 	
 	/** @see #getName() */
 	private final String	name;

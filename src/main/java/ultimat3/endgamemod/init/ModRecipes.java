@@ -1,5 +1,7 @@
 package ultimat3.endgamemod.init;
 
+import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import ultimat3.endgamemod.EndGame;
 import cpw.mods.fml.common.registry.GameRegistry;
@@ -33,6 +35,7 @@ public class ModRecipes {
 			});
 		}
 		
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockReinforcedIron), new Object[] {"XXX", "XYX", "XXX", 'X', Items.diamond, 'Y', Blocks.iron_block});
 		// Ore Dictionary
 		
 //		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockAluminumBlock), new Object[] { "XXX", "XXX", "XXX", 'X', ModItems.itemAluminumIngot});

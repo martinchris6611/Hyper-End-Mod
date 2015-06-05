@@ -12,6 +12,8 @@ tile.u3_egm_blockMagnesium.name=Magnesium Block
 tile.u3_egm_blockScandium.name=Scandium Block
 tile.u3_egm_blockTitanium.name=Titanium Block
 
+tile.u3_egm_reinforcedIron.name=Reinforced Iron
+
 item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot
 item.u3_egm_ingotTitanium.name=Titanium Ingot
