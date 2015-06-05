@@ -24,8 +24,10 @@ public class EndGame {
 	
 	@Instance(Reference.MODID)
 	public static EndGame instance; // automatically populated by FML
+	
 	/** The creative tab for the mod */
 	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(Reference.MODID);
+	
 	/** Spawns the ores into the world */
 	private static OreSpawner oreSpawner = new OreSpawner();
 

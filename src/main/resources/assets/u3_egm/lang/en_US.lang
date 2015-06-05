@@ -1,10 +1,16 @@
+tile.u3_egm_oreAluminum.name=Aluminum Ore
 tile.u3_egm_oreCobalt.name=Cobalt Ore
 tile.u3_egm_oreScandium.name=Scandium Ore
 tile.u3_egm_oreLithium.name=Lithium Ore
 tile.u3_egm_oreTitanium.name=Titanium Ore
 tile.u3_egm_oreMagnesium.name=Magnesium Ore
-tile.u3_egm_oreAluminum.name=Aluminum Ore
 
+item.u3_egm_ingotAluminum.name=Aluminum Ingot
+item.u3_egm_ingotCobalt.name=Cobalt Ingot
+item.u3_egm_ingotTitanium.name=Titanium Ingot
+item.u3_egm_ingotMagnesium.name=Magnesium Ingot
+item.u3_egm_ingotLithium.name=Lithium Ingot
+item.u3_egm_ingotScandium.name=Scandium Ingot
 
 itemGroup.u3_egm=End game mod
 

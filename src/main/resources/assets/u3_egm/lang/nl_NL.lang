@@ -1,8 +1,16 @@
-tile.u3_egm_oreCobalt.name=Cobalt Erts
-tile.u3_egm_oreScandium.name=Scandium Erts
-tile.u3_egm_oreLithium.name=Lithium Erts
-tile.u3_egm_oreTitanium.name=Titanium Erts
+tile.u3_egm_oreAluminum.name=Aluminiumerts
+tile.u3_egm_oreCobalt.name=Cobalterts
+tile.u3_egm_oreScandium.name=Scandiumerts
+tile.u3_egm_oreLithium.name=Lithiumerts
+tile.u3_egm_oreTitanium.name=Titaniumerts
+tile.u3_egm_oreMagnesium.name=Magnesiumerts
 
+item.u3_egm_ingotAluminum.name=Aluminiumstaaf
+item.u3_egm_ingotCobalt.name=Cobaltstaaf
+item.u3_egm_ingotTitanium.name=Titaniumstaaf
+item.u3_egm_ingotMagnesium.name=Magnesiumstaaf
+item.u3_egm_ingotLithium.name=Lithiumstaaf
+item.u3_egm_ingotScandium.name=Scandiumstaaf
 
 itemGroup.u3_egm=End game mod
 

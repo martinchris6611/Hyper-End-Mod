@@ -25,10 +25,11 @@ public class RegisterHelper {
 	 * 
 	 * @param block The block to be registered.
 	 * @param clazz The ItemBlock class to use for this block.
+	 * 
 	 * @author Ebilkill
 	 */
 	public static void registerBlock(Block block, Class<? extends ItemBlock> clazz) {
-		GameRegistry.registerBlock(block, clazz, block.getUnlocalizedName().substring(5));
+		GameRegistry.registerBlock(block, clazz, block.getUnlocalizedName());
 	}
 	
 	/**
@@ -37,6 +38,6 @@ public class RegisterHelper {
 	 * @param item - item to be registered.
 	 */
 	public static void registerItem(Item item) {
-		GameRegistry.registerItem(item, item.getUnlocalizedName().substring(5));
+		GameRegistry.registerItem(item, item.getUnlocalizedName());
 	}
 }
