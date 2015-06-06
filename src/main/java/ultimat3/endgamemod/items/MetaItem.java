@@ -27,8 +27,8 @@ public class MetaItem extends Ultimat3Item {
 	}
 	
 	@Override
-	public IIcon getIcon(ItemStack stack, int renderPass) {
-		return icons[stack.getItemDamage()];
+	public IIcon getIconFromDamage(int meta) {
+		return icons[meta];
 	}
 	
 	@SideOnly(Side.CLIENT)

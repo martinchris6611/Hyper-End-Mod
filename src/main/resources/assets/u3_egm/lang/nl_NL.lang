@@ -1,16 +1,31 @@
-tile.u3_egm_oreAluminum.name=Aluminiumerts
+tile.u3_egm_oreAluminum.name=Aluminumerts
 tile.u3_egm_oreCobalt.name=Cobalterts
-tile.u3_egm_oreScandium.name=Scandiumerts
 tile.u3_egm_oreLithium.name=Lithiumerts
-tile.u3_egm_oreTitanium.name=Titaniumerts
 tile.u3_egm_oreMagnesium.name=Magnesiumerts
+tile.u3_egm_oreScandium.name=Scandiumerts
+tile.u3_egm_oreTitanium.name=Titaniumerts
 
-item.u3_egm_ingotAluminum.name=Aluminiumstaaf
+tile.u3_egm_blockAluminum.name=Aluminum Blok
+tile.u3_egm_blockCobalt.name=Cobalt Blok
+tile.u3_egm_blockLithium.name=Lithium Blok
+tile.u3_egm_blockMagnesium.name=Magnesium Blok
+tile.u3_egm_blockTitanium.name=Titanium Blok
+tile.u3_egm_blockScandium.name=Scandium Blok
+
+tile.u3_egm_reinforcedIron.name=Verstevigd Ijzer
+
+item.u3_egm_ingotAluminum.name=Aluminumstaaf
 item.u3_egm_ingotCobalt.name=Cobaltstaaf
-item.u3_egm_ingotTitanium.name=Titaniumstaaf
-item.u3_egm_ingotMagnesium.name=Magnesiumstaaf
 item.u3_egm_ingotLithium.name=Lithiumstaaf
+item.u3_egm_ingotMagnesium.name=Magnesiumstaaf
+item.u3_egm_ingotTitanium.name=Titaniumstaaf
 item.u3_egm_ingotScandium.name=Scandiumstaaf
 
-itemGroup.u3_egm=End game mod
+item.u3_egm_nuggetAluminum.name=Aluminumklompje
+item.u3_egm_nuggetCobalt.name=Cobaltklompje
+item.u3_egm_nuggetLithium.name=Lithiumklompje
+item.u3_egm_nuggetMagnesium.name=Magnesiumklompje
+item.u3_egm_nuggetScandium.name=Scandiumklompje
+item.u3_egm_nuggetTitanium.name=Titaniumklompje
 
+itemGroup.u3_egm=End game mod

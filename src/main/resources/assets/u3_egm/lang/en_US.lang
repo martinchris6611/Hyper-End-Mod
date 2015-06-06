@@ -1,24 +1,24 @@
 tile.u3_egm_oreAluminum.name=Aluminum Ore
 tile.u3_egm_oreCobalt.name=Cobalt Ore
-tile.u3_egm_oreScandium.name=Scandium Ore
 tile.u3_egm_oreLithium.name=Lithium Ore
-tile.u3_egm_oreTitanium.name=Titanium Ore
 tile.u3_egm_oreMagnesium.name=Magnesium Ore
+tile.u3_egm_oreScandium.name=Scandium Ore
+tile.u3_egm_oreTitanium.name=Titanium Ore
 
 tile.u3_egm_blockAluminum.name=Aluminum Block
 tile.u3_egm_blockCobalt.name=Cobalt Block
 tile.u3_egm_blockLithium.name=Lithium Block
 tile.u3_egm_blockMagnesium.name=Magnesium Block
-tile.u3_egm_blockScandium.name=Scandium Block
 tile.u3_egm_blockTitanium.name=Titanium Block
+tile.u3_egm_blockScandium.name=Scandium Block
 
 tile.u3_egm_reinforcedIron.name=Reinforced Iron
 
 item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot
-item.u3_egm_ingotTitanium.name=Titanium Ingot
-item.u3_egm_ingotMagnesium.name=Magnesium Ingot
 item.u3_egm_ingotLithium.name=Lithium Ingot
+item.u3_egm_ingotMagnesium.name=Magnesium Ingot
+item.u3_egm_ingotTitanium.name=Titanium Ingot
 item.u3_egm_ingotScandium.name=Scandium Ingot
 
 item.u3_egm_nuggetAluminum.name=Aluminum Nugget
