@@ -23,11 +23,6 @@ public class ModRecipes {
 	// noformat
 	private static void initShapedRecipes() {
 		// normal
-		// example: the object[] is the recipe; the example recipe would be the same as the iron pickaxe
-		/*GameRegistry.addShapedRecipe(new ItemStack(outputType, amount, meta), new Object[] {
-			"XXX", " Y ", " Y ", 'X', ironIngot, 'Y', stick
-		});*/
-
 		// Recipes for nuggets -> ingots
 		for(int meta = 0; meta < ModItems.ingotNames.length; ++meta) {
 			GameRegistry.addShapedRecipe(new ItemStack(ModItems.itemIngots, 1, meta), new Object[] {

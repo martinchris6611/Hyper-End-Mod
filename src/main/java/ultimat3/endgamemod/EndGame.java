@@ -19,14 +19,14 @@ import cpw.mods.fml.common.registry.GameRegistry;
  * 
  * @author Ebilkill
  */
-@Mod(modid = Reference.MODID, version = Reference.VERSION, name = Reference.NAME)
+@Mod(modid = Reference.MOD_ID, version = Reference.VERSION, name = Reference.NAME)
 public class EndGame {
 	
-	@Instance(Reference.MODID)
+	@Instance(Reference.MOD_ID)
 	public static EndGame instance; // automatically populated by FML
 	
 	/** The creative tab for the mod */
-	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(Reference.MODID);
+	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(Reference.MOD_ID);
 	
 	/** Spawns the ores into the world */
 	private static OreSpawner oreSpawner = new OreSpawner();

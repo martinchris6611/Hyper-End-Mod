@@ -47,8 +47,8 @@ public class Ultimat3Block extends Block {
 		super(blockMaterial);
 		this.name = name;
 		// RegisterHelper.registerBlock(this, clazz, name, EndGame.MODID); // will be used in 1.8, do NOT remove
-		this.setBlockName(Reference.MODID + "_" + name);
-		this.setBlockTextureName(Reference.MODID + ":" + name); // will be removed in 1.8
+		this.setBlockName(Reference.MOD_ID + "_" + name);
+		this.setBlockTextureName(Reference.MOD_ID + ":" + name); // will be removed in 1.8
 		this.setCreativeTab(EndGame.creaTab);
 	}
 	
