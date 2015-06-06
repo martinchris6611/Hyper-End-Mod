@@ -37,5 +37,6 @@ public class ModItems {
 	
 	public static void registerItems() {
 		// RegisterHelper.registerItem(itemScandiumIngot); // Automatically done by Ultimat3Item
+		//
 	}
 }
