@@ -9,6 +9,8 @@ Ebilkill - Developer
 
 TheXFactor117 - Developer
 
+joetheantipro - Lead Texture Artist and Animator
+
 #Legal Notes
 
 ALL SOURCE CODE BELONGS TO THE ULTIMAT3 MOD TEAM 
