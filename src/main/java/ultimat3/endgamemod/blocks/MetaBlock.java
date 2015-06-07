@@ -20,6 +20,7 @@ public class MetaBlock extends Ultimat3Block {
 	
 	public MetaBlock(String[] names, Material blockMaterial) {
 		super(names[0], blockMaterial);
+		this.names = names;
 	}
 	
 	@Override

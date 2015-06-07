@@ -1,11 +1,10 @@
 package ultimat3.endgamemod.items;
 
-import ultimat3.endgamemod.blocks.BlockOre;
 import net.minecraft.block.Block;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import net.minecraft.world.World;
+import ultimat3.endgamemod.blocks.BlockOre;
+import ultimat3.endgamemod.blocks.MetaBlock;
 
 public class Ultimat3ItemBlock extends ItemBlock {
 	
@@ -13,7 +12,7 @@ public class Ultimat3ItemBlock extends ItemBlock {
 	
 	public Ultimat3ItemBlock(Block block) {
 		super(block);
-		if (block instanceof BlockOre) this.names = ((BlockOre) block).names;
+		if (block instanceof MetaBlock) this.names = ((MetaBlock) block).names;
 		this.setHasSubtypes(true);
 	}
 	

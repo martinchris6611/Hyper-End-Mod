@@ -5,12 +5,16 @@ import ultimat3.endgamemod.helpers.OreDictionaryHelper;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
+import ultimat3.endgamemod.init.ModTileEntities;
+import ultimat3.endgamemod.network.GuiHandler;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
+import cpw.mods.fml.common.network.NetworkRegistry;
+import cpw.mods.fml.common.network.simpleimpl.SimpleNetworkWrapper;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -31,8 +35,13 @@ public class EndGame {
 	/** Spawns the ores into the world */
 	private static OreSpawner oreSpawner = new OreSpawner();
 
+	/** The network handler, used for packets */
+	public static SimpleNetworkWrapper network;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
+		// Registers the network channel
+		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
 		// registers content with Forge
 		ModBlocks.registerBlocks();
@@ -51,7 +60,14 @@ public class EndGame {
 		// add the world gen
 		GameRegistry.registerWorldGenerator(oreSpawner, 0);
 		
+		// add recipes
 		ModRecipes.initRecipes();
+		
+		// add tile entities
+		ModTileEntities.init();
+		
+		// Register GuiHandler
+		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 	}
 
 	@EventHandler
