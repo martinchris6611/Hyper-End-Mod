@@ -34,12 +34,6 @@ public class OreSpawner implements IWorldGenerator {
 	
 	// Might change this to be metadata bound
 	private void generateSurface(World world, Random random, int x, int y) {
-//		this.addOreSpawn(ModBlocks.blockScandiumOre, 0, world, random, x, y, 16, 16, 1, random.nextInt(1), 2, 50);
-//		this.addOreSpawn(ModBlocks.blockTitaniumOre, 0, world, random, x, y, 16, 16, 5, 1, 6, 20);
-//		this.addOreSpawn(ModBlocks.blockLithiumOre, 0, world, random, x, y, 16, 16, 5, 2, 6, 30);
-//		this.addOreSpawn(ModBlocks.blockCobaltOre, 0, world, random, x, y, 16, 16, 5, 2, 6, 30);
-//		this.addOreSpawn(ModBlocks.blockAluminumOre, 0, world, random, x, y, 16, 16, 8, 10, 6, 60); // Iron rarity :P
-//		this.addOreSpawn(ModBlocks.blockMagnesiumOre, 0, world, random, x, y, 16, 16, 8, 10, 6, 60);
 		this.addOreSpawn(ModBlocks.blockOres, 0, world, random, x, y, 16, 16, 8, 10, 6, 60); // Aluminum
 		this.addOreSpawn(ModBlocks.blockOres, 1, world, random, x, y, 16, 16, 5, 2 , 6, 30); // Cobalt
 		this.addOreSpawn(ModBlocks.blockOres, 2, world, random, x, y, 16, 16, 5, 2 , 6, 30); // Lithium

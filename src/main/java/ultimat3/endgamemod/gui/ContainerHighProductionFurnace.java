@@ -105,7 +105,7 @@ public class ContainerHighProductionFurnace extends Container {
 	}
 	
 	@Override
-	public boolean canInteractWith(EntityPlayer p_75145_1_) {
+	public boolean canInteractWith(EntityPlayer player) {
 		return true;
 	}
 	
@@ -117,41 +117,41 @@ public class ContainerHighProductionFurnace extends Container {
 			ItemStack itemstack1 = slot.getStack();
 			itemstack = itemstack1.copy();
 			
-			// Output slot
-			if (slotID == 2) {
+			// Output slots
+			if (slotID >= 5 && slotID <= 8) {
 				
 				// Add to inv
-				if (!this.mergeItemStack(itemstack1, 3, 39, true)) {
+				if (!this.mergeItemStack(itemstack1, 9, 45, true)) {
 					return null;
 				}
 				slot.onSlotChange(itemstack1, itemstack);
 				
-				// Inventory slots
-			} else if (slotID != 1 && slotID != 0) {
+			// Inventory slots
+			} else if (!(slotID >= 0 && slotID <= 4)) {
 				
 				// If it's smeltable, add it to the input slot
 				if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
-					if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
+					if (!this.mergeItemStack(itemstack1, 0, 4, false)) {
 						return null;
 					}
 					
-					// Fuel? Add to the fuel slot
+				// Fuel? Add to the fuel slot
 				} else if (itemstack1.getItem() == Item.getItemFromBlock(Blocks.coal_block)) {
-					if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
+					if (!this.mergeItemStack(itemstack1, 4, 5, false)) {
 						return null;
 					}
 					
 					// Main inventory? Add to hotbar
-				} else if (slotID >= 3 && slotID < 30) {
-					if (!this.mergeItemStack(itemstack1, 30, 39, false)) {
+				} else if (slotID >= 9 && slotID < 36) {
+					if (!this.mergeItemStack(itemstack1, 36, 45, false)) {
 						return null;
 					}
 					
 					// Hotbar? Add to main inv
-				} else if (slotID >= 30 && slotID < 39 && !this.mergeItemStack(itemstack1, 3, 30, false)) {
+				} else if (slotID >= 36 && slotID < 45 && !this.mergeItemStack(itemstack1, 9, 36, false)) {
 					return null;
 				}
-			} else if (!this.mergeItemStack(itemstack1, 3, 39, false)) {
+			} else if (!this.mergeItemStack(itemstack1, 9, 45, false)) {
 				return null;
 			}
 			

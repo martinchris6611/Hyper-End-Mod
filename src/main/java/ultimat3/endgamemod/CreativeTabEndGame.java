@@ -1,5 +1,6 @@
 package ultimat3.endgamemod;
 
+import ultimat3.endgamemod.init.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
 import net.minecraft.init.Items;
 import net.minecraft.item.Item;
@@ -15,7 +16,7 @@ public class CreativeTabEndGame extends CreativeTabs {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public Item getTabIconItem() {
-		return Items.apple; // TODO Gotta change this to one of our own items later.
+		return ModItems.swordKatana;
 	}
 
 }

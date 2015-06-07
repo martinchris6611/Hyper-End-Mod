@@ -13,7 +13,7 @@ public class ItemModSword extends ItemSword {
 			super(material);
 			this.name = name;
 			this.setUnlocalizedName(Reference.MOD_ID + "_" + name);
-			this.setTextureName(Reference.MOD_ID + "_" + name);
+			this.setTextureName(Reference.MOD_ID + ":" + name);
 			this.setCreativeTab(EndGame.creaTab);
 		}
 }

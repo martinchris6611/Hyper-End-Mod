@@ -15,9 +15,8 @@ public class GuiHandler implements IGuiHandler {
 	public Object getServerGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == Reference.GuiIds.PRODUCTION_FURNACE.ID()) {
 			return new ContainerProductionFurnace(player, world, x, y, z);
-		}
-		else if(ID == Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID()) {
-			return new ContainerHighProductionFurnace(player,world,x,y,z);
+		} else if (ID == Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID()) {
+			return new ContainerHighProductionFurnace(player, world, x, y, z);
 		}
 		return null;
 	}
@@ -26,8 +25,7 @@ public class GuiHandler implements IGuiHandler {
 	public Object getClientGuiElement(int ID, EntityPlayer player, World world, int x, int y, int z) {
 		if (ID == Reference.GuiIds.PRODUCTION_FURNACE.ID()) {
 			return new GuiProductionFurnace(player, world, x, y, z);
-		}
-		else if(ID == Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID()) {
+		} else if (ID == Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID()) {
 			return new GuiHighProductionFurnace(player, world, x, y, z);
 		}
 		return null;
