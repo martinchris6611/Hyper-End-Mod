@@ -27,6 +27,7 @@ public class MachineBlock extends MetaBlock {
 		
 		if(world.getBlockMetadata(x, y, z) == 0) {
 			player.openGui(EndGame.instance, Reference.GuiIds.PRODUCTION_FURNACE.ID(), world, x, y, z);
+			player.openGui(EndGame.instance, Reference.GuiIds.PRODUCTION_FURNACE.ID(), world, x, y, z);
 		}
 		
 		return true;

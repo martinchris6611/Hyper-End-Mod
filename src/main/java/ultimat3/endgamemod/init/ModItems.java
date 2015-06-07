@@ -41,7 +41,7 @@ public class ModItems {
 	public static ItemStack			scandiumNugget	= new ItemStack(itemNuggets, 1, 4);
 	public static ItemStack			titaniumNugget	= new ItemStack(itemNuggets, 1, 5);
 	
-	public static Item swordKatana = new ItemModSword("u3_egm_swordKatana", plasmaShard);
+	public static Item swordKatana = new ItemModSword("swordKatana", plasmaShard);
 	
 	public static void registerItems() {
 		// RegisterHelper.registerItem(itemScandiumIngot); // Automatically done by Ultimat3Item

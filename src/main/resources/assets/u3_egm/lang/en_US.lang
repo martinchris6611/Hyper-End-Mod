@@ -14,6 +14,7 @@ tile.u3_egm_blockScandium.name=Scandium Block
 
 tile.u3_egm_reinforcedIron.name=Reinforced Iron
 tile.u3_egm_productionFurnace.name=Production Furnace
+tile.u3_egm_highProductionFurnace.name=High Production Furnace
 
 item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot

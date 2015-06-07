@@ -17,7 +17,7 @@ public class ModBlocks {
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
 	
-	public static final String[]	machineNames		= { "productionFurnace" };
+	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace" };
 	
 	/**
 	 * Metadata based ores block. Testing atm.

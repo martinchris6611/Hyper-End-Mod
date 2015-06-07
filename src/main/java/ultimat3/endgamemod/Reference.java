@@ -20,7 +20,7 @@ public class Reference
 	
 	public enum GuiIds {
 		PRODUCTION_FURNACE(0);
-		
+
 		private final int ID;
 		
 		private GuiIds(int ID) {
