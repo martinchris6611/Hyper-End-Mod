@@ -2,6 +2,7 @@ package ultimat3.endgamemod.blocks;
 
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,7 +28,9 @@ public class MachineBlock extends MetaBlock {
 		
 		if(world.getBlockMetadata(x, y, z) == 0) {
 			player.openGui(EndGame.instance, Reference.GuiIds.PRODUCTION_FURNACE.ID(), world, x, y, z);
-			player.openGui(EndGame.instance, Reference.GuiIds.PRODUCTION_FURNACE.ID(), world, x, y, z);
+		}
+		else if (world.getBlockMetadata(x, y, z) == 1) {
+			player.openGui(EndGame.instance, Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID(), world, x, y, z);
 		}
 		
 		return true;
@@ -37,6 +40,8 @@ public class MachineBlock extends MetaBlock {
 	public TileEntity createTileEntity(World world, int metadata) {
 		if (metadata == 0)
 			return new TileEntityProductionFurnace();
+		else if (metadata == 1)
+			return new TileEntityHighProductionFurnace();
 		return super.createTileEntity(world, metadata);
 	}
 	

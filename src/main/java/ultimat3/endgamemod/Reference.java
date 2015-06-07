@@ -19,8 +19,8 @@ public class Reference
 	public static final String	NETWORK_CHANNEL	= MOD_ID;
 	
 	public enum GuiIds {
-		PRODUCTION_FURNACE(0);
-
+		PRODUCTION_FURNACE(0), HIGH_PRODUCTION_FURNACE(1);
+		
 		private final int ID;
 		
 		private GuiIds(int ID) {

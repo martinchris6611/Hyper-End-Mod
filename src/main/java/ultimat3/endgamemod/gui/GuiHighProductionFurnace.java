@@ -3,6 +3,7 @@ package ultimat3.endgamemod.gui;
 import org.lwjgl.opengl.GL11;
 
 import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.ITextureObject;
@@ -14,12 +15,12 @@ import net.minecraft.world.World;
 
 public class GuiHighProductionFurnace extends GuiContainer {
 	
-	private ResourceLocation			guiTex;
-	private TileEntityProductionFurnace	furnace;
+	private ResourceLocation				guiTex;
+	private TileEntityHighProductionFurnace	furnace;
 	
 	public GuiHighProductionFurnace(EntityPlayer player, World world, int x, int y, int z) {
 		super(new ContainerHighProductionFurnace(player, world, x, y, z));
-		this.furnace = ((TileEntityProductionFurnace) world.getTileEntity(x, y, z));
+		this.furnace = ((TileEntityHighProductionFurnace) world.getTileEntity(x, y, z));
 		this.guiTex = new ResourceLocation("textures/gui/container/furnace.png");
 	}
 	

@@ -2,6 +2,7 @@ package ultimat3.endgamemod.gui;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
+import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
@@ -18,20 +19,26 @@ import net.minecraft.world.World;
 
 public class ContainerHighProductionFurnace extends Container {
 	
-	private World						world;
-	private TileEntityProductionFurnace	machine;
-	private short						lastCookTime;
-	private short						lastBurnTime;
+	private World							world;
+	private TileEntityHighProductionFurnace	machine;
+	private short							lastCookTime;
+	private short							lastBurnTime;
 	
 	public ContainerHighProductionFurnace(EntityPlayer player, World world, int x, int y, int z) {
 		this.world = world;
 		
-		this.machine = ((TileEntityProductionFurnace) world.getTileEntity(x, y, z));
+		this.machine = ((TileEntityHighProductionFurnace) world.getTileEntity(x, y, z));
 		
 		// Furnace slots
-		addSlotToContainer(new Slot(machine, 0, 56, 17));
-		addSlotToContainer(new Slot(machine, 1, 56, 53));
-		addSlotToContainer(new SlotFurnace(player, this.machine, 2, 116, 35));
+		addSlotToContainer(new Slot(machine, 0, 76, 17));
+		addSlotToContainer(new Slot(machine, 1, 56, 17));
+		addSlotToContainer(new Slot(machine, 2, 36, 17));
+		addSlotToContainer(new Slot(machine, 3, 16, 17));
+		addSlotToContainer(new Slot(machine, 4, 56, 53));
+		addSlotToContainer(new SlotFurnace(player, this.machine, 5, 116, 60));
+		addSlotToContainer(new SlotFurnace(player, this.machine, 6, 116, 40));
+		addSlotToContainer(new SlotFurnace(player, this.machine, 7, 116, 20));
+		addSlotToContainer(new SlotFurnace(player, this.machine, 8, 116, 0));
 		
 		// player slots
 		this.bindPlayerInventory(player.inventory);
@@ -54,8 +61,14 @@ public class ContainerHighProductionFurnace extends Container {
 	public void addCraftingToCrafters(ICrafting p_75132_1_) {
 		super.addCraftingToCrafters(p_75132_1_);
 		p_75132_1_.sendProgressBarUpdate(this, 0, this.machine.cookTime);
-		p_75132_1_.sendProgressBarUpdate(this, 1, this.machine.furnaceTimeLeft);
-		p_75132_1_.sendProgressBarUpdate(this, 2, this.machine.NEW_FUEL_TIME);
+		p_75132_1_.sendProgressBarUpdate(this, 1, this.machine.cookTime);
+		p_75132_1_.sendProgressBarUpdate(this, 2, this.machine.cookTime);
+		p_75132_1_.sendProgressBarUpdate(this, 3, this.machine.cookTime);
+		p_75132_1_.sendProgressBarUpdate(this, 4, this.machine.furnaceTimeLeft);
+		p_75132_1_.sendProgressBarUpdate(this, 5, this.machine.NEW_FUEL_TIME);
+		p_75132_1_.sendProgressBarUpdate(this, 6, this.machine.NEW_FUEL_TIME);
+		p_75132_1_.sendProgressBarUpdate(this, 7, this.machine.NEW_FUEL_TIME);
+		p_75132_1_.sendProgressBarUpdate(this, 8, this.machine.NEW_FUEL_TIME);
 	}
 	
 	/**

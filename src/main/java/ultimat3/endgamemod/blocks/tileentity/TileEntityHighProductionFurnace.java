@@ -17,7 +17,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 	/**
 	 * The inventory of this furnace.
 	 */
-	private ItemStack[]			items					= new ItemStack[3];
+	private ItemStack[]			items					= new ItemStack[9];
 	
 	/**
 	 * The amount of time left for this furnace to keep burning (in ticks).
@@ -39,9 +39,9 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 	 */
 	public static final int		NEW_FUEL_TIME			= ITEM_TIME_DONE * 20;
 	
-	private int[]				bottomSlots				= { 1 };
-	private int[]				topSlots				= { 0 };
-	private int[]				sideSlots				= { 2 };
+	private int[]				bottomSlots				= { 4 };
+	private int[]				topSlots				= { 0, 1, 2, 3 };
+	private int[]				sideSlots				= { 5, 6, 7, 8 };
 	
 	// ================ Tag names start ===============
 	
@@ -95,7 +95,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		mainTag.setTag(TAG_ITEMS, list);
 	}
 	
-	private boolean canSmelt() {
+	private boolean canSmeltSlotOne() {
 		if (this.items[0] == null)
 			return false;
 		
@@ -106,30 +106,30 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 			return false;
 		
 		// If the current output is empty, we can smelt for sure
-		if (this.items[2] == null)
+		if (this.items[5] == null)
 			return true;
 		
 		// If the result and output aren't the same, we can't smelt either
-		if (!this.items[2].isItemEqual(itemstack))
+		if (!this.items[5].isItemEqual(itemstack))
 			return false;
 		
 		// Otherwise, it depends on the stack limit
-		int result = items[2].stackSize + itemstack.stackSize;
-		return result <= getInventoryStackLimit() && result <= this.items[2].getMaxStackSize();
+		int result = items[5].stackSize + itemstack.stackSize;
+		return result <= getInventoryStackLimit() && result <= this.items[5].getMaxStackSize();
 	}
 	
-	private void smeltItem() {
-		if (!canSmelt())
+	private void smeltItemSlotOne() {
+		if (!canSmeltSlotOne())
 			return;
 		
 		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[0]);
 		
 		// If the output currently has no item, might as well copy the new result in there
-		if (this.items[2] == null) {
-			this.items[2] = itemstack.copy();
+		if (this.items[5] == null) {
+			this.items[5] = itemstack.copy();
 			// else we better check whether the items are equal before stacking...
-		} else if (this.items[2].isItemEqual(itemstack)) {
-			this.items[2].stackSize += itemstack.stackSize;
+		} else if (this.items[5].isItemEqual(itemstack)) {
+			this.items[5].stackSize += itemstack.stackSize;
 		}
 		
 		--this.items[0].stackSize;
@@ -139,6 +139,137 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		}
 	}
 	
+	private boolean canSmeltSlotTwo() {
+		if (this.items[1] == null)
+			return false;
+		
+		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[1]);
+		
+		// If the result is nothing, we can't smelt
+		if (itemstack == null)
+			return false;
+		
+		// If the current output is empty, we can smelt for sure
+		if (this.items[6] == null)
+			return true;
+		
+		// If the result and output aren't the same, we can't smelt either
+		if (!this.items[6].isItemEqual(itemstack))
+			return false;
+		
+		// Otherwise, it depends on the stack limit
+		int result = items[6].stackSize + itemstack.stackSize;
+		return result <= getInventoryStackLimit() && result <= this.items[6].getMaxStackSize();
+	}
+	
+	private void smeltItemSlotTwo() {
+		if (!canSmeltSlotTwo())
+			return;
+		
+		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[1]);
+		
+		// If the output currently has no item, might as well copy the new result in there
+		if (this.items[6] == null) {
+			this.items[6] = itemstack.copy();
+			// else we better check whether the items are equal before stacking...
+		} else if (this.items[6].isItemEqual(itemstack)) {
+			this.items[6].stackSize += itemstack.stackSize;
+		}
+		
+		--this.items[1].stackSize;
+		
+		if (this.items[1].stackSize <= 0) {
+			this.items[1] = null;
+		}
+	}	
+	
+	private boolean canSmeltSlotThree() {
+		if (this.items[2] == null)
+			return false;
+		
+		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[2]);
+		
+		// If the result is nothing, we can't smelt
+		if (itemstack == null)
+			return false;
+		
+		// If the current output is empty, we can smelt for sure
+		if (this.items[7] == null)
+			return true;
+		
+		// If the result and output aren't the same, we can't smelt either
+		if (!this.items[7].isItemEqual(itemstack))
+			return false;
+		
+		// Otherwise, it depends on the stack limit
+		int result = items[7].stackSize + itemstack.stackSize;
+		return result <= getInventoryStackLimit() && result <= this.items[7].getMaxStackSize();
+	}
+	
+	private void smeltItemSlotThree() {
+		if (!canSmeltSlotThree())
+			return;
+		
+		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[2]);
+		
+		// If the output currently has no item, might as well copy the new result in there
+		if (this.items[7] == null) {
+			this.items[7] = itemstack.copy();
+			// else we better check whether the items are equal before stacking...
+		} else if (this.items[7].isItemEqual(itemstack)) {
+			this.items[7].stackSize += itemstack.stackSize;
+		}
+		
+		--this.items[2].stackSize;
+		
+		if (this.items[2].stackSize <= 0) {
+			this.items[2] = null;
+		}
+	}	
+	
+	private boolean canSmeltSlotFour() {
+		if (this.items[3] == null)
+			return false;
+		
+		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[3]);
+		
+		// If the result is nothing, we can't smelt
+		if (itemstack == null)
+			return false;
+		
+		// If the current output is empty, we can smelt for sure
+		if (this.items[8] == null)
+			return true;
+		
+		// If the result and output aren't the same, we can't smelt either
+		if (!this.items[8].isItemEqual(itemstack))
+			return false;
+		
+		// Otherwise, it depends on the stack limit
+		int result = items[8].stackSize + itemstack.stackSize;
+		return result <= getInventoryStackLimit() && result <= this.items[8].getMaxStackSize();
+	}
+	
+	private void smeltItemSlotTFour() {
+		if (!canSmeltSlotFour())
+			return;
+		
+		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[3]);
+		
+		// If the output currently has no item, might as well copy the new result in there
+		if (this.items[8] == null) {
+			this.items[8] = itemstack.copy();
+			// else we better check whether the items are equal before stacking...
+		} else if (this.items[8].isItemEqual(itemstack)) {
+			this.items[8].stackSize += itemstack.stackSize;
+		}
+		
+		--this.items[3].stackSize;
+		
+		if (this.items[3].stackSize <= 0) {
+			this.items[3] = null;
+		}
+	}	
 	@Override
 	public void updateEntity() {
 		// Make sure the furnace decreases the time left continuously. This thing has to stop sometime.
@@ -150,33 +281,72 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		// Server takes care of this
 		if (!this.worldObj.isRemote) {
 			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing
-			if (this.furnaceTimeLeft != 0 || this.items[1] != null && this.items[0] != null) {
+			if (this.furnaceTimeLeft != 0 || this.items[4] != null && ((this.items[0] != null) || (this.items[1] != null) || (this.items[2] != null) || (this.items[3] != null))) {
 				
 				// If the furnace is done burning and can smelt
-				if (this.furnaceTimeLeft == 0 && this.canSmelt()) {
+				if (this.furnaceTimeLeft == 0 && (this.canSmeltSlotOne() || this.canSmeltSlotTwo() || this.canSmeltSlotThree() || this.canSmeltSlotFour())) {
 					this.furnaceTimeLeft = NEW_FUEL_TIME;
 					
 					if (this.furnaceTimeLeft > 0) {
 						shouldSave = true;
 						
-						if (this.items[1] != null) {
-							--this.items[1].stackSize;
+						if (this.items[4] != null) {
+							--this.items[4].stackSize;
 							
-							if (this.items[1].stackSize <= 0) {
-								this.items[1] = null;
+							if (this.items[4].stackSize <= 0) {
+								this.items[4] = null;
 							}
 						}
 					}
 				}
 				
 				// If this item can be smelted and the furnace is burning
-				if (this.furnaceTimeLeft > 0 && this.canSmelt()) {
+				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotOne()) {
 					++this.cookTime;
-					
+				
 					// if the item is done
 					if (this.cookTime >= ITEM_TIME_DONE) {
 						this.cookTime = 0;
-						this.smeltItem();
+						this.smeltItemSlotOne();
+						shouldSave = true;
+					}
+				} else {
+					this.cookTime = 0;
+				}
+				
+				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotTwo()) {
+					++this.cookTime;
+				
+					// if the item is done
+					if (this.cookTime >= ITEM_TIME_DONE) {
+						this.cookTime = 0;
+						this.smeltItemSlotTwo();
+						shouldSave = true;
+					}
+				} else {
+					this.cookTime = 0;
+				}
+				
+				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotThree()) {
+					++this.cookTime;
+				
+					// if the item is done
+					if (this.cookTime >= ITEM_TIME_DONE) {
+						this.cookTime = 0;
+						this.smeltItemSlotThree();
+						shouldSave = true;
+					}
+				} else {
+					this.cookTime = 0;
+				}
+				
+				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotFour()) {
+					++this.cookTime;
+				
+					// if the item is done
+					if (this.cookTime >= ITEM_TIME_DONE) {
+						this.cookTime = 0;
+						this.smeltItemSlotTFour();
 						shouldSave = true;
 					}
 				} else {
@@ -207,7 +377,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 	
 	@Override
 	public int getSizeInventory() {
-		return 3;
+		return 9;
 	}
 	
 	@Override
@@ -263,7 +433,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 	
 	@Override
 	public String getInventoryName() {
-		return "container." + ModTileEntities.PRODUCTION_FURNACE_ID;
+		return "container." + ModTileEntities.HIGH_PRODUCTION_FURNACE_ID;
 	}
 	
 	@Override
@@ -294,11 +464,11 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		// Can't input on the output
-		if (slot == 2)
+		if (slot == 5 || slot == 6 || slot == 7 || slot == 8)
 			return false;
 		
 		// Can only input valid fuel (coal blocks) on the fuel input
-		if (slot == 1)
+		if (slot == 4)
 			return stack.getItem() == Item.getItemFromBlock(Blocks.coal_block);
 		
 		// Can only input items with a smelting result on the item input
