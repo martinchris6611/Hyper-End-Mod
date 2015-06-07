@@ -22,26 +22,26 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	/**
 	 * The amount of time left for this furnace to keep burning (in ticks).
 	 */
-	private short				furnaceTimeLeft;
+	public short				furnaceTimeLeft;
 	
 	/**
 	 * The amount of time this item has been cooking for.
 	 */
-	private short				cookTime;
+	public short				cookTime;
 	
 	/**
 	 * The amount of ticks it takes for a single item to cook.
 	 */
-	private static final short	ITEM_TIME_DONE			= 10;					// 20 = 1 sec.
+	public static final short	ITEM_TIME_DONE			= 10;					// 20 = 1 sec.
 																				
-	private int[]				bottomSlots				= { 1 };
-	private int[]				topSlots				= { 0 };
-	private int[]				sideSlots				= { 2 };
-	
 	/**
 	 * How long a new block of coal will burn.
 	 */
-	private static final int	NEW_FUEL_TIME			= ITEM_TIME_DONE * 20;
+	public static final int		NEW_FUEL_TIME			= ITEM_TIME_DONE * 20;
+	
+	private int[]				bottomSlots				= { 1 };
+	private int[]				topSlots				= { 0 };
+	private int[]				sideSlots				= { 2 };
 	
 	// ================ Tag names start ===============
 	
@@ -174,7 +174,7 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 					++this.cookTime;
 					
 					// if the item is done
-					if (this.cookTime >= TileEntityProductionFurnace.ITEM_TIME_DONE) {
+					if (this.cookTime >= ITEM_TIME_DONE) {
 						this.cookTime = 0;
 						this.smeltItem();
 						shouldSave = true;
@@ -187,6 +187,18 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		
 		if (shouldSave)
 			this.markDirty();
+	}
+	
+	public boolean isBurning() {
+		return this.furnaceTimeLeft > 0;
+	}
+	
+	public int getFurnaceTimeRemaining(int i) {
+		return furnaceTimeLeft / NEW_FUEL_TIME * i;
+	}
+	
+	public int getCookProgress(int i) {
+		return cookTime / ITEM_TIME_DONE * i;
 	}
 	
 	// ====================================================
@@ -328,5 +340,4 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		// Can extract everything else though.
 		return true;
 	}
-	
 }
