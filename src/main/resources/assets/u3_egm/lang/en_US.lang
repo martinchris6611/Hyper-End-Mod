@@ -29,6 +29,8 @@ item.u3_egm_nuggetMagnesium.name=Magnesium Nugget
 item.u3_egm_nuggetScandium.name=Scandium Nugget
 item.u3_egm_nuggetTitanium.name=Titanium Nugget
 
+item.u3_egm_swordKatana.name=Plasma Sword
+
 itemGroup.u3_egm=End game mod
 
 container.u3_egm_productionFurnace=Production Furnace
