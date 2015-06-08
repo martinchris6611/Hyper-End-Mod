@@ -17,7 +17,7 @@ public class ModBlocks {
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
 	
-	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace" };
+	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace", "superCompressor" };
 	
 	/**
 	 * Metadata based ores block. Testing atm.
@@ -28,8 +28,11 @@ public class ModBlocks {
 	 * And the ingot-blocks
 	 */
 	public static Block				blockMetals			= new BlockOre(metalBlockNames, Material.iron, 5.0F, 7.0F, 2);
-	public static Block				blockReinforcedIron	= new Ultimat3Block("reinforcedIron", Material.rock);
+	public static Block				blockReinforcedIron	= new Ultimat3Block("reinforcedIron", Material.iron);
 	
+	/**
+	 * Machine blocks
+	 */
 	public static Block				blockMachines		= new MachineBlock(machineNames, Material.iron).setHardness(3.0F);
 	
 	public static void registerBlocks() {

@@ -55,7 +55,6 @@ public class ContainerProductionFurnace extends Container {
 		super.addCraftingToCrafters(p_75132_1_);
 		p_75132_1_.sendProgressBarUpdate(this, 0, this.machine.cookTime);
 		p_75132_1_.sendProgressBarUpdate(this, 1, this.machine.furnaceTimeLeft);
-		p_75132_1_.sendProgressBarUpdate(this, 2, this.machine.NEW_FUEL_TIME);
 	}
 	
 	/**

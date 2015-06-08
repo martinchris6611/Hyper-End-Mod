@@ -18,8 +18,13 @@ public class Reference
 	/** The network channel name */
 	public static final String	NETWORK_CHANNEL	= MOD_ID;
 	
+	/**
+	 * Add all Gui Ids in here.
+	 * 
+	 * @author Ebilkill
+	 */
 	public enum GuiIds {
-		PRODUCTION_FURNACE(0), HIGH_PRODUCTION_FURNACE(1);
+		PRODUCTION_FURNACE(0), HIGH_PRODUCTION_FURNACE(1), SUPER_COMPRESSOR(2);
 		
 		private final int ID;
 		

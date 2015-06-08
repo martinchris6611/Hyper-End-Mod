@@ -4,6 +4,7 @@ import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
@@ -23,14 +24,20 @@ public class MachineBlock extends MetaBlock {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
 			float hitY, float hitZ) {
+		// Sneaking allows placing blocks
 		if (player.isSneaking())
 			return false;
 		
-		if(world.getBlockMetadata(x, y, z) == 0) {
+		// Cache the metadata
+		int metadata = world.getBlockMetadata(x, y, z);
+		
+		// open the correct
+		if (metadata == 0) {
 			player.openGui(EndGame.instance, Reference.GuiIds.PRODUCTION_FURNACE.ID(), world, x, y, z);
-		}
-		else if (world.getBlockMetadata(x, y, z) == 1) {
+		} else if (metadata == 1) {
 			player.openGui(EndGame.instance, Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID(), world, x, y, z);
+		} else if (metadata == 2) {
+			player.openGui(EndGame.instance, Reference.GuiIds.SUPER_COMPRESSOR.ID(), world, x, y, z);
 		}
 		
 		return true;
@@ -42,7 +49,9 @@ public class MachineBlock extends MetaBlock {
 			return new TileEntityProductionFurnace();
 		else if (metadata == 1)
 			return new TileEntityHighProductionFurnace();
-		return super.createTileEntity(world, metadata);
+		else if (metadata == 2) 
+			return new TileEntitySuperCompressor();
+		return null;
 	}
 	
 }
