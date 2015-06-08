@@ -11,7 +11,7 @@ TheXFactor117 - Developer
 
 joetheantipro - Lead Texture Artist and Animator
 
-Aleksandar Ljamzin - Texture Artist and Developer
+Ljamzin - Texture Artist and Developer
 
 #Legal Notes
 
