@@ -6,6 +6,7 @@ import net.minecraft.item.Item.ToolMaterial;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import ultimat3.endgamemod.helpers.RegisterHelper;
+import ultimat3.endgamemod.items.ItemCarbonCutter;
 import ultimat3.endgamemod.items.ItemModSword;
 import ultimat3.endgamemod.items.MetaItem;
 import ultimat3.endgamemod.items.Ultimat3Item;
@@ -31,6 +32,8 @@ public class ModItems {  // TODO test the new recipes and lang
 	public static Item				itemIngots		= new MetaItem(ingotNames);
 	public static Item				itemNuggets		= new MetaItem(nuggetNames);
 	public static Item				itemMisc		= new MetaItem(miscNames);
+	
+	public static Item				itemCarbonCutter= new ItemCarbonCutter();
 	
 	// noformat
 	// Stores the metadata of different MetaItems
