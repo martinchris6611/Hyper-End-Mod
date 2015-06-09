@@ -26,9 +26,14 @@ public class ModRecipes {
 	 * Compression recipes
 	 */
 	private static final FactoryRecipes	COMPRESSION	= new FactoryRecipes(false);
+	private static final FactoryRecipes METALLURGY 	= new FactoryRecipes(false);
 	
 	public static FactoryRecipes compression() {
 		return COMPRESSION;
+	}
+	
+	public static FactoryRecipes metallurgy() {
+		return METALLURGY;
 	}
 	
 	public static void initRecipes() {
@@ -102,6 +107,11 @@ public class ModRecipes {
 		compression().addRecipe(new ItemStack(Blocks.dirt), new ItemStack(Items.diamond));
 	}
 	
+	
+	//Recipes for Metallurgy Go here WIP
+	private static void initMetallurgyRecipes() {
+		metallurgy().addRecipe(new ItemStack(Blocks.dirt), new ItemStack(Items.diamond));
+	}
 	/**
 	 * Use this to make new recipe managers for our machines.
 	 * 

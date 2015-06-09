@@ -95,6 +95,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		mainTag.setTag(TAG_ITEMS, list);
 	}
 	
+	//Corresponds to the first smeltable slot (slot 0) and checks if valid input
 	private boolean canSmeltSlotOne() {
 		if (this.items[0] == null)
 			return false;
@@ -118,6 +119,8 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		return result <= getInventoryStackLimit() && result <= this.items[5].getMaxStackSize();
 	}
 	
+	
+	//Actually smelts slot 0 if it is valid, outputs to slot 5
 	private void smeltItemSlotOne() {
 		if (!canSmeltSlotOne())
 			return;
@@ -139,6 +142,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		}
 	}
 	
+	//Corresponds to the second smeltable slot (slot 1) and checks if it is valid
 	private boolean canSmeltSlotTwo() {
 		if (this.items[1] == null)
 			return false;
@@ -162,6 +166,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		return result <= getInventoryStackLimit() && result <= this.items[6].getMaxStackSize();
 	}
 	
+	//Smelts slot 1 and outputs to slot 6 if it is valid 
 	private void smeltItemSlotTwo() {
 		if (!canSmeltSlotTwo())
 			return;
@@ -183,6 +188,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		}
 	}	
 	
+	//Corresponds to the third smeltable slot (slot 3) and checks if it is valid
 	private boolean canSmeltSlotThree() {
 		if (this.items[2] == null)
 			return false;
@@ -206,6 +212,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		return result <= getInventoryStackLimit() && result <= this.items[7].getMaxStackSize();
 	}
 	
+	//Smelts slot 2 and outputs to slot 7 if it is valid 
 	private void smeltItemSlotThree() {
 		if (!canSmeltSlotThree())
 			return;
@@ -227,6 +234,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		}
 	}	
 	
+	//Corresponds to the fourth smeltable slot and checks if it is valid
 	private boolean canSmeltSlotFour() {
 		if (this.items[3] == null)
 			return false;
@@ -250,6 +258,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		return result <= getInventoryStackLimit() && result <= this.items[8].getMaxStackSize();
 	}
 	
+	//Smelts slot 3 and outputs to slot 8 if it is valid 
 	private void smeltItemSlotTFour() {
 		if (!canSmeltSlotFour())
 			return;
@@ -280,10 +289,10 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 		
 		// Server takes care of this
 		if (!this.worldObj.isRemote) {
-			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing
+			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing in any slots
 			if (this.furnaceTimeLeft != 0 || this.items[4] != null && ((this.items[0] != null) || (this.items[1] != null) || (this.items[2] != null) || (this.items[3] != null))) {
 				
-				// If the furnace is done burning and can smelt
+				// If the furnace is done burning and can smelt in any slot
 				if (this.furnaceTimeLeft == 0 && (this.canSmeltSlotOne() || this.canSmeltSlotTwo() || this.canSmeltSlotThree() || this.canSmeltSlotFour())) {
 					this.furnaceTimeLeft = NEW_FUEL_TIME;
 					
@@ -300,7 +309,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 					}
 				}
 				
-				// If this item can be smelted and the furnace is burning
+				// If this item can be smelted in slot one and the furnace is burning
 				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotOne()) {
 					++this.cookTime;
 				
@@ -314,6 +323,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 					this.cookTime = 0;
 				}
 				
+				// If this item can be smelted in slot two and the furnace is burning
 				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotTwo()) {
 					++this.cookTime;
 				
@@ -327,6 +337,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 					this.cookTime = 0;
 				}
 				
+				// If this item can be smelted in slot three and the furnace is burning
 				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotThree()) {
 					++this.cookTime;
 				
@@ -340,6 +351,7 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 					this.cookTime = 0;
 				}
 				
+				// If this item can be smelted in slot four and the furnace is burning
 				if (this.furnaceTimeLeft > 0 && this.canSmeltSlotFour()) {
 					++this.cookTime;
 				

@@ -19,7 +19,7 @@ public class ModBlocks {
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
 	
-	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace", "superCompressor" };
+	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace", "superCompressor", "metallurgyChamber" };
 	
 	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel" };
 	
