@@ -21,7 +21,7 @@ public class ModBlocks {
 	
 	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace", "superCompressor", "metallurgyChamber" };
 	
-	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel" };
+	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel", "LCIP", "RCIP", "HCIP" };
 	
 	/**
 	 * Metadata based ores block. Testing atm.
@@ -71,7 +71,11 @@ public class ModBlocks {
 	superCompressor = 2,
 	//
 	reinforcedIronBlock = 0,
-	blockCompressedSteel = 1;
+	blockCompressedSteel = 1,
+	LCIP = 2,
+	RCIP = 3,
+	HCIP = 4;
+	
 	
 	//format
 	public static void registerBlocks() {

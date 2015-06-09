@@ -23,8 +23,7 @@ public class ModItems {  // TODO test the new recipes and lang
 	// names for miscellaneous items used only for crafting
 	public static final String[]	miscNames		= { "diamondCoating", "thermite", "highEntropyMetalAlloy", 
 		"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",  
-		"fusionPlasma", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating",
-		"LCIP", "RCIP", "HCIP" };
+		"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating" };
 	
 	public static ToolMaterial plasmaShard = EnumHelper.addToolMaterial("plasmaShard", 3, 2000, 14.0f, 100.0f, 1);
 	
@@ -62,14 +61,11 @@ public class ModItems {  // TODO test the new recipes and lang
 	ringMagnet		= 6,
 	squareMagnet	= 7,
 	ionSource		= 8,
-	fusionPlasma	= 9,
+	circuitBoard	= 9,
 	aluminumAlloy	= 10,
 	aluminumTubing	= 11,
 	steelPlating	= 12,
-	titaniumPlating	= 13,
-	LCIP			= 14, // TODO make the name LCIP and the description Low Compressed Iron Plate
-	RCIP			= 15,
-	HCIP			= 16;
+	titaniumPlating	= 13;
 	// format	
 	
 	public static Item swordKatana = new ItemModSword("swordKatana", plasmaShard);

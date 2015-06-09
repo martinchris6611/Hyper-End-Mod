@@ -15,12 +15,15 @@ tile.u3_egm_blockSteel.name=Steel Block
 
 tile.u3_egm_blockReinforcedIron.name=Reinforced Iron
 tile.u3_egm_blockCompressedSteel.name=Compressed Steel
+tile.u3_egm_LCIP.name=LCIP
+tile.u3_egm_RCIP.name=RCIP
+tile.u3_egm_HCIP.name=HCIP
 
 
 tile.u3_egm_productionFurnace.name=Production Furnace
 tile.u3_egm_highProductionFurnace.name=High Production Furnace
-tile.u3_egm_superCompressor=Super Compressor
-
+tile.u3_egm_superCompressor.name=Super Compressor
+tile.u3_egm_metallurgyChamber=Metallurgy Chamber
 
 item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot
@@ -28,6 +31,7 @@ item.u3_egm_ingotLithium.name=Lithium Ingot
 item.u3_egm_ingotMagnesium.name=Magnesium Ingot
 item.u3_egm_ingotTitanium.name=Titanium Ingot
 item.u3_egm_ingotScandium.name=Scandium Ingot
+item.u3_egm_ingotSteel.name=Steel Ingot
 
 item.u3_egm_nuggetAluminum.name=Aluminum Nugget
 item.u3_egm_nuggetCobalt.name=Cobalt Nugget
@@ -35,6 +39,7 @@ item.u3_egm_nuggetLithium.name=Lithium Nugget
 item.u3_egm_nuggetMagnesium.name=Magnesium Nugget
 item.u3_egm_nuggetScandium.name=Scandium Nugget
 item.u3_egm_nuggetTitanium.name=Titanium Nugget
+item.u3_egm_nuggetSteel.name=Steel Nugget
 
 item.u3_egm_diamondCoating.name=Diamond Coating
 item.u3_egm_thermite.name=Thermite
@@ -45,14 +50,11 @@ item.u3_egm_refinedCarbon.name=Refined Carbon
 item.u3_egm_ringMagnet.name=Ring Magnet
 item.u3_egm_squareMagnet.name=Square Magnet
 item.u3_egm_ionSource.name=Ion Source
-item.u3_egm_fusionPlasma.name=Fusion Plasma
+item.u3_egm_circuitBoard.name=Circuit Board
 item.u3_egm_aluminumAlloy.name=Aluminum Alloy
 item.u3_egm_aluminumTubing.name=Aluminum Tubing
 item.u3_egm_steelPlating.name=Steel Plating
 item.u3_egm_titaniumPlating.name=Titanium Plating
-item.u3_egm_LCIP.name=LCIP
-item.u3_egm_RCIP.name=RCIP
-item.u3_egm_HCIP.name=HCIP
 
 
 
@@ -64,3 +66,5 @@ itemGroup.u3_egm=End game mod
 
 container.u3_egm_productionFurnace=Production Furnace
 container.u3_egm_superCompressor=Super Compressor
+container.u3_egm_highProductionFurnace.name=High Production Furnace
+container.u3_egm_metallurgyChamber=Metallurgy Chamber

@@ -1,16 +1,23 @@
 package ultimat3.endgamemod.blocks;
 
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
 import net.minecraft.block.material.Material;
+import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 
 public class MachineBlock extends MetaBlock {
+	
+	
+	private IIcon othericon;
 	
 	public MachineBlock(String[] names, Material blockMaterial) {
 		super(names, blockMaterial);
@@ -21,6 +28,20 @@ public class MachineBlock extends MetaBlock {
 		return true;
 	}
 	
+    @SideOnly(Side.CLIENT)
+    public IIcon getIcon(int side, int meta)
+    {
+    	if(side==2) return othericon;
+    	else return blockIcon;
+    }
+
+    @SideOnly(Side.CLIENT)
+    public void registerBlockIcons(IIconRegister icon)
+    {
+        this.blockIcon = icon.registerIcon("furnace_side");
+        this.othericon = icon.registerIcon("furnace_front_off");
+    }
+    
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
 			float hitY, float hitZ) {
