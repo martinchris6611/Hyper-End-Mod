@@ -19,6 +19,9 @@ tile.u3_egm_LCIP.name=LCIP
 tile.u3_egm_RCIP.name=RCIP
 tile.u3_egm_HCIP.name=HCIP
 
+tile.u3_egm_blockMetallicGlass.name=Metallic Glass
+tile.u3_egm_blockMetallicGlassPane.name=Metallic Glass Pane
+
 
 tile.u3_egm_productionFurnace.name=Production Furnace
 tile.u3_egm_highProductionFurnace.name=High Production Furnace

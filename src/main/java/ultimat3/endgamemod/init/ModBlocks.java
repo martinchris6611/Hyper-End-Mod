@@ -93,5 +93,7 @@ public class ModBlocks {
 		
 		// Machines 
 		RegisterHelper.registerBlock(blockMachines, Ultimat3ItemBlock.class);
+		RegisterHelper.registerBlock(blockMetallicGlass);
+		RegisterHelper.registerBlock(blockMetallicGlassPane);
 	}
 }
