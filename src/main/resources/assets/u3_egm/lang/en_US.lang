@@ -11,10 +11,16 @@ tile.u3_egm_blockLithium.name=Lithium Block
 tile.u3_egm_blockMagnesium.name=Magnesium Block
 tile.u3_egm_blockTitanium.name=Titanium Block
 tile.u3_egm_blockScandium.name=Scandium Block
+tile.u3_egm_blockSteel.name=Steel Block
 
-tile.u3_egm_reinforcedIron.name=Reinforced Iron
+tile.u3_egm_blockReinforcedIron.name=Reinforced Iron
+tile.u3_egm_blockCompressedSteel.name=Compressed Steel
+
+
 tile.u3_egm_productionFurnace.name=Production Furnace
 tile.u3_egm_highProductionFurnace.name=High Production Furnace
+tile.u3_egm_superCompressor=Super Compressor
+
 
 item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot
@@ -30,8 +36,31 @@ item.u3_egm_nuggetMagnesium.name=Magnesium Nugget
 item.u3_egm_nuggetScandium.name=Scandium Nugget
 item.u3_egm_nuggetTitanium.name=Titanium Nugget
 
+item.u3_egm_diamondCoating.name=Diamond Coating
+item.u3_egm_thermite.name=Thermite
+item.u3_egm_highEntropyMetalAlloy.name=High Entropy Metal Alloy
+item.u3_egm_ironCobaltMagnet.name=Iron Cobalt Magnet
+item.u3_egm_carbonSheet.name=Carbon Sheet
+item.u3_egm_refinedCarbon.name=Refined Carbon
+item.u3_egm_ringMagnet.name=Ring Magnet
+item.u3_egm_squareMagnet.name=Square Magnet
+item.u3_egm_ionSource.name=Ion Source
+item.u3_egm_fusionPlasma.name=Fusion Plasma
+item.u3_egm_aluminumAlloy.name=Aluminum Alloy
+item.u3_egm_aluminumTubing.name=Aluminum Tubing
+item.u3_egm_steelPlating.name=Steel Plating
+item.u3_egm_titaniumPlating.name=Titanium Plating
+item.u3_egm_LCIP.name=LCIP
+item.u3_egm_RCIP.name=RCIP
+item.u3_egm_HCIP.name=HCIP
+
+
+
+
+
 item.u3_egm_swordKatana.name=Plasma Sword
 
 itemGroup.u3_egm=End game mod
 
 container.u3_egm_productionFurnace=Production Furnace
+container.u3_egm_superCompressor=Super Compressor
