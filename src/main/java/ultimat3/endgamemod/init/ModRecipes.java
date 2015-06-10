@@ -28,6 +28,7 @@ public class ModRecipes {
 	 */
 	private static final RecipesCompression	COMPRESSION	= new RecipesCompression();
 	private static final FactoryRecipes	METALLURGY	= new FactoryRecipes(false);
+	private static int aluminum;
 	
 	public static RecipesCompression compression() {
 		return COMPRESSION;
@@ -76,7 +77,7 @@ public class ModRecipes {
 			"CCC", 'C', new ItemStack(itemMisc, 1, refinedCarbon)
 		});		
 		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, aluminumAlloy), new Object[] {
-			"AA", "AA", 'A', new ItemStack(itemIngots, 1, aluminum)
+			"AA", "AA", 'A', new ItemStack(itemIngots, 1, ModItems.aluminum)
 		});
 		GameRegistry.addShapedRecipe(new ItemStack(blockMetallicGlassPane, 16), new Object[] {
 			"GGG", "GGG", 'G', new ItemStack(blockMetallicGlass)
@@ -98,12 +99,12 @@ public class ModRecipes {
 				new ItemStack(blockMetals, 1, meta)
 			});
 			
-			GameRegistry.addShapelessRecipe(new ItemStack(itemVanillaMetals, 2, ironDust), new ItemStack(itemDusts, 1, aluminum), new Object[] {
-					 new ItemStack(itemMisc, 1, thermite)
-			});
+			//GameRegistry.addShapelessRecipe(new ItemStack(itemVanillaMetals, 2, ModItems.ironDust), new ItemStack(ModItems.itemDusts, 1, ModItems.aluminum), new Object[] {
+					// new ItemStack(itemMisc, 1, thermite)
+			//});
 			
-			GameRegistry.addShapelessRecipe(new ItemStack(blockMetals, 9, steel), new Object[] {
-				 new ItemStack(blockMisc, 1, compressedSteel)
+			GameRegistry.addShapelessRecipe(new ItemStack(blockMetals, 9, ModItems.steel), new Object[] {
+				 new ItemStack(blockMisc, 1, ModBlocks.compressedSteel)
 			});
 		}
 		
@@ -113,10 +114,10 @@ public class ModRecipes {
 	
 	private static void initSmeltingRecipes() {
 		// ores -> ingots. TODO add better XP values, these must be pretty sucky. Just added a random value.
-		GameRegistry.addSmelting(new ItemStack(blockOres, 1, aluminum), new ItemStack(itemIngots, 1, aluminum), 2F);
-		GameRegistry.addSmelting(new ItemStack(blockOres, 1, cobalt), new ItemStack(itemIngots, 1, cobalt), 2.0F);
+		GameRegistry.addSmelting(new ItemStack(blockOres, 1,  ModItems.aluminum), new ItemStack(itemIngots, 1,  ModItems.aluminum), 2F);
+		GameRegistry.addSmelting(new ItemStack(blockOres, 1, ModItems.cobalt), new ItemStack(itemIngots, 1, ModItems.cobalt), 2.0F);
 		for(int i=0; i<ModItems.dustNames.length; i++) {
-			GameRegistry.addSmelting(new ItemStack(itemDusts, 1, i), new ItemStack(itemIngots, 1, i), 2F);
+			GameRegistry.addSmelting(new ItemStack(ModItems.itemDusts, 1, i), new ItemStack(itemIngots, 1, i), 2F);
 		}
 	}
 	//format
