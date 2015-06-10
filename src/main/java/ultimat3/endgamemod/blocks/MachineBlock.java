@@ -5,6 +5,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
+import ultimat3.endgamemod.blocks.tileentity.TileEntityMetallurgyChamber;
 import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
 import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
 import net.minecraft.block.material.Material;
@@ -59,6 +60,8 @@ public class MachineBlock extends MetaBlock {
 			player.openGui(EndGame.instance, Reference.GuiIds.HIGH_PRODUCTION_FURNACE.ID(), world, x, y, z);
 		} else if (metadata == 2) {
 			player.openGui(EndGame.instance, Reference.GuiIds.SUPER_COMPRESSOR.ID(), world, x, y, z);
+		} else if (metadata == 3) {
+			player.openGui(EndGame.instance, Reference.GuiIds.METALLURGY_CHAMBER.ID(), world, x, y, z);
 		}
 		
 		return true;
@@ -72,6 +75,8 @@ public class MachineBlock extends MetaBlock {
 			return new TileEntityHighProductionFurnace();
 		else if (metadata == 2) 
 			return new TileEntitySuperCompressor();
+		else if (metadata == 3)
+			return new TileEntityMetallurgyChamber();
 		return null;
 	}
 	

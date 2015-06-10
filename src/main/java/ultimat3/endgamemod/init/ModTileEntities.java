@@ -17,7 +17,7 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntityProductionFurnace.class, PRODUCTION_FURNACE_ID);
 		GameRegistry.registerTileEntity(TileEntityHighProductionFurnace.class, HIGH_PRODUCTION_FURNACE_ID);
 		GameRegistry.registerTileEntity(TileEntitySuperCompressor.class, SUPER_COMPRESSOR_ID);
-		GameRegistry.registerTileEntity(TileEntityMetallurgyChamber.class, METALLURGY_CHAMBER_ID);	//MAKE SURE TO FIX HERE
+		GameRegistry.registerTileEntity(TileEntityMetallurgyChamber.class, METALLURGY_CHAMBER_ID);
 	}
 	
 }
