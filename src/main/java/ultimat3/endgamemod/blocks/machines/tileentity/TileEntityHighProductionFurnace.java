@@ -12,12 +12,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
 
-public class TileEntityHighProductionFurnace extends TileEntity implements ISidedInventory {
-	
-	/**
-	 * The inventory of this furnace.
-	 */
-	private ItemStack[]			items					= new ItemStack[9];
+public class TileEntityHighProductionFurnace extends TileEntityMachine implements ISidedInventory {
 	
 	/**
 	 * The amount of time left for this furnace to keep burning (in ticks).
@@ -51,6 +46,10 @@ public class TileEntityHighProductionFurnace extends TileEntity implements ISide
 	public static final String	TAG_ITEM_TIME			= "itemTime";
 	
 	// ================= Tag names end ================
+	
+	public TileEntityHighProductionFurnace() {
+		items = new ItemStack[9];
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {

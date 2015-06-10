@@ -15,12 +15,7 @@ import ultimat3.endgamemod.helpers.LogHelper;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 
-public class TileEntitySuperCompressor extends TileEntity implements ISidedInventory {
-	
-	/**
-	 * The inventory of this furnace.
-	 */
-	private ItemStack[]			items			= new ItemStack[10];
+public class TileEntitySuperCompressor extends TileEntityMachine implements ISidedInventory {
 	
 	/**
 	 * The amount of time this item has been cooking for.
@@ -46,6 +41,11 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 	public static final String	TAG_TANK_LAVA	= "tankLava";
 
 	// ================= Tag names end ================
+	
+	
+	public TileEntitySuperCompressor() {
+		items = new ItemStack[10];
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {

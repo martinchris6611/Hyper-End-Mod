@@ -55,11 +55,7 @@ public class ModBlocks {
 	scandiumBlock 	=	 4,
 	titaniumBlock 	=	 5,
 	steelBlock 		=	 6,
-	// machines
-	productionFurnace = 0,
-	highProductionFurnace = 1,
-	superCompressor = 2,
-	//
+	// misc
 	reinforcedIronBlock = 0,
 	CompressedSteel = 1,
 	LCIP = 2,

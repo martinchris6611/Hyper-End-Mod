@@ -12,12 +12,7 @@ import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
 
-public class TileEntityMetallurgyChamber extends TileEntity implements ISidedInventory {
-	
-	/**
-	 * The inventory of this metallurgy.
-	 */
-	private ItemStack[]			items					= new ItemStack[3];
+public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory {
 	
 	/**
 	 * The amount of time left for this metallurgy to keep burning (in ticks).
@@ -52,6 +47,10 @@ public class TileEntityMetallurgyChamber extends TileEntity implements ISidedInv
 	public static final String	TAG_ITEM_TIME				= "itemTime";
 	
 	// ================= Tag names end ================
+	
+	public TileEntityMetallurgyChamber() {
+		items = new ItemStack[3];
+	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {
