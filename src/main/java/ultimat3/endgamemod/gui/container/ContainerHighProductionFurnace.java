@@ -1,9 +1,10 @@
-package ultimat3.endgamemod.gui;
+package ultimat3.endgamemod.gui.container;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
@@ -34,7 +35,7 @@ public class ContainerHighProductionFurnace extends Container {
 		addSlotToContainer(new Slot(machine, 1, 56, 17));
 		addSlotToContainer(new Slot(machine, 2, 36, 17));
 		addSlotToContainer(new Slot(machine, 3, 16, 17));
-		addSlotToContainer(new Slot(machine, 4, 56, 53));
+		addSlotToContainer(new SlotMachineFuel(machine, 4, new ItemStack(Blocks.coal_block), 56, 53));
 		addSlotToContainer(new SlotFurnace(player, this.machine, 5, 116, 60));
 		addSlotToContainer(new SlotFurnace(player, this.machine, 6, 116, 40));
 		addSlotToContainer(new SlotFurnace(player, this.machine, 7, 116, 20));

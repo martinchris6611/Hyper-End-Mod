@@ -1,9 +1,5 @@
-package ultimat3.endgamemod.gui;
+package ultimat3.endgamemod.gui.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMetallurgyChamber;
-import ultimat3.endgamemod.init.ModRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
@@ -14,24 +10,27 @@ import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerMetallurgyChamber extends Container {
+public class ContainerProductionFurnace extends Container {
 	
 	private World						world;
-	private TileEntityMetallurgyChamber machine;
+	private TileEntityProductionFurnace	machine;
 	private short						lastCookTime;
 	private short						lastBurnTime;
 	
-	public ContainerMetallurgyChamber(EntityPlayer player, World world, int x, int y, int z) {
+	public ContainerProductionFurnace(EntityPlayer player, World world, int x, int y, int z) {
 		this.world = world;
 		
-		this.machine = ((TileEntityMetallurgyChamber) world.getTileEntity(x, y, z));
+		this.machine = ((TileEntityProductionFurnace) world.getTileEntity(x, y, z));
 		
 		// Furnace slots
 		addSlotToContainer(new Slot(machine, 0, 56, 17));
-		addSlotToContainer(new Slot(machine, 1, 56, 53));
+		addSlotToContainer(new SlotMachineFuel(machine, 1, new ItemStack(Blocks.coal_block), 56, 53));
 		addSlotToContainer(new SlotFurnace(player, this.machine, 2, 116, 35));
 		
 		// player slots
@@ -55,7 +54,7 @@ public class ContainerMetallurgyChamber extends Container {
 	public void addCraftingToCrafters(ICrafting p_75132_1_) {
 		super.addCraftingToCrafters(p_75132_1_);
 		p_75132_1_.sendProgressBarUpdate(this, 0, this.machine.cookTime);
-		p_75132_1_.sendProgressBarUpdate(this, 1, this.machine.metallurgyTimeLeft);
+		p_75132_1_.sendProgressBarUpdate(this, 1, this.machine.furnaceTimeLeft);
 	}
 	
 	/**
@@ -71,13 +70,13 @@ public class ContainerMetallurgyChamber extends Container {
 				icrafting.sendProgressBarUpdate(this, 0, this.machine.cookTime);
 			}
 			
-			if (this.lastBurnTime != this.machine.metallurgyTimeLeft) {
-				icrafting.sendProgressBarUpdate(this, 1, this.machine.metallurgyTimeLeft);
+			if (this.lastBurnTime != this.machine.furnaceTimeLeft) {
+				icrafting.sendProgressBarUpdate(this, 1, this.machine.furnaceTimeLeft);
 			}
 		}
 		
 		this.lastCookTime = this.machine.cookTime;
-		this.lastBurnTime = this.machine.metallurgyTimeLeft;
+		this.lastBurnTime = this.machine.furnaceTimeLeft;
 	}
 	
 	@SideOnly(Side.CLIENT)
@@ -87,7 +86,7 @@ public class ContainerMetallurgyChamber extends Container {
 		}
 		
 		if (updateID == 1) {
-			this.machine.metallurgyTimeLeft = (short) updateValue;
+			this.machine.furnaceTimeLeft = (short) updateValue;
 		}
 	}
 	
@@ -117,7 +116,7 @@ public class ContainerMetallurgyChamber extends Container {
 			} else if (slotID != 1 && slotID != 0) {
 				
 				// If it's smeltable, add it to the input slot
-				if (ModRecipes.metallurgy().getResult(itemstack1) != null) {
+				if (FurnaceRecipes.smelting().getSmeltingResult(itemstack1) != null) {
 					if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
 						return null;
 					}

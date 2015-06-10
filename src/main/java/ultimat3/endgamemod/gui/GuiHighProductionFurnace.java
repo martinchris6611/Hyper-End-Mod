@@ -5,6 +5,7 @@ import org.lwjgl.opengl.GL11;
 import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityHighProductionFurnace;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.gui.container.ContainerHighProductionFurnace;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.resources.I18n;

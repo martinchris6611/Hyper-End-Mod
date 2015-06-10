@@ -43,6 +43,7 @@ public class ModRecipes {
 		initSmeltingRecipes();
 		
 		// Compression inits itself now
+		initMetallurgyRecipes();
 	}
 	
 	// noformat

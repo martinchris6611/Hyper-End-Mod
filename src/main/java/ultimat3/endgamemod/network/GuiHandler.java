@@ -3,14 +3,14 @@ package ultimat3.endgamemod.network;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.gui.ContainerMetallurgyChamber;
-import ultimat3.endgamemod.gui.ContainerHighProductionFurnace;
-import ultimat3.endgamemod.gui.ContainerProductionFurnace;
-import ultimat3.endgamemod.gui.ContainerSuperCompressor;
 import ultimat3.endgamemod.gui.GuiMetallurgyChamber;
 import ultimat3.endgamemod.gui.GuiHighProductionFurnace;
 import ultimat3.endgamemod.gui.GuiProductionFurnace;
 import ultimat3.endgamemod.gui.GuiSuperCompressor;
+import ultimat3.endgamemod.gui.container.ContainerHighProductionFurnace;
+import ultimat3.endgamemod.gui.container.ContainerMetallurgyChamber;
+import ultimat3.endgamemod.gui.container.ContainerProductionFurnace;
+import ultimat3.endgamemod.gui.container.ContainerSuperCompressor;
 import cpw.mods.fml.common.network.IGuiHandler;
 
 public class GuiHandler implements IGuiHandler {

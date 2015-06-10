@@ -1,4 +1,4 @@
-package ultimat3.endgamemod.gui;
+package ultimat3.endgamemod.gui.container;
 
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import ultimat3.endgamemod.init.ModRecipes;

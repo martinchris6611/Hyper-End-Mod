@@ -1,5 +1,6 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
@@ -27,17 +28,16 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	/**
 	 * The amount of ticks it takes for a single item to cook.
 	 */
-	public static final short	ITEM_TIME_DONE			= 10;					// 20 = 1 sec.
-																	
+	public static final short	ITEM_TIME_DONE				= 10;					// 20 = 1 sec.
+																					
 	/**
 	 * How long a new block of coal will burn.
 	 */
-	public static final int		NEW_FUEL_TIME			= ITEM_TIME_DONE * 20;
+	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE * 20;
 	
-	private int[]				bottomSlots				= { 1 };
-	private int[]				topSlots				= { 0 };
-	private int[]				sideSlots				= { 2 };
-	
+	private int[]				bottomSlots					= { 1 };
+	private int[]				topSlots					= { 0 };
+	private int[]				sideSlots					= { 2 };
 	
 	// ================ Tag names start ===============
 	
@@ -141,51 +141,51 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	public void updateEntity() {
 		// TODO Make sure RF is checked
 		// Make sure the metallurgy decreases the time left continuously. This thing has to stop sometime.
-				if (this.metallurgyTimeLeft > 0)
-					--this.metallurgyTimeLeft;
+		if (this.metallurgyTimeLeft > 0)
+			--this.metallurgyTimeLeft;
+		
+		boolean shouldSave = false;
+		
+		// Server takes care of this
+		if (!this.worldObj.isRemote) {
+			// If the metallurgy has fuel (burning or ready) and the smeltable isn't nothing
+			if (this.metallurgyTimeLeft != 0 || this.items[1] != null && this.items[0] != null) {
 				
-				boolean shouldSave = false;
-				
-				// Server takes care of this
-				if (!this.worldObj.isRemote) {
-					// If the metallurgy has fuel (burning or ready) and the smeltable isn't nothing
-					if (this.metallurgyTimeLeft != 0 || this.items[1] != null && this.items[0] != null) {
+				// If the metallurgy is done burning and can smelt
+				if (this.metallurgyTimeLeft <= 0 && this.canMetallurgy()) {
+					this.metallurgyTimeLeft = NEW_FUEL_TIME;
+					
+					if (this.metallurgyTimeLeft > 0) {
+						shouldSave = true;
 						
-						// If the metallurgy is done burning and can smelt
-						if (this.metallurgyTimeLeft == 0 && this.canMetallurgy()) {
-							this.metallurgyTimeLeft = NEW_FUEL_TIME;
+						if (this.items[1] != null) {
+							--this.items[1].stackSize;
 							
-							if (this.metallurgyTimeLeft > 0) {
-								shouldSave = true;
-								
-								if (this.items[1] != null) {
-									--this.items[1].stackSize;
-									
-									if (this.items[1].stackSize <= 0) {
-										this.items[1] = null;
-									}
-								}
+							if (this.items[1].stackSize <= 0) {
+								this.items[1] = null;
 							}
-						}
-						
-						// If this item can be smelted and the metallurgy is burning
-						if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
-							++this.cookTime;
-							
-							// if the item is done
-							if (this.cookTime >= ITEM_TIME_DONE) {
-								this.cookTime = 0;
-								this.metallurgyItem();
-								shouldSave = true;
-							}
-						} else {
-							this.cookTime = 0;
 						}
 					}
 				}
 				
-				if (shouldSave)
-					this.markDirty();
+				// If this item can be smelted and the metallurgy is burning
+				if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
+					++this.cookTime;
+					
+					// if the item is done
+					if (this.cookTime >= ITEM_TIME_DONE) {
+						this.cookTime = 0;
+						this.metallurgyItem();
+						shouldSave = true;
+					}
+				} else {
+					this.cookTime = 0;
+				}
+			}
+		}
+		
+		if (shouldSave)
+			this.markDirty();
 	}
 	
 	public boolean isBurning() {
@@ -194,7 +194,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	
 	// TODO make sure this checks energy
 	public boolean hasEnergy() {
-		//return this.furnaceTimeLeft > 0;
+		// return this.furnaceTimeLeft > 0;
 		return true;
 	}
 	
@@ -214,12 +214,12 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	public int getSizeInventory() {
 		return 3;
 	}
-
+	
 	@Override
 	public ItemStack getStackInSlot(int slot) {
 		return this.items[slot];
 	}
-
+	
 	@Override
 	public ItemStack decrStackSize(int slot, int amount) {
 		// If there's no item, can't decrease stack size
@@ -244,7 +244,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		
 		return stack;
 	}
-
+	
 	@Override
 	public ItemStack getStackInSlotOnClosing(int slot) {
 		// Return a null item if the item in the slot is null (duh...)
@@ -256,7 +256,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		this.items[slot] = null;
 		return stack;
 	}
-
+	
 	@Override
 	public void setInventorySlotContents(int slot, ItemStack stack) {
 		this.items[slot] = stack;
@@ -266,22 +266,22 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		}
 		
 	}
-
+	
 	@Override
 	public String getInventoryName() {
 		return "container." + ModTileEntities.METALLURGY_CHAMBER_ID;
 	}
-
+	
 	@Override
 	public boolean hasCustomInventoryName() {
 		return false;
 	}
-
+	
 	@Override
 	public int getInventoryStackLimit() {
 		return 64;
 	}
-
+	
 	@Override
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		// Return false if the TileEntity at this place is not this TileEntity or if the player is too far away.
@@ -289,18 +289,22 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 				: player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
 						(double) this.zCoord + 0.5D) <= 64.0D;
 	}
-
+	
 	@Override
 	public void openInventory() {}
-
+	
 	@Override
 	public void closeInventory() {}
-
+	
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		// Can't input on the output
 		if (slot == 2)
 			return false;
+		
+		// only allow Thermite to be a fuel
+		if (slot == 1)
+			return stack.isItemEqual(new ItemStack(ModItems.itemMisc, 1, ModItems.thermite));
 		
 		// Can only input items with a metallurgy result on the item input
 		return ModRecipes.metallurgy().getResult(stack) != null;
@@ -310,7 +314,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	// =========================================================
 	// ================= ISidedInventory start =================
 	// =========================================================
-
+	
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		if (side == 0)
@@ -321,12 +325,12 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		
 		return sideSlots;
 	}
-
+	
 	@Override
 	public boolean canInsertItem(int slot, ItemStack stack, int side) {
 		return this.isItemValidForSlot(slot, stack);
 	}
-
+	
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		// Can't extract fuel or input items.
@@ -340,5 +344,5 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		// Can extract everything else though.
 		return true;
 	}
-
+	
 }
