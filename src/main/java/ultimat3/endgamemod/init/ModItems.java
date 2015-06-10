@@ -21,6 +21,10 @@ public class ModItems {  // TODO test the new recipes and lang
 	public static final String[]	nuggetNames		= { "nuggetAluminum", "nuggetCobalt", "nuggetLithium",
 			"nuggetMagnesium", "nuggetScandium", "nuggetTitanium", "nuggetSteel" };
 	
+	// names for the dusts
+	public static final String[]	dustNames		= { "dustAluminum", "dustCobalt", "dustLithium",
+			"dustMagnesium", "dustScandium", "dustTitanium", "dustSteel" };
+	
 	// names for miscellaneous items used only for crafting
 	public static final String[]	miscNames		= { "diamondCoating", "thermite", "highEntropyMetalAlloy", 
 		"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",  
@@ -31,6 +35,7 @@ public class ModItems {  // TODO test the new recipes and lang
 	// Meta Items for the win
 	public static Item				itemIngots		= new MetaItem(ingotNames);
 	public static Item				itemNuggets		= new MetaItem(nuggetNames);
+	public static Item				itemDusts		= new MetaItem(dustNames);
 	public static Item				itemMisc		= new MetaItem(miscNames);
 	
 	public static Item				itemCarbonCutter= new ItemCarbonCutter();
@@ -38,38 +43,31 @@ public class ModItems {  // TODO test the new recipes and lang
 	// noformat
 	// Stores the metadata of different MetaItems
 	public static final int	
-	// Ingots
-	aluminumIngot   = 0,
-	cobaltIngot		= 1,
-	lithiumIngot	= 2,
-	magnesiumIngot	= 3,
-	scandiumIngot	= 4,
-	titaniumIngot	= 5,
-	steelIngot		= 6,
-	// Nuggets
-	aluminumNugget	= 0,
-	cobaltNugget	= 1,
-	lithiumNugget	= 2,
-	magnesiumNugget	= 3,
-	scandiumNugget	= 4,
-	titaniumNugget	= 5,
-	steelNugget		= 6,
-	// Miscellaneous items used for crafting
-	diamondCoating	= 0,
-	thermite		= 1,
-	highEntropyAlloy= 2,
-	ironCobaltMagnet= 3,
-	carbonSheet		= 4,
-	refinedCarbon	= 5,
-	ringMagnet		= 6,
-	squareMagnet	= 7,
-	ionSource		= 8,
-	circuitBoard	= 9,
-	aluminumAlloy	= 10,
-	aluminumTubing	= 11,
-	steelPlating	= 12,
-	titaniumPlating	= 13;
-	// format	
+		// All metal forms share the same meta order
+		aluminum	    = 0,
+		cobalt			= 1,
+		lithium			= 2,
+		magnesium		= 3,
+		scandium		= 4,
+		titanium		= 5,
+		steel			= 6,
+		steelDust		= 6,
+		// Miscellaneous items used for crafting
+		diamondCoating	= 0,
+		thermite		= 1,
+		highEntropyAlloy= 2,
+		ironCobaltMagnet= 3,
+		carbonSheet		= 4,
+		refinedCarbon	= 5,
+		ringMagnet		= 6,
+		squareMagnet	= 7,
+		ionSource		= 8,
+		circuitBoard	= 9,
+		aluminumAlloy	= 10,
+		aluminumTubing	= 11,
+		steelPlating	= 12,
+		titaniumPlating	= 13;
+		// format	
 	
 	public static Item swordKatana = new ItemModSword("swordKatana", plasmaShard);
 	

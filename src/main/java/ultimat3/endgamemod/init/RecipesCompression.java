@@ -25,7 +25,7 @@ public class RecipesCompression {
 				"XXX", "XXX", "XXX", 'X', Blocks.dirt
 		);
 		this.addRecipe(new ItemStack(itemMisc, 1, highEntropyAlloy), 
-				"XYZ", "XUZ", "XYZ", 'X', new ItemStack(itemIngots, 0, magnesiumIngot), 'Y', new ItemStack(itemIngots, 0, titaniumIngot), 'Z', new ItemStack(itemIngots, 0, lithiumIngot), 'U', new ItemStack(itemIngots, 0, scandiumIngot)
+				"XYZ", "XUZ", "XYZ", 'X', new ItemStack(itemIngots, 0, magnesium), 'Y', new ItemStack(itemIngots, 0, titanium), 'Z', new ItemStack(itemIngots, 0, lithium), 'U', new ItemStack(itemIngots, 0, scandium)
 		);
 	}
 	// format

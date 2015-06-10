@@ -8,6 +8,8 @@ import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 import net.minecraftforge.oredict.ShapedOreRecipe;
 
+import static ultimat3.endgamemod.init.ModItems.*;
+
 /**
  * Registers our ores and other materials in the ore dictionary. Allows other
  * mods to use our materials, for instance, for Tinkers' Construct to smelt our
@@ -23,33 +25,35 @@ public class OreDictionaryHelper {
 	 * @author Ebilkill
 	 */
 	public static void init() {
-		// Registers basic ores
-		// OreDictionary.registerOre("oreAluminum", ModBlocks.blockAluminumOre);
-		// OreDictionary.registerOre("oreCobalt", ModBlocks.blockCobaltOre);
-		// OreDictionary.registerOre("oreLithium", ModBlocks.blockLithiumOre);
-		// OreDictionary.registerOre("oreMagnesium", ModBlocks.blockMagnesiumOre);
-		// OreDictionary.registerOre("oreScandium", ModBlocks.blockScandiumOre);
-		// OreDictionary.registerOre("oreTitanium", ModBlocks.blockTitaniumOre);
 		
 		// Registers ingots
-		OreDictionary.registerOre("ingotAluminum", new ItemStack(ModItems.itemIngots, 1, ModItems.aluminumIngot));
-		OreDictionary.registerOre("ingotCobalt", new ItemStack(ModItems.itemIngots, 1, ModItems.cobaltIngot));
-		OreDictionary.registerOre("ingotLithium", new ItemStack(ModItems.itemIngots, 1, ModItems.lithiumIngot));
-		OreDictionary.registerOre("ingotMagnesium", new ItemStack(ModItems.itemIngots, 1, ModItems.magnesiumIngot));
-		OreDictionary.registerOre("ingotScandium", new ItemStack(ModItems.itemIngots, 1, ModItems.scandiumIngot));
-		OreDictionary.registerOre("ingotTitanium",new ItemStack(ModItems.itemIngots, 1, ModItems.titaniumIngot));
-		OreDictionary.registerOre("ingotSteel",new ItemStack(ModItems.itemIngots, 1, ModItems.steelIngot));
+		OreDictionary.registerOre("ingotAluminum", new ItemStack(itemIngots, 1, aluminum));
+		OreDictionary.registerOre("ingotCobalt", new ItemStack(itemIngots, 1, cobalt));
+		OreDictionary.registerOre("ingotLithium", new ItemStack(itemIngots, 1, lithium));
+		OreDictionary.registerOre("ingotMagnesium", new ItemStack(itemIngots, 1, magnesium));
+		OreDictionary.registerOre("ingotScandium", new ItemStack(itemIngots, 1, scandium));
+		OreDictionary.registerOre("ingotTitanium",new ItemStack(itemIngots, 1, titanium));
+		OreDictionary.registerOre("ingotSteel",new ItemStack(itemIngots, 1, steel));
 		
 		// Registers Nuggets
-		OreDictionary.registerOre("nuggetAluminum", new ItemStack(ModItems.itemNuggets, 1, ModItems.aluminumNugget));
-		OreDictionary.registerOre("nuggetCobalt",new ItemStack(ModItems.itemNuggets, 1, ModItems.cobaltNugget));
-		OreDictionary.registerOre("nuggetLithium",new ItemStack(ModItems.itemNuggets, 1, ModItems.lithiumNugget));
-		OreDictionary.registerOre("nuggetMagnesium",new ItemStack(ModItems.itemNuggets, 1, ModItems.magnesiumNugget));
-		OreDictionary.registerOre("nuggetScandium", new ItemStack(ModItems.itemNuggets, 1, ModItems.scandiumNugget));
-		OreDictionary.registerOre("nuggetTitanium", new ItemStack(ModItems.itemNuggets, 1, ModItems.titaniumNugget));
-		OreDictionary.registerOre("nuggetSteel", new ItemStack(ModItems.itemNuggets, 1, ModItems.steelNugget));
+		OreDictionary.registerOre("nuggetAluminum", new ItemStack(itemNuggets, 1, aluminum));
+		OreDictionary.registerOre("nuggetCobalt",new ItemStack(itemNuggets, 1, cobalt));
+		OreDictionary.registerOre("nuggetLithium",new ItemStack(itemNuggets, 1, lithium));
+		OreDictionary.registerOre("nuggetMagnesium",new ItemStack(itemNuggets, 1, magnesium));
+		OreDictionary.registerOre("nuggetScandium", new ItemStack(itemNuggets, 1, scandium));
+		OreDictionary.registerOre("nuggetTitanium", new ItemStack(itemNuggets, 1, titanium));
+		OreDictionary.registerOre("nuggetSteel", new ItemStack(itemNuggets, 1, steel));
 		
-		// Registers Ore Blocks
+		// Registers Dusts
+		OreDictionary.registerOre("dustAluminum", new ItemStack(itemDusts, 1, aluminum));
+		OreDictionary.registerOre("dustCobalt",new ItemStack(itemDusts, 1, cobalt));
+		OreDictionary.registerOre("dustLithium",new ItemStack(itemDusts, 1, lithium));
+		OreDictionary.registerOre("dustMagnesium",new ItemStack(itemDusts, 1, magnesium));
+		OreDictionary.registerOre("dustScandium", new ItemStack(itemDusts, 1, scandium));
+		OreDictionary.registerOre("dustTitanium", new ItemStack(itemDusts, 1, titanium));
+		OreDictionary.registerOre("dustSteel", new ItemStack(itemDusts, 1, steelDust));
+		
+		// Registers Metal Blocks
 		// OreDictionary.registerOre("blockAluminum", ModBlocks.blockAluminumBlock);
 		// OreDictionary.registerOre("blockCobalt", ModBlocks.blockCobaltBlock);
 		// OreDictionary.registerOre("blockLithium", ModBlocks.blockLithiumBlock);
@@ -57,5 +61,13 @@ public class OreDictionaryHelper {
 		// OreDictionary.registerOre("blockScandium", ModBlocks.blockScandiumBlock);
 		// OreDictionary.registerOre("blockTitanium", ModBlocks.blockTitaniumBlock);
 		// OreDictionary.registerOre("blockSteel", ModBlocks.blockSteelBlock);
+		
+		// Registers basic ores
+		// OreDictionary.registerOre("oreAluminum", ModBlocks.blockAluminumOre);
+		// OreDictionary.registerOre("oreCobalt", ModBlocks.blockCobaltOre);
+		// OreDictionary.registerOre("oreLithium", ModBlocks.blockLithiumOre);
+		// OreDictionary.registerOre("oreMagnesium", ModBlocks.blockMagnesiumOre);
+		// OreDictionary.registerOre("oreScandium", ModBlocks.blockScandiumOre);
+		// OreDictionary.registerOre("oreTitanium", ModBlocks.blockTitaniumOre);
 	}
 }

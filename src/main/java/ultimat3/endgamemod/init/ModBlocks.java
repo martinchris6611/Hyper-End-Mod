@@ -50,28 +50,21 @@ public class ModBlocks {
 	// noforamt
 	// Metadata for the blocks
 	public static final int
-	// metal blocks
-	aluminumBlock = 0,
-	cobaltBlock = 1,
-	lithiumBlock = 2,
-	magnesiumBlock = 3,
-	scandiumBlock  = 4,
-	titaniumBlock = 5,
-	steelBlock = 6,
-	// ores
-	aluminumOre = 0,
-	cobaltOre = 1,
-	lithiumOre = 2,
-	magnesiumOre = 3,
-	scandiumOre = 4,
-	titaniumOre = 5,
+	// metal blocks and ores
+	aluminumBlock 	=	 0,
+	cobaltBlock		=	 1,
+	lithiumBlock	=	 2,
+	magnesiumBlock	=	 3,
+	scandiumBlock 	=	 4,
+	titaniumBlock 	=	 5,
+	steelBlock 		=	 6,
 	// machines
 	productionFurnace = 0,
 	highProductionFurnace = 1,
 	superCompressor = 2,
 	//
 	reinforcedIronBlock = 0,
-	blockCompressedSteel = 1,
+	CompressedSteel = 1,
 	LCIP = 2,
 	RCIP = 3,
 	HCIP = 4;
