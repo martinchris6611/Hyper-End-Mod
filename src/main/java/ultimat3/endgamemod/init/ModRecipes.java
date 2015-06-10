@@ -97,17 +97,15 @@ public class ModRecipes {
 			GameRegistry.addShapelessRecipe(new ItemStack(itemIngots, 9, meta), new Object[] {
 				new ItemStack(blockMetals, 1, meta)
 			});
-			
-			GameRegistry.addShapelessRecipe(new ItemStack(itemVanillaMetals, 2, ironDust), new ItemStack(itemDusts, 1, aluminum), new Object[] {
-					 new ItemStack(itemMisc, 1, thermite)
-			});
-			
-			GameRegistry.addShapelessRecipe(new ItemStack(blockMetals, 9, steel), new Object[] {
-				 new ItemStack(blockMisc, 1, compressedSteel)
-			});
 		}
 		
-		// Ore Dictionary
+		GameRegistry.addShapelessRecipe(new ItemStack(itemVanillaMetals, 2, ironDust), new ItemStack(itemDusts, 1, aluminum), new Object[] {
+				 new ItemStack(itemMisc, 1, thermite)
+		});
+		
+		GameRegistry.addShapelessRecipe(new ItemStack(blockMetals, 9, steel), new Object[] {
+			 new ItemStack(blockMisc, 1, compressedSteel)
+		});
 		
 	}
 	
