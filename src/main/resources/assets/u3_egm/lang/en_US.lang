@@ -2,15 +2,15 @@ tile.u3_egm_oreAluminum.name=Aluminum Ore
 tile.u3_egm_oreCobalt.name=Cobalt Ore
 tile.u3_egm_oreLithium.name=Lithium Ore
 tile.u3_egm_oreMagnesium.name=Magnesium Ore
-tile.u3_egm_oreScandium.name=Scandium Ore
-tile.u3_egm_oreTitanium.name=Titanium Ore
+tile.u3_egm_oreScandium.name=Refined Scandium Ore
+tile.u3_egm_oreTitanium.name=Refined Titanium Ore
 
 tile.u3_egm_blockAluminum.name=Aluminum Block
 tile.u3_egm_blockCobalt.name=Cobalt Block
 tile.u3_egm_blockLithium.name=Lithium Block
 tile.u3_egm_blockMagnesium.name=Magnesium Block
-tile.u3_egm_blockTitanium.name=Titanium Block
-tile.u3_egm_blockScandium.name=Scandium Block
+tile.u3_egm_blockTitanium.name=Refined Titanium Block
+tile.u3_egm_blockScandium.name=Refined Scandium Block
 tile.u3_egm_blockSteel.name=Steel Block
 
 tile.u3_egm_blockReinforcedIron.name=Reinforced Iron
@@ -32,17 +32,29 @@ item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot
 item.u3_egm_ingotLithium.name=Lithium Ingot
 item.u3_egm_ingotMagnesium.name=Magnesium Ingot
-item.u3_egm_ingotTitanium.name=Titanium Ingot
-item.u3_egm_ingotScandium.name=Scandium Ingot
+item.u3_egm_ingotTitanium.name=Refined Titanium Ingot
+item.u3_egm_ingotScandium.name=Refined Scandium Ingot
 item.u3_egm_ingotSteel.name=Steel Ingot
 
 item.u3_egm_nuggetAluminum.name=Aluminum Nugget
 item.u3_egm_nuggetCobalt.name=Cobalt Nugget
 item.u3_egm_nuggetLithium.name=Lithium Nugget
 item.u3_egm_nuggetMagnesium.name=Magnesium Nugget
-item.u3_egm_nuggetScandium.name=Scandium Nugget
-item.u3_egm_nuggetTitanium.name=Titanium Nugget
+item.u3_egm_nuggetScandium.name=Refined Scandium Nugget
+item.u3_egm_nuggetTitanium.name=Refined Titanium Nugget
 item.u3_egm_nuggetSteel.name=Steel Nugget
+
+item.u3_egm_dustAluminum.name=Aluminum Dust
+item.u3_egm_dustCobalt.name=Cobalt Dust
+item.u3_egm_dustLithium.name=Lithium Dust
+item.u3_egm_dustMagnesium.name=Magnesium Dust
+item.u3_egm_dustScandium.name=Refined Scandium Dust
+item.u3_egm_dustTitanium.name=Refined Titanium Dust
+item.u3_egm_dustSteel.name=Steel Dust
+
+item.u3_egm_nuggetIron.name=Iron Nugget
+item.u3_egm_dustIron.name=Iron Dust
+item.u3_egm_dustGold.name=Gold Dust
 
 item.u3_egm_diamondCoating.name=Diamond Coating
 item.u3_egm_thermite.name=Thermite
@@ -59,11 +71,8 @@ item.u3_egm_aluminumTubing.name=Aluminum Tubing
 item.u3_egm_steelPlating.name=Steel Plating
 item.u3_egm_titaniumPlating.name=Titanium Plating
 
-
-
-
-
 item.u3_egm_swordKatana.name=Plasma Sword
+item.u3_egm_carbonCutter.name=Carbon Cutter
 
 itemGroup.u3_egm=End game mod
 

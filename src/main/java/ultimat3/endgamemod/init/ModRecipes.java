@@ -13,6 +13,7 @@ import ultimat3.endgamemod.EndGame;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 import static ultimat3.endgamemod.init.ModItems.*;
+import static ultimat3.endgamemod.init.ModBlocks.*;
 
 /**
  * Initialize all recipes here. Called from the {@link EndGame#init(cpw.mods.fml.common.event.FMLInitializationEvent)}
@@ -56,26 +57,29 @@ public class ModRecipes {
 			});
 			
 			// Ingots-> blocks
-			GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockMetals, 1, meta), new Object[] {
+			GameRegistry.addShapedRecipe(new ItemStack(blockMetals, 1, meta), new Object[] {
 				"III", "III", "III", 'I', new ItemStack(itemIngots, 1, meta)
 			}); // I for ingot!
 		}
 
-		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockMetals, 1, ModBlocks.reinforcedIronBlock), new Object[] {
+		GameRegistry.addShapedRecipe(new ItemStack(blockMisc, 1, reinforcedIronBlock), new Object[] {
 			"XXX", "XYX", "XXX", 'X', Items.diamond, 'Y', Blocks.iron_block
 		});
-		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockMisc, 1, ringMagnet), new Object[] {
-			" M ", "M M", " M ", 'M', new ItemStack(ModBlocks.blockMisc, 1, ironCobaltMagnet)
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, ringMagnet), new Object[] {
+			" M ", "M M", " M ", 'M', new ItemStack(itemMisc, 1, ironCobaltMagnet)
 		});
-		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockMisc, 1, squareMagnet), new Object[] {
-			"MM", "MM", 'M', new ItemStack(ModBlocks.blockMisc, 1, ironCobaltMagnet)
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, squareMagnet), new Object[] {
+			"MM", "MM", 'M', new ItemStack(itemMisc, 1, ironCobaltMagnet)
 		});
 		
-		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, refinedCarbon), new Object[] {
-			"CCC", 'C', new ItemStack(itemMisc, 1, carbonSheet)
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, carbonSheet), new Object[] {
+			"CCC", 'C', new ItemStack(itemMisc, 1, refinedCarbon)
 		});		
 		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, aluminumAlloy), new Object[] {
 			"AA", "AA", 'A', new ItemStack(itemIngots, 1, aluminum)
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(blockMetallicGlassPane, 16), new Object[] {
+			"GGG", "GGG", 'G', new ItemStack(blockMetallicGlass)
 		});
 		// Ore Dictionary
 		
@@ -91,10 +95,16 @@ public class ModRecipes {
 			
 			// Blocks->ingots
 			GameRegistry.addShapelessRecipe(new ItemStack(itemIngots, 9, meta), new Object[] {
-				new ItemStack(ModBlocks.blockMetals, 1, meta)
+				new ItemStack(blockMetals, 1, meta)
 			});
 			
-			GameRegistry.addShapelessRecipe(new ItemStack(ModBlocks.blockMetals, 9, steel), new ItemStack(ModBlocks.blockMisc, 1, ModBlocks.CompressedSteel));
+			GameRegistry.addShapelessRecipe(new ItemStack(itemVanillaMetals, 2, ironDust), new ItemStack(itemDusts, 1, aluminum), new Object[] {
+					 new ItemStack(itemMisc, 1, thermite)
+			});
+			
+			GameRegistry.addShapelessRecipe(new ItemStack(blockMetals, 9, steel), new Object[] {
+				 new ItemStack(blockMisc, 1, compressedSteel)
+			});
 		}
 		
 		// Ore Dictionary
@@ -103,8 +113,8 @@ public class ModRecipes {
 	
 	private static void initSmeltingRecipes() {
 		// ores -> ingots. TODO add better XP values, these must be pretty sucky. Just added a random value.
-		GameRegistry.addSmelting(new ItemStack(ModBlocks.blockOres, 1, aluminum), new ItemStack(itemIngots, 1, aluminum), 2F);
-		GameRegistry.addSmelting(new ItemStack(ModBlocks.blockOres, 1, cobalt), new ItemStack(itemIngots, 1, cobalt), 2.0F);
+		GameRegistry.addSmelting(new ItemStack(blockOres, 1, aluminum), new ItemStack(itemIngots, 1, aluminum), 2F);
+		GameRegistry.addSmelting(new ItemStack(blockOres, 1, cobalt), new ItemStack(itemIngots, 1, cobalt), 2.0F);
 		for(int i=0; i<ModItems.dustNames.length; i++) {
 			GameRegistry.addSmelting(new ItemStack(itemDusts, 1, i), new ItemStack(itemIngots, 1, i), 2F);
 		}

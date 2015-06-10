@@ -37,7 +37,7 @@ public class ModBlocks {
 	/**
 	 * Meta blocks
 	 */
-	public static Block				blockMisc			= new MetaBlock(miscNames, Material.iron);
+	public static Block				blockMisc			= new MetaBlock(miscNames, Material.iron).setHardness(5.0f).setResistance(8.0f);
 	
 	public static Block				blockMetallicGlass	= new BlockMetallicGlass();
 	public static Block			blockMetallicGlassPane 	= new BlockMetallicGlassPane();
@@ -57,7 +57,7 @@ public class ModBlocks {
 	steelBlock 		=	 6,
 	// misc
 	reinforcedIronBlock = 0,
-	CompressedSteel = 1,
+	compressedSteel = 1,
 	LCIP = 2,
 	RCIP = 3,
 	HCIP = 4;

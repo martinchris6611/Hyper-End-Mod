@@ -30,13 +30,17 @@ public class ModItems {  // TODO test the new recipes and lang
 		"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",  
 		"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating" };
 	
+	// subject to change, but it makes no sense to be able to double every ore except vanilla ones
+	public static final String[]	vanillaMetalNames= { "nuggetIron", "dustIron", "dustGold" };
+	
 	public static ToolMaterial plasmaShard = EnumHelper.addToolMaterial("plasmaShard", 3, 2000, 14.0f, 100.0f, 1);
 	
 	// Meta Items for the win
-	public static Item				itemIngots		= new MetaItem(ingotNames);
-	public static Item				itemNuggets		= new MetaItem(nuggetNames);
-	public static Item				itemDusts		= new MetaItem(dustNames);
-	public static Item				itemMisc		= new MetaItem(miscNames);
+	public static Item				itemIngots		 = new MetaItem(ingotNames);
+	public static Item				itemNuggets		 = new MetaItem(nuggetNames);
+	public static Item				itemDusts		 = new MetaItem(dustNames);
+	public static Item				itemMisc		 = new MetaItem(miscNames);
+	public static Item				itemVanillaMetals= new MetaItem(vanillaMetalNames);
 	
 	public static Item				itemCarbonCutter= new ItemCarbonCutter();
 	
@@ -51,7 +55,10 @@ public class ModItems {  // TODO test the new recipes and lang
 		scandium		= 4,
 		titanium		= 5,
 		steel			= 6,
-		steelDust		= 6,
+		// Forms of vanilla metals
+		ironNugget		= 0,
+		ironDust		= 1,
+		goldDust		= 2,
 		// Miscellaneous items used for crafting
 		diamondCoating	= 0,
 		thermite		= 1,
