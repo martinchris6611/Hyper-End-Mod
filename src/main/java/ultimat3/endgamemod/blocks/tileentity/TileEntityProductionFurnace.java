@@ -303,7 +303,6 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		
 		// Can only input items with a smelting result on the item input
 		return FurnaceRecipes.smelting().getSmeltingResult(stack) != null;
-		// return true;
 	}
 	
 	// =========================================================
