@@ -100,7 +100,7 @@ public class TileEntityMetallurgyChamber extends TileEntity implements ISidedInv
 		if (this.items[0] == null)
 			return false;
 		
-		ItemStack itemstack = ModRecipes.compression().getResult(this.items[0]);
+		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
 		
 		// If the result is nothing, we can't smelt
 		if (itemstack == null)
@@ -123,7 +123,7 @@ public class TileEntityMetallurgyChamber extends TileEntity implements ISidedInv
 		if (!canMetallurgy())
 			return;
 		
-		ItemStack itemstack = ModRecipes.compression().getResult(this.items[0]);
+		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
 		
 		if (this.items[2] == null) {
 			this.items[2] = itemstack.copy();

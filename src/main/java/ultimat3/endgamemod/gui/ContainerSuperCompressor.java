@@ -19,11 +19,20 @@ public class ContainerSuperCompressor extends Container {
 		this.machine = (TileEntitySuperCompressor) world.getTileEntity(x, y, z);
 		
 		// Compressor slots
-		addSlotToContainer(new Slot(machine, 0, 56, 35));
-		addSlotToContainer(new Slot(machine, 1, 116, 35));
+		addCraftingSlots();
+		addSlotToContainer(new Slot(machine, 9, 116, 35));
 		
 		// PLayer slots
 		this.bindPlayerInventory(player.inventory);
+	}
+	
+	private void addCraftingSlots() {
+		// Nice grid pattern
+		for (int x = 0; x < 3; ++x) {
+			for (int y = 0; y < 3; ++y) {
+				addSlotToContainer(new Slot(machine, x + y * 3, 38 + x * 18, 17 + y * 18));
+			}
+		}
 	}
 	
 	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
@@ -67,13 +76,15 @@ public class ContainerSuperCompressor extends Container {
 			} else if (slotID != 0) {
 				
 				// If it's smeltable, add it to the input slot
-				if (ModRecipes.compression().getResult(itemstack1) != null) {
+				// noformat
+				/*if (ModRecipes.compression().getResult(itemstack1) != null) {
 					if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
 						return null;
 					}
-					
 					// main inv -> hotbar
-				} else if (slotID >= 2 && slotID < 29) {
+				} else */
+				// format
+				if (slotID >= 2 && slotID < 29) {
 					if (!this.mergeItemStack(itemstack1, 29, 38, false)) {
 						return null;
 					}
