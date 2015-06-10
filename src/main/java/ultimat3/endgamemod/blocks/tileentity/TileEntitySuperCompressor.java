@@ -3,6 +3,7 @@ package ultimat3.endgamemod.blocks.tileentity;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -10,14 +11,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
+import ultimat3.endgamemod.helpers.LogHelper;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 
 public class TileEntitySuperCompressor extends TileEntity implements ISidedInventory {
+	
 	/**
 	 * The inventory of this furnace.
 	 */
-	private ItemStack[]			items					= new ItemStack[2];
+	private ItemStack[]			items			= new ItemStack[10];
 	
 	/**
 	 * The amount of time this item has been cooking for.
@@ -27,17 +30,21 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 	/**
 	 * The amount of ticks it takes for a single item to cook.
 	 */
-	public static final short	ITEM_TIME_DONE			= 10;					// 20 = 1 sec.
-																				
-	private int[]				topSlots				= { 0 };
-	private int[]				notTopSlots				= { 1 };
+	public static final short	ITEM_TIME_DONE	= 10;								// 20 = 1 sec.
+					
+	// Slot related stuff
+	private static final int	OUTPUT_SLOT	= 9;
+	private int[]				topSlots		= { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+	private int[]				notTopSlots		= { 9 };
 	
 	// ================ Tag names start ===============
 	
-	public static final String	TAG_ITEMS				= "items";
-	public static final String	TAG_SLOT				= "slot";
-	public static final String	TAG_ITEM_TIME			= "itemTime";
-	
+	public static final String	TAG_ITEMS		= "items";
+	public static final String	TAG_SLOT		= "slot";
+	public static final String	TAG_ITEM_TIME	= "itemTime";
+	public static final String	TAG_BATTERY_RF	= "batteryRF";
+	public static final String	TAG_TANK_LAVA	= "tankLava";
+
 	// ================= Tag names end ================
 	
 	@Override
@@ -85,38 +92,39 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 		if (this.items[0] == null)
 			return false;
 		
-		ItemStack itemstack = ModRecipes.compression().getResult(this.items[0]);
+		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
 		
 		// If the result is nothing, we can't smelt
-		if (itemstack == null)
+		if (itemstack == null) {
+			LogHelper.debug("No matching recipe for compressor.");
 			return false;
-		
+		}
 		// If the current output is empty, we can smelt for sure
-		if (this.items[1] == null)
+		if (this.items[OUTPUT_SLOT] == null)
 			return true;
 		
 		// If the result and output aren't the same, we can't smelt either
-		if (!this.items[1].isItemEqual(itemstack))
+		if (!this.items[OUTPUT_SLOT].isItemEqual(itemstack))
 			return false;
 		
 		// Otherwise, it depends on the stack limit
-		int result = items[1].stackSize + itemstack.stackSize;
-		return result <= getInventoryStackLimit() && result <= this.items[1].getMaxStackSize();
+		int result = items[9].stackSize + itemstack.stackSize;
+		return result <= getInventoryStackLimit() && result <= this.items[OUTPUT_SLOT].getMaxStackSize();
 	}
 	
 	private void compressItem() {
 		if (!canCompress())
 			return;
 		
-		ItemStack itemstack = ModRecipes.compression().getResult(this.items[0]);
+		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
 		
 		// If the output currently has no item, might as well copy the new result in there
-		if (this.items[1] == null) {
-			this.items[1] = itemstack.copy();
+		if (this.items[OUTPUT_SLOT] == null) {
+			this.items[OUTPUT_SLOT] = itemstack.copy();
 			
-		// else we better check whether the items are equal before stacking...
-		} else if (this.items[1].isItemEqual(itemstack)) {
-			this.items[1].stackSize += itemstack.stackSize;
+			// else we better check whether the items are equal before stacking...
+		} else if (this.items[OUTPUT_SLOT].isItemEqual(itemstack)) {
+			this.items[OUTPUT_SLOT].stackSize += itemstack.stackSize;
 		}
 		
 		--this.items[0].stackSize;
@@ -134,22 +142,19 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 		// Server takes care of this
 		if (!this.worldObj.isRemote) {
 			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing
-			if (this.items[0] != null) {
+			
+			// TODO ADD ENERGY CHECK
+			if (this.canCompress()) {
+				++this.cookTime;
 				
-				// If this item can be smelted and the furnace is burning
-				// TODO ADD ENERGY CHECK
-				if (this.canCompress()) {
-					++this.cookTime;
-					
-					// if the item is done
-					if (this.cookTime >= ITEM_TIME_DONE) {
-						this.cookTime = 0;
-						this.compressItem();
-						shouldSave = true;
-					}
-				} else {
+				// if the item is done
+				if (this.cookTime >= ITEM_TIME_DONE) {
 					this.cookTime = 0;
+					this.compressItem();
+					shouldSave = true;
 				}
+			} else {
+				this.cookTime = 0;
 			}
 		}
 		
@@ -159,7 +164,7 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 	
 	// TODO make sure this checks energy
 	public boolean hasEnergy() {
-//		return this.furnaceTimeLeft > 0;
+		// return this.furnaceTimeLeft > 0;
 		return true;
 	}
 	
@@ -173,7 +178,7 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 	
 	@Override
 	public int getSizeInventory() {
-		return 2;
+		return 10;
 	}
 	
 	@Override
@@ -264,8 +269,7 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 			return false;
 		
 		// Can only input items with a smelting result on the item input
-		return ModRecipes.compression().getResult(stack) != null;
-		// return true;
+		return false;
 	}
 	
 	// =========================================================
@@ -298,5 +302,17 @@ public class TileEntitySuperCompressor extends TileEntity implements ISidedInven
 		
 		// Can extract everything else though.
 		return true;
+	}
+	
+	// =========================================================
+	// ===================== Recipes start =====================
+	// =========================================================
+	
+	public int getSizeGrid() {
+		return 9;
+	}
+	
+	public ItemStack getStackInRowAndColumn(int x, int y) {
+		return this.items[x + y * 3];
 	}
 }

@@ -26,10 +26,10 @@ public class ModRecipes {
 	/**
 	 * Compression recipes
 	 */
-	private static final FactoryRecipes	COMPRESSION	= new FactoryRecipes(false);
-	private static final FactoryRecipes METALLURGY 	= new FactoryRecipes(false);
+	private static final RecipesCompression	COMPRESSION	= new RecipesCompression();
+	private static final FactoryRecipes	METALLURGY	= new FactoryRecipes(false);
 	
-	public static FactoryRecipes compression() {
+	public static RecipesCompression compression() {
 		return COMPRESSION;
 	}
 	
@@ -43,8 +43,7 @@ public class ModRecipes {
 		initShapelessRecipes();
 		initSmeltingRecipes();
 		
-		// machine recipes
-		initCompressionRecipes();
+		// Compression inits itself now
 	}
 	
 	// noformat
@@ -63,16 +62,21 @@ public class ModRecipes {
 		}
 
 		GameRegistry.addShapedRecipe(new ItemStack(blockMetals, 1, reinforcedIronBlock), new Object[] {
-			"XXX", "XYX", "XXX", 'X', Items.diamond, 'Y', Blocks.iron_block});
+			"XXX", "XYX", "XXX", 'X', Items.diamond, 'Y', Blocks.iron_block
+		});
 		GameRegistry.addShapedRecipe(new ItemStack(blockMisc, 1, ringMagnet), new Object[] {
-			" M ", "M M", " M ", 'M', new ItemStack(blockMisc, 1, ironCobaltMagnet)});
+			" M ", "M M", " M ", 'M', new ItemStack(blockMisc, 1, ironCobaltMagnet)
+		});
 		GameRegistry.addShapedRecipe(new ItemStack(blockMisc, 1, squareMagnet), new Object[] {
-			"MM", "MM", 'M', new ItemStack(blockMisc, 1, ironCobaltMagnet)});
+			"MM", "MM", 'M', new ItemStack(blockMisc, 1, ironCobaltMagnet)
+		});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, refinedCarbon), new Object[] {
-			"CCC", 'C', new ItemStack(itemMisc, 1, carbonSheet)});		
+			"CCC", 'C', new ItemStack(itemMisc, 1, carbonSheet)
+		});		
 		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, aluminumAlloy), new Object[] {
-			"AA", "AA", 'A', new ItemStack(itemIngots, 1, aluminumIngot)});
+			"AA", "AA", 'A', new ItemStack(itemIngots, 1, aluminumIngot)
+		});
 		// Ore Dictionary
 		
 	}
@@ -104,15 +108,11 @@ public class ModRecipes {
 	}
 	//format
 	
-	private static void initCompressionRecipes() {
-		compression().addRecipe(new ItemStack(Blocks.dirt), new ItemStack(Items.diamond));
-	}
-	
-	
-	//Recipes for Metallurgy Go here WIP
+	// Recipes for Metallurgy Go here WIP
 	private static void initMetallurgyRecipes() {
 		metallurgy().addRecipe(new ItemStack(Blocks.dirt), new ItemStack(Items.diamond));
 	}
+	
 	/**
 	 * Use this to make new recipe managers for our machines.
 	 * 
