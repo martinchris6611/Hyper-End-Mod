@@ -3,8 +3,8 @@ package ultimat3.endgamemod.gui;
 import org.lwjgl.opengl.GL11;
 
 import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
-import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.ITextureObject;

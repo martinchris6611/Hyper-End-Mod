@@ -5,7 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
-import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 
 public class ShapedCompressionRecipe implements ICompressionRecipe {
 	

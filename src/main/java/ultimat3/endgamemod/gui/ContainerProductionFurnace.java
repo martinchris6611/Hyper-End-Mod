@@ -2,7 +2,7 @@ package ultimat3.endgamemod.gui;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;

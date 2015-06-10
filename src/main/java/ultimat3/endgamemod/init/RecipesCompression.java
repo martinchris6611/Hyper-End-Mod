@@ -9,7 +9,7 @@ import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import ultimat3.endgamemod.init.recipes.ICompressionRecipe;
 import ultimat3.endgamemod.init.recipes.ShapedCompressionRecipe;
 

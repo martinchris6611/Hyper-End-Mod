@@ -1,6 +1,6 @@
 package ultimat3.endgamemod.gui;
 
-import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import ultimat3.endgamemod.init.ModRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

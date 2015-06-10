@@ -2,7 +2,7 @@ package ultimat3.endgamemod.gui;
 
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.blocks.tileentity.TileEntityMetallurgyChamber;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMetallurgyChamber;
 import ultimat3.endgamemod.init.ModRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;

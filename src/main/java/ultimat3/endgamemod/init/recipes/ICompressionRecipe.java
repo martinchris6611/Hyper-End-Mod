@@ -1,6 +1,6 @@
 package ultimat3.endgamemod.init.recipes;
 
-import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;

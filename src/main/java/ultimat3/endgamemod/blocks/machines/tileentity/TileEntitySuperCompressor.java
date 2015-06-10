@@ -1,9 +1,9 @@
-package ultimat3.endgamemod.blocks.tileentity;
+package ultimat3.endgamemod.blocks.machines.tileentity;
 
-import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
@@ -11,18 +11,16 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
+import ultimat3.endgamemod.helpers.LogHelper;
+import ultimat3.endgamemod.init.ModRecipes;
+import ultimat3.endgamemod.init.ModTileEntities;
 
-public class TileEntityProductionFurnace extends TileEntity implements ISidedInventory {
+public class TileEntitySuperCompressor extends TileEntity implements ISidedInventory {
 	
 	/**
 	 * The inventory of this furnace.
 	 */
-	private ItemStack[]			items					= new ItemStack[3];
-	
-	/**
-	 * The amount of time left for this furnace to keep burning (in ticks).
-	 */
-	public short				furnaceTimeLeft;
+	private ItemStack[]			items			= new ItemStack[10];
 	
 	/**
 	 * The amount of time this item has been cooking for.
@@ -32,24 +30,21 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	/**
 	 * The amount of ticks it takes for a single item to cook.
 	 */
-	public static final short	ITEM_TIME_DONE			= 10;					// 20 = 1 sec.
-																				
-	/**
-	 * How long a new block of coal will burn.
-	 */
-	public static final int		NEW_FUEL_TIME			= ITEM_TIME_DONE * 20;
-	
-	private int[]				bottomSlots				= { 1 };
-	private int[]				topSlots				= { 0 };
-	private int[]				sideSlots				= { 2 };
+	public static final short	ITEM_TIME_DONE	= 10;								// 20 = 1 sec.
+					
+	// Slot related stuff
+	private static final int	OUTPUT_SLOT	= 9;
+	private int[]				topSlots		= { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
+	private int[]				notTopSlots		= { 9 };
 	
 	// ================ Tag names start ===============
 	
-	public static final String	TAG_ITEMS				= "items";
-	public static final String	TAG_SLOT				= "slot";
-	public static final String	TAG_FURNACE_TIME_LEFT	= "furnaceTime";
-	public static final String	TAG_ITEM_TIME			= "itemTime";
-	
+	public static final String	TAG_ITEMS		= "items";
+	public static final String	TAG_SLOT		= "slot";
+	public static final String	TAG_ITEM_TIME	= "itemTime";
+	public static final String	TAG_BATTERY_RF	= "batteryRF";
+	public static final String	TAG_TANK_LAVA	= "tankLava";
+
 	// ================= Tag names end ================
 	
 	@Override
@@ -69,7 +64,6 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		}
 		
 		// reads other things
-		this.furnaceTimeLeft = mainTag.getShort(TAG_FURNACE_TIME_LEFT);
 		this.cookTime = mainTag.getShort(TAG_ITEM_TIME);
 	}
 	
@@ -78,7 +72,6 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		super.writeToNBT(mainTag);
 		
 		// Writes other things
-		mainTag.setShort(TAG_FURNACE_TIME_LEFT, furnaceTimeLeft);
 		mainTag.setShort(TAG_ITEM_TIME, cookTime);
 		
 		// Writes items
@@ -95,41 +88,43 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		mainTag.setTag(TAG_ITEMS, list);
 	}
 	
-	private boolean canSmelt() {
+	private boolean canCompress() {
 		if (this.items[0] == null)
 			return false;
 		
-		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[0]);
+		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
 		
 		// If the result is nothing, we can't smelt
-		if (itemstack == null)
+		if (itemstack == null) {
+			LogHelper.debug("No matching recipe for compressor.");
 			return false;
-		
+		}
 		// If the current output is empty, we can smelt for sure
-		if (this.items[2] == null)
+		if (this.items[OUTPUT_SLOT] == null)
 			return true;
 		
 		// If the result and output aren't the same, we can't smelt either
-		if (!this.items[2].isItemEqual(itemstack))
+		if (!this.items[OUTPUT_SLOT].isItemEqual(itemstack))
 			return false;
 		
 		// Otherwise, it depends on the stack limit
-		int result = items[2].stackSize + itemstack.stackSize;
-		return result <= getInventoryStackLimit() && result <= this.items[2].getMaxStackSize();
+		int result = items[9].stackSize + itemstack.stackSize;
+		return result <= getInventoryStackLimit() && result <= this.items[OUTPUT_SLOT].getMaxStackSize();
 	}
 	
-	private void smeltItem() {
-		if (!canSmelt())
+	private void compressItem() {
+		if (!canCompress())
 			return;
 		
-		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[0]);
+		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
 		
 		// If the output currently has no item, might as well copy the new result in there
-		if (this.items[2] == null) {
-			this.items[2] = itemstack.copy();
+		if (this.items[OUTPUT_SLOT] == null) {
+			this.items[OUTPUT_SLOT] = itemstack.copy();
+			
 			// else we better check whether the items are equal before stacking...
-		} else if (this.items[2].isItemEqual(itemstack)) {
-			this.items[2].stackSize += itemstack.stackSize;
+		} else if (this.items[OUTPUT_SLOT].isItemEqual(itemstack)) {
+			this.items[OUTPUT_SLOT].stackSize += itemstack.stackSize;
 		}
 		
 		--this.items[0].stackSize;
@@ -141,47 +136,25 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	
 	@Override
 	public void updateEntity() {
-		// Make sure the furnace decreases the time left continuously. This thing has to stop sometime.
-		if (this.furnaceTimeLeft > 0)
-			--this.furnaceTimeLeft;
-		
+		// TODO Make sure RF is checked
 		boolean shouldSave = false;
 		
 		// Server takes care of this
 		if (!this.worldObj.isRemote) {
 			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing
-			if (this.furnaceTimeLeft != 0 || this.items[1] != null && this.items[0] != null) {
+			
+			// TODO ADD ENERGY CHECK
+			if (this.canCompress()) {
+				++this.cookTime;
 				
-				// If the furnace is done burning and can smelt
-				if (this.furnaceTimeLeft == 0 && this.canSmelt()) {
-					this.furnaceTimeLeft = NEW_FUEL_TIME;
-					
-					if (this.furnaceTimeLeft > 0) {
-						shouldSave = true;
-						
-						if (this.items[1] != null) {
-							--this.items[1].stackSize;
-							
-							if (this.items[1].stackSize <= 0) {
-								this.items[1] = null;
-							}
-						}
-					}
-				}
-				
-				// If this item can be smelted and the furnace is burning
-				if (this.furnaceTimeLeft > 0 && this.canSmelt()) {
-					++this.cookTime;
-					
-					// if the item is done
-					if (this.cookTime >= ITEM_TIME_DONE) {
-						this.cookTime = 0;
-						this.smeltItem();
-						shouldSave = true;
-					}
-				} else {
+				// if the item is done
+				if (this.cookTime >= ITEM_TIME_DONE) {
 					this.cookTime = 0;
+					this.compressItem();
+					shouldSave = true;
 				}
+			} else {
+				this.cookTime = 0;
 			}
 		}
 		
@@ -189,12 +162,10 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 			this.markDirty();
 	}
 	
-	public boolean isBurning() {
-		return this.furnaceTimeLeft > 0;
-	}
-	
-	public int getFurnaceTimeRemaining(int i) {
-		return furnaceTimeLeft / NEW_FUEL_TIME * i;
+	// TODO make sure this checks energy
+	public boolean hasEnergy() {
+		// return this.furnaceTimeLeft > 0;
+		return true;
 	}
 	
 	public int getCookProgress(int i) {
@@ -207,7 +178,7 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	
 	@Override
 	public int getSizeInventory() {
-		return 3;
+		return 10;
 	}
 	
 	@Override
@@ -263,7 +234,7 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	
 	@Override
 	public String getInventoryName() {
-		return "container." + ModTileEntities.PRODUCTION_FURNACE_ID;
+		return "container." + ModTileEntities.SUPER_COMPRESSOR_ID;
 	}
 	
 	@Override
@@ -294,15 +265,11 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		// Can't input on the output
-		if (slot == 2)
+		if (slot == 1)
 			return false;
 		
-		// Can only input valid fuel (coal blocks) on the fuel input
-		if (slot == 1)
-			return stack.getItem() == Item.getItemFromBlock(Blocks.coal_block);
-		
 		// Can only input items with a smelting result on the item input
-		return FurnaceRecipes.smelting().getSmeltingResult(stack) != null;
+		return false;
 	}
 	
 	// =========================================================
@@ -312,13 +279,10 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		// Makes sense, right? side 0 is bottom, side 1 is top.
-		if (side == 0)
-			return bottomSlots;
-		
 		if (side == 1)
 			return topSlots;
 		
-		return sideSlots;
+		return notTopSlots;
 	}
 	
 	@Override
@@ -329,7 +293,7 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 	@Override
 	public boolean canExtractItem(int slot, ItemStack stack, int side) {
 		// Can't extract fuel or input items.
-		if (side == 0 || side == 1)
+		if (side == 1)
 			return false;
 		
 		// Can't extract from the item input. Sorry man.
@@ -338,5 +302,17 @@ public class TileEntityProductionFurnace extends TileEntity implements ISidedInv
 		
 		// Can extract everything else though.
 		return true;
+	}
+	
+	// =========================================================
+	// ===================== Recipes start =====================
+	// =========================================================
+	
+	public int getSizeGrid() {
+		return 9;
+	}
+	
+	public ItemStack getStackInRowAndColumn(int x, int y) {
+		return this.items[x + y * 3];
 	}
 }

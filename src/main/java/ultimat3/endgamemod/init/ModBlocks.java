@@ -2,12 +2,8 @@ package ultimat3.endgamemod.init;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import ultimat3.endgamemod.blocks.BlockMetallicGlass;
-import ultimat3.endgamemod.blocks.BlockMetallicGlassPane;
-import ultimat3.endgamemod.blocks.BlockOre;
-import ultimat3.endgamemod.blocks.MachineBlock;
-import ultimat3.endgamemod.blocks.MetaBlock;
-import ultimat3.endgamemod.blocks.Ultimat3Block;
+import ultimat3.endgamemod.blocks.*;
+import ultimat3.endgamemod.blocks.machines.*;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.Ultimat3ItemBlock;
 
@@ -18,8 +14,6 @@ public class ModBlocks {
 	
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
-	
-	public static final String[]	machineNames		= { "productionFurnace", "highProductionFurnace", "superCompressor", "metallurgyChamber" };
 	
 	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel", "LCIP", "RCIP", "HCIP" };
 	
@@ -36,7 +30,10 @@ public class ModBlocks {
 	/**
 	 * Machine blocks
 	 */
-	public static Block				blockMachines		= new MachineBlock(machineNames, Material.iron).setHardness(3.0F);
+	public static Block				blockHighProductionFurnace	=	new BlockHighProductionFurnace("highProductionFurnace");
+	public static Block				blockMetallurgyChamber		=	new BlockMetallurgyChamber("metallurgyChamber");
+	public static Block				blockProductionFurnace		=	new BlockProductionFurnace("productionFurnace");
+	public static Block				blockSuperCompressor		=	new BlockSuperCompressor("superCompressor");
 	/**
 	 * Meta blocks
 	 */
@@ -85,7 +82,11 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockMisc, Ultimat3ItemBlock.class);
 		
 		// Machines 
-		RegisterHelper.registerBlock(blockMachines, Ultimat3ItemBlock.class);
+
+		RegisterHelper.registerBlock(blockHighProductionFurnace);
+		RegisterHelper.registerBlock(blockMetallurgyChamber);
+		RegisterHelper.registerBlock(blockProductionFurnace);
+		RegisterHelper.registerBlock(blockSuperCompressor);
 		RegisterHelper.registerBlock(blockMetallicGlass);
 		RegisterHelper.registerBlock(blockMetallicGlassPane);
 	}

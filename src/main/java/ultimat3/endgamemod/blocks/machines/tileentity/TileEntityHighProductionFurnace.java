@@ -1,4 +1,4 @@
-package ultimat3.endgamemod.blocks.tileentity;
+package ultimat3.endgamemod.blocks.machines.tileentity;
 
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;

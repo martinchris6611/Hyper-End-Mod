@@ -1,9 +1,9 @@
 package ultimat3.endgamemod.init;
 
-import ultimat3.endgamemod.blocks.tileentity.TileEntityHighProductionFurnace;
-import ultimat3.endgamemod.blocks.tileentity.TileEntityMetallurgyChamber;
-import ultimat3.endgamemod.blocks.tileentity.TileEntityProductionFurnace;
-import ultimat3.endgamemod.blocks.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityHighProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMetallurgyChamber;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ModTileEntities {
