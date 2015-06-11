@@ -45,9 +45,9 @@ public abstract class BlockMachine extends Ultimat3Block {
 	public IIcon getIcon(int side, int meta) {
 		if (side <= 1)
 			return icons[side];
-		if (side == meta)
-			return icons[3];
-		return icons[2];
+		if (side == meta || (side == 2 && meta == 0) )
+			return icons[2];
+		return icons[3];
 	}
 	
 	@Override
@@ -55,8 +55,8 @@ public abstract class BlockMachine extends Ultimat3Block {
 	public void registerBlockIcons(IIconRegister icon) {
 		icons[0] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Bottom");
 		icons[1] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Top");
-		icons[3] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "FrontOn");
-		icons[2] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Side");
+		icons[2] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "FrontOn");
+		icons[3] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Side");
 	}
 	
 	@Override
