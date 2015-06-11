@@ -7,9 +7,11 @@ import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 import ultimat3.endgamemod.network.GuiHandler;
+import ultimat3.endgamemod.proxies.CommonProxy;
 import cpw.mods.fml.common.Mod;
 import cpw.mods.fml.common.Mod.EventHandler;
 import cpw.mods.fml.common.Mod.Instance;
+import cpw.mods.fml.common.SidedProxy;
 import cpw.mods.fml.common.event.FMLInitializationEvent;
 import cpw.mods.fml.common.event.FMLPostInitializationEvent;
 import cpw.mods.fml.common.event.FMLPreInitializationEvent;
@@ -28,6 +30,12 @@ public class EndGame {
 	
 	@Instance(Reference.MOD_ID)
 	public static EndGame instance; // automatically populated by FML
+	
+	// it is time
+	
+	// we need to add the proxies
+	@SidedProxy(modId = Reference.MOD_ID, clientSide = Reference.CLIENT_PROXY, serverSide = Reference.COMMON_PROXY)
+	public static CommonProxy proxy;
 	
 	/** The creative tab for the mod */
 	public static CreativeTabEndGame creaTab = new CreativeTabEndGame(Reference.MOD_ID);
@@ -72,6 +80,7 @@ public class EndGame {
 
 	@EventHandler
 	public void postInit(FMLPostInitializationEvent event) {
-		
+		// Add custom item renderers
+		proxy.registerItemRenderers();
 	}
 }
