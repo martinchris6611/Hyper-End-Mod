@@ -1,5 +1,7 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyHandler;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.inventory.ISidedInventory;
@@ -11,11 +13,17 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.common.util.ForgeDirection;
 import ultimat3.endgamemod.helpers.LogHelper;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 
-public class TileEntitySuperCompressor extends TileEntityMachine implements ISidedInventory {
+public class TileEntitySuperCompressor extends TileEntityMachine implements ISidedInventory, IEnergyHandler {
+	
+	/**
+	 * The amount of time left for this metallurgy to keep burning (in ticks).
+	 */
+	public short				compressorTimeLeft;
 	
 	/**
 	 * The amount of time this item has been cooking for.
@@ -26,6 +34,13 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	 * The amount of ticks it takes for a single item to cook.
 	 */
 	public static final short	ITEM_TIME_DONE	= 10;								// 20 = 1 sec.
+	
+	/**
+	 * Amount of Energy this item can internally store
+	 */
+	
+	
+	protected EnergyStorage storage = new EnergyStorage(32000);
 					
 	// Slot related stuff
 	private static final int	OUTPUT_SLOT	= 9;
@@ -34,11 +49,11 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	
 	// ================ Tag names start ===============
 	
-	public static final String	TAG_ITEMS		= "items";
-	public static final String	TAG_SLOT		= "slot";
-	public static final String	TAG_ITEM_TIME	= "itemTime";
-	public static final String	TAG_BATTERY_RF	= "batteryRF";
-	public static final String	TAG_TANK_LAVA	= "tankLava";
+	public static final String	TAG_ITEMS					= "items";
+	public static final String	TAG_SLOT					= "slot";
+	public static final String	TAG_ITEM_TIME				= "itemTime";
+	public static final String	TAG_BATTERY_RF				= "batteryRF";
+	public static final String	TAG_COMPRESSOR_TIME_LEFT	= "compressorTime";
 
 	// ================= Tag names end ================
 	
@@ -50,6 +65,7 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {
 		super.readFromNBT(mainTag);
+		storage.readFromNBT(mainTag);
 		NBTTagList list = mainTag.getTagList(TAG_ITEMS, NBT.TAG_COMPOUND);
 		this.items = new ItemStack[this.getSizeInventory()];
 		
@@ -64,14 +80,17 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 		}
 		
 		// reads other things
+		this.compressorTimeLeft = mainTag.getShort(TAG_COMPRESSOR_TIME_LEFT);
 		this.cookTime = mainTag.getShort(TAG_ITEM_TIME);
 	}
 	
 	@Override
 	public void writeToNBT(NBTTagCompound mainTag) {
 		super.writeToNBT(mainTag);
+		storage.writeToNBT(mainTag);
 		
 		// Writes other things
+		mainTag.setShort(TAG_COMPRESSOR_TIME_LEFT, compressorTimeLeft);
 		mainTag.setShort(TAG_ITEM_TIME, cookTime);
 		
 		// Writes items
@@ -90,6 +109,10 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	
 	private boolean canCompress() {
 		if (this.items[0] == null)
+			return false;
+		
+		//If there is no energy storage, we can't do anything
+		if (storage.getEnergyStored() == 0)
 			return false;
 		
 		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
@@ -137,24 +160,30 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	@Override
 	public void updateEntity() {
 		// TODO Make sure RF is checked
+		if(this.compressorTimeLeft > 0)
+			--this.compressorTimeLeft;
+		
 		boolean shouldSave = false;
 		
 		// Server takes care of this
 		if (!this.worldObj.isRemote) {
 			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing
-			
-			// TODO ADD ENERGY CHECK
-			if (this.canCompress()) {
-				++this.cookTime;
+			if(this.compressorTimeLeft != 0) {
+				// TODO ADD ENERGY CHECK
 				
-				// if the item is done
-				if (this.cookTime >= ITEM_TIME_DONE) {
+				if (this.canCompress() && this.compressorTimeLeft > 0) {
+					++this.cookTime;
+					storage.extractEnergy(100, true);
+					
+					// if the item is done
+					if (this.cookTime >= ITEM_TIME_DONE) {
+						this.cookTime = 0;
+						this.compressItem();
+						shouldSave = true;
+					}
+				} else {
 					this.cookTime = 0;
-					this.compressItem();
-					shouldSave = true;
 				}
-			} else {
-				this.cookTime = 0;
 			}
 		}
 		
@@ -166,6 +195,11 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	public boolean hasEnergy() {
 		// return this.furnaceTimeLeft > 0;
 		return true;
+	}
+	
+	public int getCompressorTimeRemaining(int i) {
+		//return compressorTimeLeft / 
+		return 0;
 	}
 	
 	public int getCookProgress(int i) {
@@ -314,5 +348,34 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	
 	public ItemStack getStackInRowAndColumn(int x, int y) {
 		return this.items[x + y * 3];
+	}
+
+	
+	// =========================================================
+	// ===================== Energy Handlers ===================
+	// =========================================================
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from) {
+		return true;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+		return storage.receiveEnergy(maxReceive, simulate);
+	}
+
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+		return storage.extractEnergy(maxExtract, simulate);
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) {
+		return storage.getEnergyStored();
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from) {
+		return storage.getMaxEnergyStored();
 	}
 }

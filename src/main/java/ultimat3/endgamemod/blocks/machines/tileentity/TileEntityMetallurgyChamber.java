@@ -1,5 +1,7 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyHandler;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
@@ -12,8 +14,9 @@ import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory {
+public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory, IEnergyHandler {
 	
 	/**
 	 * The amount of time left for this metallurgy to keep burning (in ticks).
@@ -34,6 +37,13 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	 * How long a new block of coal will burn.
 	 */
 	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE * 20;
+
+	/**
+	 * Amount of Energy this item can internally store
+	 */
+	
+	
+	protected EnergyStorage storage = new EnergyStorage(32000);
 	
 	private int[]				bottomSlots					= { 1 };
 	private int[]				topSlots					= { 0 };
@@ -55,6 +65,8 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {
 		super.readFromNBT(mainTag);
+		storage.readFromNBT(mainTag);
+
 		NBTTagList list = mainTag.getTagList(TAG_ITEMS, NBT.TAG_COMPOUND);
 		this.items = new ItemStack[this.getSizeInventory()];
 		
@@ -76,7 +88,8 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	@Override
 	public void writeToNBT(NBTTagCompound mainTag) {
 		super.writeToNBT(mainTag);
-		
+		storage.writeToNBT(mainTag);
+
 		// Writes other things
 		mainTag.setShort(TAG_METALLURGY_TIME_LEFT, metallurgyTimeLeft);
 		mainTag.setShort(TAG_ITEM_TIME, cookTime);
@@ -97,6 +110,10 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	
 	private boolean canMetallurgy() {
 		if (this.items[0] == null)
+			return false;
+		
+		//If there is no energy storage, we can't do anything
+		if (storage.getEnergyStored() == 0)
 			return false;
 		
 		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
@@ -171,6 +188,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 				// If this item can be smelted and the metallurgy is burning
 				if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
 					++this.cookTime;
+					storage.extractEnergy(100, true);
 					
 					// if the item is done
 					if (this.cookTime >= ITEM_TIME_DONE) {
@@ -343,6 +361,35 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		
 		// Can extract everything else though.
 		return true;
+	}
+
+	// =========================================================
+	// ===================== Energy Handlers ===================
+	// =========================================================
+	
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from) {
+		return true;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+		return storage.receiveEnergy(maxReceive, simulate);
+	}
+
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+		return storage.extractEnergy(maxExtract, simulate);
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) {
+		return storage.getEnergyStored();
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from) {
+		return storage.getMaxEnergyStored();
 	}
 	
 }
