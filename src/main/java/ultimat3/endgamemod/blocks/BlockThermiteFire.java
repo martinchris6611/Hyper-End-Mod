@@ -12,6 +12,7 @@ import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.init.Blocks;
 import net.minecraft.item.Item;
+import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.world.World;
 
 public class BlockThermiteFire extends Ultimat3Block {
@@ -19,7 +20,14 @@ public class BlockThermiteFire extends Ultimat3Block {
 	public BlockThermiteFire() {
 		super("thermiteFire", Material.rock);
 		this.setTickRandomly(true);
+		setLightLevel(1);
+		setLightOpacity(0);
 	}
+	
+	@Override
+    public AxisAlignedBB getCollisionBoundingBoxFromPool(World w, int x, int y, int z) {
+        return null;
+    }
 	
 	@Override
     public void updateTick(World world, int x, int y, int z, Random r) {

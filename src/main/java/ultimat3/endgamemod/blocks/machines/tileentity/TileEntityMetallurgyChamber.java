@@ -322,7 +322,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		
 		// only allow Thermite to be a fuel
 		if (slot == 1)
-			return stack.isItemEqual(new ItemStack(ModItems.itemMisc, 1, ModItems.thermite));
+			return stack.isItemEqual(new ItemStack(ModItems.itemThermite));
 		
 		// Can only input items with a metallurgy result on the item input
 		return ModRecipes.metallurgy().getResult(stack) != null;

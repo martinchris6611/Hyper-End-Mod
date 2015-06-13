@@ -33,7 +33,7 @@ public class ContainerMetallurgyChamber extends Container {
 		
 		// Furnace slots
 		addSlotToContainer(new Slot(machine, 0, 56, 17));
-		addSlotToContainer(new SlotMachineFuel(machine, 1, new ItemStack(ModItems.itemMisc, 1, ModItems.thermite), 56, 53));
+		addSlotToContainer(new SlotMachineFuel(machine, 1, new ItemStack(ModItems.itemThermite), 56, 53));
 		addSlotToContainer(new SlotFurnace(player, this.machine, 2, 116, 35));
 		
 		// player slots

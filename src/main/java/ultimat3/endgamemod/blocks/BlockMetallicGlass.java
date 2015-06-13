@@ -11,7 +11,6 @@ public class BlockMetallicGlass extends Ultimat3Block {
 	public BlockMetallicGlass() {
 		super("blockMetallicGlass", Material.glass);
 		setHarvestLevel("pickaxe", 2);
-		setCreativeTab(EndGame.creaTab);
 	}
 	@Override
     @SideOnly(Side.CLIENT)

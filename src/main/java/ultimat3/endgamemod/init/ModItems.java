@@ -43,7 +43,7 @@ public class ModItems {  // TODO test the new recipes and lang
 	public static Item				itemMisc		 = new MetaItem(miscNames);
 	public static Item				itemVanillaMetals= new MetaItem(vanillaMetalNames);
 	
-	public static Item				itemCarbonCutter= new ItemCarbonCutter();
+	public static Item				itemCarbonCutter = new ItemCarbonCutter();
 	public static Item				itemThermite	 = new ItemThermite();
 	
 	// noformat
@@ -63,7 +63,7 @@ public class ModItems {  // TODO test the new recipes and lang
 		goldDust		= 2,
 		// Miscellaneous items used for crafting
 		diamondCoating	= 0,
-		thermite		= 1,
+		placeholder		= 1,
 		highEntropyAlloy= 2,
 		ironCobaltMagnet= 3,
 		carbonSheet		= 4,

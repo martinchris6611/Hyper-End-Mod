@@ -31,7 +31,7 @@ public class ItemThermite extends Ultimat3Item {
         if (!player.canPlayerEdit(x, y, z, side, stack)) {
             return false;
         }
-        else if (world.doesBlockHaveSolidTopSurface(world, x, y, z)) {
+        else if (ModBlocks.blockThermiteWire.canPlaceBlockAt(world, x, y, z)) {
                 --stack.stackSize;
                 world.setBlock(x, y, z, ModBlocks.blockThermiteWire);
             }
