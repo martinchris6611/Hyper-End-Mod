@@ -31,12 +31,12 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	/**
 	 * The amount of ticks it takes for a single item to cook.
 	 */
-	public static final short	ITEM_TIME_DONE				= 10;					// 20 = 1 sec.
+	public static final short	ITEM_TIME_DONE				= 200;					// 20 = 1 sec.
 																					
 	/**
-	 * How long a new block of coal will burn.
+	 * How long a thermite will burn.
 	 */
-	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE * 20;
+	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE;
 
 	/**
 	 * Amount of Energy this item can internally store
@@ -188,7 +188,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 				// If this item can be smelted and the metallurgy is burning
 				if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
 					++this.cookTime;
-					storage.extractEnergy(100, true);
+					storage.modifyEnergyStored(-50);
 					
 					// if the item is done
 					if (this.cookTime >= ITEM_TIME_DONE) {
