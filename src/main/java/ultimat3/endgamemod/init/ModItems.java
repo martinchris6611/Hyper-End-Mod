@@ -8,6 +8,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.ItemCarbonCutter;
 import ultimat3.endgamemod.items.ItemModSword;
+import ultimat3.endgamemod.items.ItemThermite;
 import ultimat3.endgamemod.items.MetaItem;
 import ultimat3.endgamemod.items.Ultimat3Item;
 
@@ -26,7 +27,7 @@ public class ModItems {  // TODO test the new recipes and lang
 			"dustMagnesium", "dustScandium", "dustTitanium", "dustSteel" };
 	
 	// names for miscellaneous items used only for crafting
-	public static final String[]	miscNames		= { "diamondCoating", "thermite", "highEntropyMetalAlloy", 
+	public static final String[]	miscNames		= { "diamondCoating", "placeholder", "highEntropyMetalAlloy", 
 		"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",  
 		"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating" };
 	
@@ -43,6 +44,7 @@ public class ModItems {  // TODO test the new recipes and lang
 	public static Item				itemVanillaMetals= new MetaItem(vanillaMetalNames);
 	
 	public static Item				itemCarbonCutter= new ItemCarbonCutter();
+	public static Item				itemThermite	 = new ItemThermite();
 	
 	// noformat
 	// Stores the metadata of different MetaItems
