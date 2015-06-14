@@ -44,15 +44,15 @@ public class OctahedronIterator extends SphereIterator {
 
 	@Override
 	protected boolean inRadius() {
-		double dx = ((double) curX - cenX) * (ignoreX ? 0 : 1.0);
-		double dy = ((double) curY - cenY) * (ignoreY ? 0 : 1.0);
-		double dz = ((double) curZ - cenZ) * (ignoreZ ? 0 : 1.0);
+		double dx = Math.abs (((double) curX - cenX) * (ignoreX ? 0 : 1.0));
+		double dy = Math.abs (((double) curY - cenY) * (ignoreY ? 0 : 1.0));
+		double dz = Math.abs (((double) curZ - cenZ) * (ignoreZ ? 0 : 1.0));
 		double dist = dx + dy + dz;
 		if (dist <= radius) {
 			if (!hollow)
 				return true;
 			dist++;
-			return dist < radius;
+			return dist > radius;
 		}
 		return false;
 	}

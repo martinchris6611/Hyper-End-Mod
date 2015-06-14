@@ -27,7 +27,7 @@ import net.minecraft.world.World;
 
 public abstract class BlockMachine extends Ultimat3Block {
 	
-	private IIcon[]			icons	= new IIcon[4];
+	protected IIcon[]			icons	= new IIcon[4];
 	protected BlockMachine	blockType;
 	protected int			guiID;
 	

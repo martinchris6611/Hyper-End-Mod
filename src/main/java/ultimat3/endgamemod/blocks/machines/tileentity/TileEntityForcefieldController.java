@@ -3,6 +3,7 @@ package ultimat3.endgamemod.blocks.machines.tileentity;
 import ultimat3.endgamemod.helpers.CuboidIterator;
 import ultimat3.endgamemod.helpers.OctahedronIterator;
 import ultimat3.endgamemod.helpers.SphereIterator;
+import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
@@ -15,8 +16,8 @@ import net.minecraft.nbt.NBTTagCompound;
 public class TileEntityForcefieldController extends TileEntityMachine implements
 		IInventory {
 
-	private short radius;
-	private short shape;
+	public short radius;
+	public short shape;
 
 	private static final String TAG_RADIUS = "radius";
 	private static final String TAG_SHAPE = "shape";
@@ -60,26 +61,27 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 		}
 	}
 
-	private void eraseField() {
+	public void eraseField(short oldShape, short oldRadius) {
+		short temp_radius = radius;
+		short temp_shape = shape;
+		radius = oldRadius;
+		shape = oldShape;
 		for (SphereIterator it = getIter(); !it.end(); it.next()) {
-			if (this.worldObj.getBlock(it.getX(), it.getY(), it.getZ()) == Blocks.glass)
+			if (this.worldObj.getBlock(it.getX(), it.getY(), it.getZ()) == ModBlocks.blockForce)
 				this.worldObj.setBlockToAir(it.getX(), it.getY(), it.getZ());
 		}
+		radius = temp_radius;
+		shape = temp_shape;
 	}
+	
 
 	private void drawField() {
 
 		for (SphereIterator it = getIter(); !it.end(); it.next()) {
 			if (this.worldObj.getBlock(it.getX(), it.getY(), it.getZ()) == Blocks.air)
 				this.worldObj.setBlock(it.getX(), it.getY(), it.getZ(),
-						Blocks.glass);
+						ModBlocks.blockForce);
 		}
-
-		
-		 /*for (int i = this.xCoord, I = 0; I < 10; I++, i++) { for (int j =
-		 this.yCoord, J = 0; J < 10; J++, j++) { for (int k = this.zCoord, K =
-		 0; K < 10; K++, k++) { if (this.worldObj.getBlock(i, j, k) ==
-		 Blocks.air) this.worldObj.setBlock(i, j, k, Blocks.glass); } } }*/
 		 
 	}
 
@@ -87,22 +89,21 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 		short oldRadius = radius;
 		short oldShape = shape;
 		shape = radius = 0;
-		// if(!this.worldObj.isRemote) {
 		for (int i = 0; i < items.length; i++) {
 			if (this.items[i] == null)
 				continue;
-			if (this.items[i].getItem() == Items.stick)
-				radius++;
+			if(this.items[i].getItem() != ModItems.itemFFModifiers) continue;
+			if(this.items[i].getItemDamage() == 0) radius += items[i].stackSize;
 			else
 				shape = (short) this.items[i].getItemDamage();
 		}
-		// this line shouldn't be here
-		shape = 1;	radius = 10;
 		
 		if (shape > 0 && radius > 3) {
 			if (shape != oldShape || radius != oldRadius)
-				eraseField();
+				eraseField(oldShape, oldRadius);
 			drawField();
+		} else {
+			eraseField(oldShape, oldRadius);
 		}
 	}
 

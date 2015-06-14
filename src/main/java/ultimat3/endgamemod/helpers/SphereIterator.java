@@ -85,9 +85,9 @@ public class SphereIterator {
 	}
 
 	protected boolean inRadius() {
-		double dx = (double) curX - cenX;
-		double dy = (double) curY - cenY;
-		double dz = (double) curZ - cenZ;
+		double dx = Math.abs((double) curX - cenX);
+		double dy = Math.abs((double) curY - cenY);
+		double dz = Math.abs((double) curZ - cenZ);
 		double dist = dx * dx + dy * dy + dz * dz;
 		if (dist <= radius * radius) {
 			if (!hollow)
