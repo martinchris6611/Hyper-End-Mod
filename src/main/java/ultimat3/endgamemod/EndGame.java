@@ -53,7 +53,7 @@ public class EndGame {
 	public static SimpleNetworkWrapper network;
 	
 	//MULTIBLOCK TEST REMOVE LATER
-	public static Block hollow, stoneMulti;
+	public static Block hollow, particleController;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
@@ -61,7 +61,7 @@ public class EndGame {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
 		hollow = new ultimat3.endgamemod.Multiblock.BlockHollow().setBlockName("hollowMultiBlock");
-		stoneMulti = new ultimat3.endgamemod.Multiblock.BlockStone().setBlockName("stoneMultiBlock");
+		particleController = new ultimat3.endgamemod.Multiblock.BlockStone().setBlockName("particleController");
 		// registers content with Forge
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
@@ -71,7 +71,7 @@ public class EndGame {
 		
 		//MULTIBLOCK TEST REMOVE LATER
 		GameRegistry.registerBlock(hollow, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "HollowMultiBlock");
-		GameRegistry.registerBlock(stoneMulti, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "StoneMultiBlock");
+		GameRegistry.registerBlock(particleController, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "stoneMulti");
 	}
 
 	/**
