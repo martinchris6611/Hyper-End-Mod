@@ -44,6 +44,7 @@ public class ModBlocks {
 	public static Block			blockMetallicGlassPane 	= new BlockMetallicGlassPane();
 	public static Block				blockThermiteWire	= new BlockThermiteWire();
 	public static Block				blockThermiteFire	= new BlockThermiteFire();
+	public static Block				blockForce			= new BlockForce();
 	/**
 	 * Metadata
 	 */
@@ -94,5 +95,6 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockMetallicGlassPane);
 		RegisterHelper.registerBlock(blockThermiteWire);
 		RegisterHelper.registerBlock(blockThermiteFire);
+		RegisterHelper.registerBlock(blockForce);
 	}
 }
