@@ -16,7 +16,7 @@ import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.helpers.Neighbor;
+import ultimat3.endgamemod.helpers.CuboidIterator;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import cpw.mods.fml.relauncher.Side;
@@ -103,37 +103,37 @@ public class BlockThermiteWire extends Ultimat3Block {
 		world.setBlockToAir(x, y, z);
 		Block block;
 		// Loops 3x3 under the block
-		for (Neighbor n = new Neighbor(x, y, z, -1, -1, -1, 1, -1, 1); !n.end(); n.next()) {	// the y coordinate can only be -1(down)
+		for (CuboidIterator it = new CuboidIterator(x-1, y-1, z-1, x+1, y-1, z+1); !it.end(); it.next()) {	// the y coordinate can only be -1(down)
 			
-			block = world.getBlock(n.x, n.y, n.z);
+			block = world.getBlock(it.getX(), it.getY(), it.getZ());
 			
 			// If block is meltable
-			if (block.getBlockHardness(world, n.x, n.y, n.z) >= 0
-					&& block.getBlockHardness(world, n.x, n.y, n.z) < 50 && block != this) {
+			if (block.getBlockHardness(world, it.getX(), it.getY(), it.getZ()) >= 0
+					&& block.getBlockHardness(world, it.getX(), it.getY(), it.getZ()) < 50 && block != this) {
 				
 				// Get meta
-				int meta = world.getBlockMetadata(n.x, n.y, n.z);
+				int meta = world.getBlockMetadata(it.getX(), it.getY(), it.getZ());
 				// Make sure everything can be broken properly
-				block.breakBlock(world, n.x, n.y, n.z, block, meta);
+				block.breakBlock(world, it.getX(), it.getY(), it.getZ(), block, meta);
 				// Drop the item
-				block.dropBlockAsItem(world, n.x, n.y, n.z, meta, 0);
+				block.dropBlockAsItem(world, it.getX(), it.getY(), it.getZ(), meta, 0);
 				
-				if(world.getBlock(n.x, n.y, n.z)!=ModBlocks.blockThermiteFire) {
+				if(world.getBlock(it.getX(), it.getY(), it.getZ())!=ModBlocks.blockThermiteFire) {
 					// Set block to thermite fire
-					world.setBlock(n.x, n.y, n.z, ModBlocks.blockThermiteFire);
+					world.setBlock(it.getX(), it.getY(), it.getZ(), ModBlocks.blockThermiteFire);
 					// Set time for it to melt down
-					world.scheduleBlockUpdate(n.x, n.y, n.z, ModBlocks.blockThermiteFire, 10);
+					world.scheduleBlockUpdate(it.getX(), it.getY(), it.getZ(), ModBlocks.blockThermiteFire, 10);
 				} else {
 					// But if it already exist, just increase it's range
-					if(!world.isRemote) world.setBlockMetadataWithNotify(n.x, n.y, n.z, world.getBlockMetadata(n.x, n.y, n.z)+1, 2);					
+					if(!world.isRemote) world.setBlockMetadataWithNotify(it.getX(), it.getY(), it.getZ(), world.getBlockMetadata(it.getX(), it.getY(), it.getZ())+1, 2);					
 				}
 			}
 		}
 		
 		// Make sure 3x3x3 neighbors get lit if they are thermite
-		for (Neighbor n = new Neighbor(x, y, z); !n.end(); n.next()) {
-			if (world.getBlock(n.x, n.y, n.z) == ModBlocks.blockThermiteWire)
-				fire(world, n.x, n.y, n.z);
+		for (CuboidIterator it = new CuboidIterator(x-1, y-1, z-1, x+1, y+1, z+1); !it.end(); it.next()) {
+			if (world.getBlock(it.getX(), it.getY(), it.getZ()) == ModBlocks.blockThermiteWire)
+				fire(world, it.getX(), it.getY(), it.getZ());
 		}
 	}
 }
