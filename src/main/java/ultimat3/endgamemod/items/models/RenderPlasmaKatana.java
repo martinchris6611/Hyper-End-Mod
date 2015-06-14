@@ -3,6 +3,7 @@ package ultimat3.endgamemod.items.models;
 import net.minecraft.client.Minecraft;
 import net.minecraft.entity.Entity;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.MathHelper;
 import net.minecraft.util.ResourceLocation;
 import net.minecraftforge.client.IItemRenderer;
 
@@ -12,14 +13,19 @@ import ultimat3.endgamemod.Reference;
 
 public class RenderPlasmaKatana implements IItemRenderer {
 	
-	ModelPlasmaKatana	model;
+	private ModelPlasmaKatana	model;
+	private float				brightness;
 	
 	public RenderPlasmaKatana() {
 		this.model = new ModelPlasmaKatana();
+		brightness = 0.0F;
 	}
 	
 	@Override
 	public boolean handleRenderType(ItemStack item, ItemRenderType type) {
+		if (type == ItemRenderType.INVENTORY) {
+			return false;
+		}
 		return true;
 	}
 	
@@ -45,7 +51,7 @@ public class RenderPlasmaKatana implements IItemRenderer {
 				GL11.glRotatef(0, 0, 1, 0);
 				GL11.glPushMatrix();
 				// place it correctly
-//				GL11.glTranslatef(0.7F, 0.3F, -0.1F);
+				// GL11.glTranslatef(0.7F, 0.3F, -0.1F);
 				
 				// Rotates
 				GL11.glRotatef(90.0F, 1, 0, 0); // X
@@ -56,13 +62,18 @@ public class RenderPlasmaKatana implements IItemRenderer {
 			case EQUIPPED:
 				GL11.glTranslatef(0.725F, 0.25F, 0.0F); // translate model to fit in the hand of the player
 				
-				GL11.glRotatef(125F, 1.0f, 0.0f, 1.0f); // rotate 0 ° on X axis
-				GL11.glRotatef(220F, 0.0f, 0.0f, 1.0f); // rotate -5 ° on Y axis
-//				GL11.glRotatef(-150F, 0.0f, 0.0f, 1.0f); // rotate -150 ° on Z axis
+				GL11.glRotatef(90.0F, 1.0f, 0.0f, 0.0f); // rotate 0 ° on X axis
+				GL11.glRotatef(35.0F, 0.0f, 1.0f, 0.0f); // rotate -5 ° on Y axis
+				GL11.glRotatef(-90F, 0.0f, 0.0f, 1.0f); // rotate -150 ° on Z axis
 				// the entity argument can/could be passed to as null.
 				model.render((Entity) data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 				break;
 			case EQUIPPED_FIRST_PERSON:
+				// I liek this lighting effect
+				brightness += 0.1F;
+				float currentBrightness = 0.8F + 0.1F * MathHelper.sin(brightness);
+				GL11.glColor4f(currentBrightness, currentBrightness, currentBrightness, 1.0F);
+				
 				// place it correctly
 				GL11.glTranslatef(0.7F, 0.3F, -0.1F);
 				
@@ -75,7 +86,7 @@ public class RenderPlasmaKatana implements IItemRenderer {
 				model.render((Entity) data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 				break;
 			case INVENTORY:
-				//Scale the thing
+				// Scale the thing
 				float scale = 1.2F;
 				GL11.glScalef(scale, scale, scale);
 				// place it correctly

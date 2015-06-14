@@ -8,6 +8,7 @@ import net.minecraftforge.common.util.EnumHelper;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.ItemCarbonCutter;
 import ultimat3.endgamemod.items.ItemModSword;
+import ultimat3.endgamemod.items.ItemParticlePistol;
 import ultimat3.endgamemod.items.MetaItem;
 import ultimat3.endgamemod.items.Ultimat3Item;
 
@@ -77,6 +78,8 @@ public class ModItems {  // TODO test the new recipes and lang
 		// format	
 	
 	public static Item swordKatana = new ItemModSword("swordKatana", plasmaShard);
+
+	public static Item	particlePistol = new ItemParticlePistol("particlePistol");
 	
 	public static void registerItems() {
 		// RegisterHelper.registerItem(itemScandiumIngot); // Automatically done by Ultimat3Item
