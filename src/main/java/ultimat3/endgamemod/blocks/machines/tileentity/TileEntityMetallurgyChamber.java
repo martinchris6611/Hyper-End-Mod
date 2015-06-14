@@ -31,12 +31,12 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	/**
 	 * The amount of ticks it takes for a single item to cook.
 	 */
-	public static final short	ITEM_TIME_DONE				= 10;					// 20 = 1 sec.
+	public static final short	ITEM_TIME_DONE				= 200;					// 20 = 1 sec.
 																					
 	/**
-	 * How long a new block of coal will burn.
+	 * How long a thermite will burn.
 	 */
-	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE * 20;
+	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE;
 
 	/**
 	 * Amount of Energy this item can internally store
@@ -51,35 +51,19 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	
 	// ================ Tag names start ===============
 	
-	public static final String	TAG_ITEMS					= "items";
-	public static final String	TAG_SLOT					= "slot";
 	public static final String	TAG_METALLURGY_TIME_LEFT	= "metallurgyTime";
 	public static final String	TAG_ITEM_TIME				= "itemTime";
 	
 	// ================= Tag names end ================
 	
 	public TileEntityMetallurgyChamber() {
-		items = new ItemStack[3];
+		super(new ItemStack[3], "container." + ModTileEntities.METALLURGY_CHAMBER_ID);
 	}
 	
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {
 		super.readFromNBT(mainTag);
 		storage.readFromNBT(mainTag);
-
-		NBTTagList list = mainTag.getTagList(TAG_ITEMS, NBT.TAG_COMPOUND);
-		this.items = new ItemStack[this.getSizeInventory()];
-		
-		// Reads items
-		for (int i = 0; i < list.tagCount(); ++i) {
-			NBTTagCompound itemTag = list.getCompoundTagAt(i);
-			byte b = itemTag.getByte(TAG_SLOT);
-			
-			if (b >= 0 && b < this.items.length) {
-				this.items[b] = ItemStack.loadItemStackFromNBT(itemTag);
-			}
-		}
-		
 		// reads other things
 		this.metallurgyTimeLeft = mainTag.getShort(TAG_METALLURGY_TIME_LEFT);
 		this.cookTime = mainTag.getShort(TAG_ITEM_TIME);
@@ -89,23 +73,9 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	public void writeToNBT(NBTTagCompound mainTag) {
 		super.writeToNBT(mainTag);
 		storage.writeToNBT(mainTag);
-
 		// Writes other things
 		mainTag.setShort(TAG_METALLURGY_TIME_LEFT, metallurgyTimeLeft);
 		mainTag.setShort(TAG_ITEM_TIME, cookTime);
-		
-		// Writes items
-		NBTTagList list = new NBTTagList();
-		for (byte index = 0; index < this.items.length; ++index) {
-			if (this.items[index] != null) {
-				NBTTagCompound itemTag = new NBTTagCompound();
-				itemTag.setByte(TAG_SLOT, index);
-				this.items[index].writeToNBT(itemTag);
-				list.appendTag(itemTag);
-			}
-		}
-		
-		mainTag.setTag(TAG_ITEMS, list);
 	}
 	
 	private boolean canMetallurgy() {
@@ -188,7 +158,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 				// If this item can be smelted and the metallurgy is burning
 				if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
 					++this.cookTime;
-					storage.extractEnergy(100, true);
+					storage.modifyEnergyStored(-50);
 					
 					// if the item is done
 					if (this.cookTime >= ITEM_TIME_DONE) {
@@ -229,92 +199,6 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	// ====================================================
 	
 	@Override
-	public int getSizeInventory() {
-		return 3;
-	}
-	
-	@Override
-	public ItemStack getStackInSlot(int slot) {
-		return this.items[slot];
-	}
-	
-	@Override
-	public ItemStack decrStackSize(int slot, int amount) {
-		// If there's no item, can't decrease stack size
-		if (this.items[slot] == null) {
-			return null;
-		}
-		
-		ItemStack stack;
-		
-		// If there's not enough of the item, give as much as possible
-		if (this.items[slot].stackSize <= amount) {
-			stack = this.items[slot];
-			this.items[slot] = null;
-			return stack;
-		}
-		
-		// Just give everything it wants now
-		stack = this.items[slot].splitStack(amount);
-		if (this.items[slot].stackSize <= 0) {
-			this.items[slot] = null;
-		}
-		
-		return stack;
-	}
-	
-	@Override
-	public ItemStack getStackInSlotOnClosing(int slot) {
-		// Return a null item if the item in the slot is null (duh...)
-		if (this.items[slot] == null)
-			return null;
-		
-		// Return the item in the slot and set the slot to null
-		ItemStack stack = this.items[slot];
-		this.items[slot] = null;
-		return stack;
-	}
-	
-	@Override
-	public void setInventorySlotContents(int slot, ItemStack stack) {
-		this.items[slot] = stack;
-		
-		if (stack != null && stack.stackSize >= this.getInventoryStackLimit()) {
-			stack.stackSize = this.getInventoryStackLimit();
-		}
-		
-	}
-	
-	@Override
-	public String getInventoryName() {
-		return "container." + ModTileEntities.METALLURGY_CHAMBER_ID;
-	}
-	
-	@Override
-	public boolean hasCustomInventoryName() {
-		return false;
-	}
-	
-	@Override
-	public int getInventoryStackLimit() {
-		return 64;
-	}
-	
-	@Override
-	public boolean isUseableByPlayer(EntityPlayer player) {
-		// Return false if the TileEntity at this place is not this TileEntity or if the player is too far away.
-		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false
-				: player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-						(double) this.zCoord + 0.5D) <= 64.0D;
-	}
-	
-	@Override
-	public void openInventory() {}
-	
-	@Override
-	public void closeInventory() {}
-	
-	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
 		// Can't input on the output
 		if (slot == 2)
@@ -322,7 +206,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		
 		// only allow Thermite to be a fuel
 		if (slot == 1)
-			return stack.isItemEqual(new ItemStack(ModItems.itemMisc, 1, ModItems.thermite));
+			return stack.isItemEqual(new ItemStack(ModItems.itemThermite));
 		
 		// Can only input items with a metallurgy result on the item input
 		return ModRecipes.metallurgy().getResult(stack) != null;

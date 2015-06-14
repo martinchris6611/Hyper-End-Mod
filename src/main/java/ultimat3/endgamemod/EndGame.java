@@ -1,5 +1,11 @@
 package ultimat3.endgamemod;
 
+import net.minecraft.block.Block;
+import ultimat3.endgamemod.Multiblock.BlockHollow;
+import ultimat3.endgamemod.Multiblock.BlockStone;
+import ultimat3.endgamemod.Multiblock.ItemSpecialBlock;
+import ultimat3.endgamemod.Multiblock.TileHollowMultiBlock;
+import ultimat3.endgamemod.Multiblock.TileStoneMultiblock;
 import ultimat3.endgamemod.blocks.OreSpawner;
 import ultimat3.endgamemod.helpers.OreDictionaryHelper;
 import ultimat3.endgamemod.init.ModBlocks;
@@ -46,17 +52,26 @@ public class EndGame {
 	/** The network handler, used for packets */
 	public static SimpleNetworkWrapper network;
 	
+	//MULTIBLOCK TEST REMOVE LATER
+	public static Block hollow, particleController;
+	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		// Registers the network channel
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
+		hollow = new ultimat3.endgamemod.Multiblock.BlockHollow().setBlockName("hollowMultiBlock");
+		particleController = new ultimat3.endgamemod.Multiblock.BlockStone().setBlockName("particleController");
 		// registers content with Forge
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
 		
 		// add the Ore Dictionary entries
 		OreDictionaryHelper.init();
+		
+		//MULTIBLOCK TEST REMOVE LATER
+		GameRegistry.registerBlock(hollow, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "HollowMultiBlock");
+		GameRegistry.registerBlock(particleController, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "stoneMulti");
 	}
 
 	/**
@@ -76,6 +91,10 @@ public class EndGame {
 		
 		// Register GuiHandler
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
+		
+		//MULTIBLOCK TEST REMOVE LATER
+        GameRegistry.registerTileEntity(ultimat3.endgamemod.Multiblock.TileHollowMultiBlock.class, "tutorial.multiblock.hallow");
+        GameRegistry.registerTileEntity(ultimat3.endgamemod.Multiblock.TileStoneMultiblock.class, "tutorial.multiblock.stone");
 	}
 
 	@EventHandler
