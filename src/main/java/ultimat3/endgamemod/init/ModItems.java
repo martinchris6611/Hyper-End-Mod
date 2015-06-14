@@ -31,6 +31,8 @@ public class ModItems {  // TODO test the new recipes and lang
 		"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",  
 		"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating" };
 	
+	public static final String[]	FFModifierNames	= { "sizeUpgrade", "shapeSphere", "shapeCube", "shapeOctahedron" };
+	
 	// subject to change, but it makes no sense to be able to double every ore except vanilla ones
 	public static final String[]	vanillaMetalNames= { "nuggetIron", "dustIron", "dustGold" };
 	
@@ -42,6 +44,7 @@ public class ModItems {  // TODO test the new recipes and lang
 	public static Item				itemDusts		 = new MetaItem(dustNames);
 	public static Item				itemMisc		 = new MetaItem(miscNames);
 	public static Item				itemVanillaMetals= new MetaItem(vanillaMetalNames);
+	public static Item				itemFFModifiers	 = new MetaItem(FFModifierNames);
 	
 	public static Item				itemCarbonCutter = new ItemCarbonCutter();
 	public static Item				itemThermite	 = new ItemThermite();
@@ -75,7 +78,12 @@ public class ModItems {  // TODO test the new recipes and lang
 		aluminumAlloy	= 10,
 		aluminumTubing	= 11,
 		steelPlating	= 12,
-		titaniumPlating	= 13;
+		titaniumPlating	= 13,
+		// Force Field Modifiers
+		sizeUpgrade = 0,
+		shapeSphere = 1,
+		shapeCube = 2,
+		shapeOctahedron = 3;
 		// format	
 	
 	public static Item swordKatana = new ItemModSword("swordKatana", plasmaShard);

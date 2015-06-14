@@ -3,10 +3,12 @@ package ultimat3.endgamemod.network;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.gui.GuiForcefieldController;
 import ultimat3.endgamemod.gui.GuiMetallurgyChamber;
 import ultimat3.endgamemod.gui.GuiHighProductionFurnace;
 import ultimat3.endgamemod.gui.GuiProductionFurnace;
 import ultimat3.endgamemod.gui.GuiSuperCompressor;
+import ultimat3.endgamemod.gui.container.ContainerForcefieldController;
 import ultimat3.endgamemod.gui.container.ContainerHighProductionFurnace;
 import ultimat3.endgamemod.gui.container.ContainerMetallurgyChamber;
 import ultimat3.endgamemod.gui.container.ContainerProductionFurnace;
@@ -25,7 +27,9 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerSuperCompressor(player, world, x, y, z);
 		} else if (ID == Reference.GuiIds.METALLURGY_CHAMBER.ID()) {
 			return new ContainerMetallurgyChamber(player, world, x, y, z);
-		}
+		} else if (ID == Reference.GuiIds.FORCEFIELD_CONTROLLER.ID()) {
+			return new ContainerForcefieldController(player, world, x, y, z);
+	}
 		return null;
 	}
 	
@@ -39,6 +43,8 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiSuperCompressor(player, world, x, y, z);
 		} else if (ID == Reference.GuiIds.METALLURGY_CHAMBER.ID()) {
 			return new GuiMetallurgyChamber(player, world, x, y, z);
+		} else if (ID == Reference.GuiIds.FORCEFIELD_CONTROLLER.ID()) {
+			return new GuiForcefieldController(player, world, x, y, z);
 		}
 		return null;
 	}

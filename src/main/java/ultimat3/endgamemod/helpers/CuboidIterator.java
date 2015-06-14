@@ -1,70 +1,18 @@
 package ultimat3.endgamemod.helpers;
 
-public class CuboidIterator {
-	protected int minX, minY, minZ;
-	protected int maxX, maxY, maxZ;
-	protected int curX, curY, curZ;
-	private boolean hollow;
-	public CuboidIterator(int min_x,int min_y,int min_z,int max_x,int max_y,int max_z) {
-		minX = Math.min(min_x, max_x);
-		minY = Math.min(min_y, max_y);
-		minZ = Math.min(min_z, max_z);
-		
-		maxX = Math.max(min_x, max_x);
-		maxY = Math.max(min_y, max_y);
-		maxZ = Math.max(min_z, max_z);
-		
-		curX = minX;
-		curY = minY;
-		curZ = minZ;
-		
-		hollow = false;
+public class CuboidIterator extends SphereIterator {
+	
+	public CuboidIterator(double min_x,double min_y,double min_z,double max_x,double max_y,double max_z) {
+		super(min_x, min_y, min_z, max_x, max_y, max_z);
 	}
 	
-	public void setHollow() {
-		hollow = true;
+	public CuboidIterator(double center_x, double center_y, double center_z, double radius) {
+		super(center_x, center_y, center_z, radius);
 	}
 	
-	private void nextCheck() {
-		
-		if(curX == maxX) {
-			curX = minX;
-			
-			if(curY == maxY) {
-				curY = minY;
-				curZ++;
-				
-			} else {
-				curY++;
-			}
-			
-		} else {
-			curX++;
-		}
-	}
-	
-	public void next() {
-		nextCheck();
-		if(hollow) {
-			while(curX!=maxX && curY != maxY && curZ != maxZ && curX!=minX && curY != minY && curZ != minZ) {
-				nextCheck();
-			}
-		}
-	}
-	
-	public boolean end() {
-		return curZ > maxZ;
-	}
-	
-	public int getX() {
-		return curX;
-	}
-	
-	public int getY() {
-		return curY;
-	}
-	
-	public int getZ() {
-		return curZ;
+	@Override
+	protected boolean inRadius() {
+		if(!hollow) return true;
+		return curX==maxX || curY == maxY || curZ == maxZ || curX==minX || curY == minY || curZ == minZ;
 	}
 }

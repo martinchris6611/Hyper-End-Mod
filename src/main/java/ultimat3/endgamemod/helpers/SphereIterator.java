@@ -61,11 +61,12 @@ public class SphereIterator {
 				center_y, center_z, Radius);
 	}
 
-	void setHollow() {
+	public SphereIterator setHollow() {
 		hollow = true;
+		return this;
 	}
 
-	private void nextCheck() {
+	protected void nextCheck() {
 
 		if (curX >= maxX) {
 			curX = (int) minX;
@@ -98,6 +99,7 @@ public class SphereIterator {
 	}
 
 	public void next() {
+		nextCheck();
 		while (!inRadius() && curZ <= maxZ) {
 			nextCheck();
 		}
