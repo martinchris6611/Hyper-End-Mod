@@ -39,7 +39,7 @@ public class MetaBlock extends Ultimat3Block {
 	public void registerBlockIcons(IIconRegister register) {
 		this.icons = new IIcon[names.length];
 		for (int meta = 0; meta < names.length; ++meta) {
-			this.icons[meta] = register.registerIcon(Reference.MOD_ID + ":" + this.names[meta]);
+			this.icons[meta] = register.registerIcon(Reference.RESOURCE_PREFIX + this.names[meta]);
 		}
 	}
 	

@@ -35,7 +35,7 @@ public class MetaItem extends Ultimat3Item {
 	public void registerIcons(IIconRegister register) {
 		this.icons = new IIcon[names.length];
 		for(int meta = 0; meta < icons.length; ++meta) {
-			this.icons[meta] = register.registerIcon(Reference.MOD_ID + ":" + names[meta]);
+			this.icons[meta] = register.registerIcon(Reference.RESOURCE_PREFIX + names[meta]);
 		}
 	}
 	

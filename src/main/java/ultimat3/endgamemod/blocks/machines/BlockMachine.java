@@ -53,10 +53,10 @@ public abstract class BlockMachine extends Ultimat3Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister icon) {
-		icons[0] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Bottom");
-		icons[1] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Top");
-		icons[2] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "FrontOn");
-		icons[3] = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Side");
+		icons[0] = icon.registerIcon(Reference.RESOURCE_PREFIX + getName() + "Bottom");
+		icons[1] = icon.registerIcon(Reference.RESOURCE_PREFIX + getName() + "Top");
+		icons[2] = icon.registerIcon(Reference.RESOURCE_PREFIX + getName() + "FrontOn");
+		icons[3] = icon.registerIcon(Reference.RESOURCE_PREFIX + getName() + "Side");
 	}
 	
 	@Override

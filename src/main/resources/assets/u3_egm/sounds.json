@@ -1,0 +1,5 @@
+{
+  "pew":        {"category": "master","sounds": [{"name": "pew",        "stream": false}]},
+  "swordSwing": {"category": "master","sounds": [{"name": "swordSwing", "stream": false}]},
+  "swordHit":   {"category": "master","sounds": [{"name": "swordHit",   "stream": false}]}
+}

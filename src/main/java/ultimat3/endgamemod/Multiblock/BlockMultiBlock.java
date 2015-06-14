@@ -1,4 +1,4 @@
-package ultimat3.endgamemod.Multiblock;
+package ultimat3.endgamemod.multiblock;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockContainer;

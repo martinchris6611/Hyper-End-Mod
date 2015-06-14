@@ -1,4 +1,4 @@
-package ultimat3.endgamemod.Multiblock;
+package ultimat3.endgamemod.multiblock;
 
 import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;

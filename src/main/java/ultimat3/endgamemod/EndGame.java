@@ -1,17 +1,17 @@
 package ultimat3.endgamemod;
 
 import net.minecraft.block.Block;
-import ultimat3.endgamemod.Multiblock.BlockHollow;
-import ultimat3.endgamemod.Multiblock.BlockStone;
-import ultimat3.endgamemod.Multiblock.ItemSpecialBlock;
-import ultimat3.endgamemod.Multiblock.TileHollowMultiBlock;
-import ultimat3.endgamemod.Multiblock.TileStoneMultiblock;
 import ultimat3.endgamemod.blocks.OreSpawner;
 import ultimat3.endgamemod.helpers.OreDictionaryHelper;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
+import ultimat3.endgamemod.multiblock.BlockHollow;
+import ultimat3.endgamemod.multiblock.BlockStone;
+import ultimat3.endgamemod.multiblock.ItemSpecialBlock;
+import ultimat3.endgamemod.multiblock.TileHollowMultiBlock;
+import ultimat3.endgamemod.multiblock.TileStoneMultiblock;
 import ultimat3.endgamemod.network.GuiHandler;
 import ultimat3.endgamemod.proxies.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -60,8 +60,8 @@ public class EndGame {
 		// Registers the network channel
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
-		hollow = new ultimat3.endgamemod.Multiblock.BlockHollow().setBlockName("hollowMultiBlock");
-		particleController = new ultimat3.endgamemod.Multiblock.BlockStone().setBlockName("particleController");
+		hollow = new ultimat3.endgamemod.multiblock.BlockHollow().setBlockName("hollowMultiBlock");
+		particleController = new ultimat3.endgamemod.multiblock.BlockStone().setBlockName("particleController");
 		// registers content with Forge
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
@@ -70,8 +70,8 @@ public class EndGame {
 		OreDictionaryHelper.init();
 		
 		//MULTIBLOCK TEST REMOVE LATER
-		GameRegistry.registerBlock(hollow, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "HollowMultiBlock");
-		GameRegistry.registerBlock(particleController, ultimat3.endgamemod.Multiblock.ItemSpecialBlock.class, "stoneMulti");
+		GameRegistry.registerBlock(hollow, ultimat3.endgamemod.multiblock.ItemSpecialBlock.class, "HollowMultiBlock");
+		GameRegistry.registerBlock(particleController, ultimat3.endgamemod.multiblock.ItemSpecialBlock.class, "stoneMulti");
 	}
 
 	/**
@@ -93,8 +93,8 @@ public class EndGame {
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		
 		//MULTIBLOCK TEST REMOVE LATER
-        GameRegistry.registerTileEntity(ultimat3.endgamemod.Multiblock.TileHollowMultiBlock.class, "tutorial.multiblock.hallow");
-        GameRegistry.registerTileEntity(ultimat3.endgamemod.Multiblock.TileStoneMultiblock.class, "tutorial.multiblock.stone");
+        GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.TileHollowMultiBlock.class, "tutorial.multiblock.hallow");
+        GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.TileStoneMultiblock.class, "tutorial.multiblock.stone");
 	}
 
 	@EventHandler

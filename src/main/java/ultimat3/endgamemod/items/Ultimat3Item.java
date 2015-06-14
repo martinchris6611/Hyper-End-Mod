@@ -27,7 +27,7 @@ public class Ultimat3Item extends Item {
 		this.name = name;
 		GameRegistry.registerItem(this, name, Reference.MOD_ID);
 		this.setUnlocalizedName(Reference.MOD_ID + "_" + name);
-		this.setTextureName(Reference.MOD_ID + ":" + name);
+		this.setTextureName(Reference.RESOURCE_PREFIX + name);
 		this.setCreativeTab(EndGame.creaTab);
 	}
 	

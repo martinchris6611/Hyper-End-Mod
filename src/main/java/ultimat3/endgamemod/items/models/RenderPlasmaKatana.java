@@ -44,7 +44,7 @@ public class RenderPlasmaKatana implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		Minecraft mc = Minecraft.getMinecraft();
 		GL11.glPushMatrix();
-		mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID + ":models/weapons/RobotBlueTM.png"));
+		mc.renderEngine.bindTexture(new ResourceLocation(Reference.RESOURCE_PREFIX + "models/weapons/RobotBlueTM.png"));
 		switch (type) {
 			case ENTITY:
 				GL11.glPopMatrix();

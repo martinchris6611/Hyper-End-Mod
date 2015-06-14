@@ -15,11 +15,11 @@ import net.minecraft.item.Item;
 
 public class BlockMetallicGlassPane extends BlockPane {
 	public BlockMetallicGlassPane() {
-		super(Reference.MOD_ID + ":blockMetallicGlass",Reference.MOD_ID + ":blockMetallicGlassPane", Material.glass, false);
+		super(Reference.RESOURCE_PREFIX + "blockMetallicGlass",Reference.RESOURCE_PREFIX + "blockMetallicGlassPane", Material.glass, false);
 		setHarvestLevel("pickaxe", 2);
 		setCreativeTab(EndGame.creaTab);
 		setBlockName(Reference.MOD_ID + "_blockMetallicGlassPane");
-		setBlockTextureName(Reference.MOD_ID + ":blockMetallicGlassPane");
+		setBlockTextureName(Reference.RESOURCE_PREFIX + "blockMetallicGlassPane");
 		setBlockName(Reference.MOD_ID + "_blockMetallicGlassPane");
 		
 	}

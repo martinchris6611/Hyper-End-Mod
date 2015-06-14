@@ -39,7 +39,7 @@ public class RenderParticlePistol implements IItemRenderer {
 	public void renderItem(ItemRenderType type, ItemStack item, Object... data) {
 		Minecraft mc = Minecraft.getMinecraft();
 		GL11.glPushMatrix();
-		mc.renderEngine.bindTexture(new ResourceLocation(Reference.MOD_ID + ":models/weapons/particlepistol.png"));
+		mc.renderEngine.bindTexture(new ResourceLocation(Reference.RESOURCE_PREFIX + "models/weapons/particlepistol.png"));
 		switch (type) {
 			case ENTITY:
 				// Render the model

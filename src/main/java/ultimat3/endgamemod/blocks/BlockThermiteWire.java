@@ -74,8 +74,8 @@ public class BlockThermiteWire extends Ultimat3Block {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister icon) {
-		iconTransparent = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Side");
-		iconThermiteWire = icon.registerIcon(Reference.MOD_ID + ":" + getName() + "Top");
+		iconTransparent = icon.registerIcon(Reference.RESOURCE_PREFIX + getName() + "Side");
+		iconThermiteWire = icon.registerIcon(Reference.RESOURCE_PREFIX + getName() + "Top");
 	}
 	
 	
