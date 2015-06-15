@@ -41,19 +41,19 @@ public class BlockForce extends Ultimat3Block {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
 			float hitY, float hitZ) {
-		if(hitX - (float) x < 0.01f) {
+		if(hitX - (float) x < -0.49f) {
 			player.setPosition(player.posX + 3, player.posY, player.posZ);
-		} else if (hitX - (float) x > 0.99f) {
+		} else if (hitX - (float) x > 0.49f) {
 			player.setPosition(player.posX - 3, player.posY, player.posZ);
 		}
-		else if(hitY - (float) y < 0.01f) {
+		else if(hitY - (float) y < -0.49f) {
 			player.setPosition(player.posX, player.posY + 3, player.posZ);
-		} else if (hitY - (float) y > 0.99f) {
+		} else if (hitY - (float) y > 0.49f) {
 			player.setPosition(player.posX, player.posY - 3, player.posZ);
 		}
-		else if(hitZ - (float) z < 0.01f) {
+		else if(hitZ - (float) z < -0.49f) {
 			player.setPosition(player.posX, player.posY, player.posZ + 3);
-		} else if (hitZ - (float) z > 0.99f) {
+		} else if (hitZ - (float) z > 0.49f) {
 			player.setPosition(player.posX, player.posY, player.posZ - 3);
 		}
 		return false;

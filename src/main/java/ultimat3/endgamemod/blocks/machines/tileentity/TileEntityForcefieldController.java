@@ -97,8 +97,8 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 			else
 				shape = (short) this.items[i].getItemDamage();
 		}
-		// this line shouldn't be here
-//		shape = 1;	radius = 10;
+		
+		if(radius > 128) radius = 128;
 		
 		if (shape > 0 && radius > 3) {
 			if (shape != oldShape || radius != oldRadius)
