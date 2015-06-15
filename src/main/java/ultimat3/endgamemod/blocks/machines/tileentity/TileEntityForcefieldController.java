@@ -24,7 +24,7 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 	private static final String TAG_SHAPE = "shape";
 
 	public TileEntityForcefieldController() {
-		super(new ItemStack[12], "container."
+		super(new ItemStack[2], "container."
 				+ ModTileEntities.FORCEFIELD_CONTROLLER_ID);
 		radius = 0;
 		shape = 0;
@@ -74,7 +74,6 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 		radius = temp_radius;
 		shape = temp_shape;
 	}
-	
 
 	private void drawField() {
 
@@ -83,30 +82,28 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 				this.worldObj.setBlock(it.getX(), it.getY(), it.getZ(),
 						ModBlocks.blockForce);
 		}
-		 
+
 	}
 
 	public void updateEntity() {
 		short oldRadius = radius;
 		short oldShape = shape;
-		shape = radius = 0;
-		for (int i = 0; i < items.length; i++) {
-			if (this.items[i] == null)
-				continue;
-			if(this.items[i].getItem() != ModItems.itemFFModifiers) continue;
-			if(this.items[i].getItemDamage() == 0) radius += items[i].stackSize;
-			else
-				shape = (short) this.items[i].getItemDamage();
-		}
-		
-		if(radius > 128) radius = 128;
-		
-		if (shape > 0 && radius > 3) {
-			if (shape != oldShape || radius != oldRadius)
+		if (items[0] != null)
+			radius = (short) items[0].stackSize;
+		else
+			radius = 0;
+		if (items[1] != null)
+			shape = (short) items[1].getItemDamage();
+		else
+			shape = 0;
+		if (!worldObj.isRemote) {
+			if (shape > 0 && radius > 3) {
+				if (shape != oldShape || radius != oldRadius)
+					eraseField(oldShape, oldRadius);
+				drawField();
+			} else {
 				eraseField(oldShape, oldRadius);
-			drawField();
-		} else {
-			eraseField(oldShape, oldRadius);
+			}
 		}
 	}
 

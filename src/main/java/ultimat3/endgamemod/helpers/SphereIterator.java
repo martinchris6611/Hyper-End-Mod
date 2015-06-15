@@ -13,11 +13,11 @@ public class SphereIterator {
 			double center_y, double center_z) {
 		
 		minX = Math.min(min_x, max_x);
-		minY = Math.min(0, Math.min(min_y, max_y));
+		minY = Math.max(0, Math.min(min_y, max_y));
 		minZ = Math.min(min_z, max_z);
 
 		maxX = Math.max(min_x, max_x);
-		maxY = Math.max(255, Math.max(min_y, max_y));
+		maxY = Math.min(255, Math.max(min_y, max_y));
 		maxZ = Math.max(min_z, max_z);
 
 		curX = (int) minX;
