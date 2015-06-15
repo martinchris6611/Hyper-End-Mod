@@ -1,5 +1,6 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
 import ultimat3.endgamemod.helpers.CuboidIterator;
 import ultimat3.endgamemod.helpers.OctahedronIterator;
 import ultimat3.endgamemod.helpers.SphereIterator;
@@ -25,7 +26,8 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 
 	public TileEntityForcefieldController() {
 		super(new ItemStack[2], "container."
-				+ ModTileEntities.FORCEFIELD_CONTROLLER_ID);
+				+ ModTileEntities.FORCEFIELD_CONTROLLER_ID, new EnergyStorage(
+				20000000));
 		radius = 0;
 		shape = 0;
 	}
@@ -86,18 +88,20 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 	}
 
 	public void updateEntity() {
-		short oldRadius = radius;
-		short oldShape = shape;
-		if (items[0] != null)
-			radius = (short) items[0].stackSize;
-		else
-			radius = 0;
-		if (items[1] != null)
-			shape = (short) items[1].getItemDamage();
-		else
-			shape = 0;
 		if (!worldObj.isRemote) {
-			if (shape > 0 && radius > 3) {
+			short oldRadius = radius;
+			short oldShape = shape;
+			if (items[0] != null)
+				radius = (short) items[0].stackSize;
+			else
+				radius = 0;
+			if (items[1] != null)
+				shape = (short) items[1].getItemDamage();
+			else
+				shape = 0;
+			int use = 10 * (int)radius * (int)radius;
+			if (shape > 0 && radius > 3 && storage.getEnergyStored() < use) {
+				storage.modifyEnergyStored(-use);
 				if (shape != oldShape || radius != oldRadius)
 					eraseField(oldShape, oldRadius);
 				drawField();

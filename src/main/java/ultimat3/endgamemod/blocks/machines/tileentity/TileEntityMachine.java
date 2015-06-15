@@ -1,5 +1,7 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyHandler;
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -10,9 +12,10 @@ import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
+import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.common.util.Constants.NBT;
 
-public class TileEntityMachine extends TileEntity implements IInventory {
+public class TileEntityMachine extends TileEntity implements IInventory, IEnergyHandler {
 	public ItemStack[] items;
 	
 	public static final String	TAG_ITEMS				= "items";
@@ -20,9 +23,12 @@ public class TileEntityMachine extends TileEntity implements IInventory {
 	
 	public static String inventoryName;
 	
-	protected TileEntityMachine(ItemStack[] _items, String _inventoryName) {
+	protected EnergyStorage storage;
+	
+	protected TileEntityMachine(ItemStack[] _items, String _inventoryName, EnergyStorage _storage) {
 		items=_items;
 		inventoryName=_inventoryName;
+		storage=_storage;
 	}
 	
 	@Override
@@ -151,4 +157,34 @@ public class TileEntityMachine extends TileEntity implements IInventory {
 	
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) { return true; }
+	
+
+	
+	// =========================================================
+	// ===================== Energy Handlers ===================
+	// =========================================================
+	@Override
+	public boolean canConnectEnergy(ForgeDirection from) {
+		return true;
+	}
+
+	@Override
+	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
+		return storage.receiveEnergy(maxReceive, simulate);
+	}
+
+	@Override
+	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
+		return storage.extractEnergy(maxExtract, simulate);
+	}
+
+	@Override
+	public int getEnergyStored(ForgeDirection from) {
+		return storage.getEnergyStored();
+	}
+
+	@Override
+	public int getMaxEnergyStored(ForgeDirection from) {
+		return storage.getMaxEnergyStored();
+	}
 }

@@ -18,7 +18,7 @@ import ultimat3.endgamemod.helpers.LogHelper;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 
-public class TileEntitySuperCompressor extends TileEntityMachine implements ISidedInventory, IEnergyHandler {
+public class TileEntitySuperCompressor extends TileEntityMachine implements ISidedInventory {
 	
 	/**
 	 * The amount of time left for this metallurgy to keep burning (in ticks).
@@ -38,9 +38,6 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	/**
 	 * Amount of Energy this item can internally store
 	 */
-	
-	
-	protected EnergyStorage storage = new EnergyStorage(32000);
 					
 	// Slot related stuff
 	private static final int	OUTPUT_SLOT	= 9;
@@ -57,7 +54,7 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	
 	
 	public TileEntitySuperCompressor() {
-		super(new ItemStack[10], "container." + ModTileEntities.SUPER_COMPRESSOR_ID);
+		super(new ItemStack[10], "container." + ModTileEntities.SUPER_COMPRESSOR_ID, new EnergyStorage(384000));
 	}
 	
 	@Override
@@ -83,7 +80,7 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 			return false;
 		
 		//If there is no energy storage, we can't do anything
-		if (storage.getEnergyStored() == 0)
+		if (storage.getEnergyStored() < 640)
 			return false;
 		
 		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
@@ -144,7 +141,7 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 				
 				if (this.canCompress() && this.compressorTimeLeft > 0) {
 					++this.cookTime;
-					storage.extractEnergy(100, true);
+					storage.modifyEnergyStored(-640);
 					
 					// if the item is done
 					if (this.cookTime >= ITEM_TIME_DONE) {
@@ -232,34 +229,5 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	
 	public ItemStack getStackInRowAndColumn(int x, int y) {
 		return this.items[x + y * 3];
-	}
-
-	
-	// =========================================================
-	// ===================== Energy Handlers ===================
-	// =========================================================
-	@Override
-	public boolean canConnectEnergy(ForgeDirection from) {
-		return true;
-	}
-
-	@Override
-	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
-		return storage.receiveEnergy(maxReceive, simulate);
-	}
-
-	@Override
-	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
-		return storage.extractEnergy(maxExtract, simulate);
-	}
-
-	@Override
-	public int getEnergyStored(ForgeDirection from) {
-		return storage.getEnergyStored();
-	}
-
-	@Override
-	public int getMaxEnergyStored(ForgeDirection from) {
-		return storage.getMaxEnergyStored();
 	}
 }

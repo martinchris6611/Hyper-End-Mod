@@ -1,5 +1,6 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -46,7 +47,7 @@ public class TileEntityHighProductionFurnace extends TileEntityMachine implement
 	// ================= Tag names end ================
 	
 	public TileEntityHighProductionFurnace() {
-		super(new ItemStack[9], "container." + ModTileEntities.HIGH_PRODUCTION_FURNACE_ID);
+		super(new ItemStack[9], "container." + ModTileEntities.HIGH_PRODUCTION_FURNACE_ID, new EnergyStorage(768000));
 	}
 	
 	@Override
@@ -261,7 +262,8 @@ public class TileEntityHighProductionFurnace extends TileEntityMachine implement
 		if (!this.worldObj.isRemote) {
 			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing in any slots
 			if (this.furnaceTimeLeft != 0 || this.items[4] != null && ((this.items[0] != null) || (this.items[1] != null) || (this.items[2] != null) || (this.items[3] != null))) {
-				
+				if(storage.getEnergyStored() < 1280) return;
+				storage.modifyEnergyStored(-1280);
 				// If the furnace is done burning and can smelt in any slot
 				if (this.furnaceTimeLeft == 0 && (this.canSmeltSlotOne() || this.canSmeltSlotTwo() || this.canSmeltSlotThree() || this.canSmeltSlotFour())) {
 					this.furnaceTimeLeft = NEW_FUEL_TIME;
