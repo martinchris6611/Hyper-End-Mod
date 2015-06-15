@@ -6,6 +6,7 @@ import ultimat3.endgamemod.helpers.SphereIterator;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModTileEntities;
+import net.minecraft.block.BlockEndPortalFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
