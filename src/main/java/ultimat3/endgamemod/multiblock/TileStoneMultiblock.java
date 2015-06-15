@@ -6,6 +6,10 @@ import net.minecraft.init.Blocks;
 import net.minecraft.nbt.NBTTagCompound;
 
 public class TileStoneMultiblock extends TileMultiBlock {
+
+	boolean xDirection = false;
+	boolean zDirection = false;
+	
 	@Override
     public void doMultiBlockStuff() {
 
@@ -13,67 +17,57 @@ public class TileStoneMultiblock extends TileMultiBlock {
 
     @Override
     public boolean checkMultiBlockForm() {
-        // Checks to see if surrounded by stone
-    	/*
-    	int x = xCoord;
-    	int y = yCoord;
-    	int z = zCoord;
-    	if ((worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt) && (worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt)) {
-    		while((worldObj.getBlock(x, y, z+1) != Blocks.stone && worldObj.getBlock(x, y, z-1) != Blocks.stone)) {
-    			if (worldObj.getBlock(x+1, y, z) == Blocks.stone) {
-    				++x;
+       
+    	if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt && worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt) {
+    		xDirection = true;
+    		int x = xCoord+2;
+    		int y = yCoord;
+    		int z = zCoord;
+    		for (x++; worldObj.getBlock(x, y, z+1) != Blocks.stone; ++x) {
+    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+    				//DO NOTHING
     			}
     			else
     				return false;
     		}
-    		while((worldObj.getBlock(x-1, y, z) != Blocks.stone && worldObj.getBlock(x+1, y, z) != Blocks.stone)) {
-    			if(worldObj.getBlock(x, y, z+1) == Blocks.stone) {
-    				++z;
+    		
+    		++z;
+    		
+    		for (z++; worldObj.getBlock(x-1, y, z) != Blocks.stone; ++z) {
+    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+    				//DO NOTHING FOR NOW
     			}
     			else
     				return false;
     		}
-    		while((worldObj.getBlock(x, y, z+1) != Blocks.stone && worldObj.getBlock(x, y, z-1) != Blocks.stone)) {
-    			if (worldObj.getBlock(x-1, y, z) == Blocks.stone) {
-    				--x;
+
+    		
+    		--x;
+    		
+    		for (x--; worldObj.getBlock(x, y, z-1) != Blocks.stone; --x) {
+    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+    				//DO NOTHING FOR NOW
+    			}
+    			else 
+    				return false;
+    		}
+    		
+    		--z;
+    		
+    		for (z--; worldObj.getBlock(x+1, y, z) == Blocks.stone; --z) {
+    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+    				//DO NOTHING FOR NOW
     			}
     			else
     				return false;
     		}
-    		while((worldObj.getBlock(x-1, y, z) != Blocks.stone && worldObj.getBlock(x+1, y, z) != Blocks.stone)) {
-    			if(worldObj.getBlock(x, y, z-1) == Blocks.stone) {
-    				--z;
-    			}
-    			else
-    				return false;
-    		}
-    		while((worldObj.getBlock(x, y, z) != Blocks.dirt && worldObj.getBlock(x, y, z) != Blocks.dirt)) {
-    			if (worldObj.getBlock(x+1, y, z) == Blocks.stone) {
-    				++x;
-    			}
-    			else
-    				return false;
-    		}
-    		if (worldObj.getBlock(x+1, y, z) == Blocks.diamond_block) {
-    			return true;
-    		}
+    		
+    		return true;
     	}
-    	else if ((worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt) && (worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt)) {
-    		return false;
-    	} else {
-    		return false;
+    	else if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt && worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt) {
+    		zDirection = true;
+    		return true;
     	}
-    	return true; */
-    	
-    	for(int x = xCoord-1; x < xCoord + 1; ++x) {
-    		if(worldObj.getBlock(x, yCoord, zCoord) == Blocks.dirt) {
-    			
-    		}
-    		else
-    			return false;
-    	}
-    	return true;
-    	
     	/*
         int i = 0;
         for (int x = xCoord - 1; x < xCoord + 2; x++)
@@ -81,58 +75,22 @@ public class TileStoneMultiblock extends TileMultiBlock {
                 for (int z = zCoord - 1; z < zCoord + 2; z++) {
                     if (worldObj.getBlock(x, y, z) == Blocks.stone)
                         i++;
-                }
-        return i == 26;*/
+                }*/
+        //return i == 26;
+    	return false;
     }
 
     @Override
     public void setupStructure() {
         // replaces stone with diamond blocks
-    	/*
-    	int x = xCoord;
-    	int y = yCoord;
-    	int z = zCoord;
-    	if ((worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt) && (worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt)) {
-    		while((worldObj.getBlock(x, y, z+1) != Blocks.stone && worldObj.getBlock(x, y, z-1) != Blocks.stone)) {
-    			if (worldObj.getBlock(x+1, y, z) == Blocks.stone) {
-    				worldObj.setBlock(x, y, z, Blocks.diamond_block);
-    				++x;
-    			}
-    		}
-    		while((worldObj.getBlock(x-1, y, z) != Blocks.stone && worldObj.getBlock(x+1, y, z) != Blocks.stone)) {
-    			if(worldObj.getBlock(x, y, z+1) == Blocks.stone) {
-    				worldObj.setBlock(x, y, z, Blocks.diamond_block);
-    				++z;
-    			}
-    		}
-    		while((worldObj.getBlock(x, y, z+1) != Blocks.stone && worldObj.getBlock(x, y, z-1) != Blocks.stone)) {
-    			if (worldObj.getBlock(x-1, y, z) == Blocks.stone) {
-    				worldObj.setBlock(x, y, z, Blocks.diamond_block);
-    				--x;
-    			}
-    		}
-    		while((worldObj.getBlock(x-1, y, z) != Blocks.stone && worldObj.getBlock(x+1, y, z) != Blocks.stone)) {
-    			if(worldObj.getBlock(x, y, z-1) == Blocks.stone) {
-    				worldObj.setBlock(x, y, z, Blocks.diamond_block);
-    				--z;
-    			}
-    		}
-    		while((worldObj.getBlock(x, y, z) != Blocks.dirt && worldObj.getBlock(x, y, z) != Blocks.dirt)) {
-    			if (worldObj.getBlock(x+1, y, z) == Blocks.stone) {
-    				worldObj.setBlock(x, y, z, Blocks.diamond_block);
-    				++x;
-    			}
-    		}
+    	if(xDirection) {
+    		if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt && worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt)
+    			worldObj.setBlock(xCoord-1, yCoord, zCoord, Blocks.diamond_block);
     	}
-    	else if ((worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt) && (worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt)) {
-    		
-    	}*/
-    	for(int x = xCoord-1; x < xCoord + 1; ++x) {
-    		if(worldObj.getBlock(x, yCoord, zCoord) == Blocks.dirt) {
-    			worldObj.setBlock(x, yCoord, zCoord, Blocks.diamond_block);
-    		}
+    	else if (zDirection) {
+    		if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt && worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt)
+    			worldObj.setBlock(xCoord, yCoord, zCoord-1, Blocks.diamond_block);
     	}
-    	
     	/*
         for (int x = xCoord - 1; x < xCoord + 2; x++)
             for (int y = yCoord -1; y < yCoord + 2; y++)
