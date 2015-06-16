@@ -1,5 +1,6 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
 import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
@@ -45,7 +46,7 @@ public class TileEntityProductionFurnace extends TileEntityMachine implements IS
 	// ================= Tag names end ================
 	
 	public TileEntityProductionFurnace() {
-		super(new ItemStack[3], "container." + ModTileEntities.PRODUCTION_FURNACE_ID);
+		super(new ItemStack[3], "container." + ModTileEntities.PRODUCTION_FURNACE_ID, new EnergyStorage(96000));
 	}
 	
 	@Override
@@ -66,6 +67,9 @@ public class TileEntityProductionFurnace extends TileEntityMachine implements IS
 	
 	private boolean canSmelt() {
 		if (this.items[0] == null)
+			return false;
+		
+		if (storage.getEnergyStored() < 160)
 			return false;
 		
 		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[0]);
@@ -92,6 +96,8 @@ public class TileEntityProductionFurnace extends TileEntityMachine implements IS
 			return;
 		
 		ItemStack itemstack = FurnaceRecipes.smelting().getSmeltingResult(this.items[0]);
+		if(itemstack == null) return;
+		storage.modifyEnergyStored(-160);
 		
 		// If the output currently has no item, might as well copy the new result in there
 		if (this.items[2] == null) {

@@ -5,7 +5,10 @@ import java.util.List;
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.EntityPlayer;
+import net.minecraft.init.Blocks;
 import net.minecraft.util.AxisAlignedBB;
+import net.minecraft.util.ChatComponentText;
+import net.minecraft.util.IChatComponent;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
 
@@ -28,33 +31,29 @@ public class BlockForce extends Ultimat3Block {
 	}
 	
 	@Override
-    public void addCollisionBoxesToList(World world, int x, int y, int z, AxisAlignedBB AABB, List list, Entity entity)
-    {
-        AxisAlignedBB axisalignedbb1 = AxisAlignedBB.getBoundingBox(x, y, z, x+1, y+1, z+1);
-
-        if (!(entity instanceof EntityPlayer) && AABB.intersectsWith(axisalignedbb1));
-        {
-            list.add(axisalignedbb1);
-        }
-    }
-	
-	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
 			float hitY, float hitZ) {
-		if(hitX - (float) x < 0.01f) {
-			player.setPosition(player.posX + 3, player.posY, player.posZ);
-		} else if (hitX - (float) x > 0.99f) {
-			player.setPosition(player.posX - 3, player.posY, player.posZ);
+		
+		if(hitX == 0.0f) {
+			if(world.getBlock(x + 3, y + 1, z) == Blocks.air)
+			player.setPosition(x + 3, y + 1, z);
+		} else if (hitX == 1.0f) {
+			if(world.getBlock(x - 3, y + 1, z) == Blocks.air)
+			player.setPosition(x - 3, y + 1, z);
 		}
-		else if(hitY - (float) y < 0.01f) {
-			player.setPosition(player.posX, player.posY + 3, player.posZ);
-		} else if (hitY - (float) y > 0.99f) {
-			player.setPosition(player.posX, player.posY - 3, player.posZ);
+		else if(hitY == 0.0f) {
+			if(world.getBlock(x, y + 1, z) == Blocks.air && world.getBlock(x, y + 2, z) == Blocks.air && world.getBlock(x, y + 3, z) == Blocks.air)
+			player.setPosition(x, y + 2, z);
+		} 	else if(hitY == 1.0f) {
+			if(world.getBlock(x, y - 1, z) == Blocks.air && world.getBlock(x, y - 2, z) == Blocks.air && world.getBlock(x, y - 3, z) == Blocks.air)
+			player.setPosition(x, y - 2, z);
 		}
-		else if(hitZ - (float) z < 0.01f) {
-			player.setPosition(player.posX, player.posY, player.posZ + 3);
-		} else if (hitZ - (float) z > 0.99f) {
-			player.setPosition(player.posX, player.posY, player.posZ - 3);
+		else if(hitZ == 0.0f) {
+			if(world.getBlock(x, y, z + 3) == Blocks.air)
+			player.setPosition(x, y, z + 3);
+		} else if (hitZ == 1.0f) {
+			if(world.getBlock(x, y, z - 3) == Blocks.air)
+			player.setPosition(x, y, z - 3);
 		}
 		return false;
 	}

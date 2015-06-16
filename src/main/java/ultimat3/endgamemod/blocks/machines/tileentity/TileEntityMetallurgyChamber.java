@@ -16,7 +16,7 @@ import net.minecraft.tileentity.TileEntity;
 import net.minecraftforge.common.util.Constants.NBT;
 import net.minecraftforge.common.util.ForgeDirection;
 
-public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory, IEnergyHandler {
+public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory {
 	
 	/**
 	 * The amount of time left for this metallurgy to keep burning (in ticks).
@@ -42,9 +42,6 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	 * Amount of Energy this item can internally store
 	 */
 	
-	
-	protected EnergyStorage storage = new EnergyStorage(32000);
-	
 	private int[]				bottomSlots					= { 1 };
 	private int[]				topSlots					= { 0 };
 	private int[]				sideSlots					= { 2 };
@@ -57,7 +54,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	// ================= Tag names end ================
 	
 	public TileEntityMetallurgyChamber() {
-		super(new ItemStack[3], "container." + ModTileEntities.METALLURGY_CHAMBER_ID);
+		super(new ItemStack[3], "container." + ModTileEntities.METALLURGY_CHAMBER_ID, new EnergyStorage(6114000));
 	}
 	
 	@Override
@@ -83,7 +80,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 			return false;
 		
 		//If there is no energy storage, we can't do anything
-		if (storage.getEnergyStored() == 0)
+		if (storage.getEnergyStored() < 10240)
 			return false;
 		
 		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
@@ -158,7 +155,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 				// If this item can be smelted and the metallurgy is burning
 				if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
 					++this.cookTime;
-					storage.modifyEnergyStored(-50);
+					storage.modifyEnergyStored(-10240);
 					
 					// if the item is done
 					if (this.cookTime >= ITEM_TIME_DONE) {
@@ -245,35 +242,6 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		
 		// Can extract everything else though.
 		return true;
-	}
-
-	// =========================================================
-	// ===================== Energy Handlers ===================
-	// =========================================================
-	
-	@Override
-	public boolean canConnectEnergy(ForgeDirection from) {
-		return true;
-	}
-
-	@Override
-	public int receiveEnergy(ForgeDirection from, int maxReceive, boolean simulate) {
-		return storage.receiveEnergy(maxReceive, simulate);
-	}
-
-	@Override
-	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
-		return storage.extractEnergy(maxExtract, simulate);
-	}
-
-	@Override
-	public int getEnergyStored(ForgeDirection from) {
-		return storage.getEnergyStored();
-	}
-
-	@Override
-	public int getMaxEnergyStored(ForgeDirection from) {
-		return storage.getMaxEnergyStored();
 	}
 	
 }

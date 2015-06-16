@@ -45,7 +45,7 @@ public abstract class BlockMachine extends Ultimat3Block {
 	public IIcon getIcon(int side, int meta) {
 		if (side <= 1)
 			return icons[side];
-		if (side == meta || (side == 2 && meta == 0) )
+		if (side == meta || (side == 3 && meta == 0) )
 			return icons[2];
 		return icons[3];
 	}

@@ -1,11 +1,13 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
+import cofh.api.energy.EnergyStorage;
 import ultimat3.endgamemod.helpers.CuboidIterator;
 import ultimat3.endgamemod.helpers.OctahedronIterator;
 import ultimat3.endgamemod.helpers.SphereIterator;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModTileEntities;
+import net.minecraft.block.BlockEndPortalFrame;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -23,8 +25,9 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 	private static final String TAG_SHAPE = "shape";
 
 	public TileEntityForcefieldController() {
-		super(new ItemStack[12], "container."
-				+ ModTileEntities.FORCEFIELD_CONTROLLER_ID);
+		super(new ItemStack[2], "container."
+				+ ModTileEntities.FORCEFIELD_CONTROLLER_ID, new EnergyStorage(
+				20000000));
 		radius = 0;
 		shape = 0;
 	}
@@ -73,7 +76,6 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 		radius = temp_radius;
 		shape = temp_shape;
 	}
-	
 
 	private void drawField() {
 
@@ -82,30 +84,30 @@ public class TileEntityForcefieldController extends TileEntityMachine implements
 				this.worldObj.setBlock(it.getX(), it.getY(), it.getZ(),
 						ModBlocks.blockForce);
 		}
-		 
+
 	}
 
 	public void updateEntity() {
-		short oldRadius = radius;
-		short oldShape = shape;
-		shape = radius = 0;
-		for (int i = 0; i < items.length; i++) {
-			if (this.items[i] == null)
-				continue;
-			if(this.items[i].getItem() != ModItems.itemFFModifiers) continue;
-			if(this.items[i].getItemDamage() == 0) radius += items[i].stackSize;
+		if (!worldObj.isRemote) {
+			short oldRadius = radius;
+			short oldShape = shape;
+			if (items[0] != null)
+				radius = (short) items[0].stackSize;
 			else
-				shape = (short) this.items[i].getItemDamage();
-		}
-		// this line shouldn't be here
-//		shape = 1;	radius = 10;
-		
-		if (shape > 0 && radius > 3) {
-			if (shape != oldShape || radius != oldRadius)
+				radius = 0;
+			if (items[1] != null)
+				shape = (short) items[1].getItemDamage();
+			else
+				shape = 0;
+			int use = 10 * (int)radius * (int)radius;
+			if (shape > 0 && radius > 3 && storage.getEnergyStored() < use) {
+				storage.modifyEnergyStored(-use);
+				if (shape != oldShape || radius != oldRadius)
+					eraseField(oldShape, oldRadius);
+				drawField();
+			} else {
 				eraseField(oldShape, oldRadius);
-			drawField();
-		} else {
-			eraseField(oldShape, oldRadius);
+			}
 		}
 	}
 

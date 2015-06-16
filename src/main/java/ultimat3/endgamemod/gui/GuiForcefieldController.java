@@ -21,15 +21,7 @@ public class GuiForcefieldController extends GuiContainer {
 	public GuiForcefieldController(EntityPlayer player, World world, int x, int y, int z) {
 		super(new ContainerForcefieldController(player, world, x, y, z));
 		this.controller = ((TileEntityForcefieldController) world.getTileEntity(x, y, z));
-		this.guiTex = new ResourceLocation("textures/gui/container/furnace.png");
-	}
-	
-	@Override
-	protected void drawGuiContainerForegroundLayer(int p_146979_1_, int p_146979_2_) {
-		String s = I18n.format("container." + Reference.MOD_ID + "_forcefieldController", new Object[0]);
-		this.fontRendererObj.drawString(s, this.xSize / 2 - this.fontRendererObj.getStringWidth(s) / 2, 6, 4210752);
-		this.fontRendererObj.drawString(I18n.format("container.inventory", new Object[0]), 8, this.ySize - 96 + 2,
-				4210752);
+		this.guiTex = new ResourceLocation(Reference.MOD_ID + ":textures/gui/container/forceFieldController.png");
 	}
 	
 	@Override
