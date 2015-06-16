@@ -55,7 +55,7 @@ public class ModItems { // TODO test the new recipes and lang
 	// noformat
 	// Stores the metadata of different MetaItems
 	public static final int	
-		// All metal forms share the same meta order
+		// All metal forms share the same meta order (alphabetical)
 		aluminum	    = 0,
 		cobalt			= 1,
 		lithium			= 2,

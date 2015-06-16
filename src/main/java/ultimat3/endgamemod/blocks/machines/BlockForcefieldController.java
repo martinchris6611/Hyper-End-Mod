@@ -36,7 +36,7 @@ public class BlockForcefieldController extends BlockMachine {
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void registerBlockIcons(IIconRegister icon) {
-		icons[0] = icon.registerIcon(Reference.MOD_ID + ":" + getName());
+		icons[0] = icon.registerIcon(Reference.RESOURCE_PREFIX + getName());
 	}
 	
 	@Override
