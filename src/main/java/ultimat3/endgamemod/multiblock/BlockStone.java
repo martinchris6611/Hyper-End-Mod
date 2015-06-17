@@ -12,6 +12,6 @@ public class BlockStone extends BlockMultiBlock {
 
 	    @Override
 	    public TileEntity createNewTileEntity(World world, int metadata) {
-	        return new TileStoneMultiblock();
+	        return new ParticleAcceleratorMultiblock();
 	    }
 }
