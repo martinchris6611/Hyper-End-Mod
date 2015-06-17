@@ -47,7 +47,6 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	// ================ Tag names start ===============
 
 	public static final String	TAG_ITEM_TIME				= "itemTime";
-	public static final String	TAG_BATTERY_RF				= "batteryRF";
 	public static final String	TAG_COMPRESSOR_TIME_LEFT	= "compressorTime";
 
 	// ================= Tag names end ================

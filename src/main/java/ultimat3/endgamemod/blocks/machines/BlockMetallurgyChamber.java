@@ -16,9 +16,7 @@ import net.minecraft.world.World;
 public class BlockMetallurgyChamber extends BlockMachine  {
 
 	public BlockMetallurgyChamber(String name) {
-		super(name);
-		this.guiID = Reference.GuiIds.METALLURGY_CHAMBER.ID();
-		this.blockType = (BlockMachine) ModBlocks.blockMetallurgyChamber;
+		super(name, Reference.GuiIds.METALLURGY_CHAMBER.ID());
 	}
 	
 	@Override

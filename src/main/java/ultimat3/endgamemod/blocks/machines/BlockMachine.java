@@ -28,11 +28,11 @@ import net.minecraft.world.World;
 public abstract class BlockMachine extends Ultimat3Block {
 	
 	protected IIcon[]			icons	= new IIcon[4];
-	protected BlockMachine	blockType;
 	protected int			guiID;
 	
-	public BlockMachine(String name) {
+	public BlockMachine(String name, int gui_ID) {
 		super(name, Material.anvil);
+		guiID = gui_ID;
 	}
 	
 	@Override

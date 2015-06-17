@@ -11,9 +11,7 @@ import net.minecraft.world.World;
 public class BlockProductionFurnace extends BlockMachine  {
 
 	public BlockProductionFurnace(String name) {
-		super(name);
-		this.guiID = Reference.GuiIds.PRODUCTION_FURNACE.ID();
-		this.blockType = (BlockMachine) ModBlocks.blockProductionFurnace;
+		super(name, Reference.GuiIds.PRODUCTION_FURNACE.ID());
 	}
 	
 	@Override
