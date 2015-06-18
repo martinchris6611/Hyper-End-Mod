@@ -35,6 +35,7 @@ public class ModBlocks {
 	public static Block				blockProductionFurnace		=	new BlockProductionFurnace("productionFurnace");
 	public static Block				blockSuperCompressor		=	new BlockSuperCompressor("superCompressor");
 	public static Block				blockForcefieldController	=	new BlockForcefieldController("forcefieldController");
+	public static Block				blockMechanicalAssembler	=	new BlockMechanicalAssembler();
 	/**
 	 * Meta blocks
 	 */
@@ -88,6 +89,7 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockProductionFurnace);
 		RegisterHelper.registerBlock(blockSuperCompressor);
 		RegisterHelper.registerBlock(blockForcefieldController);
+		RegisterHelper.registerBlock(blockMechanicalAssembler);
 		
 		// Others
 		

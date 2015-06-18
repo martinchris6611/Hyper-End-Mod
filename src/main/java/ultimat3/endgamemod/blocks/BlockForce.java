@@ -1,6 +1,8 @@
 package ultimat3.endgamemod.blocks;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.UUID;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.entity.Entity;
@@ -19,6 +21,9 @@ public class BlockForce extends Ultimat3Block {
 		setBlockUnbreakable();
 		
 	}
+
+	public static List<UUID> LastClickName = new ArrayList<UUID>();
+	public static List<Long> LastClickTime = new ArrayList<Long>();
 	
 	@Override
 	public int getRenderBlockPass() {
@@ -33,7 +38,15 @@ public class BlockForce extends Ultimat3Block {
 	@Override
 	public boolean onBlockActivated(World world, int x, int y, int z, EntityPlayer player, int side, float hitX,
 			float hitY, float hitZ) {
-		
+		if(player.isSneaking()) return false;
+		for(int i=0;; i++) {
+			if(LastClickName.get(i).equals(player.getUniqueID())) {
+				if(world.getWorldTime() - LastClickTime.get(i) < 1000 && world.getWorldTime() - LastClickTime.get(i) >= 0 ) {
+					break;
+				} else LastClickTime.set(i, world.getWorldTime());
+			}
+			if(i == LastClickName.size() - 1) return false;
+		}
 		if(hitX == 0.0f) {
 			if(world.getBlock(x + 3, y + 1, z) == Blocks.air)
 			player.setPosition(x + 3, y + 1, z);

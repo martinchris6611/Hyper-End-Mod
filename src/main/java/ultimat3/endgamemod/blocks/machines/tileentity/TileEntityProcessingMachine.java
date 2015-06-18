@@ -11,7 +11,13 @@ public abstract class TileEntityProcessingMachine extends TileEntityMachine impl
 			String _inventoryName, EnergyStorage _storage) {
 		super(_items, _inventoryName, _storage);
 		slots = new int[6][items.length];
-		outputSlots = new boolean[items.length];
+		isOutput = new boolean[items.length];
+		outputSlots = new int[items.length];
+		int cnt = 0;
+		for(int i=0; i<items.length; i++) if(isOutput[i]) {
+			outputSlots[cnt]=i;
+			cnt++;
+		}
 		itemTime = _itemTime;
 		energyUse = _energyUse;
 		// TODO
@@ -22,7 +28,8 @@ public abstract class TileEntityProcessingMachine extends TileEntityMachine impl
 	
 	// slots: [0] - Bottom, [1] - Top etc.
 	protected int[][] slots;
-	protected boolean[] outputSlots;
+	protected boolean[] isOutput;
+	protected int[]	outputSlots;
 
 	// Tags
 	public static final String TAG_ITEM_TIME = "itemTime";
@@ -65,7 +72,7 @@ public abstract class TileEntityProcessingMachine extends TileEntityMachine impl
 	
 	@Override
 	public boolean isItemValidForSlot(int slot, ItemStack stack) {
-		return !outputSlots[slot];
+		return !isOutput[slot];
 	}
 	// =========================================================
 	// ================= ISidedInventory start =================
