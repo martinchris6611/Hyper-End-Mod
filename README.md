@@ -3,15 +3,17 @@ Hyper End Source Code - This is a Work In Progress High Tech Mod for Minecraft m
 
 # Ultimat3 Mod Team
 
-SnyperAnihilatr - Lead-Designer and Creator
+SnyperAnihilatr - Lead-Designer, Creator and Developer
 
 Ebilkill - Developer
 
 TheXFactor117 - Developer
 
-joetheantipro - Lead Texture Artist and Animator
+joetheantipro - Lead Texture Artist, 3D Animator and Modeler
 
 ljamzin - Texture Artist and Developer
+
+Pixel Puffin - Texture Artist
 
 #Legal Notes
 

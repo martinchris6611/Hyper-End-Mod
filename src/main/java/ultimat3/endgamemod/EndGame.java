@@ -11,7 +11,7 @@ import ultimat3.endgamemod.multiblock.BlockHollow;
 import ultimat3.endgamemod.multiblock.BlockStone;
 import ultimat3.endgamemod.multiblock.ItemSpecialBlock;
 import ultimat3.endgamemod.multiblock.TileHollowMultiBlock;
-import ultimat3.endgamemod.multiblock.TileStoneMultiblock;
+import ultimat3.endgamemod.multiblock.ParticleAcceleratorMultiblock;
 import ultimat3.endgamemod.network.GuiHandler;
 import ultimat3.endgamemod.proxies.CommonProxy;
 import cpw.mods.fml.common.Mod;
@@ -94,7 +94,7 @@ public class EndGame {
 		
 		//MULTIBLOCK TEST REMOVE LATER
         GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.TileHollowMultiBlock.class, "tutorial.multiblock.hallow");
-        GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.TileStoneMultiblock.class, "tutorial.multiblock.stone");
+        GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.ParticleAcceleratorMultiblock.class, "tutorial.multiblock.stone");
 	}
 
 	@EventHandler
