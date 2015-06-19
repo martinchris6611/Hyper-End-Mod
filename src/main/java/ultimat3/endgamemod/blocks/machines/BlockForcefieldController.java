@@ -1,18 +1,14 @@
 package ultimat3.endgamemod.blocks.machines;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
 import net.minecraft.block.Block;
 import net.minecraft.client.renderer.texture.IIconRegister;
-import net.minecraft.entity.item.EntityItem;
-import net.minecraft.item.ItemStack;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldController;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMachine;
-import ultimat3.endgamemod.init.ModBlocks;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class BlockForcefieldController extends BlockMachine {
 

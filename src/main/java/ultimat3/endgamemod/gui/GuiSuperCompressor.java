@@ -1,12 +1,5 @@
 package ultimat3.endgamemod.gui;
 
-import org.lwjgl.opengl.GL11;
-
-import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
-import ultimat3.endgamemod.gui.container.ContainerSuperCompressor;
-import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.resources.I18n;
@@ -14,9 +7,16 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+import org.lwjgl.opengl.GL11;
+
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.gui.container.ContainerSuperCompressor;
+import ultimat3.endgamemod.init.ModTileEntities;
+
 public class GuiSuperCompressor extends GuiContainer {
 	
 	private ResourceLocation			guiTex;
+	@SuppressWarnings("unused")
 	private TileEntitySuperCompressor	machine;
 	
 	public GuiSuperCompressor(EntityPlayer player, World world, int x, int y, int z) {
@@ -33,9 +33,10 @@ public class GuiSuperCompressor extends GuiContainer {
 				4210752);
 	}
 	
+	@SuppressWarnings("unused")
 	@Override
 	protected void drawGuiContainerBackgroundLayer(float p_146976_1_, int p_146976_2_, int p_146976_3_) {
-		ITextureObject tex = mc.renderEngine.getTexture(guiTex);
+		ITextureObject tex = mc.renderEngine.getTexture(guiTex); // Is this needed? Not doing anything at the moment.
 		GL11.glColor4f(1, 1, 1, 1);
 		mc.renderEngine.bindTexture(guiTex);
 		int k = (width - xSize) / 2;

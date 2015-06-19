@@ -1,18 +1,6 @@
 package ultimat3.endgamemod.blocks.machines;
 
 import net.minecraft.block.Block;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.EndGame;
-import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.blocks.Ultimat3Block;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityHighProductionFurnace;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMachine;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMetallurgyChamber;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
-import ultimat3.endgamemod.helpers.LogHelper;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.EntityLivingBase;
@@ -20,10 +8,15 @@ import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.IIcon;
 import net.minecraft.util.MathHelper;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.blocks.Ultimat3Block;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMachine;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public abstract class BlockMachine extends Ultimat3Block {
 	

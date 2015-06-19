@@ -1,15 +1,21 @@
 package ultimat3.endgamemod.helpers;
 
-import ultimat3.endgamemod.init.ModBlocks;
-import ultimat3.endgamemod.init.ModItems;
-import ultimat3.endgamemod.items.MetaItem;
-import cpw.mods.fml.common.registry.GameRegistry;
+import static ultimat3.endgamemod.init.ModBlocks.blockMetals;
+import static ultimat3.endgamemod.init.ModBlocks.blockOres;
+import static ultimat3.endgamemod.init.ModItems.aluminum;
+import static ultimat3.endgamemod.init.ModItems.cobalt;
+import static ultimat3.endgamemod.init.ModItems.goldDust;
+import static ultimat3.endgamemod.init.ModItems.ironDust;
+import static ultimat3.endgamemod.init.ModItems.ironNugget;
+import static ultimat3.endgamemod.init.ModItems.itemDusts;
+import static ultimat3.endgamemod.init.ModItems.itemIngots;
+import static ultimat3.endgamemod.init.ModItems.itemNuggets;
+import static ultimat3.endgamemod.init.ModItems.itemVanillaMetals;
+import static ultimat3.endgamemod.init.ModItems.lithium;
+import static ultimat3.endgamemod.init.ModItems.magnesium;
+import static ultimat3.endgamemod.init.ModItems.steel;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
-import net.minecraftforge.oredict.ShapedOreRecipe;
-
-import static ultimat3.endgamemod.init.ModItems.*;
-import static ultimat3.endgamemod.init.ModBlocks.*;
 
 /**
  * Registers our ores and other materials in the ore dictionary. Allows other

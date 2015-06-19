@@ -1,10 +1,5 @@
 package ultimat3.endgamemod.gui.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityHighProductionFurnace;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
-import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.init.Blocks;
@@ -15,11 +10,15 @@ import net.minecraft.inventory.SlotFurnace;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityHighProductionFurnace;
+import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerHighProductionFurnace extends Container {
 	
+	@SuppressWarnings("unused")
 	private World							world;
 	private TileEntityHighProductionFurnace	machine;
 	private short							lastCookTime;
@@ -59,6 +58,7 @@ public class ContainerHighProductionFurnace extends Container {
 		}
 	}
 	
+	@SuppressWarnings("static-access")
 	public void addCraftingToCrafters(ICrafting p_75132_1_) {
 		super.addCraftingToCrafters(p_75132_1_);
 		p_75132_1_.sendProgressBarUpdate(this, 0, this.machine.cookTime);

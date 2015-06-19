@@ -1,30 +1,22 @@
 package ultimat3.endgamemod.gui.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldController;
-import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
-import ultimat3.endgamemod.gui.slot.SlotWhitelist;
-import ultimat3.endgamemod.init.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldController;
+import ultimat3.endgamemod.gui.slot.SlotWhitelist;
+import ultimat3.endgamemod.init.ModItems;
 
 public class ContainerForcefieldController extends Container {
 
+	@SuppressWarnings("unused")
 	private World world;
 	private TileEntityForcefieldController machine;
-	private short lastCookTime;
-	private short lastBurnTime;
+	//private short lastCookTime;
+	//private short lastBurnTime;
 
 	public ContainerForcefieldController(EntityPlayer player, World world,
 			int x, int y, int z) {

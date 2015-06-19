@@ -1,9 +1,8 @@
 package ultimat3.endgamemod;
 
-import ultimat3.endgamemod.init.ModItems;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.init.Items;
 import net.minecraft.item.Item;
+import ultimat3.endgamemod.init.ModItems;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 

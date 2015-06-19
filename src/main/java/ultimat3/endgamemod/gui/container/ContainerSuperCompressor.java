@@ -1,16 +1,16 @@
 package ultimat3.endgamemod.gui.container;
 
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
-import ultimat3.endgamemod.init.ModRecipes;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
 import net.minecraft.inventory.Container;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 
 public class ContainerSuperCompressor extends Container {
 	
+	@SuppressWarnings("unused")
 	private World						world;
 	private TileEntitySuperCompressor	machine;
 	

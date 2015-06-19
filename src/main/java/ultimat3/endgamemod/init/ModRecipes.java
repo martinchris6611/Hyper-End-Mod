@@ -1,19 +1,35 @@
 package ultimat3.endgamemod.init;
 
+import static ultimat3.endgamemod.init.ModBlocks.blockMetallicGlass;
+import static ultimat3.endgamemod.init.ModBlocks.blockMetallicGlassPane;
+import static ultimat3.endgamemod.init.ModBlocks.blockMetals;
+import static ultimat3.endgamemod.init.ModBlocks.blockMisc;
+import static ultimat3.endgamemod.init.ModBlocks.blockOres;
+import static ultimat3.endgamemod.init.ModBlocks.compressedSteel;
+import static ultimat3.endgamemod.init.ModBlocks.reinforcedIronBlock;
+import static ultimat3.endgamemod.init.ModItems.aluminumAlloy;
+import static ultimat3.endgamemod.init.ModItems.carbonSheet;
+import static ultimat3.endgamemod.init.ModItems.ingotNames;
+import static ultimat3.endgamemod.init.ModItems.ironCobaltMagnet;
+import static ultimat3.endgamemod.init.ModItems.itemIngots;
+import static ultimat3.endgamemod.init.ModItems.itemMisc;
+import static ultimat3.endgamemod.init.ModItems.itemNuggets;
+import static ultimat3.endgamemod.init.ModItems.nuggetNames;
+import static ultimat3.endgamemod.init.ModItems.refinedCarbon;
+import static ultimat3.endgamemod.init.ModItems.ringMagnet;
+import static ultimat3.endgamemod.init.ModItems.squareMagnet;
+import static ultimat3.endgamemod.init.ModItems.steel;
+
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import net.minecraft.block.BlockStainedGlassPane;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import ultimat3.endgamemod.EndGame;
 import cpw.mods.fml.common.registry.GameRegistry;
-
-import static ultimat3.endgamemod.init.ModItems.*;
-import static ultimat3.endgamemod.init.ModBlocks.*;
 
 /**
  * Initialize all recipes here. Called from the {@link EndGame#init(cpw.mods.fml.common.event.FMLInitializationEvent)}
@@ -28,6 +44,7 @@ public class ModRecipes {
 	 */
 	private static final RecipesCompression	COMPRESSION	= new RecipesCompression();
 	private static final FactoryRecipes	METALLURGY	= new FactoryRecipes(false);
+	@SuppressWarnings("unused")
 	private static int aluminum;
 	
 	public static RecipesCompression compression() {
@@ -162,6 +179,7 @@ public class ModRecipes {
 		 * @param input The item in the input.
 		 * @return The result of this operation, or null if there is no result.
 		 */
+		@SuppressWarnings("rawtypes")
 		public ItemStack getResult(ItemStack input) {
 			Iterator iterator = this.recipesMap.entrySet().iterator();
 			Entry entry;

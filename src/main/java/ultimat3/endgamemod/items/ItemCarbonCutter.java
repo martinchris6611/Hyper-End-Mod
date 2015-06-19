@@ -2,19 +2,18 @@ package ultimat3.endgamemod.items;
 
 import java.util.Random;
 
-import ultimat3.endgamemod.EndGame;
-import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.init.ModItems;
-import cpw.mods.fml.common.registry.GameRegistry;
 import net.minecraft.block.Block;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemPickaxe;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.init.ModItems;
+import cpw.mods.fml.common.registry.GameRegistry;
 
 public class ItemCarbonCutter extends ItemPickaxe {
 	String name = "carbonCutter";

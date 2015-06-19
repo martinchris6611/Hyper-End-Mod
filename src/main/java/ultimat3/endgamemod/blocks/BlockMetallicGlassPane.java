@@ -1,17 +1,11 @@
 package ultimat3.endgamemod.blocks;
 
-import java.util.Random;
-
+import net.minecraft.block.BlockPane;
+import net.minecraft.block.material.Material;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.init.ModBlocks;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.Block;
-import net.minecraft.block.BlockPane;
-import net.minecraft.block.BlockStainedGlassPane;
-import net.minecraft.block.material.Material;
-import net.minecraft.item.Item;
 
 public class BlockMetallicGlassPane extends BlockPane {
 	public BlockMetallicGlassPane() {

@@ -1,20 +1,12 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
+import net.minecraft.inventory.ISidedInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.inventory.ISidedInventory;
-import net.minecraft.item.Item;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
-import net.minecraft.nbt.NBTTagList;
-import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.Constants.NBT;
-import net.minecraftforge.common.util.ForgeDirection;
+import cofh.api.energy.EnergyStorage;
 
 public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory {
 	

@@ -18,6 +18,7 @@ import cpw.mods.fml.relauncher.SideOnly;
 
 public class ContainerProductionFurnace extends Container {
 	
+	@SuppressWarnings("unused")
 	private World						world;
 	private TileEntityProductionFurnace	machine;
 	private short						lastCookTime;

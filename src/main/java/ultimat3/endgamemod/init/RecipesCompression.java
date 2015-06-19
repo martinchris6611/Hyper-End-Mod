@@ -1,5 +1,13 @@
 package ultimat3.endgamemod.init;
 
+import static ultimat3.endgamemod.init.ModItems.highEntropyAlloy;
+import static ultimat3.endgamemod.init.ModItems.itemIngots;
+import static ultimat3.endgamemod.init.ModItems.itemMisc;
+import static ultimat3.endgamemod.init.ModItems.lithium;
+import static ultimat3.endgamemod.init.ModItems.magnesium;
+import static ultimat3.endgamemod.init.ModItems.scandium;
+import static ultimat3.endgamemod.init.ModItems.titanium;
+
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -12,8 +20,6 @@ import net.minecraft.world.World;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 import ultimat3.endgamemod.init.recipes.ICompressionRecipe;
 import ultimat3.endgamemod.init.recipes.ShapedCompressionRecipe;
-
-import static ultimat3.endgamemod.init.ModItems.*;
 
 public class RecipesCompression {
 	/** A list of all the recipes added */
@@ -105,6 +111,7 @@ public class RecipesCompression {
 	/**
 	 * returns the List<> of all recipes
 	 */
+	@SuppressWarnings("rawtypes")
 	public List getRecipeList() {
 		return this.recipes;
 	}

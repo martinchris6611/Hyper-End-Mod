@@ -3,7 +3,6 @@ package ultimat3.endgamemod.items;
 import net.minecraft.block.Block;
 import net.minecraft.item.ItemBlock;
 import net.minecraft.item.ItemStack;
-import ultimat3.endgamemod.blocks.BlockOre;
 import ultimat3.endgamemod.blocks.MetaBlock;
 
 public class Ultimat3ItemBlock extends ItemBlock {

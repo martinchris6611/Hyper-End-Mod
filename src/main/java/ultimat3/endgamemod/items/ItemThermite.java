@@ -1,14 +1,10 @@
 package ultimat3.endgamemod.items;
 
-import cpw.mods.fml.common.registry.GameRegistry;
-import ultimat3.endgamemod.EndGame;
-import ultimat3.endgamemod.Reference;
-import ultimat3.endgamemod.init.ModBlocks;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.init.ModBlocks;
 
 public class ItemThermite extends Ultimat3Item {
     public ItemThermite() {

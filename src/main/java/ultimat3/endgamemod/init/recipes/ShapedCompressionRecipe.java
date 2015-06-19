@@ -1,8 +1,6 @@
 package ultimat3.endgamemod.init.recipes;
 
-import net.minecraft.inventory.InventoryCrafting;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.ShapedRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;

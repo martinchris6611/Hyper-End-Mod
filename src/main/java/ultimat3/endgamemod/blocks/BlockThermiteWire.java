@@ -3,7 +3,6 @@ package ultimat3.endgamemod.blocks;
 import java.util.Random;
 
 import net.minecraft.block.Block;
-import net.minecraft.block.BlockRedstoneWire;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.entity.player.EntityPlayer;
@@ -12,9 +11,7 @@ import net.minecraft.init.Items;
 import net.minecraft.item.Item;
 import net.minecraft.util.AxisAlignedBB;
 import net.minecraft.util.IIcon;
-import net.minecraft.world.IBlockAccess;
 import net.minecraft.world.World;
-import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
 import ultimat3.endgamemod.helpers.CuboidIterator;
 import ultimat3.endgamemod.init.ModBlocks;

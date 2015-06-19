@@ -43,6 +43,7 @@ public class MetaBlock extends Ultimat3Block {
 		}
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubBlocks(Item item, CreativeTabs tab, List list) {

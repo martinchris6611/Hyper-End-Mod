@@ -1,18 +1,14 @@
 package ultimat3.endgamemod.items;
 
+import static ultimat3.endgamemod.Reference.RESOURCE_PREFIX;
+
 import java.util.List;
 
-import ultimat3.endgamemod.Reference;
-
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.client.Minecraft;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
-
-import static ultimat3.endgamemod.Reference.RESOURCE_PREFIX;
+import cpw.mods.fml.relauncher.Side;
+import cpw.mods.fml.relauncher.SideOnly;
 
 public class ItemParticlePistol extends Ultimat3Item {
 
@@ -29,6 +25,7 @@ public class ItemParticlePistol extends Ultimat3Item {
 		return ret;
 	}
 
+	@SuppressWarnings("rawtypes")
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void addInformation(ItemStack stack, EntityPlayer player, List list, boolean flag) {

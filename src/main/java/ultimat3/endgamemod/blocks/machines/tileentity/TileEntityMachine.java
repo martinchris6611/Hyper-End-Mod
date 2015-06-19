@@ -1,19 +1,15 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
-import cofh.api.energy.EnergyStorage;
-import cofh.api.energy.IEnergyHandler;
-import ultimat3.endgamemod.init.ModTileEntities;
 import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.IInventory;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.nbt.NBTTagList;
 import net.minecraft.tileentity.TileEntity;
-import net.minecraftforge.common.util.ForgeDirection;
 import net.minecraftforge.common.util.Constants.NBT;
+import net.minecraftforge.common.util.ForgeDirection;
+import cofh.api.energy.EnergyStorage;
+import cofh.api.energy.IEnergyHandler;
 
 public class TileEntityMachine extends TileEntity implements IInventory, IEnergyHandler {
 	public ItemStack[] items;

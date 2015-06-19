@@ -2,14 +2,12 @@ package ultimat3.endgamemod.items;
 
 import java.util.List;
 
-import ultimat3.endgamemod.Reference;
-
 import net.minecraft.client.renderer.texture.IIconRegister;
 import net.minecraft.creativetab.CreativeTabs;
-import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import ultimat3.endgamemod.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
@@ -44,6 +42,7 @@ public class MetaItem extends Ultimat3Item {
 		return "item.u3_egm_" + names[stack.getItemDamage()];
 	}
 	
+	@SuppressWarnings({ "unchecked", "rawtypes" })
 	@Override
 	@SideOnly(Side.CLIENT)
 	public void getSubItems(Item item, CreativeTabs tab, List list) {

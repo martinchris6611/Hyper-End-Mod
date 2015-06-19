@@ -1,10 +1,8 @@
 package ultimat3.endgamemod.blocks;
 
-import ultimat3.endgamemod.EndGame;
-import ultimat3.endgamemod.Reference;
+import net.minecraft.block.material.Material;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
-import net.minecraft.block.material.Material;
 
 public class BlockMetallicGlass extends Ultimat3Block {
 

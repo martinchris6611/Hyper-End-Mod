@@ -1,9 +1,7 @@
 package ultimat3.endgamemod.init;
 
-import net.minecraft.block.Block;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
-import net.minecraft.item.ItemStack;
 import net.minecraftforge.common.util.EnumHelper;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.ItemCarbonCutter;
@@ -11,7 +9,6 @@ import ultimat3.endgamemod.items.ItemModSword;
 import ultimat3.endgamemod.items.ItemParticlePistol;
 import ultimat3.endgamemod.items.ItemThermite;
 import ultimat3.endgamemod.items.MetaItem;
-import ultimat3.endgamemod.items.Ultimat3Item;
 
 public class ModItems { // TODO test the new recipes and lang
 

@@ -1,13 +1,14 @@
 package ultimat3.endgamemod.items;
 
-import ultimat3.endgamemod.EndGame;
-import ultimat3.endgamemod.Reference;
 import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
+import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.Reference;
 
 public class ItemModSword extends ItemSword {
 	
+	@SuppressWarnings("unused")
 	private final String		name;
 	public static final String	WEAPON_LOC	= "";
 	

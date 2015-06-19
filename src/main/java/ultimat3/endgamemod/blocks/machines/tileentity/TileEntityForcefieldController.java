@@ -1,19 +1,16 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
-import cofh.api.energy.EnergyStorage;
+import net.minecraft.init.Blocks;
+import net.minecraft.inventory.IInventory;
+import net.minecraft.item.ItemStack;
+import net.minecraft.nbt.NBTTagCompound;
 import ultimat3.endgamemod.helpers.CuboidIterator;
 import ultimat3.endgamemod.helpers.OctahedronIterator;
 import ultimat3.endgamemod.helpers.SphereIterator;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModTileEntities;
-import net.minecraft.block.BlockEndPortalFrame;
-import net.minecraft.entity.player.EntityPlayer;
-import net.minecraft.init.Blocks;
-import net.minecraft.init.Items;
-import net.minecraft.inventory.IInventory;
-import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import cofh.api.energy.EnergyStorage;
 
 public class TileEntityForcefieldController extends TileEntityMachine implements
 		IInventory {
