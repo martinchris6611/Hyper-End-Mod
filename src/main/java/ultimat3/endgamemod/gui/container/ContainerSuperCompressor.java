@@ -8,8 +8,13 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
 
-public class ContainerSuperCompressor extends Container {
+public class ContainerSuperCompressor extends ContainerMachine {
 	
+<<<<<<< HEAD
+	public ContainerSuperCompressor(EntityPlayer player, World world, int x,
+			int y, int z) {
+		super(player, world, x, y, z);
+=======
 	@SuppressWarnings("unused")
 	private World						world;
 	private TileEntitySuperCompressor	machine;
@@ -33,27 +38,9 @@ public class ContainerSuperCompressor extends Container {
 				addSlotToContainer(new Slot(machine, x + y * 3, 38 + x * 18, 17 + y * 18));
 			}
 		}
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 	}
-	
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-		// Main inventory
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9, 8 + j * 18, 84 + i * 18));
-			}
-		}
-		
-		// Hotbar
-		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
-		}
-	}
-	
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
-	}
-	
+
 	@Override
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
 		ItemStack itemstack = null;
@@ -111,6 +98,18 @@ public class ContainerSuperCompressor extends Container {
 		}
 		
 		return itemstack;
+	}
+
+	@Override
+	protected Slot[] getSlotsForAdding() {
+		Slot[] slots = new Slot[10];
+		for (int x = 0; x < 3; ++x) {
+			for (int y = 0; y < 3; ++y) {
+				slots[x*3 + y] = new Slot(machine, x + y * 3, 38 + x * 18, 17 + y * 18);
+			}
+		}
+		slots[9] = new Slot(machine, 9, 116, 35);
+		return slots;
 	}
 	
 }

@@ -6,6 +6,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+<<<<<<< HEAD
+public class GuiForcefieldController extends GuiMachine {
+
+	public GuiForcefieldController(EntityPlayer player,
+			World world, int x, int y, int z) {
+		super(new ContainerForcefieldController(player, world, x, y, z), "forceFieldController", player, world, x, y, z);
+	}
+	
+=======
 import org.lwjgl.opengl.GL11;
 
 import ultimat3.endgamemod.Reference;
@@ -34,5 +43,6 @@ public class GuiForcefieldController extends GuiContainer {
 		int l = (height - ySize) / 2;
 		drawTexturedModalRect(k, l, 0, 0, xSize, ySize);
 	}
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 	
 }

@@ -1,5 +1,14 @@
 package ultimat3.endgamemod.gui;
 
+<<<<<<< HEAD
+import org.lwjgl.opengl.GL11;
+
+import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldController;
+import ultimat3.endgamemod.gui.container.ContainerForcefieldController;
+import ultimat3.endgamemod.gui.container.ContainerProductionFurnace;
+=======
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.client.resources.I18n;
@@ -7,6 +16,15 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+<<<<<<< HEAD
+public class GuiProductionFurnace extends GuiMachine {
+
+	public GuiProductionFurnace(EntityPlayer player,
+			World world, int x, int y, int z) {
+		super(new ContainerProductionFurnace(player, world, x, y, z), "productionFurnace", player, world, x, y, z);
+	}
+	
+=======
 import org.lwjgl.opengl.GL11;
 
 import ultimat3.endgamemod.Reference;
@@ -49,5 +67,6 @@ public class GuiProductionFurnace extends GuiContainer {
 			this.drawTexturedModalRect(k + 79, l + 34, 176, 14, i1 + 1, 16);
 		}
 	}
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 	
 }

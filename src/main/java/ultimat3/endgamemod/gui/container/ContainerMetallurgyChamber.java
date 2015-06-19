@@ -17,8 +17,13 @@ import ultimat3.endgamemod.init.ModRecipes;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerMetallurgyChamber extends Container {
+public class ContainerMetallurgyChamber extends ContainerMachine {
 	
+<<<<<<< HEAD
+	public ContainerMetallurgyChamber(EntityPlayer player, World world, int x,
+			int y, int z) {
+		super(player, world, x, y, z);
+=======
 	@SuppressWarnings("unused")
 	private World						world;
 	private TileEntityMetallurgyChamber machine;
@@ -90,13 +95,9 @@ public class ContainerMetallurgyChamber extends Container {
 		if (updateID == 1) {
 			this.machine.metallurgyTimeLeft = (short) updateValue;
 		}
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 	}
-	
-	@Override
-	public boolean canInteractWith(EntityPlayer p_75145_1_) {
-		return true;
-	}
-	
+
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
 		ItemStack itemstack = null;
 		Slot slot = (Slot) this.inventorySlots.get(slotID);
@@ -157,5 +158,14 @@ public class ContainerMetallurgyChamber extends Container {
 		}
 		
 		return itemstack;
+	}
+
+	@Override
+	protected Slot[] getSlotsForAdding() {
+		return new Slot[] {
+				new Slot(machine, 0, 56, 17),
+				new SlotMachineFuel(machine, 1, new ItemStack(ModItems.itemThermite), 56, 53),
+				new Slot(machine, 2, 116, 35)
+		};
 	}
 }

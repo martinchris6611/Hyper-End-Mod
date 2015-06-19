@@ -16,8 +16,13 @@ import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
 
-public class ContainerHighProductionFurnace extends Container {
+public class ContainerHighProductionFurnace extends ContainerMachine {
 	
+<<<<<<< HEAD
+	public ContainerHighProductionFurnace(EntityPlayer player, World world,
+			int x, int y, int z) {
+		super(player, world, x, y, z);
+=======
 	@SuppressWarnings("unused")
 	private World							world;
 	private TileEntityHighProductionFurnace	machine;
@@ -103,13 +108,9 @@ public class ContainerHighProductionFurnace extends Container {
 		if (updateID == 1) {
 			this.machine.furnaceTimeLeft = (short) updateValue;
 		}
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 	}
-	
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
-	}
-	
+
 	public ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
 		ItemStack itemstack = null;
 		Slot slot = (Slot) this.inventorySlots.get(slotID);
@@ -170,5 +171,20 @@ public class ContainerHighProductionFurnace extends Container {
 		}
 		
 		return itemstack;
+	}
+
+	@Override
+	protected Slot[] getSlotsForAdding() {
+		return new Slot[] {
+				new Slot(machine, 0, 76, 17),
+				new Slot(machine, 1, 56, 17),
+				new Slot(machine, 2, 36, 17),
+				new Slot(machine, 3, 16, 17),
+				new SlotMachineFuel(machine, 4, new ItemStack(Blocks.coal_block), 56, 53),
+				new Slot(this.machine, 5, 116, 60),
+				new Slot(this.machine, 6, 116, 40),
+				new Slot(this.machine, 7, 116, 20),
+				new Slot(this.machine, 8, 116, 0)
+		};
 	}
 }

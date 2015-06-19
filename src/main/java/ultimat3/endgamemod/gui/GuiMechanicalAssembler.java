@@ -1,11 +1,29 @@
 package ultimat3.endgamemod.gui;
 
+<<<<<<< HEAD
+import org.lwjgl.opengl.GL11;
+
+import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldController;
+import ultimat3.endgamemod.gui.container.ContainerForcefieldController;
+import ultimat3.endgamemod.gui.container.ContainerMechanicalAssembler;
+=======
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 import net.minecraft.client.gui.inventory.GuiContainer;
 import net.minecraft.client.renderer.texture.ITextureObject;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.util.ResourceLocation;
 import net.minecraft.world.World;
 
+<<<<<<< HEAD
+public class GuiMechanicalAssembler extends GuiMachine {
+
+	public GuiMechanicalAssembler(EntityPlayer player,
+			World world, int x, int y, int z) {
+		super(new ContainerMechanicalAssembler(player, world, x, y, z), "mechanicalAssembler", player, world, x, y, z);
+	}
+	
+=======
 import org.lwjgl.opengl.GL11;
 
 import ultimat3.endgamemod.Reference;
@@ -34,5 +52,6 @@ public class GuiMechanicalAssembler extends GuiContainer {
 		int l = (height - ySize) / 2;
 		drawTexturedModalRect(k, l, 0, 0, xSize, ySize);
 	}
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 	
 }

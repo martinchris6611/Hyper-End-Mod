@@ -8,71 +8,17 @@ import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 import cofh.api.energy.EnergyStorage;
 
-public class TileEntityMetallurgyChamber extends TileEntityMachine implements ISidedInventory {
-	
-	/**
-	 * The amount of time left for this metallurgy to keep burning (in ticks).
-	 */
-	public short				metallurgyTimeLeft;
-	
-	/**
-	 * The amount of time this item has been cooking for.
-	 */
-	public short				cookTime;
-	
-	/**
-	 * The amount of ticks it takes for a single item to cook.
-	 */
-	public static final short	ITEM_TIME_DONE				= 200;					// 20 = 1 sec.
-																					
-	/**
-	 * How long a thermite will burn.
-	 */
-	public static final int		NEW_FUEL_TIME				= ITEM_TIME_DONE;
+public class TileEntityMetallurgyChamber extends TileEntityFueledMachine {
 
-	/**
-	 * Amount of Energy this item can internally store
-	 */
-	
-	private int[]				bottomSlots					= { 1 };
-	private int[]				topSlots					= { 0 };
-	private int[]				sideSlots					= { 2 };
-	
-	// ================ Tag names start ===============
-	
-	public static final String	TAG_METALLURGY_TIME_LEFT	= "metallurgyTime";
-	public static final String	TAG_ITEM_TIME				= "itemTime";
-	
-	// ================= Tag names end ================
 	
 	public TileEntityMetallurgyChamber() {
-		super(new ItemStack[3], "container." + ModTileEntities.METALLURGY_CHAMBER_ID, new EnergyStorage(6114000));
+		super(20, 1, 20, 10240, new ItemStack[3],
+				"_container." + ModTileEntities.METALLURGY_CHAMBER_ID,
+				new EnergyStorage(6114000));
 	}
-	
-	@Override
-	public void readFromNBT(NBTTagCompound mainTag) {
-		super.readFromNBT(mainTag);
-		storage.readFromNBT(mainTag);
-		// reads other things
-		this.metallurgyTimeLeft = mainTag.getShort(TAG_METALLURGY_TIME_LEFT);
-		this.cookTime = mainTag.getShort(TAG_ITEM_TIME);
-	}
-	
-	@Override
-	public void writeToNBT(NBTTagCompound mainTag) {
-		super.writeToNBT(mainTag);
-		storage.writeToNBT(mainTag);
-		// Writes other things
-		mainTag.setShort(TAG_METALLURGY_TIME_LEFT, metallurgyTimeLeft);
-		mainTag.setShort(TAG_ITEM_TIME, cookTime);
-	}
-	
-	private boolean canMetallurgy() {
+
+	public boolean canProcessItem() {
 		if (this.items[0] == null)
-			return false;
-		
-		//If there is no energy storage, we can't do anything
-		if (storage.getEnergyStored() < 10240)
 			return false;
 		
 		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
@@ -94,9 +40,7 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		return result <= getInventoryStackLimit() && result <= this.items[2].getMaxStackSize();
 	}
 	
-	private void metallurgyItem() {
-		if (!canMetallurgy())
-			return;
+	public void processItem() {
 		
 		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
 		
@@ -112,75 +56,6 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 		if (this.items[0].stackSize <= 0) {
 			this.items[0] = null;
 		}
-	}
-	
-	public void updateEntity() {
-		// TODO Make sure RF is checked
-		// Make sure the metallurgy decreases the time left continuously. This thing has to stop sometime.
-		if (this.metallurgyTimeLeft > 0)
-			--this.metallurgyTimeLeft;
-		
-		boolean shouldSave = false;
-		
-		// Server takes care of this
-		if (!this.worldObj.isRemote) {
-			// If the metallurgy has fuel (burning or ready) and the smeltable isn't nothing
-			if (this.metallurgyTimeLeft != 0 || this.items[1] != null && this.items[0] != null) {
-				
-				// If the metallurgy is done burning and can smelt
-				if (this.metallurgyTimeLeft <= 0 && this.canMetallurgy()) {
-					this.metallurgyTimeLeft = NEW_FUEL_TIME;
-					
-					if (this.metallurgyTimeLeft > 0) {
-						shouldSave = true;
-						
-						if (this.items[1] != null) {
-							--this.items[1].stackSize;
-							
-							if (this.items[1].stackSize <= 0) {
-								this.items[1] = null;
-							}
-						}
-					}
-				}
-				
-				// If this item can be smelted and the metallurgy is burning
-				if (this.metallurgyTimeLeft > 0 && this.canMetallurgy()) {
-					++this.cookTime;
-					storage.modifyEnergyStored(-10240);
-					
-					// if the item is done
-					if (this.cookTime >= ITEM_TIME_DONE) {
-						this.cookTime = 0;
-						this.metallurgyItem();
-						shouldSave = true;
-					}
-				} else {
-					this.cookTime = 0;
-				}
-			}
-		}
-		
-		if (shouldSave)
-			this.markDirty();
-	}
-	
-	public boolean isBurning() {
-		return this.metallurgyTimeLeft > 0;
-	}
-	
-	// TODO make sure this checks energy
-	public boolean hasEnergy() {
-		// return this.furnaceTimeLeft > 0;
-		return true;
-	}
-	
-	public int getMetallurgyTimeRemaining(int i) {
-		return metallurgyTimeLeft / NEW_FUEL_TIME * i;
-	}
-	
-	public int getCookProgress(int i) {
-		return cookTime / ITEM_TIME_DONE * i;
 	}
 	
 	// ====================================================
@@ -209,12 +84,12 @@ public class TileEntityMetallurgyChamber extends TileEntityMachine implements IS
 	@Override
 	public int[] getAccessibleSlotsFromSide(int side) {
 		if (side == 0)
-			return bottomSlots;
+			return new int[]{1};
 		
 		if (side == 1)
-			return topSlots;
+			return new int[]{0};
 		
-		return sideSlots;
+		return new int[]{2};
 	}
 	
 	@Override

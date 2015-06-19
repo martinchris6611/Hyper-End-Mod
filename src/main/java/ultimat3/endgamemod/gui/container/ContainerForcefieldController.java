@@ -10,6 +10,9 @@ import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldContro
 import ultimat3.endgamemod.gui.slot.SlotWhitelist;
 import ultimat3.endgamemod.init.ModItems;
 
+<<<<<<< HEAD
+public class ContainerForcefieldController extends ContainerMachine {
+=======
 public class ContainerForcefieldController extends Container {
 
 	@SuppressWarnings("unused")
@@ -17,48 +20,11 @@ public class ContainerForcefieldController extends Container {
 	private TileEntityForcefieldController machine;
 	//private short lastCookTime;
 	//private short lastBurnTime;
+>>>>>>> fa3e81984486903a91271b84c55562d3acb95396
 
 	public ContainerForcefieldController(EntityPlayer player, World world,
 			int x, int y, int z) {
-		this.world = world;
-
-		this.machine = ((TileEntityForcefieldController) world.getTileEntity(x,
-				y, z));
-
-		addSlotToContainer(new SlotWhitelist(machine, 0, 38, 45, new ItemStack(
-				ModItems.itemFFModifiers, 1, ModItems.sizeUpgrade)));
-		addSlotToContainer(new SlotWhitelist(
-				machine,
-				1,
-				121,
-				45,
-				new ItemStack(ModItems.itemFFModifiers, 1, ModItems.shapeCube),
-				new ItemStack(ModItems.itemFFModifiers, 1, ModItems.shapeSphere),
-				new ItemStack(ModItems.itemFFModifiers, 1,
-						ModItems.shapeOctahedron)));
-
-		// player slots
-		this.bindPlayerInventory(player.inventory);
-	}
-
-	protected void bindPlayerInventory(InventoryPlayer inventoryPlayer) {
-		// Main inventory
-		for (int i = 0; i < 3; i++) {
-			for (int j = 0; j < 9; j++) {
-				addSlotToContainer(new Slot(inventoryPlayer, j + i * 9 + 9,
-						8 + j * 18, 84 + i * 18));
-			}
-		}
-
-		// Hotbar
-		for (int i = 0; i < 9; i++) {
-			addSlotToContainer(new Slot(inventoryPlayer, i, 8 + i * 18, 142));
-		}
-	}
-
-	@Override
-	public boolean canInteractWith(EntityPlayer player) {
-		return true;
+		super(player, world, x, y, z);
 	}
 
 	@Override
@@ -122,5 +88,20 @@ public class ContainerForcefieldController extends Container {
 		}
 		
 		return itemstack;
+	}
+
+	@Override
+	protected Slot[] getSlotsForAdding() {
+		return new Slot[] {
+				
+				new SlotWhitelist(machine, 0, 38, 45, new ItemStack(
+						ModItems.itemFFModifiers, 1, ModItems.sizeUpgrade)),
+						
+						new SlotWhitelist(machine,	1,	121, 45,
+								new ItemStack(ModItems.itemFFModifiers, 1, ModItems.shapeCube),
+								new ItemStack(ModItems.itemFFModifiers, 1, ModItems.shapeSphere),
+								new ItemStack(ModItems.itemFFModifiers, 1,
+										ModItems.shapeOctahedron))
+		};
 	}
 }

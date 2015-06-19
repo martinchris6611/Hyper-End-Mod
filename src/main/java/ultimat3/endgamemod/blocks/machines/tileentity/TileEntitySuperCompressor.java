@@ -8,63 +8,17 @@ import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
 import cofh.api.energy.EnergyStorage;
 
-public class TileEntitySuperCompressor extends TileEntityMachine implements ISidedInventory {
-	
-	/**
-	 * The amount of time left for this metallurgy to keep burning (in ticks).
-	 */
-	public short				compressorTimeLeft;
-	
-	/**
-	 * The amount of time this item has been cooking for.
-	 */
-	public short				cookTime;
-	
-	/**
-	 * The amount of ticks it takes for a single item to cook.
-	 */
-	public static final short	ITEM_TIME_DONE	= 10;								// 20 = 1 sec.
-	
-	/**
-	 * Amount of Energy this item can internally store
-	 */
-					
-	// Slot related stuff
-	private static final int	OUTPUT_SLOT	= 9;
-	private int[]				topSlots		= { 0, 1, 2, 3, 4, 5, 6, 7, 8 };
-	private int[]				notTopSlots		= { 9 };
-	
-	// ================ Tag names start ===============
-
-	public static final String	TAG_ITEM_TIME				= "itemTime";
-	public static final String	TAG_COMPRESSOR_TIME_LEFT	= "compressorTime";
-
-	// ================= Tag names end ================
-	
+public class TileEntitySuperCompressor extends TileEntityProcessingMachine  {
 	
 	public TileEntitySuperCompressor() {
-		super(new ItemStack[10], "container." + ModTileEntities.SUPER_COMPRESSOR_ID, new EnergyStorage(384000));
+		super(10, 640, new ItemStack[10],
+				"container." + ModTileEntities.SUPER_COMPRESSOR_ID,
+				new EnergyStorage(384000));
 	}
 	
-	@Override
-	public void readFromNBT(NBTTagCompound mainTag) {
-		super.readFromNBT(mainTag);
-		storage.readFromNBT(mainTag);
-		// reads other things
-		this.compressorTimeLeft = mainTag.getShort(TAG_COMPRESSOR_TIME_LEFT);
-		this.cookTime = mainTag.getShort(TAG_ITEM_TIME);
-	}
+	public int OUTPUT_SLOT = 9;
 	
-	@Override
-	public void writeToNBT(NBTTagCompound mainTag) {
-		super.writeToNBT(mainTag);
-		storage.writeToNBT(mainTag);
-		// Writes other things
-		mainTag.setShort(TAG_COMPRESSOR_TIME_LEFT, compressorTimeLeft);
-		mainTag.setShort(TAG_ITEM_TIME, cookTime);
-	}
-	
-	private boolean canCompress() {
+	public boolean canProcessItem() {
 		if (this.items[0] == null)
 			return false;
 		
@@ -92,9 +46,7 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 		return result <= getInventoryStackLimit() && result <= this.items[OUTPUT_SLOT].getMaxStackSize();
 	}
 	
-	private void compressItem() {
-		if (!canCompress())
-			return;
+	public void processItem() {
 		
 		ItemStack itemstack = ModRecipes.compression().findMatchingRecipe(this, this.worldObj);
 		
@@ -112,55 +64,6 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 		if (this.items[0].stackSize <= 0) {
 			this.items[0] = null;
 		}
-	}
-	
-	@Override
-	public void updateEntity() {
-		// TODO Make sure RF is checked
-		if(this.compressorTimeLeft > 0)
-			--this.compressorTimeLeft;
-		
-		boolean shouldSave = false;
-		
-		// Server takes care of this
-		if (!this.worldObj.isRemote) {
-			// If the furnace has fuel (burning or ready) and the smeltable isn't nothing
-			if(this.compressorTimeLeft != 0) {
-				// TODO ADD ENERGY CHECK
-				
-				if (this.canCompress() && this.compressorTimeLeft > 0) {
-					++this.cookTime;
-					storage.modifyEnergyStored(-640);
-					
-					// if the item is done
-					if (this.cookTime >= ITEM_TIME_DONE) {
-						this.cookTime = 0;
-						this.compressItem();
-						shouldSave = true;
-					}
-				} else {
-					this.cookTime = 0;
-				}
-			}
-		}
-		
-		if (shouldSave)
-			this.markDirty();
-	}
-	
-	// TODO make sure this checks energy
-	public boolean hasEnergy() {
-		// return this.furnaceTimeLeft > 0;
-		return true;
-	}
-	
-	public int getCompressorTimeRemaining(int i) {
-		//return compressorTimeLeft / 
-		return 0;
-	}
-	
-	public int getCookProgress(int i) {
-		return cookTime / ITEM_TIME_DONE * i;
 	}
 	
 	// ====================================================
@@ -184,9 +87,9 @@ public class TileEntitySuperCompressor extends TileEntityMachine implements ISid
 	public int[] getAccessibleSlotsFromSide(int side) {
 		// Makes sense, right? side 0 is bottom, side 1 is top.
 		if (side == 1)
-			return topSlots;
+			return new int[]{0, 1, 2, 3, 4, 5, 6, 7, 8};
 		
-		return notTopSlots;
+		return new int[]{9};
 	}
 	
 	@Override
