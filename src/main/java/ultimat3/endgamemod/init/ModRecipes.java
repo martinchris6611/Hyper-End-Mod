@@ -44,7 +44,6 @@ public class ModRecipes {
 	 */
 	private static final RecipesCompression	COMPRESSION	= new RecipesCompression();
 	private static final FactoryRecipes	METALLURGY	= new FactoryRecipes(false);
-	@SuppressWarnings("unused")
 	private static int aluminum;
 	
 	public static RecipesCompression compression() {
@@ -152,8 +151,8 @@ public class ModRecipes {
 	 * @author Ebilkill
 	 */
 	public static class FactoryRecipes {
-		private Map<ItemStack, ItemStack>	recipesMap;
-		private boolean						useInputAmount;
+		private final Map<ItemStack, ItemStack>	recipesMap;
+		private final boolean						useInputAmount;
 		
 		public FactoryRecipes(boolean useInputAmount) {
 			this.recipesMap = new HashMap<ItemStack, ItemStack>();

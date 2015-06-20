@@ -2,8 +2,21 @@ package ultimat3.endgamemod.init;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
-import ultimat3.endgamemod.blocks.*;
-import ultimat3.endgamemod.blocks.machines.*;
+import ultimat3.endgamemod.blocks.BlockForce;
+import ultimat3.endgamemod.blocks.BlockMetallicGlass;
+import ultimat3.endgamemod.blocks.BlockMetallicGlassPane;
+import ultimat3.endgamemod.blocks.BlockOre;
+import ultimat3.endgamemod.blocks.BlockThermiteFire;
+import ultimat3.endgamemod.blocks.BlockThermiteWire;
+import ultimat3.endgamemod.blocks.MetaBlock;
+import ultimat3.endgamemod.blocks.machines.BlockAirExtractor;
+import ultimat3.endgamemod.blocks.machines.BlockAirSeparator;
+import ultimat3.endgamemod.blocks.machines.BlockForcefieldController;
+import ultimat3.endgamemod.blocks.machines.BlockHighProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.BlockMechanicalAssembler;
+import ultimat3.endgamemod.blocks.machines.BlockMetallurgyChamber;
+import ultimat3.endgamemod.blocks.machines.BlockProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.BlockSuperCompressor;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.Ultimat3ItemBlock;
 
@@ -36,6 +49,8 @@ public class ModBlocks {
 	public static Block				blockSuperCompressor		=	new BlockSuperCompressor("superCompressor");
 	public static Block				blockForcefieldController	=	new BlockForcefieldController("forcefieldController");
 	public static Block				blockMechanicalAssembler	=	new BlockMechanicalAssembler();
+	public static Block				blockAirExtractor			=	new BlockAirExtractor("airExtractor");
+	public static Block				blockAirSeparator			=	new BlockAirSeparator("airSeparator");
 	/**
 	 * Meta blocks
 	 */
@@ -90,6 +105,8 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockSuperCompressor);
 		RegisterHelper.registerBlock(blockForcefieldController);
 		RegisterHelper.registerBlock(blockMechanicalAssembler);
+		RegisterHelper.registerBlock(blockAirExtractor);
+		RegisterHelper.registerBlock(blockAirSeparator);
 		
 		// Others
 		

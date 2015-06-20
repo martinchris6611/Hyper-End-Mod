@@ -4,6 +4,7 @@ import net.minecraft.block.Block;
 import ultimat3.endgamemod.blocks.OreSpawner;
 import ultimat3.endgamemod.helpers.OreDictionaryHelper;
 import ultimat3.endgamemod.init.ModBlocks;
+import ultimat3.endgamemod.init.ModFluids;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
@@ -58,6 +59,7 @@ public class EndGame {
 		hollow = new ultimat3.endgamemod.multiblock.BlockHollow().setBlockName("hollowMultiBlock");
 		particleController = new ultimat3.endgamemod.multiblock.BlockStone().setBlockName("particleController");
 		// registers content with Forge
+		ModFluids.registerFluids();
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
 		

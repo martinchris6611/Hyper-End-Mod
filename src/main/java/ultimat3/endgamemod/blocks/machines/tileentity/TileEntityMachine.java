@@ -11,7 +11,7 @@ import net.minecraftforge.common.util.ForgeDirection;
 import cofh.api.energy.EnergyStorage;
 import cofh.api.energy.IEnergyHandler;
 
-public class TileEntityMachine extends TileEntity implements IInventory, IEnergyHandler {
+abstract public class TileEntityMachine extends TileEntity implements IInventory, IEnergyHandler {
 	public ItemStack[] items;
 	
 	public static final String	TAG_ITEMS				= "items";
@@ -60,6 +60,9 @@ public class TileEntityMachine extends TileEntity implements IInventory, IEnergy
 		
 		mainTag.setTag(TAG_ITEMS, list);
 	}
+	
+	@Override
+	abstract public void updateEntity();
 	
 	// ====================================================
 	// ================= Interfaces start =================
@@ -141,8 +144,8 @@ public class TileEntityMachine extends TileEntity implements IInventory, IEnergy
 	public boolean isUseableByPlayer(EntityPlayer player) {
 		// Return false if the TileEntity at this place is not this TileEntity or if the player is too far away.
 		return this.worldObj.getTileEntity(this.xCoord, this.yCoord, this.zCoord) != this ? false
-				: player.getDistanceSq((double) this.xCoord + 0.5D, (double) this.yCoord + 0.5D,
-						(double) this.zCoord + 0.5D) <= 64.0D;
+				: player.getDistanceSq(this.xCoord + 0.5D, this.yCoord + 0.5D,
+						this.zCoord + 0.5D) <= 64.0D;
 	}
 	
 	@Override
@@ -171,7 +174,7 @@ public class TileEntityMachine extends TileEntity implements IInventory, IEnergy
 
 	@Override
 	public int extractEnergy(ForgeDirection from, int maxExtract, boolean simulate) {
-		return storage.extractEnergy(maxExtract, simulate);
+		return 0;
 	}
 
 	@Override

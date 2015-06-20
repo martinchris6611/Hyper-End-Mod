@@ -8,7 +8,6 @@ import ultimat3.endgamemod.Reference;
 
 public class ItemModSword extends ItemSword {
 	
-	@SuppressWarnings("unused")
 	private final String		name;
 	public static final String	WEAPON_LOC	= "";
 	
