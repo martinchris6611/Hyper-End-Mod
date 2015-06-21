@@ -16,9 +16,9 @@ public abstract class TileMultiBlock extends TileEntityProcessingMachine {
 	}
 	
 	
-	private boolean hasMaster, isMaster, isFormed;
-	    private int masterX, masterY, masterZ;
-
+		private boolean hasMaster, isMaster, isFormed;
+	    private int masterX, masterY, masterZ, size;
+	    
 	    @Override
 	    public void updateEntity() {
 	        super.updateEntity();
@@ -61,6 +61,7 @@ public abstract class TileMultiBlock extends TileEntityProcessingMachine {
 	        masterX = 0;
 	        masterY = 0;
 	        masterZ = 0;
+	        size = 0;
 	        hasMaster = false;
 	        isMaster = false;
 	        isFormed = false;
@@ -89,6 +90,7 @@ public abstract class TileMultiBlock extends TileEntityProcessingMachine {
 	        data.setInteger("masterX", masterX);
 	        data.setInteger("masterY", masterY);
 	        data.setInteger("masterZ", masterZ);
+	        data.setInteger("size", size);
 	        data.setBoolean("hasMaster", hasMaster);
 	        data.setBoolean("isMaster", isMaster);
 	        data.setBoolean("isFormed", isFormed);
@@ -102,13 +104,18 @@ public abstract class TileMultiBlock extends TileEntityProcessingMachine {
 	        masterX = data.getInteger("masterX");
 	        masterY = data.getInteger("masterY");
 	        masterZ = data.getInteger("masterZ");
+	        size = data.getInteger("size");
 	        hasMaster = data.getBoolean("hasMaster");
 	        isMaster = data.getBoolean("isMaster");
 	        isFormed = data.getBoolean("isFormed");
 	        if (hasMaster() && isMaster())
 	            masterReadFromNBT(data);
 	    }
-
+	    
+	    public int getSize() {
+	    	return size;
+	    }
+	    
 	    public boolean isFormed() {
 	    	return isFormed;
 	    }
@@ -132,7 +139,11 @@ public abstract class TileMultiBlock extends TileEntityProcessingMachine {
 	    public int getMasterZ() {
 	        return masterZ;
 	    }
-
+	    
+	    public void setSize(int i) {
+	    	size = i;
+	    }
+	    
 	    public void setHasMaster(boolean bool) {
 	        hasMaster = bool;
 	    }
