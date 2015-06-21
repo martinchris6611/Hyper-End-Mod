@@ -15,69 +15,6 @@ public class ContainerForcefieldController extends ContainerMachine {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
-		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(slotID);
-
-		if (slot != null && slot.getHasStack()) {
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
-
-			// 2 slots
-			if (slotID <= 1) {
-
-				// Add to inv
-				if (!this.mergeItemStack(itemstack1, 2, 38, true)) {
-					return null;
-				}
-				slot.onSlotChange(itemstack1, itemstack);
-
-				// Rest is inventory
-			} else {
-
-				// Add to the apropriate slot if possible
-				if (itemstack1.getItem() == ModItems.itemFFModifiers) {
-					if (itemstack1.getItemDamage() == 0) {
-						if (!this.mergeItemStack(itemstack1, 0, 1, false)) {
-							return null;
-						}
-					} else {
-						if (!this.mergeItemStack(itemstack1, 1, 2, false)) {
-							return null;
-						}
-					}
-				}
-				// Main inventory? Add to hotbar
-				else if (slotID >= 2 && slotID < 29) {
-					if (!this.mergeItemStack(itemstack1, 29, 38, false)) {
-						return null;
-					}
-				}
-
-				// Hotbar? Add to main inv
-				else if (slotID >= 29 && slotID < 38
-						&& !this.mergeItemStack(itemstack1, 2, 29, false)) {
-					return null;
-				}
-			}
-
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
-				slot.onSlotChanged();
-			}
-
-			if (itemstack1.stackSize == itemstack.stackSize) {
-				return null;
-			}
-
-			slot.onPickupFromSlot(player, itemstack1);
-		}
-
-		return itemstack;
-	}
-
-	@Override
 	protected Slot[] getSlotsForAdding() {
 		return new Slot[] {
 
@@ -90,5 +27,10 @@ public class ContainerForcefieldController extends ContainerMachine {
 								ModItems.shapeSphere), new ItemStack(
 								ModItems.itemFFModifiers, 1,
 								ModItems.shapeOctahedron)) };
+	}
+
+	@Override
+	public boolean slotAcceptStack(int slotID, ItemStack stack) {
+		return true;
 	}
 }

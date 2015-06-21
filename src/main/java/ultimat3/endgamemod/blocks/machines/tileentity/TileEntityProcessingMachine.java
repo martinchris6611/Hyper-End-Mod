@@ -42,7 +42,7 @@ public abstract class TileEntityProcessingMachine extends TileEntityMachine impl
 		if(!worldObj.isRemote) {
 			boolean shouldSave = false;
 			if(this.canProcess()) {
-				storage.modifyEnergyStored(energyUse);
+				storage.modifyEnergyStored(getEnergyUse());
 				this.processTime++;
 				if(this.processTime>=itemTime) {
 					processTime -= itemTime;
@@ -56,8 +56,13 @@ public abstract class TileEntityProcessingMachine extends TileEntityMachine impl
 	
 	// Processing
 	public boolean canProcess() {
-		return this.canProcessItem() && storage.getEnergyStored() >= energyUse;
+		return this.canProcessItem() && storage.getEnergyStored() >= getEnergyUse();
 	}
+	
+	public int getEnergyUse() {
+		return energyUse;
+	}
+	
 	abstract public boolean canProcessItem();
 	abstract public void processItem();
 	

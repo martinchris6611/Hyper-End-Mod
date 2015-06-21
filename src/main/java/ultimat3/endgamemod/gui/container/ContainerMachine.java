@@ -1,24 +1,12 @@
 package ultimat3.endgamemod.gui.container;
 
-import cpw.mods.fml.relauncher.Side;
-import cpw.mods.fml.relauncher.SideOnly;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityForcefieldController;
-import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMachine;
-import ultimat3.endgamemod.gui.slot.SlotMachineFuel;
-import ultimat3.endgamemod.gui.slot.SlotWhitelist;
-import ultimat3.endgamemod.init.ModItems;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.entity.player.InventoryPlayer;
-import net.minecraft.init.Blocks;
 import net.minecraft.inventory.Container;
-import net.minecraft.inventory.ICrafting;
 import net.minecraft.inventory.Slot;
-import net.minecraft.inventory.SlotFurnace;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
-import net.minecraft.item.crafting.FurnaceRecipes;
-import net.minecraft.tileentity.TileEntityFurnace;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMachine;
 
 abstract public class ContainerMachine extends Container {
 
@@ -60,5 +48,91 @@ abstract public class ContainerMachine extends Container {
 	protected abstract Slot[] getSlotsForAdding();
 	
 	@Override
-	abstract public ItemStack transferStackInSlot(EntityPlayer player, int slotID);
+	public final ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
+		
+		// returned stack
+		ItemStack stack = null;
+		// slot that is shift clicked
+		Slot slot = (Slot) this.inventorySlots.get(slotID);
+		
+		if(slot != null && slot.getHasStack()) {
+			
+			// stack that the slot contains
+			ItemStack slotStack = slot.getStack();
+			stack = slotStack.copy();
+
+			// if it's inventory slot
+			if(isInventory(slotID)) {
+				
+				if (slotAcceptStack(slotID, slotStack)) {
+					if (!mergeItemStack(slotStack, 0, inventoryBegin(), false)) {
+						return null;
+					}					
+				}
+				
+				// if it's in the main inventory add it to the hotbar
+				else if(isMain(slotID)) {
+					if (!mergeItemStack(slotStack, hotbarBegin(), inventoryEnd(), false)) {
+						return null;
+					}
+				}
+				
+				// if it's in the hotbar add it to the main inventory
+				else if(isHotbar(slotID)) {
+					if(!mergeItemStack(slotStack, inventoryBegin(), hotbarBegin(), false)) {
+						return null;
+					}
+				}
+				
+			}
+			
+			// it's not inventory, send to inventory
+			else if(!mergeItemStack(slotStack, inventoryBegin(), inventoryEnd(), false)) {
+				return null;
+			}
+			
+			if (slotStack.stackSize == 0) {
+				slot.putStack((ItemStack) null);
+			} else {
+				slot.onSlotChanged();
+			}
+			
+			// if the whole stack is moved
+			if (slotStack.stackSize == stack.stackSize) {
+				return null;
+			}
+			
+			slot.onPickupFromSlot(player, slotStack);
+			
+		}
+		
+		return stack;
+	}
+	
+	abstract public boolean slotAcceptStack(int slotID, ItemStack stack);
+	
+	public int inventoryBegin() {
+		return inventoryEnd() - 36;
+	}
+	
+	public int inventoryEnd() {
+		return this.inventorySlots.size();
+	}
+	
+	public int hotbarBegin() {
+		return inventoryEnd() - 10;
+	}
+	
+	public boolean isInventory(int slotID) {
+		return slotID >= inventoryBegin() && slotID < inventoryEnd();
+	}
+	
+	public boolean isHotbar(int slotID) {
+		return isInventory(slotID) && slotID >= hotbarBegin();
+	}
+	
+	public boolean isMain(int slotID) {
+		return isInventory(slotID) && slotID < hotbarBegin();
+	}
+	
 }

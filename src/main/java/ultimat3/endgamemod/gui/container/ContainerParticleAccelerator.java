@@ -28,64 +28,8 @@ public class ContainerParticleAccelerator extends ContainerMachine {
 	}
 
 	@Override
-	public ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
-		ItemStack itemstack = null;
-		Slot slot = (Slot) this.inventorySlots.get(slotID);
-
-		if (slot != null && slot.getHasStack()) {
-			ItemStack itemstack1 = slot.getStack();
-			itemstack = itemstack1.copy();
-
-			// Output slot
-			if (slotID == 1) {
-
-				// Add to inv
-				if (!this.mergeItemStack(itemstack1, 2, 38, true)) {
-					return null;
-				}
-				slot.onSlotChange(itemstack1, itemstack);
-
-				// Inventory slots
-			} else if (slotID != 0) {
-
-				// If it's smeltable, add it to the input slot
-				// noformat
-				/*
-				 * if (ModRecipes.compression().getResult(itemstack1) != null) {
-				 * if (!this.mergeItemStack(itemstack1, 0, 1, false)) { return
-				 * null; } // main inv -> hotbar } else
-				 */
-				// format
-				if (slotID >= 2 && slotID < 29) {
-					if (!this.mergeItemStack(itemstack1, 29, 38, false)) {
-						return null;
-					}
-
-					// Hotbar -> main inv
-				} else if (slotID >= 29 && slotID < 38
-						&& !this.mergeItemStack(itemstack1, 2, 29, false)) {
-					return null;
-				}
-			} else if (!this.mergeItemStack(itemstack1, 2, 38, false)) {
-				return null;
-			}
-
-			if (itemstack1.stackSize == 0) {
-				slot.putStack((ItemStack) null);
-			} else {
-				slot.onSlotChanged();
-			}
-
-			if (itemstack1.stackSize == itemstack.stackSize) {
-				return null;
-			}
-
-			slot.onPickupFromSlot(player, itemstack1);
-		}
-
-		return itemstack;
+	public boolean slotAcceptStack(int slotID, ItemStack stack) {
+		return true;
 	}
-
 	
-
 }

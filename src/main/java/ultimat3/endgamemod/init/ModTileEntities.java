@@ -6,6 +6,8 @@ import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMechanicalAssemb
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMetallurgyChamber;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityProductionFurnace;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntitySuperCompressor;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileExpoFurnace;
+import ultimat3.endgamemod.blocks.machines.tileentity.TileMatterConsolidator;
 import ultimat3.endgamemod.multiblock.ParticleAcceleratorMultiblock;
 import cpw.mods.fml.common.registry.GameRegistry;
 
@@ -18,6 +20,8 @@ public class ModTileEntities {
 	public static final String	FORCEFIELD_CONTROLLER_ID	= "u3_egm_forcefieldController";
 	public static final String	MECHANICAL_ASSEMBLER_ID		= "u3_egm_mechanicalAssembler";
 	public static final String	PARTICLE_ACCELERATOR_ID		= "u3_egm_particleAccelerator";
+	public static final String	MATTER_CONSOLIDATOR_ID		= "u3_egm_matterConsolidator";
+	public static final String	EXPO_FURNACE_ID				= "u3_egm_expoFurnace";
 	
 	public static void init() {
 		GameRegistry.registerTileEntity(TileEntityProductionFurnace.class, PRODUCTION_FURNACE_ID);
@@ -27,6 +31,8 @@ public class ModTileEntities {
 		GameRegistry.registerTileEntity(TileEntityForcefieldController.class, FORCEFIELD_CONTROLLER_ID);
 		GameRegistry.registerTileEntity(TileEntityMechanicalAssembler.class, MECHANICAL_ASSEMBLER_ID);
 		GameRegistry.registerTileEntity(ParticleAcceleratorMultiblock.class, PARTICLE_ACCELERATOR_ID);
+		GameRegistry.registerTileEntity(TileMatterConsolidator.class, MATTER_CONSOLIDATOR_ID);
+		GameRegistry.registerTileEntity(TileExpoFurnace.class, EXPO_FURNACE_ID);
 	}
 	
 }

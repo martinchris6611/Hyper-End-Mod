@@ -5,31 +5,26 @@ import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
 
-public class ContainerSuperCompressor extends ContainerMachine {
+public class ContainerMatterConsolidator extends ContainerMachine {
 
-	public ContainerSuperCompressor(EntityPlayer player, World world, int x,
+	public ContainerMatterConsolidator(EntityPlayer player, World world, int x,
 			int y, int z) {
 		super(player, world, x, y, z);
+		// TODO Auto-generated constructor stub
 	}
-	
 
 	@Override
 	protected Slot[] getSlotsForAdding() {
-		Slot[] slots = new Slot[10];
-		for (int x = 0; x < 3; ++x) {
-			for (int y = 0; y < 3; ++y) {
-				slots[x * 3 + y] = new Slot(machine, x + y * 3, 38 + x * 18,
-						17 + y * 18);
-			}
-		}
-		slots[9] = new Slot(machine, 9, 116, 35);
-		return slots;
+		return new Slot[]{
+				new Slot(machine, 0, 124, 35),
+				new Slot(machine, 1, 104, 35),
+				new Slot(machine, 2, 124, 55),
+				new Slot(machine, 3, 104, 55)
+		};
 	}
-
 
 	@Override
 	public boolean slotAcceptStack(int slotID, ItemStack stack) {
 		return true;
 	}
-
 }
