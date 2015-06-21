@@ -32,6 +32,7 @@ public class RegisterHelper {
 		GameRegistry.registerBlock(block, clazz, block.getUnlocalizedName());
 	}
 	
+	
 	/**
 	 * Registers the specified item.
 	 * 

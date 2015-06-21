@@ -2,10 +2,14 @@ package ultimat3.endgamemod.init;
 
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
+import ultimat3.endgamemod.blocks.BlockDetector;
+import ultimat3.endgamemod.blocks.BlockElectroMagnet;
 import ultimat3.endgamemod.blocks.BlockForce;
 import ultimat3.endgamemod.blocks.BlockMetallicGlass;
 import ultimat3.endgamemod.blocks.BlockMetallicGlassPane;
 import ultimat3.endgamemod.blocks.BlockOre;
+import ultimat3.endgamemod.blocks.BlockParticleTube;
+import ultimat3.endgamemod.blocks.BlockProtonLaser;
 import ultimat3.endgamemod.blocks.BlockThermiteFire;
 import ultimat3.endgamemod.blocks.BlockThermiteWire;
 import ultimat3.endgamemod.blocks.MetaBlock;
@@ -19,6 +23,8 @@ import ultimat3.endgamemod.blocks.machines.BlockProductionFurnace;
 import ultimat3.endgamemod.blocks.machines.BlockSuperCompressor;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.Ultimat3ItemBlock;
+import ultimat3.endgamemod.multiblock.ItemSpecialBlock;
+import ultimat3.endgamemod.multiblock.ParticleController;
 
 public class ModBlocks {
 	// The names of the blocks in the langfiles
@@ -56,11 +62,16 @@ public class ModBlocks {
 	 */
 	public static Block				blockMisc			= new MetaBlock(miscNames, Material.iron).setHardness(5.0f).setResistance(8.0f);
 	
-	public static Block				blockMetallicGlass	= new BlockMetallicGlass();
-	public static Block			blockMetallicGlassPane 	= new BlockMetallicGlassPane();
-	public static Block				blockThermiteWire	= new BlockThermiteWire();
-	public static Block				blockThermiteFire	= new BlockThermiteFire();
-	public static Block				blockForce			= new BlockForce();
+	public static Block				blockMetallicGlass		= new BlockMetallicGlass();
+	public static Block				blockMetallicGlassPane 	= new BlockMetallicGlassPane();
+	public static Block				blockThermiteWire		= new BlockThermiteWire();
+	public static Block				blockThermiteFire		= new BlockThermiteFire();
+	public static Block				blockForce				= new BlockForce();
+	public static Block				blockElectroMagnet		= new BlockElectroMagnet();
+	public static Block				blockProtonLaser		= new BlockProtonLaser();
+	public static Block				blockDetector			= new BlockDetector();
+	public static Block				blockParticleTube		= new BlockParticleTube();
+	public static Block				blockParticleController = new ParticleController();
 	/**
 	 * Metadata
 	 */
@@ -115,5 +126,10 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockThermiteWire);
 		RegisterHelper.registerBlock(blockThermiteFire);
 		RegisterHelper.registerBlock(blockForce);
+		RegisterHelper.registerBlock(blockElectroMagnet);
+		RegisterHelper.registerBlock(blockProtonLaser);
+		RegisterHelper.registerBlock(blockDetector);
+		RegisterHelper.registerBlock(blockParticleTube);
+		RegisterHelper.registerBlock(blockParticleController, ItemSpecialBlock.class);
 	}
 }

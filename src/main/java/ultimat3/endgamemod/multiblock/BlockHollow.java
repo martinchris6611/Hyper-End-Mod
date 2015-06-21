@@ -8,7 +8,7 @@ import net.minecraft.world.World;
 
 public class BlockHollow extends BlockMultiBlock {
 	public BlockHollow() {
-        super( Reference.GuiIds.PARTICLE_ACCELERATOR.ID());
+       super( Reference.GuiIds.PARTICLE_ACCELERATOR.ID(), "hollow");
     }
 
     @Override

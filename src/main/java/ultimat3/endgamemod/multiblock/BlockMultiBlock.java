@@ -27,14 +27,18 @@ public class BlockMultiBlock extends BlockContainer {
 	protected IIcon[]	icons	= new IIcon[4];
 	protected int		guiID;
 	protected boolean	formed	= false;
+	private final String name;
 	
-	public BlockMultiBlock(int gui_ID) {
+	public BlockMultiBlock(int gui_ID, String name) {
         super(Material.anvil);
         guiID = gui_ID;
+        this.name = name;
+        this.setBlockName(Reference.MOD_ID + "_" + name);
+        this.setBlockTextureName(Reference.RESOURCE_PREFIX + name);
         this.setCreativeTab(EndGame.creaTab);
     }
 
-    @Override
+	@Override
     public void onNeighborBlockChange(World world, int x, int y, int z, Block block) {
         TileEntity tile = world.getTileEntity(x, y, z);
         if (tile != null && tile instanceof TileMultiBlock) {

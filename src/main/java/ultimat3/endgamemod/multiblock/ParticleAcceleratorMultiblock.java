@@ -1,8 +1,10 @@
 package ultimat3.endgamemod.multiblock;
 
 import ultimat3.endgamemod.Reference.GuiIds;
+import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModTileEntities;
 import cofh.api.energy.EnergyStorage;
+import net.minecraft.block.Block; //MIGHT REMOVE
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
@@ -28,11 +30,11 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	public boolean checkXMagnets(int x, int y, int z) {
 		
 		//Check if blocks above and below tube are magnets
-		if(worldObj.getBlock(x, y+1, z) != Blocks.emerald_block || worldObj.getBlock(x, y-1, z) != Blocks.emerald_block) 
+		if(worldObj.getBlock(x, y+1, z) != ModBlocks.blockElectroMagnet || worldObj.getBlock(x, y-1, z) != ModBlocks.blockElectroMagnet) 
 			return true;
 		
 		//Check if blocks + and - 1 from tubing in Z direction are magnets
-		if(worldObj.getBlock(x, y, z+1) != Blocks.emerald_block || worldObj.getBlock(x, y, z-1) != Blocks.emerald_block)
+		if(worldObj.getBlock(x, y, z+1) != ModBlocks.blockElectroMagnet || worldObj.getBlock(x, y, z-1) != ModBlocks.blockElectroMagnet)
 			return true;
 		
 		//We return false to signify that it is error free, that is magnets are correct
@@ -43,11 +45,11 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	public boolean checkZMagnets(int x, int y, int z) {
 		
 		//Check if blocks above and below tube are magnets
-		if(worldObj.getBlock(x, y+1, z) != Blocks.emerald_block || worldObj.getBlock(x, y-1, z) != Blocks.emerald_block) 
+		if(worldObj.getBlock(x, y+1, z) != ModBlocks.blockElectroMagnet || worldObj.getBlock(x, y-1, z) != ModBlocks.blockElectroMagnet) 
 			return true;
 		
 		//Check if blocks + and - 1 from tubing in X direction are magnets
-		if(worldObj.getBlock(x+1, y, z) != Blocks.emerald_block || worldObj.getBlock(x-1, y, z) != Blocks.emerald_block)
+		if(worldObj.getBlock(x+1, y, z) != ModBlocks.blockElectroMagnet || worldObj.getBlock(x-1, y, z) != ModBlocks.blockElectroMagnet)
 			return true;
 		
 		//We return false to signify that it is error free, that is magnets are correct
@@ -58,7 +60,7 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     public boolean checkMultiBlockForm() {
        
     	//If the proton lasers are in the x direction when compared to controller then this is the Test we do to check the multiblock
-    	if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt && worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt) {
+    	if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == ModBlocks.blockProtonLaser && worldObj.getBlock(xCoord+1, yCoord, zCoord) == ModBlocks.blockProtonLaser) {
     		xDirection = true;
     		boolean altDirection = false;
     		
@@ -67,8 +69,8 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     		int z = zCoord;
     		
     		//Check for particle tubing and magnets until the first turn of the pipe
-    		for (x++; worldObj.getBlock(x, y, z+1) != Blocks.stone && worldObj.getBlock(x, y, z-1) != Blocks.stone; ++x) {
-    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+    		for (x++; worldObj.getBlock(x, y, z+1) != ModBlocks.blockParticleTube && worldObj.getBlock(x, y, z-1) != ModBlocks.blockParticleTube; ++x) {
+    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
     				if(checkXMagnets(x, y, z))
     					return false;
     			}
@@ -76,17 +78,17 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     				return false;
     		}
     		
-    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
     			return false;
     		
-    		if (worldObj.getBlock(x, y, z-1) == Blocks.stone)
+    		if (worldObj.getBlock(x, y, z-1) == ModBlocks.blockParticleTube)
     			altDirection = true;
     		
     		if (!altDirection) {
 	    		++z;
 	    		
-	    		for (z++; worldObj.getBlock(x-1, y, z) != Blocks.stone && worldObj.getBlock(x+1, y, z) != Blocks.stone; ++z) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (z++; worldObj.getBlock(x-1, y, z) != ModBlocks.blockParticleTube && worldObj.getBlock(x+1, y, z) != ModBlocks.blockParticleTube; ++z) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -94,16 +96,16 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		--x;
 	    		
-	    		for (x--; worldObj.getBlock(x, y, z-1) != Blocks.stone && worldObj.getBlock(x, y, z+1) != Blocks.stone; --x) {
+	    		for (x--; worldObj.getBlock(x, y, z-1) != ModBlocks.blockParticleTube && worldObj.getBlock(x, y, z+1) != ModBlocks.blockParticleTube; --x) {
 	    			if (x == xCoord && y == yCoord) {
-	    				if (worldObj.getBlock(x, y, z) != Blocks.glass)
+	    				if (worldObj.getBlock(x, y, z) != ModBlocks.blockDetector)
 	    					return false;
-	    			} else if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    			} else if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -111,13 +113,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		--z;
 	    		
-	    		for (z--; worldObj.getBlock(x+1, y, z) != Blocks.stone && worldObj.getBlock(x-1, y, z) != Blocks.stone; --z) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (z--; worldObj.getBlock(x+1, y, z) != ModBlocks.blockParticleTube && worldObj.getBlock(x-1, y, z) != ModBlocks.blockParticleTube; --z) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -125,13 +127,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		++x;
 	    		
 	    		for (x++; worldObj.getBlock(x+1, y, z) != worldObj.getBlock(xCoord, yCoord, zCoord); ++x) {
-	    			if (worldObj.getBlock(x,y,z) == Blocks.stone) {
+	    			if (worldObj.getBlock(x,y,z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -143,8 +145,8 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     		} else {
     			--z;
 	    		
-	    		for (z--; worldObj.getBlock(x-1, y, z) != Blocks.stone; --z) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (z--; worldObj.getBlock(x-1, y, z) != ModBlocks.blockParticleTube; --z) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))	//Check for magnets in plus and minus y and x directions
 	    					return false;
 	    			}
@@ -152,16 +154,16 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		--x;
 	    		
-	    		for (x--; worldObj.getBlock(x, y, z+1) != Blocks.stone; --x) {
+	    		for (x--; worldObj.getBlock(x, y, z+1) != ModBlocks.blockParticleTube; --x) {
 	    			if (x == xCoord && y == yCoord) {
-	    				if (worldObj.getBlock(x, y, z) != Blocks.glass)
+	    				if (worldObj.getBlock(x, y, z) != ModBlocks.blockDetector)
 	    					return false;
-	    			} else if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    			} else if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -169,13 +171,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		++z;
 	    		
-	    		for (z++; worldObj.getBlock(x+1, y, z) != Blocks.stone; ++z) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (z++; worldObj.getBlock(x+1, y, z) != ModBlocks.blockParticleTube; ++z) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -183,13 +185,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		++x;
 	    		
 	    		for (x++; worldObj.getBlock(x+1, y, z) != worldObj.getBlock(xCoord, yCoord, zCoord); ++x) {
-	    			if (worldObj.getBlock(x,y,z) == Blocks.stone) {
+	    			if (worldObj.getBlock(x,y,z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -200,7 +202,7 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    		return true;
     		}
     	}
-    	else if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt && worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt) {
+    	else if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == ModBlocks.blockProtonLaser && worldObj.getBlock(xCoord, yCoord, zCoord+1) == ModBlocks.blockProtonLaser) {
     		zDirection = true;
     		
     		boolean altDirection = false;
@@ -208,8 +210,8 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     		int x = xCoord;
     		int y = yCoord;
     		int z = zCoord+2;
-    		for (z++; worldObj.getBlock(x+1, y, z) != Blocks.stone && worldObj.getBlock(x-1, y, z) != Blocks.stone; ++z) {
-    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+    		for (z++; worldObj.getBlock(x+1, y, z) != ModBlocks.blockParticleTube && worldObj.getBlock(x-1, y, z) != ModBlocks.blockParticleTube; ++z) {
+    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
     				if(checkZMagnets(x, y, z))
     					return false;
     			}
@@ -217,17 +219,17 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     				return false;
     		}
     		
-    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
     			return false;
     		
-    		if (worldObj.getBlock(x-1, y, z) == Blocks.stone)
+    		if (worldObj.getBlock(x-1, y, z) == ModBlocks.blockParticleTube)
     			altDirection = true;
     		
     		if (!altDirection) {
 	    		++x;
 	    		
-	    		for (x++; worldObj.getBlock(x, y, z-1) != Blocks.stone; ++x) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (x++; worldObj.getBlock(x, y, z-1) != ModBlocks.blockParticleTube; ++x) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -235,16 +237,16 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		--z;
 	    		
-	    		for (z--; worldObj.getBlock(x-1, y, z) != Blocks.stone; --z) {
+	    		for (z--; worldObj.getBlock(x-1, y, z) != ModBlocks.blockParticleTube; --z) {
 	    			if (z == zCoord && y == yCoord) {
 	    				if (worldObj.getBlock(x, y, z) != Blocks.glass)
 	    					return false;
-	    			} else if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    			} else if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -252,13 +254,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		--x;
 	    		
-	    		for (x--; worldObj.getBlock(x, y, z+1) != Blocks.stone; --x) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (x--; worldObj.getBlock(x, y, z+1) != ModBlocks.blockParticleTube; --x) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -266,13 +268,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		++z;
 	    		
 	    		for (z++; worldObj.getBlock(x, y, z+1) != worldObj.getBlock(xCoord, yCoord, zCoord); ++z) {
-	    			if (worldObj.getBlock(x,y,z) == Blocks.stone) {
+	    			if (worldObj.getBlock(x,y,z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -284,8 +286,8 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    	} else {
 	    		--x;
 	    		
-	    		for (x--; worldObj.getBlock(x, y, z-1) != Blocks.stone; --x) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (x--; worldObj.getBlock(x, y, z-1) != ModBlocks.blockParticleTube; --x) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))	//Check for magnets in plus and minus y and x directions
 	    					return false;
 	    			}
@@ -293,16 +295,16 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		--z;
 	    		
-	    		for (z--; worldObj.getBlock(x+1, y, z) != Blocks.stone; --z) {
+	    		for (z--; worldObj.getBlock(x+1, y, z) != ModBlocks.blockParticleTube; --z) {
 	    			if (z == zCoord && y == yCoord) {
 	    				if (worldObj.getBlock(x, y, z) != Blocks.glass)
 	    					return false;
-	    			} else if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    			} else if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -310,13 +312,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		++x;
 	    		
-	    		for (x++; worldObj.getBlock(x, y, z+1) != Blocks.stone; ++x) {
-	    			if(worldObj.getBlock(x, y, z) == Blocks.stone) {
+	    		for (x++; worldObj.getBlock(x, y, z+1) != ModBlocks.blockParticleTube; ++x) {
+	    			if(worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube) {
 	    				if(checkXMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -324,13 +326,13 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 	    				return false;
 	    		}
 	    		
-	    		if (worldObj.getBlock(x,y,z) != Blocks.stone)
+	    		if (worldObj.getBlock(x,y,z) != ModBlocks.blockParticleTube)
 	    			return false;
 	    		
 	    		++z;
 	    		
 	    		for (z++; worldObj.getBlock(x, y, z+1) != worldObj.getBlock(xCoord, yCoord, zCoord); ++z) {
-	    			if (worldObj.getBlock(x,y,z) == Blocks.stone) {
+	    			if (worldObj.getBlock(x,y,z) == ModBlocks.blockParticleTube) {
 	    				if(checkZMagnets(x, y, z))
 	    					return false;
 	    			}
@@ -349,18 +351,18 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     public void setupStructure() {
         // replaces stone with diamond blocks
     	if(xDirection) {
-    		if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt && worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt) { this.setIsFormed(true); }
+    		if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == ModBlocks.blockProtonLaser && worldObj.getBlock(xCoord+1, yCoord, zCoord) == ModBlocks.blockProtonLaser) { this.setIsFormed(true); }
     			//worldObj.setBlock(xCoord-1, yCoord, zCoord, Blocks.diamond_block);
     	}
     	else if (zDirection) {
-    		if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt && worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt) { this.setIsFormed(true); }
+    		if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == ModBlocks.blockProtonLaser && worldObj.getBlock(xCoord, yCoord, zCoord+1) == ModBlocks.blockProtonLaser) { this.setIsFormed(true); }
     			//worldObj.setBlock(xCoord, yCoord, zCoord-1, Blocks.diamond_block);
     	}
     	/*
         for (int x = xCoord - 1; x < xCoord + 2; x++)
             for (int y = yCoord -1; y < yCoord + 2; y++)
                 for (int z = zCoord - 1; z < zCoord + 2; z++) {
-                    if (worldObj.getBlock(x, y, z) == Blocks.stone)
+                    if (worldObj.getBlock(x, y, z) == ModBlocks.blockParticleTube)
                         worldObj.setBlock(x, y, z, Blocks.diamond_block);
                 }*/
     }

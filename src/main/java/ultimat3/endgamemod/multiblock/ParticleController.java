@@ -6,9 +6,9 @@ import net.minecraft.block.material.Material;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 
-public class BlockStone extends BlockMultiBlock {
-	  public BlockStone() {
-	        super(Reference.GuiIds.PARTICLE_ACCELERATOR.ID());
+public class ParticleController extends BlockMultiBlock {
+	  public ParticleController() {
+	        super(Reference.GuiIds.PARTICLE_ACCELERATOR.ID(), "particleController");
 	    }
 
 	    @Override

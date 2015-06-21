@@ -48,16 +48,12 @@ public class EndGame {
 	/** The network handler, used for packets */
 	public static SimpleNetworkWrapper network;
 	
-	//MULTIBLOCK TEST REMOVE LATER
-	public static Block hollow, particleController;
 	
 	@EventHandler
 	public void preInit(FMLPreInitializationEvent event) {
 		// Registers the network channel
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
-		hollow = new ultimat3.endgamemod.multiblock.BlockHollow().setBlockName("hollowMultiBlock");
-		particleController = new ultimat3.endgamemod.multiblock.BlockStone().setBlockName("particleController");
 		// registers content with Forge
 		ModFluids.registerFluids();
 		ModBlocks.registerBlocks();
@@ -65,10 +61,6 @@ public class EndGame {
 		
 		// add the Ore Dictionary entries
 		OreDictionaryHelper.init();
-		
-		//MULTIBLOCK TEST REMOVE LATER
-		GameRegistry.registerBlock(hollow, ultimat3.endgamemod.multiblock.ItemSpecialBlock.class, "HollowMultiBlock");
-		GameRegistry.registerBlock(particleController, ultimat3.endgamemod.multiblock.ItemSpecialBlock.class, "stoneMulti");
 	}
 
 	/**
@@ -89,8 +81,6 @@ public class EndGame {
 		// Register GuiHandler
 		NetworkRegistry.INSTANCE.registerGuiHandler(instance, new GuiHandler());
 		
-		//MULTIBLOCK TEST REMOVE LATER
-        GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.TileHollowMultiBlock.class, "tutorial.multiblock.hallow");
 	}
 
 	@EventHandler

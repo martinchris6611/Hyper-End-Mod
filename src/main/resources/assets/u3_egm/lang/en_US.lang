@@ -21,15 +21,18 @@ tile.u3_egm_HCIP.name=HCIP
 
 tile.u3_egm_blockMetallicGlass.name=Metallic Glass
 tile.u3_egm_blockMetallicGlassPane.name=Metallic Glass Pane
-
+tile.u3_egm_blockDetector.name=Hermetic Detector
+tile.u3_egm_blockElectroMagnet.name=Electro Magnet
+tile.u3_egm_blockProtonLaser.name=Proton Laser
 tile.u3_egm_blockForce.name=Force Block
-
+tile.u3_egm_blockParticleTube.name=Particle Accelerator Tubing
 
 tile.u3_egm_productionFurnace.name=Production Furnace
 tile.u3_egm_highProductionFurnace.name=High Production Furnace
 tile.u3_egm_superCompressor.name=Super Compressor
 tile.u3_egm_metallurgyChamber.name=Metallurgy Chamber
 tile.u3_egm_forcefieldController.name=Forcefield Controller
+tile.u3_egm_particleController.name=Particle Accelerator Controller
 
 item.u3_egm_ingotAluminum.name=Aluminum Ingot
 item.u3_egm_ingotCobalt.name=Cobalt Ingot
