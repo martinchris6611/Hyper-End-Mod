@@ -15,12 +15,10 @@ import ultimat3.endgamemod.blocks.BlockThermiteWire;
 import ultimat3.endgamemod.blocks.MetaBlock;
 import ultimat3.endgamemod.blocks.machines.BlockAirExtractor;
 import ultimat3.endgamemod.blocks.machines.BlockAirSeparator;
+import ultimat3.endgamemod.blocks.machines.BlockExpoFurnace;
 import ultimat3.endgamemod.blocks.machines.BlockForcefieldController;
-import ultimat3.endgamemod.blocks.machines.BlockHighProductionFurnace;
+import ultimat3.endgamemod.blocks.machines.BlockMatterConsolidator;
 import ultimat3.endgamemod.blocks.machines.BlockMechanicalAssembler;
-import ultimat3.endgamemod.blocks.machines.BlockMetallurgyChamber;
-import ultimat3.endgamemod.blocks.machines.BlockProductionFurnace;
-import ultimat3.endgamemod.blocks.machines.BlockSuperCompressor;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.Ultimat3ItemBlock;
 import ultimat3.endgamemod.multiblock.ItemSpecialBlock;
@@ -49,14 +47,16 @@ public class ModBlocks {
 	/**
 	 * Machine blocks
 	 */
-	public static Block				blockHighProductionFurnace	=	new BlockHighProductionFurnace("highProductionFurnace");
+	/*public static Block				blockHighProductionFurnace	=	new BlockHighProductionFurnace("highProductionFurnace");
 	public static Block				blockMetallurgyChamber		=	new BlockMetallurgyChamber("metallurgyChamber");
 	public static Block				blockProductionFurnace		=	new BlockProductionFurnace("productionFurnace");
-	public static Block				blockSuperCompressor		=	new BlockSuperCompressor("superCompressor");
+	public static Block				blockSuperCompressor		=	new BlockSuperCompressor("superCompressor");*/
 	public static Block				blockForcefieldController	=	new BlockForcefieldController("forcefieldController");
 	public static Block				blockMechanicalAssembler	=	new BlockMechanicalAssembler();
 	public static Block				blockAirExtractor			=	new BlockAirExtractor("airExtractor");
 	public static Block				blockAirSeparator			=	new BlockAirSeparator("airSeparator");
+	public static Block				blockMatterConsolidator		=	new BlockMatterConsolidator("matterConsolidator");
+	public static Block				blockExpoFurnace			=	new BlockExpoFurnace("expoFurnace");
 	/**
 	 * Meta blocks
 	 */
@@ -110,14 +110,16 @@ public class ModBlocks {
 		
 		// Machines 
 
-		RegisterHelper.registerBlock(blockHighProductionFurnace);
+		/*RegisterHelper.registerBlock(blockHighProductionFurnace);
 		RegisterHelper.registerBlock(blockMetallurgyChamber);
 		RegisterHelper.registerBlock(blockProductionFurnace);
-		RegisterHelper.registerBlock(blockSuperCompressor);
+		RegisterHelper.registerBlock(blockSuperCompressor);*/
 		RegisterHelper.registerBlock(blockForcefieldController);
 		RegisterHelper.registerBlock(blockMechanicalAssembler);
 		RegisterHelper.registerBlock(blockAirExtractor);
 		RegisterHelper.registerBlock(blockAirSeparator);
+		RegisterHelper.registerBlock(blockMatterConsolidator);
+		RegisterHelper.registerBlock(blockExpoFurnace);
 		
 		// Others
 		

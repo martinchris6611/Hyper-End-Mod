@@ -30,7 +30,10 @@ public class ModItems { // TODO test the new recipes and lang
 			"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating" };
 	
 	public static final String[]	FFModifierNames		= { "sizeUpgrade", "shapeSphere", "shapeCube",
-			"shapeOctahedron"							};
+	"shapeOctahedron"							};
+	
+	public static final String[]	coilNames		= { "mk1coil", "mk2coil", "mk3coil",
+	"shapeOctahedron"							};
 	
 	// subject to change, but it makes no sense to be able to double every ore except vanilla ones
 	public static final String[]	vanillaMetalNames	= { "nuggetIron", "dustIron", "dustGold" };
@@ -45,6 +48,7 @@ public class ModItems { // TODO test the new recipes and lang
 	public static Item				itemMisc			= new MetaItem(miscNames);
 	public static Item				itemVanillaMetals	= new MetaItem(vanillaMetalNames);
 	public static Item				itemFFModifiers		= new MetaItem(FFModifierNames);
+	public static Item				itemCoils			= new MetaItem(coilNames);
 	
 	public static Item				itemCarbonCutter	= new ItemCarbonCutter();
 	public static Item				itemThermite		= new ItemThermite();

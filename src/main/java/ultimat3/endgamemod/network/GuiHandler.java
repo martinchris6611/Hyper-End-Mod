@@ -3,6 +3,7 @@ package ultimat3.endgamemod.network;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.gui.GuiExpoFurnace;
 import ultimat3.endgamemod.gui.GuiForcefieldController;
 import ultimat3.endgamemod.gui.GuiHighProductionFurnace;
 import ultimat3.endgamemod.gui.GuiMatterConsolidator;
@@ -11,6 +12,7 @@ import ultimat3.endgamemod.gui.GuiMetallurgyChamber;
 import ultimat3.endgamemod.gui.GuiParticleAccelerator;
 import ultimat3.endgamemod.gui.GuiProductionFurnace;
 import ultimat3.endgamemod.gui.GuiSuperCompressor;
+import ultimat3.endgamemod.gui.container.ContainerExpoFurnace;
 import ultimat3.endgamemod.gui.container.ContainerForcefieldController;
 import ultimat3.endgamemod.gui.container.ContainerHighProductionFurnace;
 import ultimat3.endgamemod.gui.container.ContainerMatterConsolidator;
@@ -42,6 +44,8 @@ public class GuiHandler implements IGuiHandler {
 			return new ContainerParticleAccelerator(player, world, x, y, z);
 		} else if (ID == Reference.GuiIds.MATTER_CONSOLIDATOR.ID()) {
 			return new ContainerMatterConsolidator(player, world, x, y, z);
+		} else if (ID == Reference.GuiIds.EXPO_FURNACE.ID()) {
+			return new ContainerExpoFurnace(player, world, x, y, z);
 		}
 		return null;
 	}
@@ -65,6 +69,8 @@ public class GuiHandler implements IGuiHandler {
 			return new GuiParticleAccelerator(player, world, x, y, z);
 		} else if (ID == Reference.GuiIds.MATTER_CONSOLIDATOR.ID()) {
 			return new GuiMatterConsolidator(player, world, x, y, z);
+		} else if (ID == Reference.GuiIds.EXPO_FURNACE.ID()) {
+			return new GuiExpoFurnace(player, world, x, y, z);
 		}
 		return null;
 	}
