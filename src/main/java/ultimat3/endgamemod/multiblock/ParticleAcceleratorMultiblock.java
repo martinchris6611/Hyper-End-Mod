@@ -1,18 +1,29 @@
 package ultimat3.endgamemod.multiblock;
 
+import ultimat3.endgamemod.Reference.GuiIds;
+import ultimat3.endgamemod.init.ModTileEntities;
+import cofh.api.energy.EnergyStorage;
+import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Blocks;
+import net.minecraft.init.Items;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.world.World;
 
 public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 
-	boolean xDirection = false;
-	boolean zDirection = false;
+	boolean xDirection 	= false;
+	boolean zDirection 	= false;
+	
+	public ParticleAcceleratorMultiblock() {
+		super(1000, 1000000, new ItemStack[10], "container." + ModTileEntities.PARTICLE_ACCELERATOR_ID, new EnergyStorage(10000000));
+	}
 	
 	@Override
     public void doMultiBlockStuff() {
-
+		
     }
-
+	
 	//Function called in checking multi block form to see if Magnets are in correct location when moving along X Axis
 	public boolean checkXMagnets(int x, int y, int z) {
 		
@@ -338,12 +349,12 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     public void setupStructure() {
         // replaces stone with diamond blocks
     	if(xDirection) {
-    		if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt && worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt)
-    			worldObj.setBlock(xCoord-1, yCoord, zCoord, Blocks.diamond_block);
+    		if(worldObj.getBlock(xCoord-1, yCoord, zCoord) == Blocks.dirt && worldObj.getBlock(xCoord+1, yCoord, zCoord) == Blocks.dirt) { this.setIsFormed(true); }
+    			//worldObj.setBlock(xCoord-1, yCoord, zCoord, Blocks.diamond_block);
     	}
     	else if (zDirection) {
-    		if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt && worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt)
-    			worldObj.setBlock(xCoord, yCoord, zCoord-1, Blocks.diamond_block);
+    		if (worldObj.getBlock(xCoord, yCoord, zCoord-1) == Blocks.dirt && worldObj.getBlock(xCoord, yCoord, zCoord+1) == Blocks.dirt) { this.setIsFormed(true); }
+    			//worldObj.setBlock(xCoord, yCoord, zCoord-1, Blocks.diamond_block);
     	}
     	/*
         for (int x = xCoord - 1; x < xCoord + 2; x++)
@@ -356,7 +367,7 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
 
     @Override
     public void resetStructure() {
-
+    	this.setIsFormed(false);
     }
 
     @Override
@@ -368,4 +379,40 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     public void masterReadFromNBT(NBTTagCompound tag) {
 
     }
+    
+	@Override
+	public boolean canProcessItem() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public void processItem() {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public boolean isItemValidForSlot(int slot, ItemStack stack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public int[] getAccessibleSlotsFromSide(int side) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean canInsertItem(int slot, ItemStack stack, int side) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canExtractItem(int slot, ItemStack stack, int side) {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }

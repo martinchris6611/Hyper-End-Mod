@@ -1,13 +1,21 @@
 package ultimat3.endgamemod.multiblock;
 
+import cofh.api.energy.EnergyStorage;
 import net.minecraft.init.Blocks;
+import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import net.minecraft.tileentity.TileEntity;
 
 public class TileHollowMultiBlock extends TileMultiBlock {
-	 public TileHollowMultiBlock() {};
+	 //public TileHollowMultiBlock() {};
 
-	    @Override
+	    protected TileHollowMultiBlock(int _itemTime, int _energyUse,
+			ItemStack[] _items, String _inventoryName, EnergyStorage _storage) {
+		super(_itemTime, _energyUse, _items, _inventoryName, _storage);
+		// TODO Auto-generated constructor stub
+	}
+
+		@Override
 	    public void doMultiBlockStuff() {
 	        // Sets diamond block 6 blocks above the master
 	        if (worldObj.isAirBlock(xCoord, yCoord + 6, zCoord))
@@ -69,4 +77,40 @@ public class TileHollowMultiBlock extends TileMultiBlock {
 	                        ((TileMultiBlock) tile).reset();
 	                }
 	    }
+
+		@Override
+		public boolean canProcessItem() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public void processItem() {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public boolean isItemValidForSlot(int slot, ItemStack stack) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public int[] getAccessibleSlotsFromSide(int side) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+
+		@Override
+		public boolean canInsertItem(int slot, ItemStack stack, int side) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+
+		@Override
+		public boolean canExtractItem(int slot, ItemStack stack, int side) {
+			// TODO Auto-generated method stub
+			return false;
+		}
 }

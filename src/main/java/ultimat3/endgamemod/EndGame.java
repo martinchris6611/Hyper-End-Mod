@@ -91,7 +91,6 @@ public class EndGame {
 		
 		//MULTIBLOCK TEST REMOVE LATER
         GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.TileHollowMultiBlock.class, "tutorial.multiblock.hallow");
-        GameRegistry.registerTileEntity(ultimat3.endgamemod.multiblock.ParticleAcceleratorMultiblock.class, "tutorial.multiblock.stone");
 	}
 
 	@EventHandler
