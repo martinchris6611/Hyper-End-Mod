@@ -17,7 +17,7 @@ public class Ultimat3FluidBlock extends BlockFluidClassic {
 	@SideOnly(Side.CLIENT)
 	protected IIcon stillIcon;
 	@SideOnly(Side.CLIENT)
-	protected IIcon flowingIcon;
+	protected IIcon flowIcon;
 	
 	private final String name;
 
@@ -30,14 +30,14 @@ public class Ultimat3FluidBlock extends BlockFluidClassic {
 	
     @Override
     public IIcon getIcon(int side, int meta) {
-            return (side == 0 || side == 1)? stillIcon : flowingIcon;
+            return (side == 0 || side == 1)? stillIcon : flowIcon;
     }
     
     @SideOnly(Side.CLIENT)
     @Override
     public void registerBlockIcons(IIconRegister register) {
-            stillIcon = register.registerIcon(Reference.RESOURCE_PREFIX +  "extractedAirStill");
-            flowingIcon = register.registerIcon(Reference.RESOURCE_PREFIX +  "extractedAirFlowing");
+            stillIcon = register.registerIcon(Reference.RESOURCE_PREFIX +  name + "Still");
+            flowIcon = register.registerIcon(Reference.RESOURCE_PREFIX +  name + "Flow");
     }
     
     @Override

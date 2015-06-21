@@ -40,7 +40,7 @@ public class TileAirSeparator extends TileEntityMachine implements
 				
 				
 				storage.modifyEnergyStored(-amount.amount * 50);
-				outputTank.fill(new FluidStack(ModFluids.liquidNitrogen, amount.amount/2), true);
+				outputTank.fill(new FluidStack(ModFluids.nitrogen, amount.amount/2), true);
 			}
 		}
 	}
