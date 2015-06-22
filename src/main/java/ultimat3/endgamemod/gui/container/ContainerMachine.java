@@ -13,15 +13,16 @@ abstract public class ContainerMachine extends Container {
 	protected World world;
 	protected TileEntityMachine machine;
 
-	public ContainerMachine(EntityPlayer player, World world, int x, int y, int z) {
+	public ContainerMachine(EntityPlayer player, World world, int x, int y,
+			int z) {
 		this.world = world;
 
 		this.machine = ((TileEntityMachine) world.getTileEntity(x, y, z));
 		Slot[] slots = this.getSlotsForAdding();
-		for(int i=0; i<slots.length; i++) {
+		for (int i = 0; i < slots.length; i++) {
 			addSlotToContainer(slots[i]);
 		}
-		
+
 		this.bindPlayerInventory(player.inventory);
 	}
 
@@ -44,95 +45,79 @@ abstract public class ContainerMachine extends Container {
 	public boolean canInteractWith(EntityPlayer player) {
 		return true;
 	}
-	
+
 	protected abstract Slot[] getSlotsForAdding();
-	
+
 	@Override
 	public final ItemStack transferStackInSlot(EntityPlayer player, int slotID) {
-		
-		// returned stack
 		ItemStack stack = null;
-		// slot that is shift clicked
 		Slot slot = (Slot) this.inventorySlots.get(slotID);
-		
-		if(slot != null && slot.getHasStack()) {
-			
-			// stack that the slot contains
+
+		if (slot != null && slot.getHasStack()) {
 			ItemStack slotStack = slot.getStack();
 			stack = slotStack.copy();
 
-			// if it's inventory slot
-			if(isInventory(slotID)) {
-				
-				if (slotAcceptStack(slotID, slotStack)) {
-					if (!mergeItemStack(slotStack, 0, inventoryBegin(), false)) {
-						return null;
-					}					
-				}
-				
-				// if it's in the main inventory add it to the hotbar
-				else if(isMain(slotID)) {
-					if (!mergeItemStack(slotStack, hotbarBegin(), inventoryEnd(), false)) {
+			if (isInventory(slotID)) {
+				if (canHold(slotStack)) {
+					if (!pushStack(slotStack)) {
 						return null;
 					}
 				}
-				
-				// if it's in the hotbar add it to the main inventory
-				else if(isHotbar(slotID)) {
-					if(!mergeItemStack(slotStack, inventoryBegin(), hotbarBegin(), false)) {
+
+				else if (isMain(slotID)) {
+					if (!mergeItemStack(slotStack, hotbarBegin(),
+							inventoryEnd(), false)) {
 						return null;
 					}
 				}
-				
+
+				else if (isHotbar(slotID)) {
+					if (!mergeItemStack(slotStack, inventoryBegin(),
+							hotbarBegin(), false)) {
+						return null;
+					}
+				}
 			}
-			
-			// it's not inventory, send to inventory
-			else if(!mergeItemStack(slotStack, inventoryBegin(), inventoryEnd(), false)) {
+
+			else if (!mergeItemStack(slotStack, inventoryBegin(),
+					inventoryEnd(), false)) {
 				return null;
 			}
-			
-			if (slotStack.stackSize == 0) {
+
+			if (slotStack.stackSize <= 0) {
 				slot.putStack((ItemStack) null);
 			} else {
 				slot.onSlotChanged();
 			}
-			
-			// if the whole stack is moved
-			if (slotStack.stackSize == stack.stackSize) {
-				return null;
-			}
-			
-			slot.onPickupFromSlot(player, slotStack);
-			
 		}
-		
 		return stack;
 	}
-	
-	abstract public boolean slotAcceptStack(int slotID, ItemStack stack);
-	
+
+	abstract public boolean pushStack(ItemStack stack);
+	abstract public boolean canHold(ItemStack stack);
+
 	public int inventoryBegin() {
 		return inventoryEnd() - 36;
 	}
-	
+
 	public int inventoryEnd() {
 		return this.inventorySlots.size();
 	}
-	
+
 	public int hotbarBegin() {
-		return inventoryEnd() - 10;
+		return inventoryEnd() - 9;
 	}
-	
+
 	public boolean isInventory(int slotID) {
 		return slotID >= inventoryBegin() && slotID < inventoryEnd();
 	}
-	
+
 	public boolean isHotbar(int slotID) {
 		return isInventory(slotID) && slotID >= hotbarBegin();
 	}
-	
+
 	public boolean isMain(int slotID) {
 		return isInventory(slotID) && slotID < hotbarBegin();
 	}
-	
+
 }

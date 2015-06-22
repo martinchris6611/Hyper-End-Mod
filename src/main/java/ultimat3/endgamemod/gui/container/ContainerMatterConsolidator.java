@@ -10,7 +10,6 @@ public class ContainerMatterConsolidator extends ContainerMachine {
 	public ContainerMatterConsolidator(EntityPlayer player, World world, int x,
 			int y, int z) {
 		super(player, world, x, y, z);
-		// TODO Auto-generated constructor stub
 	}
 
 	@Override
@@ -24,7 +23,14 @@ public class ContainerMatterConsolidator extends ContainerMachine {
 	}
 
 	@Override
-	public boolean slotAcceptStack(int slotID, ItemStack stack) {
-		return true;
+	public boolean pushStack(ItemStack stack) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean canHold(ItemStack stack) {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

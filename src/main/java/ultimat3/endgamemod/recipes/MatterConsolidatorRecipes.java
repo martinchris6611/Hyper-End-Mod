@@ -2,68 +2,51 @@ package ultimat3.endgamemod.recipes;
 
 import java.util.ArrayList;
 
-import net.minecraft.block.Block;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 
-public class MatterConsolidatorRecipes {
-	
-	private static ArrayList<ItemStack> input = new ArrayList<ItemStack>();
+public class MatterConsolidatorRecipes extends SimpleRecipes {
+
+	private static ArrayList<ItemStack[]> recipe = new ArrayList<ItemStack[]>();
 	private static ArrayList<ItemStack> output = new ArrayList<ItemStack>();
 	private static ArrayList<Integer> time = new ArrayList<Integer>();
-	
-	private static ItemStack getStackfromObject(Object obj) {
-		ItemStack stack;
-		if(obj instanceof ItemStack) {
-			stack = (ItemStack) obj;
-		} else if(obj instanceof Item) {
-			stack = new ItemStack((Item)obj, 1, 0);
-		} else if(obj instanceof Block) {
-			stack = new ItemStack((Block)obj, 1, 0);
-		} else
-			stack = null;
-		return stack;
+
+	public static void addRecipe(Object in1, Object in2, Object in3, Object out) {
+		
+		recipe.add(new ItemStack[] { getStack(in1), getStack(in2), getStack(in3) });
+		output.add(getStack(out));
 	}
-	
-	public static void addRecipe(Object in1, Object in2, Object in3, int processTime, Object out) {
-		input.add(getStackfromObject(in1));
-		input.add(getStackfromObject(in2));
-		input.add(getStackfromObject(in3));
-		time.add(processTime);
-		output.add(getStackfromObject(out));
-	}
-	
-	public static boolean recipeExists(Object in1, Object in2, Object in3) {
-		return getRecipeID(in1, in2, in3) != -1;
-	}
-	
-	private static int simpleHash(ItemStack stack) {
-		return 33 * stack.getItemDamage() + stack.getItem().hashCode() % 2007483647;
-	}
-	
-	private static int getRecipeID(Object in1, Object in2, Object in3) {
-		ItemStack st1 = getStackfromObject(in1);
-		if(st1 == null) return -1;
-		ItemStack st2 = getStackfromObject(in2);
-		if(st2 == null) return -1;
-		ItemStack st3 = getStackfromObject(in3);
-		if(st3 == null) return -1;
-		long hash1 = simpleHash(st1) + simpleHash(st2) + simpleHash(st3);
-		for(int i=0; i<output.size(); i++) {
-			if(simpleHash(input.get(i*3)) + simpleHash(input.get(i*3+1)) + simpleHash(input.get(i*3+2)) == hash1) {
-				return i;
+
+	public static ItemStack getOutput(Object in1, Object in2, Object in3) {
+		ItemStack[] stacks = new ItemStack[] { getStack(in1), getStack(in2),
+				getStack(in3) };
+		if(stacks[0]==null || stacks[1] == null || stacks[2] == null) return null;
+		
+		// now we need to compare this array to all input recipes
+		for (int i = 0; i < recipe.size(); i++) {
+			
+			// did the recipe stack at that position already find a matching stack in input
+			boolean[] flag = new boolean[] {false, false, false};
+			// for every input stack
+			for(int j=0; j<3; j++) {
+				// did this input stack find a match
+				boolean found = false;
+				// for every current recipe stack
+				for(int k=0; k<3; k++) {
+					// if it's a match and hasn't been matched with another stack before
+					if(stacks[j].isItemEqual(recipe.get(i)[k]) && flag[k] == false) {
+						// flag as matched
+						flag[k] = true;
+						// the input stack found a match
+						found = true;
+						break;
+					}
+				}
+				// if it didn't find a match, it's not this recipe
+				if(found == false) break;
+				// if it did find a match and it's the last one, this is the recipe
+				if(j==2) return output.get(i);
 			}
 		}
-		return -1;
-	}
-	
-	public static int getTime(Object in1, Object in2, Object in3) {
-		int id = getRecipeID(in1, in2, in3);
-		return id == -1 ? 0 : time.get(id);
-	}
-	
-	public static ItemStack getOutput(Object in1, Object in2, Object in3) {
-		int id = getRecipeID(in1, in2, in3);
-		return id == -1 ? null : output.get(id);
+		return null;
 	}
 }

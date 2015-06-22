@@ -29,6 +29,8 @@ import net.minecraft.init.Blocks;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
 import ultimat3.endgamemod.EndGame;
+import ultimat3.endgamemod.recipes.ExpoFurnaceRecipes;
+import ultimat3.endgamemod.recipes.MatterConsolidatorRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -62,8 +64,20 @@ public class ModRecipes {
 		
 		// Compression inits itself now
 		initMetallurgyRecipes();
+		initConsolidatorRecipes();
+		initExpoRecipes();
 	}
 	
+	private static void initExpoRecipes() {
+		ExpoFurnaceRecipes.addRecipe(Blocks.dirt, Blocks.diamond_block, 48);
+		
+	}
+
+	private static void initConsolidatorRecipes() {
+		MatterConsolidatorRecipes.addRecipe(Blocks.dirt, Blocks.dirt, Blocks.dirt, Blocks.diamond_block);
+		
+	}
+
 	// noformat
 	private static void initShapedRecipes() {
 		// normal

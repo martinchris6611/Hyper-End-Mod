@@ -30,7 +30,15 @@ public class ContainerForcefieldController extends ContainerMachine {
 	}
 
 	@Override
-	public boolean slotAcceptStack(int slotID, ItemStack stack) {
-		return true;
+	public boolean pushStack(ItemStack stack) {
+		if(stack.getItemDamage() == 0) {
+			return mergeItemStack(stack, 0, 1, false);
+		}
+		else return mergeItemStack(stack, 1, 2, false);
+	}
+
+	@Override
+	public boolean canHold(ItemStack stack) {
+		return stack.getItem().equals(ModItems.itemFFModifiers);
 	}
 }

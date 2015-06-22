@@ -4,6 +4,8 @@ import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.inventory.Slot;
 import net.minecraft.item.ItemStack;
 import net.minecraft.world.World;
+import ultimat3.endgamemod.init.ModItems;
+import ultimat3.endgamemod.recipes.ExpoFurnaceRecipes;
 
 public class ContainerExpoFurnace extends ContainerMachine {
 
@@ -15,18 +17,29 @@ public class ContainerExpoFurnace extends ContainerMachine {
 	@Override
 	protected Slot[] getSlotsForAdding() {
 		Slot[] slots = new Slot[13];
-		slots[0] = new Slot(machine, 0, 17, 33);
+		slots[0] = new Slot(machine, 0, 17, 32);
 		for(int i=1; i<=6; i++) {
-			slots[i] = new Slot(machine, i, 30 + 20*i, 18);
+			slots[i] = new Slot(machine, i, 31 + 19*i, 18);
 		}
-		for(int i=7; i<=12; i++) {
-			slots[i] = new Slot(machine, i, 30 + 20*i, 48);
+		for(int i=1; i<=6; i++) {
+			slots[i+6] = new Slot(machine, i+6, 31 + 19*i, 48);
 		}
 		return slots;
 	}
 
 	@Override
-	public boolean slotAcceptStack(int slotID, ItemStack stack) {
+	public boolean pushStack(ItemStack stack) {
+		if(stack.getItem().equals(ModItems.itemCoils)) {
+			return mergeItemStack(stack, 0, 1, false);
+		}
+		else if(ExpoFurnaceRecipes.getOutput(stack, 1024) != null) {
+			return mergeItemStack(stack, 1, 7, false);
+		}
 		return true;
+	}
+
+	@Override
+	public boolean canHold(ItemStack stack) {
+		return stack.getItem().equals(ModItems.itemCoils) || ExpoFurnaceRecipes.getOutput(stack, 1024) != null;
 	}
 }

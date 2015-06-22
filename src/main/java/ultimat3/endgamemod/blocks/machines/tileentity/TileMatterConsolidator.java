@@ -8,8 +8,8 @@ import cofh.api.energy.EnergyStorage;
 public class TileMatterConsolidator extends TileEntityProcessingMachine {
 
 	public TileMatterConsolidator() {
-		super(100, 1000, new ItemStack[4],
-			"container." + ModTileEntities.SUPER_COMPRESSOR_ID,
+		super(1, 0, new ItemStack[4],
+			"container." + ModTileEntities.MATTER_CONSOLIDATOR_ID,
 			new EnergyStorage(600000));
 	}
 
@@ -17,10 +17,11 @@ public class TileMatterConsolidator extends TileEntityProcessingMachine {
 	
 	@Override
 	public boolean canProcessItem() {
-		int time = MatterConsolidatorRecipes.getTime(items[0], items[1], items[2]);
 		ItemStack out = MatterConsolidatorRecipes.getOutput(items[0], items[1], items[2]);
+		if(out == null) return false;
 		if(items[outputSlot] == null) return true;
-		else return items[outputSlot].isItemEqual(out) && items[outputSlot].stackSize + out.stackSize <= out.getMaxStackSize();
+		return	items[outputSlot].isItemEqual(out) &&
+				items[outputSlot].stackSize + out.stackSize <= out.getMaxStackSize();
 	}
 
 	@Override
