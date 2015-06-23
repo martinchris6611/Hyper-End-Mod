@@ -132,12 +132,16 @@ public class TileExpoFurnace extends TileEntityMachine implements ISidedInventor
 				boolean emptyFlag = true;
 				for(int i=1; i<=6; i++) {
 					if(smeltSlot(i))  {
+						setActive();
 						smeltCurrent -= 1;
 						emptyFlag = false;
 					}
 					if(smeltCurrent < 1) break;
 				}
-				if(emptyFlag) break;
+				if(emptyFlag) {
+					setInactive();
+					break;
+				}
 			}
 		}
 	}

@@ -1,12 +1,12 @@
 package ultimat3.endgamemod;
 
-import net.minecraft.block.Block;
 import ultimat3.endgamemod.blocks.OreSpawner;
 import ultimat3.endgamemod.helpers.OreDictionaryHelper;
 import ultimat3.endgamemod.init.ModBlocks;
 import ultimat3.endgamemod.init.ModFluids;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
+import ultimat3.endgamemod.init.ModRendering;
 import ultimat3.endgamemod.init.ModTileEntities;
 import ultimat3.endgamemod.network.GuiHandler;
 import ultimat3.endgamemod.proxies.CommonProxy;
@@ -55,10 +55,10 @@ public class EndGame {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
 		// registers content with Forge
+		ModRendering.init();
 		ModFluids.registerFluids();
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
-		
 		// add the Ore Dictionary entries
 		OreDictionaryHelper.init();
 	}

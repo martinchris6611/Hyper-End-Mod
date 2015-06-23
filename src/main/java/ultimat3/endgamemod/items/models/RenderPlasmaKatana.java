@@ -62,9 +62,9 @@ public class RenderPlasmaKatana implements IItemRenderer {
 			case EQUIPPED:
 				GL11.glTranslatef(0.725F, 0.25F, 0.0F); // translate model to fit in the hand of the player
 				
-				GL11.glRotatef(90.0F, 1.0f, 0.0f, 0.0f); // rotate 0 ° on X axis
-				GL11.glRotatef(35.0F, 0.0f, 1.0f, 0.0f); // rotate -5 ° on Y axis
-				GL11.glRotatef(-90F, 0.0f, 0.0f, 1.0f); // rotate -150 ° on Z axis
+				GL11.glRotatef(90.0F, 1.0f, 0.0f, 0.0f); // rotate 0 ï¿½ on X axis
+				GL11.glRotatef(35.0F, 0.0f, 1.0f, 0.0f); // rotate -5 ï¿½ on Y axis
+				GL11.glRotatef(-90F, 0.0f, 0.0f, 1.0f); // rotate -150 ï¿½ on Z axis
 				// the entity argument can/could be passed to as null.
 				model.render((Entity) data[1], 0.0F, 0.0F, 0.0F, 0.0F, 0.0F, 0.0625F);
 				break;

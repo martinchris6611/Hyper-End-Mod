@@ -27,6 +27,20 @@ abstract public class TileEntityMachine extends TileEntity implements IInventory
 		storage=_storage;
 	}
 	
+	private boolean active;
+	
+	protected void setActive() {
+		if(active == true) return;
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, worldObj.getBlockMetadata(xCoord, yCoord, zCoord) % 4, 3);
+		active = true;
+	}
+	
+	protected void setInactive() {
+		if(active == false) return;
+		worldObj.setBlockMetadataWithNotify(xCoord, yCoord, zCoord, worldObj.getBlockMetadata(xCoord, yCoord, zCoord) % 4 + 4, 3);
+		active = false;
+	}
+	
 	@Override
 	public void readFromNBT(NBTTagCompound mainTag) {
 		super.readFromNBT(mainTag);
