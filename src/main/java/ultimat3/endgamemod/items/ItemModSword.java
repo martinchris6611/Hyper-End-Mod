@@ -5,6 +5,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.item.ItemSword;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.Reference;
+import ultimat3.endgamemod.helpers.RegisterHelper;
 
 public class ItemModSword extends ItemSword {
 	
@@ -17,6 +18,7 @@ public class ItemModSword extends ItemSword {
 		this.setUnlocalizedName(Reference.MOD_ID + "_" + name);
 		this.setTextureName(Reference.RESOURCE_PREFIX + name);
 		this.setCreativeTab(EndGame.creaTab);
+		RegisterHelper.registerItem(this);
 	}
 
 	@Override

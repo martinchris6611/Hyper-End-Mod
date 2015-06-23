@@ -1,8 +1,7 @@
 package ultimat3.endgamemod.blocks.machines.tileentity;
 
-import net.minecraft.inventory.ISidedInventory;
 import net.minecraft.item.ItemStack;
-import net.minecraft.nbt.NBTTagCompound;
+import net.minecraft.item.crafting.FurnaceRecipes;
 import ultimat3.endgamemod.init.ModItems;
 import ultimat3.endgamemod.init.ModRecipes;
 import ultimat3.endgamemod.init.ModTileEntities;
@@ -12,16 +11,20 @@ public class TileEntityMetallurgyChamber extends TileEntityFueledMachine {
 
 	
 	public TileEntityMetallurgyChamber() {
-		super(20, 1, 20, 10240, new ItemStack[3],
+		super(20, 1, 20, 1024, new ItemStack[3],
 				"_container." + ModTileEntities.METALLURGY_CHAMBER_ID,
 				new EnergyStorage(6114000));
 	}
 
+	@Override
 	public boolean canProcessItem() {
 		if (this.items[0] == null)
 			return false;
 		
 		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
+		
+		if (itemstack == null)
+			itemstack = FurnaceRecipes.smelting().getSmeltingResult(items[0]);
 		
 		// If the result is nothing, we can't smelt
 		if (itemstack == null)
@@ -36,19 +39,26 @@ public class TileEntityMetallurgyChamber extends TileEntityFueledMachine {
 			return false;
 		
 		// Otherwise, it depends on the stack limit
-		int result = items[2].stackSize + itemstack.stackSize;
+		int result = items[2].stackSize*(isOre(items[2])?4:1) + itemstack.stackSize;
 		return result <= getInventoryStackLimit() && result <= this.items[2].getMaxStackSize();
 	}
 	
+	private boolean isOre(ItemStack stack) {
+		return stack.getUnlocalizedName().toLowerCase().contains("ore") && !items[0].getUnlocalizedName().toLowerCase().contains("crushed");
+	}
+	
+	@Override
 	public void processItem() {
 		
 		ItemStack itemstack = ModRecipes.metallurgy().getResult(this.items[0]);
-		
+		if(itemstack == null)
+			itemstack = FurnaceRecipes.smelting().getSmeltingResult(items[0]);
 		if (this.items[2] == null) {
 			this.items[2] = itemstack.copy();
+			if(isOre(items[0])) items[2].stackSize *= 4;
 			// else we better check whether the items are equal before stacking...
 		} else if (this.items[2].isItemEqual(itemstack)) {
-			this.items[2].stackSize += itemstack.stackSize;
+			this.items[2].stackSize += itemstack.stackSize * (isOre(items[2])?4:1);
 		}
 		
 		--this.items[0].stackSize;

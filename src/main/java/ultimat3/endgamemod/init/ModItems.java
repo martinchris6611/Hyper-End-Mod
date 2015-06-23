@@ -3,7 +3,6 @@ package ultimat3.endgamemod.init;
 import net.minecraft.item.Item;
 import net.minecraft.item.Item.ToolMaterial;
 import net.minecraftforge.common.util.EnumHelper;
-import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.ItemCarbonCutter;
 import ultimat3.endgamemod.items.ItemModSword;
 import ultimat3.endgamemod.items.ItemParticlePistol;
@@ -14,15 +13,15 @@ public class ModItems { // TODO test the new recipes and lang
 
 	// Names for the ingots
 	public static final String[]	ingotNames			= { "ingotAluminum", "ingotCobalt", "ingotLithium",
-			"ingotMagnesium", "ingotScandium", "ingotTitanium", "ingotSteel" };
+			"ingotMagnesium", "ingotScandium", "ingotTitanium"/*, "ingotSteel"*/ };
 	
 	// names for the nuggets
 	public static final String[]	nuggetNames			= { "nuggetAluminum", "nuggetCobalt", "nuggetLithium",
-			"nuggetMagnesium", "nuggetScandium", "nuggetTitanium", "nuggetSteel" };
+			"nuggetMagnesium", "nuggetScandium", "nuggetTitanium"/*, "nuggetSteel"*/ };
 	
 	// names for the dusts
 	public static final String[]	dustNames			= { "dustAluminum", "dustCobalt", "dustLithium",
-			"dustMagnesium", "dustScandium", "dustTitanium", "dustSteel" };
+			"dustMagnesium", "dustScandium", "dustTitanium"/*, "dustSteel"*/ };
 	
 	// names for miscellaneous items used only for crafting
 	public static final String[]	miscNames			= { "diamondCoating", "forcefieldEmitter", "highEntropyMetalAlloy",
@@ -64,7 +63,7 @@ public class ModItems { // TODO test the new recipes and lang
 		magnesium		= 3,
 		scandium		= 4,
 		titanium		= 5,
-		steel			= 6,
+		//steel			= 6,
 		// Forms of vanilla metals
 		ironNugget		= 0,
 		ironDust		= 1,
@@ -82,7 +81,7 @@ public class ModItems { // TODO test the new recipes and lang
 		circuitBoard	= 9,
 		aluminumAlloy	= 10,
 		aluminumTubing	= 11,
-		steelPlating	= 12,
+		//steelPlating	= 12,
 		titaniumPlating	= 13,
 		roboticJoint	= 14,
 		armSegment		= 15,
@@ -101,7 +100,6 @@ public class ModItems { // TODO test the new recipes and lang
 	public static Item				particlePistol		= new ItemParticlePistol("particlePistol");
 	
 	public static void registerItems() {
-		// RegisterHelper.registerItem(itemScandiumIngot); // Automatically done by Ultimat3Item
-		RegisterHelper.registerItem(swordKatana);
+		
 	}
 }

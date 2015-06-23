@@ -19,6 +19,7 @@ import ultimat3.endgamemod.blocks.machines.BlockExpoFurnace;
 import ultimat3.endgamemod.blocks.machines.BlockForcefieldController;
 import ultimat3.endgamemod.blocks.machines.BlockMatterConsolidator;
 import ultimat3.endgamemod.blocks.machines.BlockMechanicalAssembler;
+import ultimat3.endgamemod.blocks.machines.BlockMetallurgyChamber;
 import ultimat3.endgamemod.helpers.RegisterHelper;
 import ultimat3.endgamemod.items.Ultimat3ItemBlock;
 import ultimat3.endgamemod.multiblock.ItemSpecialBlock;
@@ -27,12 +28,12 @@ import ultimat3.endgamemod.multiblock.ParticleController;
 public class ModBlocks {
 	// The names of the blocks in the langfiles
 	public static final String[]	metalBlockNames		= { "blockAluminum", "blockCobalt", "blockLithium",
-			"blockMagnesium", "blockScandium", "blockTitanium", "blockSteel" };
+			"blockMagnesium", "blockScandium", "blockTitanium"/*, "blockSteel"*/ };
 	
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
 	
-	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel", "LCIP", "RCIP", "HCIP", "machineHousing" };
+	public static final String[]	miscNames			= { "blockReinforcedIron", "machineHousing", "LCIP", "RCIP", "HCIP" };
 	
 	/**
 	 * Metadata based ores block. Testing atm.
@@ -48,9 +49,9 @@ public class ModBlocks {
 	 * Machine blocks
 	 */
 	/*public static Block				blockHighProductionFurnace	=	new BlockHighProductionFurnace("highProductionFurnace");
-	public static Block				blockMetallurgyChamber		=	new BlockMetallurgyChamber("metallurgyChamber");
 	public static Block				blockProductionFurnace		=	new BlockProductionFurnace("productionFurnace");
 	public static Block				blockSuperCompressor		=	new BlockSuperCompressor("superCompressor");*/
+	public static Block				blockMetallurgyChamber		=	new BlockMetallurgyChamber("metallurgyChamber");
 	public static Block				blockForcefieldController	=	new BlockForcefieldController("forcefieldController");
 	public static Block				blockMechanicalAssembler	=	new BlockMechanicalAssembler();
 	public static Block				blockAirExtractor			=	new BlockAirExtractor("airExtractor");
@@ -85,14 +86,13 @@ public class ModBlocks {
 	magnesiumBlock	=	 3,
 	scandiumBlock 	=	 4,
 	titaniumBlock 	=	 5,
-	steelBlock 		=	 6,
+	//steelBlock 		=	 6,
 	// misc
 	reinforcedIronBlock = 0,
-	compressedSteel = 1,
+	machineHousing = 1,
 	LCIP = 2,
 	RCIP = 3,
-	HCIP = 4,
-	machineHousing = 5;
+	HCIP = 4;
 	
 	
 	//format
@@ -112,9 +112,9 @@ public class ModBlocks {
 		// Machines 
 
 		/*RegisterHelper.registerBlock(blockHighProductionFurnace);
-		RegisterHelper.registerBlock(blockMetallurgyChamber);
 		RegisterHelper.registerBlock(blockProductionFurnace);
 		RegisterHelper.registerBlock(blockSuperCompressor);*/
+		RegisterHelper.registerBlock(blockMetallurgyChamber);
 		RegisterHelper.registerBlock(blockForcefieldController);
 		RegisterHelper.registerBlock(blockMechanicalAssembler);
 		RegisterHelper.registerBlock(blockAirExtractor);

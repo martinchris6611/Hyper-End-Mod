@@ -13,7 +13,6 @@ import static ultimat3.endgamemod.init.ModItems.itemNuggets;
 import static ultimat3.endgamemod.init.ModItems.itemVanillaMetals;
 import static ultimat3.endgamemod.init.ModItems.lithium;
 import static ultimat3.endgamemod.init.ModItems.magnesium;
-import static ultimat3.endgamemod.init.ModItems.steel;
 import net.minecraft.item.ItemStack;
 import net.minecraftforge.oredict.OreDictionary;
 
@@ -40,7 +39,7 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("ingotMagnesium", new ItemStack(itemIngots, 1, magnesium));
 		//OreDictionary.registerOre("ingotScandium", new ItemStack(itemIngots, 1, scandium));
 		//OreDictionary.registerOre("ingotTitanium",new ItemStack(itemIngots, 1, titanium));
-		OreDictionary.registerOre("ingotSteel",new ItemStack(itemIngots, 1, steel));
+		//OreDictionary.registerOre("ingotSteel",new ItemStack(itemIngots, 1, steel));
 		
 		// Registers Nuggets
 		OreDictionary.registerOre("nuggetAluminum", new ItemStack(itemNuggets, 1, aluminum));
@@ -49,7 +48,7 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("nuggetMagnesium",new ItemStack(itemNuggets, 1, magnesium));
 		//OreDictionary.registerOre("nuggetScandium", new ItemStack(itemNuggets, 1, scandium));
 		//OreDictionary.registerOre("nuggetTitanium", new ItemStack(itemNuggets, 1, titanium));
-		OreDictionary.registerOre("nuggetSteel", new ItemStack(itemNuggets, 1, steel));
+		//OreDictionary.registerOre("nuggetSteel", new ItemStack(itemNuggets, 1, steel));
 		
 		// Registers Dusts
 		OreDictionary.registerOre("dustAluminum", new ItemStack(itemDusts, 1, aluminum));
@@ -58,7 +57,7 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("dustMagnesium",new ItemStack(itemDusts, 1, magnesium));
 		//OreDictionary.registerOre("dustScandium", new ItemStack(itemDusts, 1, scandium));
 		//OreDictionary.registerOre("dustTitanium", new ItemStack(itemDusts, 1, titanium));
-		OreDictionary.registerOre("dustSteel", new ItemStack(itemDusts, 1, steel));
+		//OreDictionary.registerOre("dustSteel", new ItemStack(itemDusts, 1, steel));
 		
 		// Register Vanilla metal forms
 		OreDictionary.registerOre("nuggetIron", new ItemStack(itemVanillaMetals, 1, ironNugget));
@@ -73,7 +72,7 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("blockMagnesium", new ItemStack(blockMetals, 1, magnesium));
 		//OreDictionary.registerOre("blockScandium", new ItemStack(blockMetals, 1, scandium));
 		//OreDictionary.registerOre("blockTitanium", new ItemStack(blockMetals, 1, titanium));
-		OreDictionary.registerOre("blockSteel", new ItemStack(blockMetals, 1, steel));
+		//OreDictionary.registerOre("blockSteel", new ItemStack(blockMetals, 1, steel));
 		
 		// Registers Metal Blocks
 		OreDictionary.registerOre("oreAluminum", new ItemStack(blockOres, 1, aluminum));
@@ -82,6 +81,6 @@ public class OreDictionaryHelper {
 		OreDictionary.registerOre("oreMagnesium", new ItemStack(blockOres, 1, magnesium));
 		//OreDictionary.registerOre("oreScandium", new ItemStack(blockOres, 1, scandium));
 		//OreDictionary.registerOre("oreTitanium", new ItemStack(blockOres, 1, titanium));
-		OreDictionary.registerOre("oreSteel", new ItemStack(blockOres, 1, steel));
+		//OreDictionary.registerOre("oreSteel", new ItemStack(blockOres, 1, steel));
 	}
 }
