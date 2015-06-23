@@ -25,7 +25,7 @@ public class ModItems { // TODO test the new recipes and lang
 			"dustMagnesium", "dustScandium", "dustTitanium", "dustSteel" };
 	
 	// names for miscellaneous items used only for crafting
-	public static final String[]	miscNames			= { "diamondCoating", "placeholder", "highEntropyMetalAlloy",
+	public static final String[]	miscNames			= { "diamondCoating", "forcefieldEmitter", "highEntropyMetalAlloy",
 			"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",
 			"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating", "roboticJoint",
 			"armSegment", "roboticArm", "energyCell", "airFilter" };
@@ -71,7 +71,7 @@ public class ModItems { // TODO test the new recipes and lang
 		goldDust		= 2,
 		// Miscellaneous items used for crafting
 		diamondCoating	= 0,
-		placeholder		= 1,
+		forcefieldEmitter= 1,
 		highEntropyAlloy= 2,
 		ironCobaltMagnet= 3,
 		carbonSheet		= 4,
