@@ -27,7 +27,8 @@ public class ModItems { // TODO test the new recipes and lang
 	// names for miscellaneous items used only for crafting
 	public static final String[]	miscNames			= { "diamondCoating", "placeholder", "highEntropyMetalAlloy",
 			"ironCobaltMagnet", "carbonSheet", "refinedCarbon", "ringMagnet", "squareMagnet", "ionSource",
-			"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating" };
+			"circuitBoard", "aluminumAlloy", "aluminumTubing", "steelPlating", "titaniumPlating", "roboticJoint",
+			"armSegment", "roboticArm", "energyCell", "airFilter" };
 	
 	public static final String[]	FFModifierNames		= { "sizeUpgrade", "shapeSphere", "shapeCube",
 	"shapeOctahedron"							};
@@ -83,6 +84,11 @@ public class ModItems { // TODO test the new recipes and lang
 		aluminumTubing	= 11,
 		steelPlating	= 12,
 		titaniumPlating	= 13,
+		roboticJoint	= 14,
+		armSegment		= 15,
+		roboticArm		= 16,
+		energyCell		= 17,
+		airFilter		= 18,
 		// Force Field Modifiers
 		sizeUpgrade = 0,
 		shapeSphere = 1,

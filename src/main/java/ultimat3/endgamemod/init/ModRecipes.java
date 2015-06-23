@@ -6,19 +6,31 @@ import static ultimat3.endgamemod.init.ModBlocks.blockMetals;
 import static ultimat3.endgamemod.init.ModBlocks.blockMisc;
 import static ultimat3.endgamemod.init.ModBlocks.blockOres;
 import static ultimat3.endgamemod.init.ModBlocks.compressedSteel;
+import static ultimat3.endgamemod.init.ModBlocks.machineHousing;
 import static ultimat3.endgamemod.init.ModBlocks.reinforcedIronBlock;
+import static ultimat3.endgamemod.init.ModItems.airFilter;
 import static ultimat3.endgamemod.init.ModItems.aluminumAlloy;
+import static ultimat3.endgamemod.init.ModItems.armSegment;
 import static ultimat3.endgamemod.init.ModItems.carbonSheet;
+import static ultimat3.endgamemod.init.ModItems.circuitBoard;
+import static ultimat3.endgamemod.init.ModItems.energyCell;
 import static ultimat3.endgamemod.init.ModItems.ingotNames;
 import static ultimat3.endgamemod.init.ModItems.ironCobaltMagnet;
 import static ultimat3.endgamemod.init.ModItems.itemIngots;
 import static ultimat3.endgamemod.init.ModItems.itemMisc;
 import static ultimat3.endgamemod.init.ModItems.itemNuggets;
+import static ultimat3.endgamemod.init.ModItems.lithium;
+import static ultimat3.endgamemod.init.ModItems.magnesium;
 import static ultimat3.endgamemod.init.ModItems.nuggetNames;
 import static ultimat3.endgamemod.init.ModItems.refinedCarbon;
 import static ultimat3.endgamemod.init.ModItems.ringMagnet;
+import static ultimat3.endgamemod.init.ModItems.roboticArm;
+import static ultimat3.endgamemod.init.ModItems.roboticJoint;
+import static ultimat3.endgamemod.init.ModItems.scandium;
 import static ultimat3.endgamemod.init.ModItems.squareMagnet;
 import static ultimat3.endgamemod.init.ModItems.steel;
+import static ultimat3.endgamemod.init.ModItems.titanium;
+import static ultimat3.endgamemod.init.ModItems.titaniumPlating;
 
 import java.util.HashMap;
 import java.util.Iterator;
@@ -69,12 +81,35 @@ public class ModRecipes {
 	}
 	
 	private static void initExpoRecipes() {
-		ExpoFurnaceRecipes.addRecipe(Blocks.dirt, Blocks.diamond_block, 48);
+		ExpoFurnaceRecipes.addRecipe(new ItemStack(blockOres, 1, lithium), new ItemStack(itemIngots, 1, lithium), 32);
+		ExpoFurnaceRecipes.addRecipe(Blocks.coal_block, new ItemStack(itemMisc, 1, refinedCarbon), 32);
+		ExpoFurnaceRecipes.addRecipe(new ItemStack(blockOres, 1, magnesium), new ItemStack(itemIngots, 1, magnesium), 48);
+		ExpoFurnaceRecipes.addRecipe(new ItemStack(blockOres, 1, titanium), new ItemStack(itemIngots, 1, titanium), 64);
+		ExpoFurnaceRecipes.addRecipe(new ItemStack(blockOres, 1, scandium), new ItemStack(itemIngots, 1, scandium), 128);
 		
 	}
 
 	private static void initConsolidatorRecipes() {
-		MatterConsolidatorRecipes.addRecipe(Blocks.dirt, Blocks.dirt, Blocks.dirt, Blocks.diamond_block);
+		
+		MatterConsolidatorRecipes.addRecipe(
+				new ItemStack(itemIngots, 1, titanium),
+				new ItemStack(itemIngots, 1, titanium),
+				new ItemStack(itemIngots, 1, titanium), new ItemStack(itemMisc, 1, titaniumPlating));
+		
+		MatterConsolidatorRecipes.addRecipe(
+				new ItemStack(itemIngots, 1, titanium),
+				new ItemStack(itemIngots, 1, titanium),
+				new ItemStack(itemIngots, 1, titanium), new ItemStack(itemMisc, 1, titaniumPlating));
+		
+		MatterConsolidatorRecipes.addRecipe(
+				Blocks.redstone_block,
+				Blocks.gold_block,
+				Items.emerald, new ItemStack(itemMisc, 1, circuitBoard));
+		
+		MatterConsolidatorRecipes.addRecipe(
+				Blocks.redstone_block,
+				new ItemStack(blockMetals, 1, lithium),
+				new ItemStack(itemMisc, 1, circuitBoard), new ItemStack(itemMisc, 1, energyCell));
 		
 	}
 
@@ -112,7 +147,36 @@ public class ModRecipes {
 		GameRegistry.addShapedRecipe(new ItemStack(blockMetallicGlassPane, 16), new Object[] {
 			"GGG", "GGG", 'G', new ItemStack(blockMetallicGlass)
 		});
-		// Ore Dictionary
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, roboticJoint), new Object[] {
+			" N ", "NIN", " N ", 'N', new ItemStack(itemNuggets, 1, titanium), 'I', new ItemStack(itemIngots, 1, titanium)
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, armSegment), new Object[] {
+			"PJP", 'P', new ItemStack(itemMisc, 1, titaniumPlating), 'J', new ItemStack(itemMisc, 1, roboticJoint)
+		});
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, roboticArm), new Object[] {
+			"SCS", "SSS", " S ", 'S', new ItemStack(itemMisc, 1, armSegment), 'C', new ItemStack(itemMisc, 1, circuitBoard)
+		});
+
+		GameRegistry.addShapedRecipe(new ItemStack(itemMisc, 1, airFilter), new Object[] {
+			"WWW", "WIW", "WWW", 'W', Blocks.wool, 'I', Items.iron_ingot
+		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(blockMisc, 1, machineHousing), new Object[] {
+			"PEP", "PGP", "CPC", 'P', new ItemStack(itemMisc, 1, titaniumPlating),
+			'E', new ItemStack(itemMisc, 1, energyCell),
+			'G', Blocks.glass,
+			'C', new ItemStack(itemMisc, 1, circuitBoard)
+		});
+		
+		GameRegistry.addShapedRecipe(new ItemStack(ModBlocks.blockMechanicalAssembler), new Object[] {
+			"TCT", "AHA", "TET", 'T', new ItemStack(blockMetals, 1, titanium),
+			'C', new ItemStack(itemMisc, 1, circuitBoard),
+			'A', new ItemStack(itemMisc, 1, roboticArm),
+			'E', new ItemStack(itemMisc, 1, energyCell),
+			'H', new ItemStack(blockMisc, 1, machineHousing)
+		});
+		
+		
 		
 	}
 	

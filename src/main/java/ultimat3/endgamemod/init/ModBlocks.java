@@ -32,7 +32,7 @@ public class ModBlocks {
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
 	
-	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel", "LCIP", "RCIP", "HCIP" };
+	public static final String[]	miscNames			= { "blockReinforcedIron", "blockCompressedSteel", "LCIP", "RCIP", "HCIP", "machineHousing" };
 	
 	/**
 	 * Metadata based ores block. Testing atm.
@@ -91,7 +91,8 @@ public class ModBlocks {
 	compressedSteel = 1,
 	LCIP = 2,
 	RCIP = 3,
-	HCIP = 4;
+	HCIP = 4,
+	machineHousing = 5;
 	
 	
 	//format
