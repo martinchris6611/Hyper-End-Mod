@@ -12,7 +12,7 @@ public class BlockHighProductionFurnace extends BlockMachine  {
 	}
 	
 	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
+	public TileEntity createNewTileEntity(World world, int metadata) {
 			return new TileEntityHighProductionFurnace();
 	}
 }

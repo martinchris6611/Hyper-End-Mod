@@ -1,19 +1,19 @@
 package ultimat3.endgamemod.blocks.machines;
 
 import net.minecraft.block.Block;
+import net.minecraft.block.ITileEntityProvider;
 import net.minecraft.block.material.Material;
-import net.minecraft.entity.EntityLivingBase;
 import net.minecraft.entity.item.EntityItem;
 import net.minecraft.entity.player.EntityPlayer;
 import net.minecraft.init.Items;
 import net.minecraft.item.ItemStack;
-import net.minecraft.util.MathHelper;
+import net.minecraft.tileentity.TileEntity;
 import net.minecraft.world.World;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.blocks.BlockSidedTextures;
 import ultimat3.endgamemod.blocks.machines.tileentity.TileEntityMachine;
 
-public abstract class BlockMachine extends BlockSidedTextures {
+public abstract class BlockMachine extends BlockSidedTextures implements ITileEntityProvider {
 
 	protected int guiID;
 
@@ -29,15 +29,6 @@ public abstract class BlockMachine extends BlockSidedTextures {
 
 	private static int rotate(int x) {
 		return (x + 3) % 4;
-	}
-
-	@Override
-	public void onBlockPlacedBy(World world, int x, int y, int z,
-			EntityLivingBase entity, ItemStack stack) {
-		int side = 0;
-		int l = MathHelper
-				.floor_double(entity.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
-		world.setBlockMetadataWithNotify(x, y, z, (l+1)%4 + 4, 2);
 	}
 
 	@Override
@@ -80,5 +71,22 @@ public abstract class BlockMachine extends BlockSidedTextures {
 		}
 		// And do whatever normally happens when breaking a block
 		super.breakBlock(world, x, y, z, block, var1);
+		world.removeTileEntity(x, y, z);
+	}
+	
+    @Override
+	public boolean onBlockEventReceived(World world, int x, int y, int z, int par1, int par2)
+    {
+        super.onBlockEventReceived(world, x, y, z, par1, par2);
+        TileEntity tileentity = world.getTileEntity(x, y, z);
+        return tileentity != null ? tileentity.receiveClientEvent(par1, par2) : false;
+    }
+
+	@Override
+	public abstract TileEntity createNewTileEntity(World world, int meta);
+	
+	@Override
+	public TileEntity createTileEntity(World world, int meta) {
+		return createNewTileEntity(world, meta);
 	}
 }

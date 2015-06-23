@@ -11,7 +11,8 @@ public class BlockMechanicalAssembler extends BlockMachine {
 		super("mechanicalAssembler", Reference.GuiIds.MECHANICAL_ASSEMBLER.ID());
 	}
 	
-	public TileEntity createTileEntity(World world, int metadata) {
+	@Override
+	public TileEntity createNewTileEntity(World world, int metadata) {
 		return new TileEntityMechanicalAssembler();
 	}
 

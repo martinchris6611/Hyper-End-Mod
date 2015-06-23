@@ -13,7 +13,7 @@ public class BlockForcefieldController extends BlockMachine {
 	}
 	
 	@Override
-	public TileEntity createTileEntity(World world, int metadata) {
+	public TileEntity createNewTileEntity(World world, int metadata) {
 			return new TileEntityForcefieldController();
 	}
 	

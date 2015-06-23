@@ -2,7 +2,11 @@ package ultimat3.endgamemod.blocks;
 
 import net.minecraft.block.material.Material;
 import net.minecraft.client.renderer.texture.IIconRegister;
+import net.minecraft.entity.EntityLivingBase;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.IIcon;
+import net.minecraft.util.MathHelper;
+import net.minecraft.world.World;
 import ultimat3.endgamemod.Reference;
 import cpw.mods.fml.relauncher.Side;
 import cpw.mods.fml.relauncher.SideOnly;
@@ -112,6 +116,15 @@ public class BlockSidedTextures extends Ultimat3Block {
 		icons[13] = icon.registerIcon(Reference.RESOURCE_PREFIX + getName()
 				+ "FrontOff");
 		icons[14] = icon.registerIcon("iron_block");
+	}
+	
+	@Override
+	public void onBlockPlacedBy(World world, int x, int y, int z,
+			EntityLivingBase entity, ItemStack stack) {
+		int side = 0;
+		int l = MathHelper
+				.floor_double(entity.rotationYaw * 4.0F / 360.0F + 0.5D) & 3;
+		world.setBlockMetadataWithNotify(x, y, z, (l+1)%4 + 4, 2);
 	}
 
 }
