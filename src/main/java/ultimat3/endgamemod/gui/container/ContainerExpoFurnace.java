@@ -17,12 +17,12 @@ public class ContainerExpoFurnace extends ContainerMachine {
 	@Override
 	protected Slot[] getSlotsForAdding() {
 		Slot[] slots = new Slot[13];
-		slots[0] = new Slot(machine, 0, 17, 32);
+		slots[0] = new Slot(machine, 0, 13, 55);
 		for(int i=1; i<=6; i++) {
-			slots[i] = new Slot(machine, i, 31 + 19*i, 18);
+			slots[i] = new Slot(machine, i, 24 + 19*i, 24);
 		}
 		for(int i=1; i<=6; i++) {
-			slots[i+6] = new Slot(machine, i+6, 31 + 19*i, 48);
+			slots[i+6] = new Slot(machine, i+6, 24 + 19*i, 55);
 		}
 		return slots;
 	}

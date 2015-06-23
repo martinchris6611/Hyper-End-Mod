@@ -15,10 +15,10 @@ public class ContainerMatterConsolidator extends ContainerMachine {
 	@Override
 	protected Slot[] getSlotsForAdding() {
 		return new Slot[]{
-				new Slot(machine, 0, 124, 35),
-				new Slot(machine, 1, 104, 35),
-				new Slot(machine, 2, 124, 55),
-				new Slot(machine, 3, 104, 55)
+				new Slot(machine, 0, 36, 33),
+				new Slot(machine, 1, 80, 24),
+				new Slot(machine, 2, 124, 33),
+				new Slot(machine, 3, 80, 60)
 		};
 	}
 

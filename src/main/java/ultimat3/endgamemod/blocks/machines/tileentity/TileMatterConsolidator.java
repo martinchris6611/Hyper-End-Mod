@@ -8,7 +8,7 @@ import cofh.api.energy.EnergyStorage;
 public class TileMatterConsolidator extends TileEntityProcessingMachine {
 
 	public TileMatterConsolidator() {
-		super(1, 0, new ItemStack[4],
+		super(1, 640, new ItemStack[4],
 			"container." + ModTileEntities.MATTER_CONSOLIDATOR_ID,
 			new EnergyStorage(600000));
 	}
