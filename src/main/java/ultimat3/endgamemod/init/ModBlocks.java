@@ -10,6 +10,7 @@ import ultimat3.endgamemod.blocks.BlockMetallicGlassPane;
 import ultimat3.endgamemod.blocks.BlockOre;
 import ultimat3.endgamemod.blocks.BlockParticleTube;
 import ultimat3.endgamemod.blocks.BlockProtonLaser;
+import ultimat3.endgamemod.blocks.BlockSidedTextures;
 import ultimat3.endgamemod.blocks.BlockThermiteFire;
 import ultimat3.endgamemod.blocks.BlockThermiteWire;
 import ultimat3.endgamemod.blocks.MetaBlock;
@@ -33,7 +34,7 @@ public class ModBlocks {
 	public static final String[]	oreNames			= { "oreAluminum", "oreCobalt", "oreLithium", "oreMagnesium",
 			"oreScandium", "oreTitanium"				};
 	
-	public static final String[]	miscNames			= { "blockReinforcedIron", "machineHousing", "LCIP", "RCIP", "HCIP" };
+	public static final String[]	miscNames			= { "blockReinforcedIron", "LCIP", "RCIP", "HCIP" };
 	
 	/**
 	 * Metadata based ores block. Testing atm.
@@ -73,6 +74,7 @@ public class ModBlocks {
 	public static Block				blockDetector			= new BlockDetector();
 	public static Block				blockParticleTube		= new BlockParticleTube();
 	public static Block				blockParticleController = new ParticleController();
+	public static Block				blockMachineHousing		= new BlockSidedTextures("machineHousing", Material.anvil);
 	/**
 	 * Metadata
 	 */
@@ -89,10 +91,9 @@ public class ModBlocks {
 	//steelBlock 		=	 6,
 	// misc
 	reinforcedIronBlock = 0,
-	machineHousing = 1,
-	LCIP = 2,
-	RCIP = 3,
-	HCIP = 4;
+	LCIP = 1,
+	RCIP = 2,
+	HCIP = 3;
 	
 	
 	//format
@@ -134,5 +135,6 @@ public class ModBlocks {
 		RegisterHelper.registerBlock(blockDetector);
 		RegisterHelper.registerBlock(blockParticleTube);
 		RegisterHelper.registerBlock(blockParticleController, ItemSpecialBlock.class);
+		RegisterHelper.registerBlock(blockMachineHousing);
 	}
 }

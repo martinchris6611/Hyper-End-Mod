@@ -7,6 +7,7 @@ import static ultimat3.endgamemod.init.ModBlocks.blockAirExtractor;
 import static ultimat3.endgamemod.init.ModBlocks.blockAirSeparator;
 import static ultimat3.endgamemod.init.ModBlocks.blockExpoFurnace;
 import static ultimat3.endgamemod.init.ModBlocks.blockForcefieldController;
+import static ultimat3.endgamemod.init.ModBlocks.blockMachineHousing;
 import static ultimat3.endgamemod.init.ModBlocks.blockMatterConsolidator;
 import static ultimat3.endgamemod.init.ModBlocks.blockMechanicalAssembler;
 import static ultimat3.endgamemod.init.ModBlocks.blockMetallicGlass;
@@ -15,7 +16,6 @@ import static ultimat3.endgamemod.init.ModBlocks.blockMetallurgyChamber;
 import static ultimat3.endgamemod.init.ModBlocks.blockMetals;
 import static ultimat3.endgamemod.init.ModBlocks.blockMisc;
 import static ultimat3.endgamemod.init.ModBlocks.blockOres;
-import static ultimat3.endgamemod.init.ModBlocks.machineHousing;
 import static ultimat3.endgamemod.init.ModBlocks.reinforcedIronBlock;
 import static ultimat3.endgamemod.init.ModItems.airFilter;
 import static ultimat3.endgamemod.init.ModItems.aluminumAlloy;
@@ -212,7 +212,7 @@ public class ModRecipes {
 			"WWW", "WIW", "WWW", 'W', Blocks.wool, 'I', Items.iron_ingot
 		});
 		
-		GameRegistry.addShapedRecipe(new ItemStack(blockMisc, 1, machineHousing), new Object[] {
+		GameRegistry.addShapedRecipe(new ItemStack(blockMachineHousing), new Object[] {
 			"PEP", "PGP", "CPC", 'P', new ItemStack(itemMisc, 1, aluminumAlloy),
 			'E', new ItemStack(itemMisc, 1, energyCell),
 			'G', Blocks.glass,
@@ -224,20 +224,20 @@ public class ModRecipes {
 			'C', new ItemStack(itemMisc, 1, circuitBoard),
 			'A', new ItemStack(itemMisc, 1, roboticArm),
 			'E', new ItemStack(itemMisc, 1, energyCell),
-			'H', new ItemStack(blockMisc, 1, machineHousing)
+			'H', new ItemStack(blockMachineHousing)
 		});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(blockForcefieldController), new Object[] {
 			"EEE", "CCC", "GHG", 'E', new ItemStack(itemMisc, 1, forcefieldEmitter),
 			'C', new ItemStack(itemMisc, 1, energyCell),
 			'G', new ItemStack(blockMetals, 1, titanium),
-			'H', new ItemStack(blockMisc, 1, machineHousing)
+			'H', new ItemStack(blockMachineHousing)
 		});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(blockAirExtractor), new Object[] {
 			"SFS", "FHF", "SFS", 'S', new ItemStack(blockMetals, 1, titanium),
 			'F', new ItemStack(itemMisc, 1, airFilter),
-			'H', new ItemStack(blockMisc, 1, machineHousing)
+			'H', new ItemStack(blockMachineHousing)
 		});
 		
 		GameRegistry.addShapedRecipe(new ItemStack(blockAirSeparator), new Object[] {
@@ -259,7 +259,7 @@ public class ModRecipes {
 		GameRegistry.addShapedRecipe(new ItemStack(blockExpoFurnace), new Object[] {
 			"SFS", "CHC", "SAS", 'S', new ItemStack(Blocks.iron_block),
 			'A', new ItemStack(itemMisc, 1, airFilter),
-			'H', new ItemStack(blockMisc, 1, machineHousing),
+			'H', new ItemStack(blockMachineHousing),
 			'F', new ItemStack(blockMetallurgyChamber),
 			'C', new ItemStack(itemCoils, 1, 0)
 		});

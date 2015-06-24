@@ -6,8 +6,8 @@ import net.minecraft.item.ItemStack;
 
 public class MatterConsolidatorRecipes extends SimpleRecipes {
 
-	private static ArrayList<ItemStack[]> recipe = new ArrayList<ItemStack[]>();
-	private static ArrayList<ItemStack> output = new ArrayList<ItemStack>();
+	public static ArrayList<ItemStack[]> recipe = new ArrayList<ItemStack[]>();
+	public static ArrayList<ItemStack> output = new ArrayList<ItemStack>();
 	private static ArrayList<Integer> time = new ArrayList<Integer>();
 
 	public static void addRecipe(Object in1, Object in2, Object in3, Object out) {
