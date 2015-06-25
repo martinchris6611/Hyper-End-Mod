@@ -57,6 +57,7 @@ import net.minecraft.item.ItemStack;
 import ultimat3.endgamemod.EndGame;
 import ultimat3.endgamemod.recipes.ExpoFurnaceRecipes;
 import ultimat3.endgamemod.recipes.MatterConsolidatorRecipes;
+import ultimat3.endgamemod.recipes.MechanicalAssemblerRecipes;
 import cpw.mods.fml.common.registry.GameRegistry;
 
 /**
@@ -92,8 +93,13 @@ public class ModRecipes {
 		initMetallurgyRecipes();
 		initConsolidatorRecipes();
 		initExpoRecipes();
+		initAssemblerRecipes();
 	}
 	
+	private static void initAssemblerRecipes() {
+		MechanicalAssemblerRecipes.addRecipe(Blocks.diamond_block, "DDDD", "D  D", "D  D", "DDDD", 'D', Blocks.dirt);
+	}
+
 	private static void initExpoRecipes() {
 		ExpoFurnaceRecipes.addRecipe(Blocks.coal_block, new ItemStack(itemMisc, 1, refinedCarbon), 128);
 		ExpoFurnaceRecipes.addRecipe(new ItemStack(blockOres, 1, lithium), new ItemStack(itemIngots, 1, lithium), 256);

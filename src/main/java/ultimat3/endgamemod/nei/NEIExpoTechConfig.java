@@ -10,8 +10,10 @@ public class NEIExpoTechConfig implements IConfigureNEI
     @Override
     public void loadConfig ()
     {
-    	API.registerRecipeHandler(new RecipeHandlerMatterConsolidator());
-    	API.registerUsageHandler(new RecipeHandlerMatterConsolidator());
+    	API.registerRecipeHandler(new NEIRecipeHandlerMatterConsolidator());
+    	API.registerUsageHandler(new NEIRecipeHandlerMatterConsolidator());
+    	API.registerRecipeHandler(new NEIRecipeHandlerMechanicalAssembler());
+    	API.registerUsageHandler(new NEIRecipeHandlerMechanicalAssembler());
     }
 
     @Override
