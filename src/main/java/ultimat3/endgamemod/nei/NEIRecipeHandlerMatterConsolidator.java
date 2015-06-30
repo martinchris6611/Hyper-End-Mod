@@ -76,23 +76,23 @@ public class NEIRecipeHandlerMatterConsolidator extends TemplateRecipeHandler {
 		}
 	}
 	
-	  @Override
-	  public void loadUsageRecipes(ItemStack ingredient) {
-
-			if (ingredient == null) {
-				return;
+	@Override
+	public void loadUsageRecipes(ItemStack ingredient) {
+	
+		if (ingredient == null) {
+			return;
+		}
+		
+		for (int i = 0; i < recipe.size(); i++) {
+			if(recipe.get(i)[0].isItemEqual(ingredient) || recipe.get(i)[1].isItemEqual(ingredient) || recipe.get(i)[2].isItemEqual(ingredient)) {
+				
+				ClassRecipe rec = new ClassRecipe(recipe.get(i)[0], recipe.get(i)[1],
+				recipe.get(i)[2], output.get(i));
+				rec.setIngredientPermutation(rec.input, ingredient);
+				arecipes.add(rec);
 			}
-
-			for (int i = 0; i < recipe.size(); i++) {
-				if(recipe.get(i)[0].isItemEqual(ingredient) || recipe.get(i)[1].isItemEqual(ingredient) || recipe.get(i)[2].isItemEqual(ingredient))
-				{
-					ClassRecipe rec = new ClassRecipe(recipe.get(i)[0], recipe.get(i)[1],
-							recipe.get(i)[2], output.get(i));
-					rec.setIngredientPermutation(rec.input, ingredient);
-					arecipes.add(rec);
-				}
-			}
-	  }
+		}
+	}
 
 	public class ClassRecipe extends TemplateRecipeHandler.CachedRecipe {
 

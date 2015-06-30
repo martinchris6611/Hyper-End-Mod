@@ -59,6 +59,7 @@ public class EndGame {
 		ModFluids.registerFluids();
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
+		
 		// add the Ore Dictionary entries
 		OreDictionaryHelper.init();
 	}
