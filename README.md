@@ -1,5 +1,5 @@
-# Hyper-End-Mod
-Hyper End Source Code - This is a Work In Progress High Tech Mod for Minecraft made by The Ultimat3 Mod Team. This mod aims to improve upon the end game of modded minecraft where challenge is lacking and resources seem to approach infinity, or at least amounts that you will never use other than to build structures. 
+# Exponential Technology Mod
+Exponential Technology Source Code - This is a Work In Progress High Tech Mod for Minecraft made by The Ultimat3 Mod Team. This mod aims to improve upon the end game of modded minecraft where challenge is lacking and resources seem to approach infinity, or at least amounts that you will never use other than to build structures. 
 
 # Ultimat3 Mod Team
 
