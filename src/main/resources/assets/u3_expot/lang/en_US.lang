@@ -1,0 +1,95 @@
+tile.u3_expot_oreAluminum.name=Aluminum Ore
+tile.u3_expot_oreCobalt.name=Cobalt Ore
+tile.u3_expot_oreLithium.name=Lithium Ore
+tile.u3_expot_oreMagnesium.name=Magnesium Ore
+tile.u3_expot_oreScandium.name=Refined Scandium Ore
+tile.u3_expot_oreTitanium.name=Refined Titanium Ore
+
+tile.u3_expot_blockAluminum.name=Aluminum Block
+tile.u3_expot_blockCobalt.name=Cobalt Block
+tile.u3_expot_blockLithium.name=Lithium Block
+tile.u3_expot_blockMagnesium.name=Magnesium Block
+tile.u3_expot_blockTitanium.name=Refined Titanium Block
+tile.u3_expot_blockScandium.name=Refined Scandium Block
+tile.u3_expot_blockSteel.name=Steel Block
+
+tile.u3_expot_blockReinforcedIron.name=Reinforced Iron
+tile.u3_expot_blockCompressedSteel.name=Compressed Steel
+tile.u3_expot_LCIP.name=LCIP
+tile.u3_expot_RCIP.name=RCIP
+tile.u3_expot_HCIP.name=HCIP
+
+tile.u3_expot_blockMetallicGlass.name=Metallic Glass
+tile.u3_expot_blockMetallicGlassPane.name=Metallic Glass Pane
+tile.u3_expot_blockDetector.name=Hermetic Detector
+tile.u3_expot_blockElectroMagnet.name=Electro Magnet
+tile.u3_expot_blockProtonLaser.name=Proton Laser
+tile.u3_expot_blockForce.name=Force Block
+tile.u3_expot_blockParticleTube.name=Particle Accelerator Tubing
+
+tile.u3_expot_productionFurnace.name=Production Furnace
+tile.u3_expot_highProductionFurnace.name=High Production Furnace
+tile.u3_expot_superCompressor.name=Super Compressor
+tile.u3_expot_metallurgyChamber.name=Metallurgy Chamber
+tile.u3_expot_forcefieldController.name=Forcefield Controller
+tile.u3_expot_particleController.name=Particle Accelerator Controller
+
+item.u3_expot_ingotAluminum.name=Aluminum Ingot
+item.u3_expot_ingotCobalt.name=Cobalt Ingot
+item.u3_expot_ingotLithium.name=Lithium Ingot
+item.u3_expot_ingotMagnesium.name=Magnesium Ingot
+item.u3_expot_ingotTitanium.name=Refined Titanium Ingot
+item.u3_expot_ingotScandium.name=Refined Scandium Ingot
+item.u3_expot_ingotSteel.name=Steel Ingot
+
+item.u3_expot_nuggetAluminum.name=Aluminum Nugget
+item.u3_expot_nuggetCobalt.name=Cobalt Nugget
+item.u3_expot_nuggetLithium.name=Lithium Nugget
+item.u3_expot_nuggetMagnesium.name=Magnesium Nugget
+item.u3_expot_nuggetScandium.name=Refined Scandium Nugget
+item.u3_expot_nuggetTitanium.name=Refined Titanium Nugget
+item.u3_expot_nuggetSteel.name=Steel Nugget
+
+item.u3_expot_dustAluminum.name=Aluminum Dust
+item.u3_expot_dustCobalt.name=Cobalt Dust
+item.u3_expot_dustLithium.name=Lithium Dust
+item.u3_expot_dustMagnesium.name=Magnesium Dust
+item.u3_expot_dustScandium.name=Refined Scandium Dust
+item.u3_expot_dustTitanium.name=Refined Titanium Dust
+item.u3_expot_dustSteel.name=Steel Dust
+
+item.u3_expot_nuggetIron.name=Iron Nugget
+item.u3_expot_dustIron.name=Iron Dust
+item.u3_expot_dustGold.name=Gold Dust
+
+item.u3_expot_diamondCoating.name=Diamond Coating
+item.u3_expot_thermite.name=Thermite
+item.u3_expot_highEntropyMetalAlloy.name=High Entropy Metal Alloy
+item.u3_expot_ironCobaltMagnet.name=Iron Cobalt Magnet
+item.u3_expot_carbonSheet.name=Carbon Sheet
+item.u3_expot_refinedCarbon.name=Refined Carbon
+item.u3_expot_ringMagnet.name=Ring Magnet
+item.u3_expot_squareMagnet.name=Square Magnet
+item.u3_expot_ionSource.name=Ion Source
+item.u3_expot_circuitBoard.name=Circuit Board
+item.u3_expot_aluminumAlloy.name=Aluminum Alloy
+item.u3_expot_aluminumTubing.name=Aluminum Tubing
+item.u3_expot_steelPlating.name=Steel Plating
+item.u3_expot_titaniumPlating.name=Titanium Plating
+
+item.u3_expot_swordKatana.name=Plasma Sword
+item.u3_expot_carbonCutter.name=Carbon Cutter
+
+itemGroup.u3_expot=End game mod
+
+container.u3_expot_productionFurnace=Production Furnace
+container.u3_expot_superCompressor=Super Compressor
+container.u3_expot_highProductionFurnace.name=High Production Furnace
+container.u3_expot_metallurgyChamber=Metallurgy Chamber
+container.u3_expot_forcefieldController=Forcefield Controller
+
+
+item.u3_expot_sizeUpgrade.name=Size Upgrade
+item.u3_expot_shapeSphere.name=Sphere Shape Modifier
+item.u3_expot_shapeCube.name=Cube Shape Modifier
+item.u3_expot_shapeOctahedron.name=Octahedron Shape Modifier

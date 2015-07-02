@@ -1,14 +1,14 @@
 [
 {
   "modid": "u3_egm",
-  "name": "End game mod",
+  "name": "Expo Tech",
   "description": "A mod that requires many many resources to use. Meant as an item and energy sink for late-game.",
   "version": "${version}",
   "mcversion": "${mcversion}",
   "url": "",
   "updateUrl": "",
-  "authorList": ["SnyperAnihilatr", "Ebilkill"],
-  "credits": "Only the authors at the moment.",
+  "authorList": ["SnyperAnihilatr", "glideon", "Ebilkill"],
+  "credits": "Mod authors, joetheantipro and Pixel Puffin for textures",
   "logoFile": "",
   "screenshots": [],
   "dependencies": []
