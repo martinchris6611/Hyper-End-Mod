@@ -4,6 +4,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.NBTTagCompound;
 import ultimat3.expotech.init.ModBlocks;
 import ultimat3.expotech.init.ModTileEntities;
+import ultimat3.expotech.recipes.MechanicalAssemblerRecipes;
 import cofh.api.energy.EnergyStorage;
 //MIGHT REMOVE
 
@@ -467,6 +468,11 @@ public class ParticleAcceleratorMultiblock extends TileMultiBlock {
     
 	@Override
 	public boolean canProcessItem() {
+		//ItemStack out = ParticleAcceleratorRecipes.getOutput(items);
+		//if(out == null) return false;
+		//if(items[outputSlot] == null) return true;
+		//return	items[outputSlot].isItemEqual(out) &&
+		//		items[outputSlot].stackSize + out.stackSize <= out.getMaxStackSize();
 		return false;
 	}
 

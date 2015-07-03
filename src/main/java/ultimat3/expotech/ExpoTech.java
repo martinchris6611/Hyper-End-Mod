@@ -6,6 +6,7 @@ import ultimat3.expotech.init.ModBlocks;
 import ultimat3.expotech.init.ModFluids;
 import ultimat3.expotech.init.ModItems;
 import ultimat3.expotech.init.ModRecipes;
+import ultimat3.expotech.init.ModRendering;
 import ultimat3.expotech.init.ModTileEntities;
 import ultimat3.expotech.network.GuiHandler;
 import ultimat3.expotech.proxies.CommonProxy;
@@ -57,6 +58,7 @@ public class ExpoTech {
 		network = NetworkRegistry.INSTANCE.newSimpleChannel(Reference.NETWORK_CHANNEL);
 		
 		// registers content with Forge
+		ModRendering.init();
 		ModFluids.registerFluids();
 		ModBlocks.registerBlocks();
 		ModItems.registerItems();
