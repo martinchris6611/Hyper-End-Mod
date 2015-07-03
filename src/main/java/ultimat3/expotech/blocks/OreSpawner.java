@@ -21,9 +21,9 @@ public class OreSpawner implements IWorldGenerator {
 	// Might change this to be metadata bound
 	private void generateSurface(World world, Random random, int x, int y) {
 		// TODO Needs balancing
-		this.addOreSpawn(ModBlocks.blockOres, 0, world, random, x, y, 16, 16, 8, 10, 6, 60); // Aluminum
-		this.addOreSpawn(ModBlocks.blockOres, 4, world, random, x, y, 16, 16, 1, 1, 2, 50); // Scandium
-		this.addOreSpawn(ModBlocks.blockOres, 5, world, random, x, y, 16, 16, 5, 1 , 6, 20); // Titanium
+		//this.addOreSpawn(ModBlocks.blockOres, 0, world, random, x, y, 16, 16, 8, 10, 6, 60); // Aluminum
+		this.addOreSpawn(ModBlocks.blockOres, 0, world, random, x, y, 16, 16, 1, 1, 2, 50); // Scandium
+		this.addOreSpawn(ModBlocks.blockOres, 1, world, random, x, y, 16, 16, 5, 1 , 6, 20); // Titanium
 	}
 	
 	public void addOreSpawn(Block block, int meta, World world, Random random, int blockXPos, int blockZPos, int maxX,
